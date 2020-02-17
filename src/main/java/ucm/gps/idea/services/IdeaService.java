@@ -17,10 +17,6 @@ public class IdeaService {
 
     private static final Logger logger = LoggerFactory.getLogger(IdeaService.class);
 
-    public String getTest(){
-        return "Hello World";
-    }
-
     public List<Idea> list() {
         return ideaRepository.findAll();
     }

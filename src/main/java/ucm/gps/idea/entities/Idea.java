@@ -17,7 +17,7 @@ public class Idea implements Serializable {
 
     @Column(name= "title")
     private String title;
-
+    
     @Column(name= "active")
     private boolean active;
 
