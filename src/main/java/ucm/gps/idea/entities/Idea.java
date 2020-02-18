@@ -3,12 +3,9 @@ package ucm.gps.idea.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-<<<<<<< HEAD
-=======
 
 @Entity
 @Table(name = "idea", schema = "idea")
->>>>>>> ca6171966798f21b8876364afcff6c179f57b441
 public class Idea implements Serializable {
 
     private static final long serialVersionUID = 0;

@@ -25,10 +25,7 @@ public class Creator implements Serializable {
     private String name;
 
     @Column(name = "last_name")
-    private String lastName1;
-
-    @Column(name = "last_name")
-    private String lastName2;
+    private String lastName;
 
     @Column(name = "birth_date")
     private Date birthDate;
@@ -68,20 +65,12 @@ public class Creator implements Serializable {
         this.name = name;
     }
 
-    public String getLastName1() {
-        return lastName1;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastName1(String lastName1) {
-        this.lastName1 = lastName1;
-    }
-
-    public String getLastName2() {
-        return lastName2;
-    }
-
-    public void setLastName2(String lastName2) {
-        this.lastName2 = lastName2;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Date getBirthDate() {
