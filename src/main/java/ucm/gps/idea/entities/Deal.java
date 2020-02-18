@@ -6,23 +6,24 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "contract")
-public class Contract implements Serializable {
+@Table(name = "deal")
+public class Deal implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public Contract() {
+    public Deal() {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(mappedBy = "contract")
+    @OneToOne(mappedBy = "deal")
     private Idea idea;
 
     @ManyToOne
+    @JoinColumn
     private Enterprise enterprise;
 
     @Column(name = "title")
@@ -31,14 +32,11 @@ public class Contract implements Serializable {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "data_created")
-    private Date dateCreated;
+    @Column(name = "created_at")
+    private Date createdAt;
 
-    @Column(name = "date_of_sign")
-    private Date dateOfSign;
-
-    @Column(name = "site")
-    private String site;
+    @Column(name = "date_signed")
+    private Date dateSigned;
 
     @Column(name = "percentage")
     private float percentage;
@@ -68,28 +66,20 @@ public class Contract implements Serializable {
         this.text = text;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getDateOfSign() {
-        return dateOfSign;
+    public Date getDateSigned() {
+        return dateSigned;
     }
 
-    public void setDateOfSign(Date dateOfSign) {
-        this.dateOfSign = dateOfSign;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
+    public void setDateSigned(Date dateSigned) {
+        this.dateSigned = dateSigned;
     }
 
     public float getPercentage() {

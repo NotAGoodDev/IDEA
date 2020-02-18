@@ -19,13 +19,19 @@ public class Idea implements Serializable {
     private Integer id;
 
     @OneToOne
-    private Contract contract;
+    private Deal deal;
 
     @ManyToOne
+    @JoinColumn
     private Creator creator;
 
     @ManyToOne
+    @JoinColumn
     private Category category;
+
+    @ManyToOne
+    @JoinColumn
+    private Enterprise enterprise;
 
     @Column(name = "user_id")
     private Integer userId;
@@ -41,7 +47,6 @@ public class Idea implements Serializable {
 
     @Column(name = "active")
     private Boolean active;
-
 
     public Integer getId() {
         return id;
@@ -91,12 +96,12 @@ public class Idea implements Serializable {
         this.active = active;
     }
 
-    public Contract getContract() {
-        return contract;
+    public Deal getDeal() {
+        return deal;
     }
 
-    public void setContract(Contract contract) {
-        this.contract = contract;
+    public void setDeal(Deal deal) {
+        this.deal = deal;
     }
 
     public Creator getCreator() {
@@ -113,5 +118,15 @@ public class Idea implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Enterprise getEnterprise()
+    {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise)
+    {
+        this.enterprise = enterprise;
     }
 }

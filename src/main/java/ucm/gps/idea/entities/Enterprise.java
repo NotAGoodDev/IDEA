@@ -20,10 +20,10 @@ public class Enterprise implements Serializable {
     private Integer id;
 
     @OneToMany(mappedBy = "enterprise")
-    private Set<Contract> contract;
+    private Set<Deal> deal;
 
-    @ManyToOne
-    private Category category;
+    @OneToMany(mappedBy = "enterprise")
+    private Set<Idea> idea;
 
     @Column(name = "name")
     private String name;
@@ -54,7 +54,6 @@ public class Enterprise implements Serializable {
 
     @Column(name = "active")
     private Boolean active;
-
 
     public Integer getId() {
         return id;
@@ -136,12 +135,12 @@ public class Enterprise implements Serializable {
         this.remainingIdeas = remainingIdeas;
     }
 
-    public Set<Contract> getContract() {
-        return contract;
+    public Set<Deal> getDeal() {
+        return deal;
     }
 
-    public void setContract(Set<Contract> contract) {
-        this.contract = contract;
+    public void setDeal(Set<Deal> deal) {
+        this.deal = deal;
     }
 
     public Boolean isActive() {
@@ -152,11 +151,11 @@ public class Enterprise implements Serializable {
         this.active = active;
     }
 
-    public Category getCategory() {
-        return category;
+    public Set<Idea> getIdea() {
+        return idea;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setIdea(Set<Idea> idea) {
+        this.idea = idea;
     }
 }
