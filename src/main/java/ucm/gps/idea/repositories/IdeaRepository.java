@@ -6,5 +6,4 @@ import ucm.gps.idea.entities.Idea;
 
 @Repository
 public interface IdeaRepository extends JpaRepository<Idea,Integer> {
-
 }

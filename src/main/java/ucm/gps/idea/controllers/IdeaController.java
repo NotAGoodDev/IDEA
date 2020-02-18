@@ -23,6 +23,7 @@ class IdeaController {
     @GetMapping("/")
     public ResponseEntity<List<Idea>> list(){
         List<Idea> listIdeas = ideaService.list();
+        logger.info("se ha hecho una peticion de listar");
         return new ResponseEntity<>(listIdeas, HttpStatus.OK);
     }
 
@@ -33,7 +34,7 @@ class IdeaController {
             return new ResponseEntity<>(idea,HttpStatus.OK);
         } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed id: %i", id));
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
