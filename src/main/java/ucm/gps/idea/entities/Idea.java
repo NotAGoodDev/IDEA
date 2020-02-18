@@ -3,23 +3,48 @@ package ucm.gps.idea.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+<<<<<<< HEAD
+=======
 
 @Entity
 @Table(name = "idea", schema = "idea")
+>>>>>>> ca6171966798f21b8876364afcff6c179f57b441
 public class Idea implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 0;
+
+    public Idea() {
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name= "id")
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name= "title")
+    @OneToOne
+    private Contract contract;
+
+    @ManyToOne
+    private Creator creator;
+
+    @ManyToOne
+    private Category category;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "title")
     private String title;
-    
-    @Column(name= "active")
-    private boolean active;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "text")
+    private String text;
+
+    @Column(name = "active")
+    private Boolean active;
+
 
     public Integer getId() {
         return id;
@@ -27,6 +52,14 @@ public class Idea implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {
@@ -37,12 +70,51 @@ public class Idea implements Serializable {
         this.title = title;
     }
 
-    public boolean isActive() {
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    public Creator getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Creator creator) {
+        this.creator = creator;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
