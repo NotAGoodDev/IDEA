@@ -29,7 +29,8 @@ public class IdeaService {
         ideaRepository.deleteById(id);
     }
 
-    public Idea create(Idea idea) {
+    public Idea save(Idea idea) {
         return ideaRepository.save(idea);
     }
+
 }

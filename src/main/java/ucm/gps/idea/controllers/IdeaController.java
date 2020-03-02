@@ -46,6 +46,6 @@ class IdeaController {
 
     @PostMapping("/")
     public ResponseEntity<Idea> create(@RequestBody Idea idea) {
-        return new ResponseEntity<>(ideaService.create(idea), HttpStatus.OK);
+        return new ResponseEntity<>(ideaService.save(idea), HttpStatus.OK);
     }
 }

@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Enterprise;
+import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.services.EnterpriseService;
+import ucm.gps.idea.services.IdeaService;
+
 import java.util.List;
 
 @RestController
@@ -16,6 +19,8 @@ public class EnterpriseController {
 
     @Autowired
     EnterpriseService enterpriseService;
+    @Autowired
+    IdeaService ideaService;
 
     private static final Logger logger = LoggerFactory.getLogger(EnterpriseController.class);
 
@@ -45,6 +50,20 @@ public class EnterpriseController {
 
     @PostMapping("/")
     public ResponseEntity<Enterprise> create(@RequestBody Enterprise enterprise) {
+        return new ResponseEntity<>(enterpriseService.create(enterprise), HttpStatus.OK);
+    }
+
+
+    @PostMapping("/enterprises/{enterpriseID}/ideas/{ideaID}")
+    public ResponseEntity<Enterprise> create(@PathVariable Integer enterpriseID, @PathVariable Integer ideaID) throws Exception {
+
+        Enterprise enterprise = enterpriseService.index(enterpriseID);
+        Idea idea = ideaService.index(ideaID);
+
+        idea.setEnterprise(enterprise);
+
+        ideaService.save(idea);
+
         return new ResponseEntity<>(enterpriseService.create(enterprise), HttpStatus.OK);
     }
 
