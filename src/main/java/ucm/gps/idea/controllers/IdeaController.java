@@ -12,7 +12,7 @@ import ucm.gps.idea.services.IdeaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ideas")
+@RequestMapping("api/ideas")
 class IdeaController {
 
     @Autowired
