@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
@@ -33,6 +35,18 @@ public class AuthController {
     @PostMapping("/creator/register")
     public ResponseEntity<Creator> create(@RequestBody Creator creator) {
         return new ResponseEntity<Creator>(creatorService.create(creator), HttpStatus.OK);
+    }
+    
+    @PostMapping(value="/enterprise/login") //, consumes = "application/json") //, consumes = "application/x-www-form-urlencoded")
+    public String login(@RequestBody Enterprise enterprise) {
+    	// Aqui iria comprobar si la empresa esta registrada en el sistema o no
+    	return "redirect:/enterprise.html";
+    }
+    
+    @PostMapping(value="/creator/login")
+    public String login(@RequestBody Creator creator) {
+    	// Aqui iria comprobar si el creador esta registrado en el sistema o no
+    	return "redirect:/creator.html";
     }
 
 }
