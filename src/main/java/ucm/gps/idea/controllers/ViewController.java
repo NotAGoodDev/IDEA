@@ -26,4 +26,13 @@ public class ViewController {
         return "/creator.html";
     }
 
+    @RequestMapping(value="/registrar-creator", method = RequestMethod.GET )
+    public String registrarCreator(){
+        return "/registrar-creador.html";
+    }
+
+    @RequestMapping(value="/quienes-somos", method = RequestMethod.GET )
+    public String quienesSomos(){
+        return "/quienes-somos.html";
+    }
 }
