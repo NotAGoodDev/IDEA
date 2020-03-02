@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/registrar-creador.css" rel="stylesheet">
+    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">iDea</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/enterprise">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-12 col-lg-6 datos-generales">
+                    <h2>Registrar creador</h2>
+                    <label for="username">Username</label>
+                    <input name="username" id="username" type="text" >
+                    <label for="contrasena">Contraseña</label>
+                    <input type="text" name="contrasena" id="contrasena">
+                    <span class="subtitulo">La contraseña tiene que tener 6 o más</span>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre">
+                    <label for="imagen">Imagen</label>
+                    <input name="imagen" id="imagen" type="file">
+                </div>
+                <div class="col-12 col-lg-6 datos-creador">
+                    <label for="apellidos">Apellidos</label>
+                    <input name="apellidos" id="apellidos" type="text">
+                    <label for="cumpleanos">Contraseña</label>
+                    <input type="date" name="cumpleanos" id="cumpleanos">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" name="telefono" id="telefono">
+                    <label for="email">Email</label>
+                    <input name="email" id="email" type="text">
+                    <label for="direccion">Dirección</label>
+                    <input name="direccion" id="direccion" type="text">
+                    <input type="button" value="Registrarme">
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>
