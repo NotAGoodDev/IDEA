@@ -35,4 +35,9 @@ public class ViewController {
     public String quienesSomos(){
         return "/quienes-somos.html";
     }
+
+    @RequestMapping(value="/login", method = RequestMethod.GET )
+    public String login(){
+        return "/login.html";
+    }
 }
