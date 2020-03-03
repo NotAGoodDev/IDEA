@@ -1,0 +1,9 @@
+.datos-generales{
+    display: flex;
+    flex-direction: column;
+}
+
+.datos-creador{
+    display: flex;
+    flex-direction: column;
+}
