@@ -16,7 +16,7 @@ public class CreatorService {
     @Autowired
     CreatorRepository creatorRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(IdeaService.class);
+    private static final Logger logger = LoggerFactory.getLogger(CreatorService.class);
 
     public List<Creator> list() {
         return creatorRepository.findAll();
@@ -32,5 +32,5 @@ public class CreatorService {
         creatorRepository.deleteById(id);
     }
 
-    //pendiente de picar
+
 }

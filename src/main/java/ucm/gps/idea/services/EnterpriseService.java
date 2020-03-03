@@ -15,7 +15,7 @@ public class EnterpriseService {
     @Autowired
     EnterpriseRepository enterpriseRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(IdeaService.class);
+    private static final Logger logger = LoggerFactory.getLogger(EnterpriseService.class);
 
     public List<Enterprise> list() {
         return enterpriseRepository.findAll();
