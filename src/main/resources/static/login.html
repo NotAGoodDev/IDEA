@@ -33,14 +33,12 @@
 </header>
 <main>
     <div class="container">
-        <form action="" method="post">
-            <div class="row">
-                <div class="col-12 col-lg-6 datos-generales">
-                    <h2>Login</h2>
-                    Correo:<input type="email" name="correo" placeholder="Correo electrónico" minlength="5" required=true><br></br>
-                    Password:<input type="password" name="contraseña" placeholder="Contraseña" minlength="6" required=true><br></br>
-                    <button  name="button" >Login</button>
-                </div>
+        <form id="form-login" action="" method="post">
+            <div class="container-login">
+                <h2>Login</h2>
+                <label for="email">Correo:</label><input type="email" name="email" id="email" placeholder="Correo electrónico" minlength="5" required=true><br></br>
+                <label for="password">Password:</label><input type="password" name="password" id="password" placeholder="Contraseña" minlength="6" required=true><br></br>
+                <button  name="button" >Login</button>
             </div>
         </form>
     </div>
