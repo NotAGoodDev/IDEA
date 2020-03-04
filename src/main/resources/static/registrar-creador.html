@@ -8,6 +8,7 @@
     <link href="css/registrar-creador.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="js/creator/creator.js"></script>
 </head>
 <body>
 <header>
@@ -32,37 +33,40 @@
     </nav>
 </header>
 <main>
-    <div class="container">
-        <form action="" method="post">
+    <div id="form-registrar-creado" class="container">
+        <form id="form-registro-creador">
             <div class="row">
                 <div class="col-12 col-lg-6 datos-generales">
                     <h2>Registrar creador</h2>
                     <label for="username">Username</label>
                     <input name="username" id="username" type="text" >
-                    <label for="contrasena">Contraseña</label>
-                    <input type="text" name="contrasena" id="contrasena">
+                    <label for="password">Contraseña</label>
+                    <input type="text" name="password" id="password">
                     <span class="subtitulo">La contraseña tiene que tener 6 o más</span>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name">
                     <label for="imagen">Imagen</label>
                     <input name="imagen" id="imagen" type="file">
                 </div>
                 <div class="col-12 col-lg-6 datos-creador">
-                    <label for="apellidos">Apellidos</label>
-                    <input name="apellidos" id="apellidos" type="text">
-                    <label for="cumpleanos">Contraseña</label>
-                    <input type="date" name="cumpleanos" id="cumpleanos">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono">
+                    <label for="lastName">Apellidos</label>
+                    <input name="lastName" id="lastName" type="text">
+                    <label for="birthDate">Contraseña</label>
+                    <input type="date" name="birthDate" id="birthDate">
+                    <label for="telephone">Teléfono</label>
+                    <input type="tel" name="telephone" id="telephone">
                     <label for="email">Email</label>
                     <input name="email" id="email" type="text">
-                    <label for="direccion">Dirección</label>
-                    <input name="direccion" id="direccion" type="text">
-                    <input type="button" value="Registrarme">
+                    <label for="address">Dirección</label>
+                    <input name="address" id="address" type="text">
+                    <input type="submit" class="btn-registrarse" value="Registrarme">
                 </div>
             </div>
         </form>
     </div>
 </main>
 </body>
+
+
+
 </html>
