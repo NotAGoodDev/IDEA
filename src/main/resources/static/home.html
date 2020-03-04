@@ -7,6 +7,7 @@
     <link href="css/navbar.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="js/ApiController.js"></script>
 
     <style>
         #list{
@@ -45,15 +46,11 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        let list = $("#list");
+        ApiController.get("ideas/", "GET", {} , function(response){
+            console.log(response);
+        });
 
-        /*ApiController.get("/ideas/", params , function(){
-           success
-
-           error
-        }); */
-
-    })
+    });
 </script>
 
 </html>
