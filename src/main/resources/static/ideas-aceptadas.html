@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">iDea</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/enterprise">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+
+<div class = "contenedor">
+    <div class="datos">
+        <div class="perfilUsuario"><img src="userimagen.png"></div>
+        <div class="infoUsuario">
+            <p>Username:Creador</p>
+            <p>Nombre:Alvaro</p>
+            <p>Apellido:Perez</p>
+            <p>Cumpleaños:09/06/1986</p>
+        </div>
+        <div class="infoUsuario">
+            <p>Telefono:123456789</p>
+            <p>Correo:idea@ucm.es</p>
+            <p>Direccion:C/ Santesmases</p>
+        </div>
+    </div>
+    <div><select name="select">
+        <option selected>Categoria1</option>
+        <option value="">Categoria2</option>
+        <option value="">Categoria3</option>
+        <option value="">Categoria4</option>
+    </select></div>
+    <div class="editar"><div><p>Ideas restantes por recibir:9</p></div><button type="submit">Comprar pack</button><button type="submit"><img src="edit.png"/></button></div>
+    <div class="botones">
+        <input id="resaltado" type="submit" value="Ideas aceptadas">
+        <input id="sinresaltar" type="submit" value="Ideas compradas">
+    </div>
+
+    <div class="busqueda">
+        <select name="select">
+            <option disabled selected>select</option>
+            <option value="">Select1</option>
+            <option value="">select2</option>
+        </select>
+        <input type="text" id="textfield" placeholder="Lorem ipsum" >
+        <input type="submit" id="buscar" value="BUSCAR">
+
+    </div>
+
+    <div class="empresas">
+        <div class="elemento"><strong>Idea1</strong> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+
+        </div>
+        <div class="elemento">Categoria1<br><p><strong>Estado</strong></p><br><button class="visualizar" type="submit">Ver</button></div>
+
+
+        <div class="elemento"><strong>Idea1</strong> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+
+        </div>
+        <div class="elemento">Categoria1<br><p><strong>Estado</strong></p><br><button class="visualizar" type="submit">Ver</button></div>
+
+        <div class="elemento"><strong>Idea1</strong> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+
+        </div>
+        <div class="elemento">Categoria1<br><p><strong>Estado</strong></p><br><button class="visualizar" type="submit">Ver</button></div>
+
+    </div>
+
+    </div>
+    </main>
+</body>
+</html>
