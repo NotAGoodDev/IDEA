@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - openjdk8
+
+notifications:
+  email: alvort03@ucm.es
