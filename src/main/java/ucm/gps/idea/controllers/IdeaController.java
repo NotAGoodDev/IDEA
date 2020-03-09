@@ -20,7 +20,7 @@ class IdeaController {
 
     private static final Logger logger = LoggerFactory.getLogger(IdeaController.class);
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Idea>> list(){
         List<Idea> listIdeas = ideaService.list();
         logger.info("se ha hecho una peticion de listar");

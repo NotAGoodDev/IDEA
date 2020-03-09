@@ -45,9 +45,11 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        console.log("hola");
 
-        ApiController.get("ideas/", "GET", {} , function(response){
+        ApiController.get("ideas", "GET", {} , function(response){
             console.log(response);
+
         });
 
     });

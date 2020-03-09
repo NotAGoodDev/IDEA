@@ -50,16 +50,15 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        document.getElementById('loginButton').onclick = function() {
-        	
-        	// Variables de prueba
-        	var datos = {"email":"miEmail", "password":"miPasswd"};
-        	var myStringJSON = JSON.stringify(datos);
-        	
-        	ApiController.get("auth/creator/login", myStringJSON, function(response){
-        		console.log(response);
-        	});
+        // Variables de prueba
+        let data = {
+            email       : 'miEmail',
+            password    : 'miPasswd'
         };
+
+        ApiController.post("auth/creator/login", data, function(response){
+            console.log(response);
+        });
 
     });
 </script>

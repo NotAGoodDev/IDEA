@@ -43,8 +43,9 @@ public class AuthController {
     public String login(@RequestBody Enterprise enterprise) {
     	return "redirect:/enterprise.html";
     }
-    
-    @GetMapping(value="/creator/login", consumes = "application/json")
+
+
+    @PostMapping(value="/creator/login", consumes = "application/json")
     public String login(@RequestBody Creator creator) {
     	logger.info(creator.getEmail() + " " + creator.getPassword());
     	return "redirect:/creator.html";
