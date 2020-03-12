@@ -9,6 +9,7 @@ import ucm.gps.idea.repositories.CreatorRepository;
 
 import java.sql.Date;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -29,7 +30,7 @@ class IdeaApplicationTests {
     private BCryptPasswordEncoder encoder;
 
 	@Test
-    void registerCreatorTest(){
+    public void registerCreatorTest(){
 	    Creator first = new Creator();
 	    first.setId(2);
 	    first.setName("Raul");
@@ -44,6 +45,7 @@ class IdeaApplicationTests {
 
         Creator ret = repo.save(first);
 
-        assertTrue(ret.getPassword().equalsIgnoreCase(first.getPassword()));
+        assertEquals(ret.getPassword(), first.getPassword());
+        //assertTrue(ret.getPassword().equalsIgnoreCase(first.getPassword()));
     }
 }
