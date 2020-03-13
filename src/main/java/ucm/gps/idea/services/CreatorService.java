@@ -39,6 +39,10 @@ public class CreatorService implements UserDetailsService {
         creatorRepository.deleteById(id);
     }
 
+    public Creator findByUsername(String username){
+        return creatorRepository.findByUsername(username);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -46,6 +50,7 @@ public class CreatorService implements UserDetailsService {
 
         // Podemos meterlo en otra capa para coger los roles de la base de datos y no hacerlo aqui a mano
         List<GrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority("USER"));
         roles.add(new SimpleGrantedAuthority("ADMIN"));
 
         UserDetails details = new User(ret.getUsername(), ret.getPassword(), roles);

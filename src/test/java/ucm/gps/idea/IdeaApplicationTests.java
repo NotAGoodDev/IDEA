@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.junit4.SpringRunner;
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.repositories.CreatorRepository;
 
@@ -12,8 +13,9 @@ import java.sql.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//@RunWith(SpringRunner.class)
 @SpringBootTest
-class IdeaApplicationTests {
+public class IdeaApplicationTests {
 
 	// Lo he comentado porque al estar vacio, TravisCI daba excepcion
 		// Logicamente cuando hagamos los test se tiene que usar
@@ -30,7 +32,7 @@ class IdeaApplicationTests {
     private BCryptPasswordEncoder encoder;
 
 	@Test
-    public void registerCreatorTest(){
+    public boolean registerCreatorTest(){
 	    Creator first = new Creator();
 	    first.setId(2);
 	    first.setName("Raul");
@@ -47,5 +49,6 @@ class IdeaApplicationTests {
 
         assertEquals(ret.getPassword(), first.getPassword());
         //assertTrue(ret.getPassword().equalsIgnoreCase(first.getPassword()));
+        return true;
     }
 }

@@ -6,4 +6,5 @@ import ucm.gps.idea.entities.Enterprise;
 
 @Repository
 public interface EnterpriseRepository extends JpaRepository<Enterprise,Integer> {
+    public Enterprise findByCIF(String cif);
 }

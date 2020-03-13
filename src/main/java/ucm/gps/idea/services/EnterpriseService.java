@@ -32,4 +32,8 @@ public class EnterpriseService {
     public Enterprise create(Enterprise enterprise) {
         return enterpriseRepository.save(enterprise);
     }
+
+    public Enterprise findByCif(String cif){
+        return enterpriseRepository.findByCIF(cif);
+    }
 }

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,12 +32,20 @@ public class AuthController {
 
     @PostMapping("/enterprise/register")
     public ResponseEntity<Enterprise> create(@RequestBody Enterprise enterprise) {
-        return new ResponseEntity<Enterprise>(enterpriseService.create(enterprise), HttpStatus.OK);
+        Enterprise exists = enterpriseService.findByCif(enterprise.getCIF());
+        if(exists == null)
+            return new ResponseEntity<Enterprise>(enterpriseService.create(enterprise), HttpStatus.OK);
+        else
+            return new ResponseEntity<Enterprise>(HttpStatus.CONFLICT); //403
     }
 
     @PostMapping("/creator/register")
     public ResponseEntity<Creator> create(@RequestBody Creator creator) {
-        return new ResponseEntity<Creator>(creatorService.create(creator), HttpStatus.OK);
+        Creator exists = creatorService.findByUsername(creator.getUsername());
+        if(exists == null)
+            return new ResponseEntity<Creator>(creatorService.create(creator), HttpStatus.OK);
+        else
+            return new ResponseEntity<Creator>(HttpStatus.CONFLICT); //403
     }
     
     @PostMapping(value="/enterprise/login", consumes = "application/json")
