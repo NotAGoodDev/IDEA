@@ -11,29 +11,37 @@ public class ViewController {
 
     private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 
-    @RequestMapping(value="/home", method = RequestMethod.GET )
+    @RequestMapping(value="/", method = RequestMethod.GET )
     public String home(){
-        return "/home.html";
+        return "/index.html";
     }
 
     @RequestMapping(value="/enterprise", method = RequestMethod.GET )
     public String enterprise(){
-        return "/enterprise.html";
+        return "/enterprise/enterprise.html";
     }
 
     @RequestMapping(value="/creator", method = RequestMethod.GET )
     public String creator(){
-        return "/creator.html";
+        return "/creator/creator.html";
     }
 
-    @RequestMapping(value="/registrar-creator", method = RequestMethod.GET )
-    public String registrarCreator(){
-        return "/registrar-creador.html";
+    @RequestMapping(value="/register", method = RequestMethod.GET )
+    public String registrar(){
+        return "/register.html";
     }
 
-    @RequestMapping(value="/quienes-somos", method = RequestMethod.GET )
+    @RequestMapping(value="/register-creator", method = RequestMethod.GET )
+    public String registrarCreador(){
+        return "/creator/register.html";
+    }
+
+    @RequestMapping(value="/register-enterprise", method = RequestMethod.GET )
+    public String registrarEmpresa(){ return "/enterprise/register.html"; }
+
+    @RequestMapping(value="/who", method = RequestMethod.GET )
     public String quienesSomos(){
-        return "/quienes-somos.html";
+        return "/who.html";
     }
 
     @RequestMapping(value="/login", method = RequestMethod.GET )
