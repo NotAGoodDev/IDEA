@@ -1,0 +1,67 @@
+#form-register-enterprise .datos-generales{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-register-enterprise .datos-empresa{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-register-enterprise .datos-tarjeta{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-register-enterprise h2,h3{
+    color:#66bb6a;
+}
+
+#form-register-enterprise form{
+    margin-top: 70px;
+}
+
+#form-register-enterprise input[type="text"],#form-register-enterprise input[type="date"],#form-register-enterprise input[type="tel"],#form-register-enterprise input[type="card"]{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-register-enterprise label{
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+#form-register-enterprise .subtitulo{
+    font-size: 11px;
+    color: #66bb6a;
+}
+#form-register-enterprise .btn-registro{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+#form-register-enterprise:hover  .btn-registro:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
+.spacing
+{
+    height: 50px;
+    width: auto;
+}

@@ -48,4 +48,9 @@ public class ViewController {
     public String login(){
         return "/login.html";
     }
+
+    @RequestMapping(value="/myideas", method = RequestMethod.GET )
+    public String my_ideas(){
+        return "/creator/my-ideas.html";
+    }
 }
