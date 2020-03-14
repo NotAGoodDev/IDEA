@@ -18,7 +18,7 @@ import ucm.gps.idea.services.CreatorService;
 import ucm.gps.idea.services.EnterpriseService;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     //Aqui irian todas las peticiones de login y register

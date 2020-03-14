@@ -6,10 +6,12 @@
     <title>Registro</title>
     <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
-    <link href="../css/register-creator.css" rel="stylesheet">
+    <link href="../css/register-enterprise.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="../js/ApiController.js"></script>
     <script src="../js/enterprise/register.js"></script>
+
 </head>
 <body>
 <header>
@@ -40,11 +42,10 @@
 </header>
 
 <main>
-    <div id="form-register-creator" class="container">
+    <div id="form-register-enterprise" class="container">
         <form>
             <div class="row">
-
-                <h2>Registrar creador</h2>
+                <h2>Registrar empresa</h2>
                 <div class="col-12"></div>
 
                 <div class="col-12 col-lg-6 datos-generales">
@@ -58,19 +59,40 @@
                     <label for="imagen">Imagen</label>
                     <input name="imagen" id="imagen" type="file">
                 </div>
-                <div class="col-12 col-lg-6 datos-creador">
-                    <label for="lastName">Apellidos</label>
-                    <input name="lastName" id="lastName" type="text">
-                    <label for="birthDate">Fecha de Nacimiento</label>
-                    <input type="date" name="birthDate" id="birthDate">
-                    <label for="telephone">Teléfono</label>
-                    <input type="tel" name="telephone" id="telephone">
-                    <label for="email">Correo electrónico</label>
-                    <input name="email" id="email" type="text">
+                <div class="col-12 col-lg-6 datos-empresa">
+                    <label for="cif">CIF</label>
+                    <input name="cif" id="cif" type="text">
                     <label for="address">Dirección</label>
                     <input name="address" id="address" type="text">
-                    <input type="submit" class="btn-registro" value="Registrarme">
+                    <label for="email">Correo electrónico</label>
+                    <input name="email" id="email" type="text">
+                    <label for="telephone">Teléfono</label>
+                    <input type="tel" name="telephone" id="telephone">
                 </div>
+
+
+                <div class="col-12 spacing"></div>
+                <h3>Datos de la tarjeta</h3>
+                <div class="col-12"></div>
+
+                <div class="col-6 datos-tarjeta">
+
+                    <label for="namecard">Nombre del Titular</label>
+                    <input type="card" name="namecard" id="namecard">
+                    <label for="cardNumber">Número de Tarjeta</label>
+                    <input type="card" name="cardNumber" id="cardNumber">
+                </div>
+
+                <div class="col-6 datos-tarjeta">
+                    <label for="dateExp">Fecha de vencimiento</label>
+                    <input type="date" name="dateExp" id="dateExp">
+                    <label for="cvv">CVV</label>
+                    <input type="card" name="cvv" id="cvv">
+
+                    <input type="submit" class="btn-registro" value="Registrarme">
+
+                </div>
+
             </div>
         </form>
     </div>
