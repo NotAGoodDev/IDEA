@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.services.CreatorService;
+import ucm.gps.idea.services.EnterpriseService;
 
 @Configuration
 @EnableWebSecurity
@@ -16,6 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired // Para indicar a configure() donde va a estar la informacion de los usuarios de los creadores
     private CreatorService creatorService;
+    @Autowired
+    private EnterpriseService enterpriseService;
     @Autowired
     private BCryptPasswordEncoder encoder;
 
@@ -28,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(creatorService).passwordEncoder(encoder);
+        auth.userDetailsService(enterpriseService).passwordEncoder(encoder);
     }
 
     @Override
