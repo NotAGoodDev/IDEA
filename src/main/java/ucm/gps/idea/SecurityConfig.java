@@ -36,25 +36,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http
-                    .cors()
-                .and()
-                    .csrf().disable()
-                    .authorizeRequests()
-                        .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
-                        .antMatchers( "/api/auth/login").permitAll()
-                        .antMatchers( "/api/auth/register").permitAll()
-                        .antMatchers( "/login").permitAll()
-                        .antMatchers( "/register").permitAll()
-                        .anyRequest().authenticated()
-                .and()
-                    .logout()
-                        .invalidateHttpSession(true)
-                        .clearAuthentication(true)
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .permitAll()
+        http.cors()
+            .and()
+                .csrf().disable()
+                .authorizeRequests()
+                    .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
+                    .antMatchers( "/api/auth/login").permitAll()
+                    .antMatchers( "/api/auth/register").permitAll()
+                    .antMatchers( "/login").permitAll()
+                    .antMatchers( "/register").permitAll()
+                    .anyRequest().authenticated()
                 .and()
                     .httpBasic();
+
+        http.formLogin()
+                .usernameParameter("username")
+                .passwordParameter("password");
+
+        http.logout()
+                .clearAuthentication(true)
+                .invalidateHttpSession(true);
     }
+
 
 }
