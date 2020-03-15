@@ -26,11 +26,6 @@ public class ViewController {
 
     // User
 
-    @GetMapping(value="/login")
-    public String login(){
-        return "/login.html";
-    }
-
     @GetMapping(value="/register")
     public String register(){
         return "/register.html";

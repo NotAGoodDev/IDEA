@@ -25,7 +25,7 @@ class ApiController {
         console.log({
             url         : url,
             method      : method,
-            params      : JSON.stringify(params),
+            data        : JSON.stringify(params),
             contentType : 'application/json',
         });
 

@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ucm.gps.idea.entities.Role;
 import ucm.gps.idea.entities.User;
+import ucm.gps.idea.models.RegisterUser;
+import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
 @RestController
@@ -22,28 +25,31 @@ public class AuthController {
     @Autowired
     private UserService userService;
     @Autowired
+    private RoleService roleService;
+    @Autowired
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public ResponseEntity<User> create(@RequestBody User user) {
-            user.setPassword(encoder.encode(user.getPassword()));
-            User response = userService.save(user);
-            return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<User> create(@RequestBody RegisterUser regUser) {
+
+        User user = new User();
+        user.setUsername(regUser.getUsername());
+        user.setPassword(encoder.encode(regUser.getPassword()));
+        user.setEmail(regUser.getEmail());
+        user.setType(regUser.getType());
+        user = userService.save(user);
+
+        for( String name : regUser.getRoles()){
+            Role role = new Role();
+            role.setUser_id(user.getId());
+            role.setName(name);
+            logger.debug(role.toString());
+            roleService.save(role);
+        }
+
+        user.setRoles(user.getRoles());
+
+            return new ResponseEntity<>(user, HttpStatus.OK);
     }
-
-    @PostMapping(value="/login", consumes = "application/json")
-    public ResponseEntity<User> login(@RequestBody User user) {
-
-        User response = userService.findByEmail(user.getEmail());
-
-        return new ResponseEntity<>(response, HttpStatus.OK); //403
-    }
-
-
-    /*@PostMapping(value="/logout", consumes = "application/json")
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-
-        return "redirect:/login";
-    }*/
 
 }
