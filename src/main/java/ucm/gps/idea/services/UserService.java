@@ -41,8 +41,8 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public User findByUsername(String email){
-        return userRepository.findByUsername(email);
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
     }
 
     @Override

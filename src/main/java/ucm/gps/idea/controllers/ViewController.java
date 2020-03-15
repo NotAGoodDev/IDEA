@@ -16,36 +16,36 @@ public class ViewController {
 
     @GetMapping(value={ "/", "", "/home" })
     public String home(){
-        return "/index.html";
+        return "/views/index.html";
     }
 
     @GetMapping(value="/who")
     public String who(){
-        return "/who.html";
+        return "/views/who.html";
     }
 
     // User
 
     @GetMapping(value="/register")
     public String register(){
-        return "/register.html";
+        return "/views/auth/register.html";
     }
 
     // Creator
     @GetMapping(value="/creator")
     public String creatorIndex(){
-        return "/creator/index.html";
+        return "/views/creator/index.html";
     }
 
     @GetMapping(value="/creator/ideas")
     public String creatorIdeas(){
-        return "/creator/ideas.html";
+        return "/views/creator/ideas.html";
     }
 
     // Enterprise
     @GetMapping(value="/enterprise")
     public String enterpriseIndex(){
-        return "/enterprise/index.html";
+        return "/views/enterprise/index.html";
     }
 
 
