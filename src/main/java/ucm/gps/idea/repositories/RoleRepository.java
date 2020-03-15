@@ -2,9 +2,8 @@ package ucm.gps.idea.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ucm.gps.idea.entities.User;
+import ucm.gps.idea.entities.Role;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Integer> {
-    User findByUsername(String username);
+public interface RoleRepository extends JpaRepository<Role,Integer> {
 }

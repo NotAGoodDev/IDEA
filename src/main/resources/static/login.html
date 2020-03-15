@@ -2,20 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>IDEA</title>
     <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
-    <script src="js/ApiController.js"></script>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-content-center">
-        <div class="col-lg-1 col-md-1"></div>
+        <div class="navbar-title col-lg-1 col-md-1">IDEA</div>
         <a class="navbar-brand" href="/">
-            <img src="../img/logo-navbar.png" width="50" height = "50">
+            <img src="../images/logo-navbar.png" width="50" height = "50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,35 +36,12 @@
         </div>
     </nav>
 </header>
-<main>
-    <div class="container">
-        <form id="form-login" action="" method="get">
-            <div class="container-login">
-                <h2>Login</h2>
-                <label for="email">Correo</label><input type="email" name="email" id="email" placeholder="Correo electrónico" minlength="5" required=true><br></br>
-                <label for="password">Password</label><input type="password" name="password" id="password" placeholder="Contraseña" minlength="6" required=true><br></br>
-                <!-- button name="button" >Login</button-->
-                <input id="loginButton" type="submit" name="button" value="Iniciar sesión">
-            </div>
-        </form>
-    </div>
-</main>
 </body>
 
 <script type="text/javascript">
     $(document).ready(function() {
-
-        // Variables de prueba
-        let data = {
-            email       : 'miEmail',
-            password    : 'miPasswd'
-        };
-
-        ApiController.post("auth/creator/login", data, function(response){
-            console.log(response);
-        });
-
-    });
+        console.log("hola mundo");
+    })
 </script>
 
 </html>

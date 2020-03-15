@@ -33,12 +33,24 @@ public class User implements Serializable{
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
+    @NotBlank
+    @Column(name = "type", nullable = false)
+    private String type;
+
     @Column(name = "active")
     private Boolean active = true;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
