@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
                     .antMatchers( "/api/auth/register").permitAll()
+                    .antMatchers( "/", "/home").permitAll()
+                    .antMatchers( "/who").permitAll()
                     .antMatchers( "/login").permitAll()
                     .antMatchers( "/register").permitAll()
                     .anyRequest().authenticated()
@@ -49,13 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .httpBasic();
 
         http.formLogin()
-                .loginProcessingUrl("/auth/login")
+                .loginProcessingUrl("/api/auth/login")
                 .usernameParameter("username")
                 .passwordParameter("password");
 
         http.logout()
                 .clearAuthentication(true)
-                .invalidateHttpSession(true);
+                .invalidateHttpSession(true)
+                .logoutUrl("/api/auth/logout")
+                .deleteCookies("JSESSIONID");
     }
 
 
