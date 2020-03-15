@@ -1,11 +1,9 @@
 package ucm.gps.idea;
 
 import org.junit.jupiter.api.Test;
-//import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.repositories.CreatorRepository;
@@ -14,7 +12,8 @@ import ucm.gps.idea.repositories.EnterpriseRepository;
 import java.sql.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+//import org.junit.runner.RunWith;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest
