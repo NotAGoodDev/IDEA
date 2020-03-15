@@ -18,7 +18,6 @@ public class Role implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Email
     @Column(name = "user_id", nullable = false)
     private Integer user_id;
 
