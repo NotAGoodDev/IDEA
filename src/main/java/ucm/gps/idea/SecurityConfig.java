@@ -41,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                     .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
-                    .antMatchers( "/api/auth/login").permitAll()
                     .antMatchers( "/api/auth/register").permitAll()
                     .antMatchers( "/login").permitAll()
                     .antMatchers( "/register").permitAll()
@@ -50,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .httpBasic();
 
         http.formLogin()
+                .loginProcessingUrl("/auth/login")
                 .usernameParameter("username")
                 .passwordParameter("password");
 
