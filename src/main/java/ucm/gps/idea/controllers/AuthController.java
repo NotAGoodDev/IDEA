@@ -43,13 +43,12 @@ public class AuthController {
             Role role = new Role();
             role.setUser_id(user.getId());
             role.setName(name);
-            logger.debug(role.toString());
             roleService.save(role);
         }
 
         user.setRoles(user.getRoles());
 
-            return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 }

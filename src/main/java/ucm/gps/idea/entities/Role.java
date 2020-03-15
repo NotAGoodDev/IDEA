@@ -26,7 +26,6 @@ public class Role implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-
     public Integer getId() {
         return id;
     }
@@ -49,5 +48,14 @@ public class Role implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
