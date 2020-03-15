@@ -41,17 +41,17 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public User findByEmail(String email){
-        return userRepository.findByEmail(email);
+    public User findByUsername(String email){
+        return userRepository.findByUsername(email);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
 
         if( user == null){
-            throw new UsernameNotFoundException( email + " no existe");
+            throw new UsernameNotFoundException( username + " no existe");
         }
 
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

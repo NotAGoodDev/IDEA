@@ -33,10 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService).passwordEncoder(encoder);
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers().antMatchers( "/resources/**", "/static/**", "/js/**", "/css/**", "/images/**", "/webjars/**");
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -45,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .csrf().disable()
                     .authorizeRequests()
+                        .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
                         .antMatchers( "/api/auth/login").permitAll()
                         .antMatchers( "/api/auth/register").permitAll()
                         .antMatchers( "/login").permitAll()
@@ -55,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 .and()
                     .httpBasic();
