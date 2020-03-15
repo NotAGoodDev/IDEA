@@ -5,4 +5,6 @@ jdk:
 script: ./mvnw clean install
 
 notifications:
-  email: alvort03@ucm.es
+  email:
+    - alvort03@ucm.es
+    - marcodes@ucm.es
