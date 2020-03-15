@@ -8,6 +8,8 @@
     <link href="css/register.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="../js/ApiController.js"></script>
+    <script src="js/register.js"></script>
 </head>
 <body>
 <header>
@@ -36,6 +38,7 @@
         </div>
     </nav>
 </header>
+<!--
 
 <div class="container-fluid h-100">
     <div class="row justify-content-center h-100">
@@ -54,5 +57,32 @@
         </button>
     </div>
 </div>
+
+-->
+
+
+
+<div id="form-register" class="container">
+    <form>
+        <div class="row">
+
+            <h2>Registrar usuario</h2>
+            <div class="col-12"></div>
+
+            <div class="col-12 col-lg-6 datos-generales">
+                <label for="username">Username</label>
+                <input name="username" id="username" type="text" >
+                <label for="password">Contraseña</label>
+                <input type="text" name="password" id="password">
+                <span class="subtitulo">La contraseña tiene que tener 6 o más</span>
+                <label for="email">Correo electrónico</label>
+                <input name="email" id="email" type="text">
+                <input type="submit" class="btn-registro" value="Registrarme">
+            </div>
+        </div>
+    </form>
+</div>
+
+
 </body>
 </html>
