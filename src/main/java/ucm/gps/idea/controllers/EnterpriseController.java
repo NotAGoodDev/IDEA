@@ -42,6 +42,19 @@ public class EnterpriseController {
         }
     }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<Enterprise> findByName(@PathVariable String name){
+
+        try{
+            Enterprise enterprise =enterpriseService.findByName(name);
+            return new ResponseEntity<>(enterprise,HttpStatus.OK);
+        }catch (Exception e) {
+            logger.error(String.format("Read an specific Idea failed name: %i", name));
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         enterpriseService.delete(id);
