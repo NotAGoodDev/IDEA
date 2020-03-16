@@ -103,4 +103,29 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/profile/modify")
+    public ResponseEntity<User> modify(@RequestBody User user){
+
+        //Utilizado create de creator/enterprise para guardar en la BBDD mediante el repositorio
+
+        if(user.getType().equalsIgnoreCase("Creador")){
+            try{
+                Creator c = creatorService.index(user.getId());
+                c = creatorService.create(c);
+                return new ResponseEntity<>(c, HttpStatus.OK);
+            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
+        }
+        else if(user.getType().equalsIgnoreCase("Empresa")){
+            try{
+                Enterprise e = enterpriseService.index(user.getId());
+                e = enterpriseService.create(e);
+                return new ResponseEntity<>(e, HttpStatus.OK);
+            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+        }
+
+    }
+
 }
