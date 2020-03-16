@@ -48,6 +48,10 @@ public class Idea implements Serializable {
     @Column(name = "active")
     private Boolean active;
 
+    @PrePersist
+    public void prePersist(){
+        createdAt=new Date();
+    }
     public Integer getId() {
         return id;
     }

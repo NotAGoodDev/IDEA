@@ -38,6 +38,13 @@ class IdeaController {
         }
     }
 
+    @GetMapping("/")
+    public ResponseEntity<List<Idea>> listByDate(){
+        List<Idea> listIdeas = ideaService.listByDate();
+        logger.info("se ha hecho una peticion de listar por fecha de creacion");
+        return new ResponseEntity<>(listIdeas, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         ideaService.delete(id);

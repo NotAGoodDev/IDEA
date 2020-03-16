@@ -21,6 +21,8 @@ public class IdeaService {
         return ideaRepository.findAll();
     }
 
+    public List<Idea> listByDate(){return ideaRepository.findByOrderByCreatedAtDesc();}
+
     public Idea index(Integer id) throws Exception {
         return ideaRepository.findById(id).orElseThrow(Exception::new);
     }
