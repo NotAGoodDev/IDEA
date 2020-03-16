@@ -29,6 +29,11 @@ public class ViewController {
         return "/views/header.html";
     }
 
+    @GetMapping(value="/footer")
+    public String footer(){
+        return "/views/footer.html";
+    }
+
     // User
 
     @GetMapping(value="/register")
