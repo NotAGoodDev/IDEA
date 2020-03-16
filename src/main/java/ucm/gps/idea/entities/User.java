@@ -10,11 +10,18 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public User() {
+    public User(){}
+
+    public User(String username, String password, String type, Boolean active, String email) {
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.active = active;
+        this.email = email;
     }
 
     @Id

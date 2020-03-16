@@ -1,17 +1,26 @@
 package ucm.gps.idea.entities;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "enterprise")
-public class Enterprise implements Serializable {
+public class Enterprise extends User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public Enterprise() {
+    public Enterprise(){}
+
+    public Enterprise(String username, String password, String type, Boolean active, String email, String name,
+                      String cif, String address, String telephone, Integer creditCard, Integer remIdeas) {
+        super(username, password, type, active, email);
+        this.name = name;
+        this.CIF = cif;
+        this.address = address;
+        this.telephone = telephone;
+        this.creditCard = creditCard;
+        this.remainingIdeas = remIdeas;
     }
 
     @Id
@@ -34,26 +43,14 @@ public class Enterprise implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "email")
-    private String email;
-
     @Column(name = "telephone")
     private String telephone;
 
     @Column(name = "credit_card")
     private Integer creditCard;
 
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "remaining_ideas")
     private Integer remainingIdeas;
-
-    @Column(name = "active")
-    private Boolean active;
 
     public Integer getId() {
         return id;
@@ -87,14 +84,6 @@ public class Enterprise implements Serializable {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -111,22 +100,6 @@ public class Enterprise implements Serializable {
         this.creditCard = creditCard;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Integer getRemainingIdeas() {
         return remainingIdeas;
     }
@@ -141,14 +114,6 @@ public class Enterprise implements Serializable {
 
     public void setDeal(Set<Deal> deal) {
         this.deal = deal;
-    }
-
-    public Boolean isActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     public Set<Idea> getIdea() {

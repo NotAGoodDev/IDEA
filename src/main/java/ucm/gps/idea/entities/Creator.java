@@ -7,16 +7,20 @@ import java.util.Set;
 
 @Entity
 @Table(name = "creator")
-public class Creator implements Serializable {
+public class Creator extends User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public Creator() {
-    }
+    public Creator() {}
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    public Creator(String username, String password, String type, Boolean active, String email , String name,
+                   String lastName, Date birthDate, String telephone, String address){
+        super(username, password, type, active, email);
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.telephone = telephone;
+        this.address = address;
+    }
 
     @OneToMany(mappedBy = "creator")
     private Set<Idea> idea;
@@ -35,27 +39,6 @@ public class Creator implements Serializable {
 
     @Column(name = "address")
     private String address;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "active")
-    private Boolean active;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -97,43 +80,11 @@ public class Creator implements Serializable {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Set<Idea> getIdea() {
         return idea;
     }
 
     public void setIdea(Set<Idea> idea) {
         this.idea = idea;
-    }
-
-    public Boolean isActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 }
