@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Role;
@@ -27,7 +24,7 @@ public class AuthController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     /* TODO RegisterUser meterle todos los atributos
-    *   Un controller puede llamar a otro controller?
+    *   Un controller puede llamar a otro controller en Spring (buena praxis)? O mejor hacerlo mediante Services
     *   Roles, como hacerlo
     *   Ver metodo de tablas en la BD pues Creator/Enterprise extends User */
 
@@ -80,6 +77,26 @@ public class AuthController {
                     ((Enterprise)regUser).getRemainingIdeas());
             e = enterpriseService.create(e);
             return new ResponseEntity<>(e, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+        }
+    }
+    @GetMapping("/profile")
+    public ResponseEntity<User> create(@RequestBody String username) {
+        User user = userService.findByUsername(username);
+
+        if(user.getType().equalsIgnoreCase("Creador")){
+            try{
+                Creator c = creatorService.index(user.getId());
+                return new ResponseEntity<>(c, HttpStatus.OK);
+            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
+        }
+        else if(user.getType().equalsIgnoreCase("Empresa")){
+            try{
+                Enterprise e = enterpriseService.index(user.getId());
+                return new ResponseEntity<>(e, HttpStatus.OK);
+            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
         }
         else{
             return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
