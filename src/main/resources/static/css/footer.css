@@ -1,0 +1,87 @@
+p.titulo {
+    color: #66bb6a;
+    font-size: 18px;
+}
+
+a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+a.sub {
+    color: white;
+    font-size: 14px;
+}
+
+a.sub:hover {
+    color: #66bb6a;
+    font-size: 14px;
+}
+
+a.legal
+{
+    color: slategrey;
+    font-size: 14px;
+    text-align: center;
+}
+
+.separator
+{
+    height: 50px;
+    width: auto;
+}
+
+i.fa-facebook
+{
+    font-size: 30px;
+    color: dodgerblue;
+}
+
+i.fa-facebook:hover
+{
+    font-size: 28px;
+    color: royalblue;
+    margin-left: 1px;
+}
+
+
+i.fa-twitter
+{
+    font-size: 30px;
+    color: deepskyblue;
+}
+
+i.fa-twitter:hover
+{
+    font-size: 28px;
+    color: royalblue;
+    margin-left: 1px;
+}
+
+
+i.fa-linkedin
+{
+    font-size: 30px;
+    color: dodgerblue;
+}
+
+i.fa-linkedin:hover
+{
+    font-size: 28px;
+    color: royalblue;
+    margin-left: 1px;
+}
+
+
+i.fa-instagram
+{
+    font-size: 30px;
+    color: white;
+}
+
+i.fa-instagram:hover
+{
+    font-size: 28px;
+    color: magenta;
+    margin-left: 1px;
+}
