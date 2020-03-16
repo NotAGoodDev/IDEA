@@ -62,26 +62,26 @@ input{
 
 }
 
-.btn-anadir{
+.btn-cancelar{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
-    border: 2px solid #66bb6a;
+    border: 2px solid #bebebe;
     color: black;
     float: right;
-    background: white;
+    background: #d7d7d7;
     align-self: flex-end;
     margin-left:20px;
 }
-.btn-anadir:hover{
+.btn-cancelar:hover{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
-    color: white;
+    color: #ff0f00;
     float: right;
-    background: #66bb6a;
+    background: #bebebe;
     align-self: flex-end;
 }
 .botones{
@@ -91,5 +91,30 @@ input{
 #dropdownMenu1{
     border: black solid 2px;
     width: 50%;
+}
+
+.btn-enviar{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: top;
+    background: white;
+    align-self: center;
+    margin-left:  50px;
+}
+
+.btn-enviar:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: center;
+    margin-left:  50px;
 }
 
