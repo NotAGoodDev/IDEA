@@ -70,6 +70,11 @@ public class ViewController {
         return "/views/enterprise/index.html";
     }
 
+    @GetMapping(value="/enterprise/compraPacks")
+    public String comprarPack(){
+        return "/views/enterprise/packs.html";
+    }
+
 
 
 
