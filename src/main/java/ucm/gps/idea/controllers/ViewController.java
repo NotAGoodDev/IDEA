@@ -24,6 +24,11 @@ public class ViewController {
         return "/views/who.html";
     }
 
+    @GetMapping(value="/header")
+    public String header(){
+        return "/views/header.html";
+    }
+
     // User
 
     @GetMapping(value="/register")
