@@ -26,7 +26,17 @@ a:hover{
     flex-direction: column;
 }
 
-#form-register h2{
+#form-register .datos-empresa{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-register .datos-tarjeta{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-register h2, h3{
     color:#66bb6a;
 }
 
@@ -36,9 +46,36 @@ a:hover{
 
 #form-register input[type="text"],#form-register input[type="date"],#form-register input[type="tel"]{
     background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-register input[type="text"]:hover,#form-register input[type="date"]:hover,#form-register input[type="tel"]:hover{
+    background-color: white;
     border: 2px solid #66bb6a;
     padding: 10px;
     border-radius: 5px;
+}
+
+#form-register:visited input[type="text"]:visited,#form-register input[type="date"]:visited,#form-register input[type="tel"]:visited{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+#form-register .form-control {
+    border: 2px solid black;
+}
+
+#form-register .form-control:hover {
+    border: 2px solid #66bb6a;
+}
+
+#form-register .form-control:active {
+    border: 2px solid #66bb6a;
 }
 
 #form-register label{
@@ -50,6 +87,7 @@ a:hover{
     font-size: 11px;
     color: #66bb6a;
 }
+
 #form-register .btn-registro{
     margin-top: 28px;
     width: fit-content;
@@ -71,4 +109,9 @@ a:hover{
     float: right;
     background: #66bb6a;
     align-self: flex-end;
+}
+
+#form-register .separator{
+    height: 50px;
+    width: auto;
 }

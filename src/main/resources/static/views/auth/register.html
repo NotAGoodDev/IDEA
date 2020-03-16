@@ -38,34 +38,10 @@
         </div>
     </nav>
 </header>
-<!--
-
-<div class="container-fluid h-100">
-    <div class="row justify-content-center h-100">
-        <button type="button" class="col-6 btn btn-outline-success container">
-            <a href="/register-creator">
-                <h1>JOIN</h1>
-                <h2>CREATORS</h2>
-            </a>
-        </button>
-
-        <button type="button" class="col-6 btn btn-outline-info container">
-            <a href="/register-enterprise">
-                <h1>JOIN</h1>
-                <h2>ENTERPRISES</h2>
-            </a>
-        </button>
-    </div>
-</div>
-
--->
-
-
 
 <div id="form-register" class="container">
     <form>
         <div class="row">
-
             <h2>Registrar usuario</h2>
             <div class="col-12"></div>
 
@@ -74,12 +50,110 @@
                 <input name="username" id="username" type="text" >
                 <label for="password">Contraseña</label>
                 <input type="text" name="password" id="password">
-                <span class="subtitulo">La contraseña tiene que tener 6 o más</span>
+                <span class="subtitulo">La contraseña tiene que tener 6 caracteres o más</span>
+
+            </div>
+
+            <div class="col-12 col-lg-6 datos-generales">
                 <label for="email">Correo electrónico</label>
                 <input name="email" id="email" type="text">
-                <input type="submit" class="btn-registro" value="Registrarme">
+                <label for="imagen">Foto de perfil</label>
+                <input name="imagen" id="imagen" type="file">
+            </div>
+
+            <div class="col-12 separator"></div>
+        </div>
+
+
+        <div class="row">
+            <h3>¿Qué quieres ser?</h3>
+            <div class="col-12 col-lg-2">
+                <select class="form-control" id="selectType">
+                    <option value="Creador", selected="selected">Creador</option>
+                    <option value="Empresa">Empresa</option>
+                </select>
             </div>
         </div>
+
+        <div class="col-12 separator"></div>
+
+        <div class="row" id="creator">
+            <!-- CREATOR - GENERIC -->
+            <h3>Registrar creador</h3>
+            <div class="col-12"></div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 datos-generales">
+                    <label for="nameCreator">Nombre del creador</label>
+                    <input type="text" name="nameCreator" id="nameCreator">
+                    <label for="lastName">Apellidos</label>
+                    <input name="lastName" id="lastName" type="text">
+                </div>
+
+                <div class="col-12 col-lg-6 datos-generales">
+                    <label for="birthDate">Fecha de Nacimiento</label>
+                    <input type="date" name="birthDate" id="birthDate">
+                    <label for="telephoneCreator">Teléfono</label>
+                    <input type="tel" name="telephoneCreator" id="telephoneCreator">
+                </div>
+            </div>
+        </div>
+
+        <!-- ENTERPRISE - GENERIC -->
+        <div class="row" id="enterprise">
+            <h3>Registrar empresa</h3>
+            <div class="col-12"></div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 datos-empresa">
+                    <label for="nameEnterprise">Nombre de la empresa</label>
+                    <input type="text" name="nameEnterprise" id="nameEnterprise">
+                    <label for="cif">CIF</label>
+                    <input name="cif" id="cif" type="text">
+                </div>
+
+                <div class="col-12 col-lg-6 datos-empresa">
+                    <label for="address">Dirección</label>
+                    <input name="address" id="address" type="text">
+                    <label for="telephoneEnterprise">Teléfono</label>
+                    <input type="tel" name="telephoneEnterprise" id="telephoneEnterprise">
+                </div>
+            </div>
+            <div class="col-12 separator"></div>
+
+
+            <!-- ENTERPRISE - CARD -->
+            <h3>Datos de la tarjeta</h3>
+            <div class="col-12"></div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 datos-tarjeta">
+                    <label for="namecard">Nombre del Titular</label>
+                    <input type="text" name="namecard" id="namecard">
+                    <label for="cardNumber">Número de Tarjeta</label>
+                    <input type="text" name="cardNumber" id="cardNumber">
+                </div>
+
+                <div class="col-12 col-lg-6 datos-tarjeta">
+                    <label for="dateExp">Fecha de vencimiento</label>
+                    <input type="date" name="dateExp" id="dateExp">
+                    <label for="cvv">CVV</label>
+                    <input type="text" name="cvv" id="cvv">
+                </div>
+            </div>
+        </div>
+
+        <!-- GENERIC -->
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <input type="submit" class="btn-registro" value="Registrarme">
+            </div>
+
+            <div class="col-12 separator"></div>
+            <div class="col-12 separator"></div>
+        </div>
+
     </form>
 </div>
 

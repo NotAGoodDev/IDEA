@@ -42,6 +42,18 @@ public class ViewController {
         return "/views/creator/ideas.html";
     }
 
+    @GetMapping(value="/creator/profile")
+    public String creatorProfile(){
+        return "/views/creator/profile.html";
+    }
+
+    @GetMapping(value="/creator/nuevaIdea")
+    public String creatorNewIdea(){
+        return "/views/creator/newIdea.html";
+    }
+
+
+
     // Enterprise
     @GetMapping(value="/enterprise")
     public String enterpriseIndex(){
