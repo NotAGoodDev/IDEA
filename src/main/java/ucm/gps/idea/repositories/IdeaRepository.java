@@ -10,6 +10,4 @@ import java.util.List;
 public interface IdeaRepository extends JpaRepository<Idea,Integer> {
 
     public List<Idea> findByOrderByCreatedAtDesc();
-
-
 }
