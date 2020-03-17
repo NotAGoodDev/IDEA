@@ -2,7 +2,7 @@ package ucm.gps.idea.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.util.Date;
 
 public class RegisterUser {
 
@@ -18,8 +18,32 @@ public class RegisterUser {
     @JsonProperty("type")
     private String type;
 
-    @JsonProperty("roles")
-    private List<String> roles;
+    @JsonProperty("active")
+    private Boolean active;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("last_name")
+    private String lastName;
+
+    @JsonProperty("birth_date")
+    private Date birtDate;
+
+    @JsonProperty("telephone")
+    private String telephone;
+
+    @JsonProperty("address")
+    private String address;
+
+    @JsonProperty("cif")
+    private String cif;
+
+    @JsonProperty("credit_card")
+    private Integer creditCard;
+
+    @JsonProperty("reamining_ideas")
+    private Integer remainingIdeas;
 
     public String getUsername() {
         return username;
@@ -53,12 +77,76 @@ public class RegisterUser {
         this.type = type;
     }
 
-    public List<String> getRoles() {
-        return roles;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getBirtDate() {
+        return birtDate;
+    }
+
+    public void setBirtDate(Date birtDate) {
+        this.birtDate = birtDate;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCif() {
+        return cif;
+    }
+
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public Integer getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(Integer creditCard) {
+        this.creditCard = creditCard;
+    }
+
+    public Integer getRemainingIdeas() {
+        return remainingIdeas;
+    }
+
+    public void setRemainingIdeas(Integer remainingIdeas) {
+        this.remainingIdeas = remainingIdeas;
     }
 
     @Override
@@ -68,7 +156,15 @@ public class RegisterUser {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", type='" + type + '\'' +
-                ", roles=" + roles +
+                ", active=" + active +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birtDate=" + birtDate +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", cif='" + cif + '\'' +
+                ", creditCard=" + creditCard +
+                ", remainingIdeas=" + remainingIdeas +
                 '}';
     }
 }
