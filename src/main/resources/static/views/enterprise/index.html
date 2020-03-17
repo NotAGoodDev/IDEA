@@ -7,6 +7,7 @@
     <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="../../css/navbar.css" rel="stylesheet">
     <link href="../../css/footer.css" rel="stylesheet">
+    <link href="../../css/enterprise/index.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/header.js"></script>
@@ -15,6 +16,52 @@
 <body>
 <header>
 </header>
+
+<main id="perfil-empresa" class="container-fluid">
+    <div class="row datos-empresa">
+        <div>
+            <img src="">
+            <select id="category">
+                <option value="category-1">Categoria 1</option>
+                <option value="category-2">Categoria 2</option>
+                <option value="category-3">Categoria 3</option>
+            </select>
+        </div>
+        <div>
+            <span>Username:<span id="empresa-username"></span></span>
+            <span>Nombre:<span id="empresa-name"></span></span>
+            <span>CIF:<span id="empresa-cif"></span></span>
+        </div>
+        <div>
+            <span>Teléfono:<span id="empresa-tlf"></span></span>
+            <span>E-mail:<span id="empresa-email"></span></span>
+            <span>Dirección:<span id="empresa-address"></span></span>
+        </div>
+    </div>
+    <div class="row">
+        <p>Ideas restantes por recibir: <span id="empresa-ideasrestantes"></span></p><button>Comprar pack</button>
+    </div>
+
+    <body onload="javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);">
+
+
+    <div>
+        <div id="pestanas-ideas">
+            <ul id=lista>
+                <li id="pestana-ideas-recibidas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);'>Ideas recibidas</a></li>
+                <li id="pestana-ideas-compradas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-compradas);'>Ideas compradas</a></li>
+            </ul>
+        </div>
+        <div id="empresa-ideas">
+            <div id="empresa-ideas-recibidas">
+                Contenido de la pestaña 1
+            </div>
+            <div id="empresa-ideas-compradas">
+                Contenido de la pestaña 2
+            </div>
+        </div>
+    </div>
+</main>
 
 <footer>
 </footer>
