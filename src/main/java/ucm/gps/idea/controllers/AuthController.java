@@ -67,13 +67,11 @@ public class AuthController {
                 roleService.save(role);
 
                 Creator creator = new Creator();
-                
+
                 break;
             case "Empresa":
                 break;
         }
-
-        // hasta aqui bien queda lo de creator
 
         return new ResponseEntity<User>(user, HttpStatus.OK);
     
