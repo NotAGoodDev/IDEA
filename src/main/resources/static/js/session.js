@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.ajax({async:false,
+    $.ajax({
         url:    "/api/auth/user",
         type:   "GET",
         headers: {
