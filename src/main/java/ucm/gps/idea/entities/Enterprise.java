@@ -23,11 +23,6 @@ public class Enterprise extends User implements Serializable {
         this.remainingIdeas = remIdeas;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
-
     @OneToMany(mappedBy = "enterprise")
     private Set<Deal> deal;
 
@@ -51,14 +46,6 @@ public class Enterprise extends User implements Serializable {
 
     @Column(name = "remaining_ideas")
     private Integer remainingIdeas;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
