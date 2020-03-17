@@ -1,0 +1,118 @@
+html
+{
+    height:100%;
+}
+
+body {
+    height: 85%;
+}
+
+a{
+    color: inherit;
+}
+
+a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+#form .data{
+    display: flex;
+    flex-direction: column;
+}
+
+#form .data{
+    display: flex;
+    flex-direction: column;
+}
+
+#form h2, h3{
+    color:#66bb6a;
+}
+
+#form form{
+    margin-top: 70px;
+}
+
+#form input[type="text"],#form input[type="date"],#form input[type="tel"]{
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form input[type="text"]:hover,#form input[type="date"]:hover,#form input[type="tel"]:hover{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form:visited input[type="text"]:visited,#form input[type="date"]:visited,#form input[type="tel"]:visited{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form label{
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+#form .subtitulo{
+    font-size: 11px;
+    color: #66bb6a;
+}
+
+#form .btn-deal{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+#form:hover .btn-deal:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
+#form .btn-cancel{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: grey;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
+}
+
+#form:hover .btn-cancel:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
+}
+
+#form .separator{
+    height: 50px;
+    width: auto;
+}

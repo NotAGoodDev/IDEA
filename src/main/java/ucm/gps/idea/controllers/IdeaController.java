@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.services.IdeaService;
 
@@ -55,4 +56,12 @@ class IdeaController {
     public ResponseEntity<Idea> create(@RequestBody Idea idea) {
         return new ResponseEntity<>(ideaService.save(idea), HttpStatus.OK);
     }
+
+    @PostMapping("/ideas/{ideaID}/enterprises/{enterpriseID}")
+    public ResponseEntity<Idea> send(@PathVariable Integer ideaID, @PathVariable Integer enterpriseID)throws Exception{
+            return new ResponseEntity<Idea>(ideaService.send(ideaID, enterpriseID), HttpStatus.OK);
+    }
+    
+
+
 }
