@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Creator;
@@ -126,6 +129,20 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
         }
 
+    }
+
+
+    @GetMapping("/user")
+    public ResponseEntity<UserDetails> userAuth(){
+        SecurityContext sc = SecurityContextHolder.getContext();
+        org.springframework.security.core.Authentication auth = sc.getAuthentication();
+        Object principal= null;
+        if (auth != null) {
+            principal = auth.getPrincipal();
+            return principal instanceof UserDetails ? new ResponseEntity<>((UserDetails)principal,HttpStatus.OK) : null;
+        }
+        
+        return null;
     }
 
 }
