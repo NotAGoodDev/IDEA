@@ -17,12 +17,16 @@ public class User implements Serializable {
 
     public User(){}
 
-    public User(String username, String password, String type, Boolean active, String email) {
+    public User(String username, String password, String type, Boolean active, String email,
+                String name, String address, String telephone) {
         this.username = username;
         this.password = password;
         this.type = type;
         this.active = active;
         this.email = email;
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
     }
 
     @Id
@@ -52,13 +56,14 @@ public class User implements Serializable {
     @JoinColumn(name = "user_id")
     private List<Role> roles;
 
-    public String getType() {
-        return type;
-    }
+    @Column(name = "name")
+    private String name;
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "telephone")
+    private String telephone;
 
     public Integer getId() {
         return id;
@@ -92,6 +97,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Boolean getActive() {
         return active;
     }
@@ -106,5 +119,29 @@ public class User implements Serializable {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }

@@ -20,16 +20,14 @@ import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
-
-    /* TODO RegisterUser meterle todos los atributos
-    *   Un controller puede llamar a otro controller en Spring (buena praxis)? O mejor hacerlo mediante Services
-    *   Roles, como hacerlo
-    *   Ver metodo de tablas en la BD pues Creator/Enterprise extends User */
 
     @Autowired
     private UserService userService;
@@ -43,41 +41,52 @@ public class AuthController {
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public ResponseEntity<User> create(@RequestBody User regUser) {
+    public ResponseEntity<User> create(@RequestBody RegisterUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
 
-        User user = new User();
+        User user = new User(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
+                            regUser.getEmail(), regUser.getName(), regUser.getAddress(), regUser.getTelephone());
+        String userRole = "";
 
-        user.setUsername(regUser.getUsername());
-        user.setPassword(encoder.encode(regUser.getPassword()));
-        user.setEmail(regUser.getEmail());
-        user.setType(regUser.getType());
-        user.setActive(true);
         user = userService.save(user);
 
-        for(Role rol : regUser.getRoles()){
-            Role role = new Role();
-            role.setUser_id(user.getId());
-            role.setName(rol.getName());
-            roleService.save(role);
+        switch (user.getType()){
+            case "Creador" :
+            case "Empresa" :
+                userRole = "ROLE_USER"; break;
+            case "Admin" :  userRole = "ROLE_ADMIN"; break;
         }
 
-        user.setRoles(user.getRoles());
+        Role rol = new Role();
+        List<Role> userRoles = new ArrayList<Role>();
+
+        rol.setName(userRole);
+        rol.setUser_id(user.getId());
+        roleService.save(rol);
+        userRoles.add(rol);
+        user.setRoles(userRoles);
 
         if(user.getType().equalsIgnoreCase("Creador")){
-            Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), ((Creator)regUser).getName(),
-                    ((Creator)regUser).getLastName(), ((Creator)regUser).getBirthDate(),
-                    ((Creator)regUser).getTelephone(), ((Creator)regUser).getAddress());
+           /*Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
+                    regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());*/
+           Creator c = new Creator();
+           c.setLastName(regUser.getLastName());
+           c.setBirthDate(regUser.getBirtDate());
+
             c = creatorService.create(c);
             return new ResponseEntity<>(c, HttpStatus.OK);
         }
         else if(user.getType().equalsIgnoreCase("Empresa")){
-            Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), ((Creator)regUser).getName(),
-                    ((Enterprise)regUser).getCIF(), ((Enterprise)regUser).getAddress(),
-                    ((Enterprise)regUser).getTelephone(), ((Enterprise)regUser).getCreditCard(),
-                    ((Enterprise)regUser).getRemainingIdeas());
+            /*Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
+                    regUser.getCif(), regUser.getAddress(), regUser.getTelephone(), regUser.getCreditCard(),
+                    regUser.getRemainingIdeas());*/
+            Enterprise e = new Enterprise();
+            e.setCIF(regUser.getCif());
+            e.setCreditCard(e.getCreditCard());
+            e.setRemainingIdeas(e.getRemainingIdeas());
+
             e = enterpriseService.create(e);
             return new ResponseEntity<>(e, HttpStatus.OK);
         }
@@ -86,7 +95,7 @@ public class AuthController {
         }
     }
     @GetMapping("/profile")
-    public ResponseEntity<User> create(@RequestBody String username) {
+    public ResponseEntity<User> getProfile(@RequestBody String username) {
         User user = userService.findByUsername(username);
 
         if(user.getType().equalsIgnoreCase("Creador")){
