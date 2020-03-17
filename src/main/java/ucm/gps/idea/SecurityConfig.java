@@ -53,15 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .httpBasic();
 
-        http.formLogin()
-                .loginProcessingUrl("/api/auth/login")
+        http.formLogin()    
                 .usernameParameter("username")
                 .passwordParameter("password");
 
         http.logout()
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
-                .logoutUrl("/api/auth/logout")
                 .deleteCookies("JSESSIONID");
     }
 
