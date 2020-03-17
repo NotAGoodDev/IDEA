@@ -19,7 +19,7 @@ public class Role implements Serializable {
     private Integer id;
 
     @Column(name = "user_id", nullable = false)
-    private Integer user_id;
+    private Integer userId;
 
     @NotBlank
     @Column(name = "name", nullable = false)
@@ -33,12 +33,12 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer user_id) {
+        this.userId = user_id;
     }
 
     public String getName() {
@@ -53,7 +53,7 @@ public class Role implements Serializable {
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", user_id=" + user_id +
+                ", userId=" + userId +
                 ", name='" + name + '\'' +
                 '}';
     }

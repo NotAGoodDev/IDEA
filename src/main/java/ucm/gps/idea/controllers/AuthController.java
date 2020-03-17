@@ -43,41 +43,45 @@ public class AuthController {
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public ResponseEntity<User> create(@RequestBody RegisterUser regUser) {
+    public ResponseEntity<?> create(@RequestBody RegisterUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
-
-        logger.info("Ppo de todo");
-
-        User user = new User(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
-                regUser.getEmail(), regUser.getName(), regUser.getAddress(), regUser.getTelephone());
-        String userRole = "";
-
-        logger.info("Voy a guardar en el user");
-
+        
+        User user = new User();
+        user.setUsername(regUser.getUsername());
+        user.setPassword(encoder.encode(regUser.getPassword()));
+        user.setType(regUser.getType());
+        user.setActive(true);
+        user.setEmail(regUser.getEmail());
+        user.setName(regUser.getName());
+        user.setAddress(regUser.getAddress());
+        user.setTelephone(regUser.getTelephone());
+        
         user = userService.save(user);
 
-        logger.info("He guardado en el user");
+        switch(user.getType()){
+            case "Creador":
+                Role role = new Role();
+                role.setUserId(user.getId());
+                role.setName("ROLE_CREATOR");
+                System.out.print(role.toString());
+                roleService.save(role);
 
-        switch (user.getType()){
-            case "Creador" :
-            case "Empresa" :
-                userRole = "ROLE_USER"; break;
-            case "Admin" :  userRole = "ROLE_ADMIN"; break;
+                Creator creator = new Creator();
+                
+                break;
+            case "Empresa":
+                break;
         }
 
-        Role rol = new Role();
-        List<Role> userRoles = new ArrayList<Role>();
+        // hasta aqui bien queda lo de creator
 
-        rol.setName(userRole);
-        rol.setUser_id(user.getId());
-        roleService.save(rol);
-        userRoles.add(rol);
-        user.setRoles(userRoles);
-
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    
+        /*
         if(user.getType().equalsIgnoreCase("Creador")){
-           /*Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+           Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                     regUser.getType(), true, regUser.getEmail(), regUser.getName(),
-                    regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());*/
+                    regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());
             Creator c = new Creator();
             c.setLastName(regUser.getLastName());
             try {
@@ -92,10 +96,10 @@ public class AuthController {
             return new ResponseEntity<>(c, HttpStatus.OK);
         }
         else if(user.getType().equalsIgnoreCase("Empresa")){
-            /*Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+            Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                     regUser.getType(), true, regUser.getEmail(), regUser.getName(),
                     regUser.getCif(), regUser.getAddress(), regUser.getTelephone(), regUser.getCreditCard(),
-                    regUser.getRemainingIdeas());*/
+                    regUser.getRemainingIdeas());
             Enterprise e = new Enterprise();
             e.setCIF(regUser.getCif());
             e.setCreditCard(e.getCreditCard());
@@ -106,7 +110,7 @@ public class AuthController {
         }
         else{
             return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }
+        }*/
     }
     @GetMapping("/profile")
     public ResponseEntity<User> getProfile(@RequestBody String username) {
