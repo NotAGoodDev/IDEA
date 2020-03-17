@@ -130,7 +130,9 @@ public class AuthController {
     }
 
     @PostMapping("/profile/modify")
-    public ResponseEntity<User> modify(@RequestBody User user){
+    public ResponseEntity<User> modify(@RequestBody RegisterUser Reguser){
+
+        User user = userService.findByUsername(Reguser.getUsername());
 
         //Utilizado create de creator/enterprise para guardar en la BBDD mediante el repositorio
 
