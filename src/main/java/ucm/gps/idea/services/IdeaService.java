@@ -45,5 +45,6 @@ public class IdeaService {
        Enterprise enterprise = enterpriseRepository.findById(enterpriseID).orElseThrow(Exception::new);
        idea.setEnterprise(enterprise);
        return ideaRepository.save(idea);
+
     }
 }
