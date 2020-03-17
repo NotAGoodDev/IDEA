@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.repositories.EnterpriseRepository;
 import ucm.gps.idea.repositories.IdeaRepository;
 
 import java.util.List;
@@ -14,6 +16,9 @@ public class IdeaService {
 
     @Autowired
     IdeaRepository ideaRepository;
+
+    @Autowired
+    EnterpriseRepository enterpriseRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(IdeaService.class);
 
@@ -35,5 +40,10 @@ public class IdeaService {
         return ideaRepository.save(idea);
     }
 
-
+    public Idea send(Integer ideaID,Integer enterpriseID)throws Exception{
+       Idea idea= ideaRepository.findById(ideaID).orElseThrow(Exception::new);
+       Enterprise enterprise = enterpriseRepository.findById(enterpriseID).orElseThrow(Exception::new);
+        idea.setEnterprise(enterprise);
+        return ideaRepository.save(idea);
+    }
 }
