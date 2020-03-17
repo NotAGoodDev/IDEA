@@ -43,7 +43,7 @@ public class IdeaService {
     public Idea send(Integer ideaID,Integer enterpriseID)throws Exception{
        Idea idea= ideaRepository.findById(ideaID).orElseThrow(Exception::new);
        Enterprise enterprise = enterpriseRepository.findById(enterpriseID).orElseThrow(Exception::new);
-        idea.setEnterprise(enterprise);
-        return ideaRepository.save(idea);
+       idea.setEnterprise(enterprise);
+       return ideaRepository.save(idea);
     }
 }
