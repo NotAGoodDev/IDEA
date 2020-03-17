@@ -9,7 +9,6 @@ $(document).ready(function() {
         params.password = form.find( "input[name='password']" ).val();
         params.email = form.find( "input[name='email']" ).val();
         params.type = $( "#selectType" ).val();
-        params.roles = ["ROLE_ADMIN", "ROLE_USER"];
 
 
         if(params.type = "Creador")
@@ -32,9 +31,10 @@ $(document).ready(function() {
             params.active = true;
         }
 
-
+        console.log("Voy a hacer post");
         ApiController.post("auth/register", params, function (response) {
         })
+        console.log("he hecho post");
     });
 
 

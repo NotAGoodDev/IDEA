@@ -4,43 +4,67 @@
     <meta charset="UTF-8">
     <title>iDea</title>
     <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="../../css/navbar.css" rel="stylesheet">
+    <link href="../../css/footer.css" rel="stylesheet">
+    <link href="../../css/enterprise/index.css" rel="stylesheet">
     <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-content-center">
-        <div class="navbar-title col-lg-1 col-md-1">IDEA</div>
-        <a class="navbar-brand" href="/">
-            <img src="../img/logo-navbar.png" width="50" height = "50">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/"> Home <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/who"> Quienes somos </a>
-                </li>
-                <li> <br> </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register"> Regístrate </a>
-                </li>
-            </ul>
-            <div class="col-2"></div>
-        </div>
-    </nav>
 </header>
-</body>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        console.log("hola mundo");
-    })
-</script>
+<main id="perfil-empresa" class="container-fluid">
+    <div class="row datos-empresa">
+        <div>
+            <img src="">
+            <select id="category">
+                <option value="category-1">Categoria 1</option>
+                <option value="category-2">Categoria 2</option>
+                <option value="category-3">Categoria 3</option>
+            </select>
+        </div>
+        <div>
+            <span>Username:<span id="empresa-username"></span></span>
+            <span>Nombre:<span id="empresa-name"></span></span>
+            <span>CIF:<span id="empresa-cif"></span></span>
+        </div>
+        <div>
+            <span>Teléfono:<span id="empresa-tlf"></span></span>
+            <span>E-mail:<span id="empresa-email"></span></span>
+            <span>Dirección:<span id="empresa-address"></span></span>
+        </div>
+    </div>
+    <div class="row">
+        <p>Ideas restantes por recibir: <span id="empresa-ideasrestantes"></span></p><button>Comprar pack</button>
+    </div>
+
+    <body onload="javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);">
+
+
+    <div>
+        <div id="pestanas-ideas">
+            <ul id=lista>
+                <li id="pestana-ideas-recibidas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);'>Ideas recibidas</a></li>
+                <li id="pestana-ideas-compradas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-compradas);'>Ideas compradas</a></li>
+            </ul>
+        </div>
+        <div id="empresa-ideas">
+            <div id="empresa-ideas-recibidas">
+                Contenido de la pestaña 1
+            </div>
+            <div id="empresa-ideas-compradas">
+                Contenido de la pestaña 2
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+</footer>
+</body>
 
 </html>

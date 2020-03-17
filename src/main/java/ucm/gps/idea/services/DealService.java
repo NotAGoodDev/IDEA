@@ -5,15 +5,29 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucm.gps.idea.entities.Deal;
+import ucm.gps.idea.entities.Enterprise;
+import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.repositories.DealRepository;
+import ucm.gps.idea.repositories.EnterpriseRepository;
+import ucm.gps.idea.repositories.IdeaRepository;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+
 
 @Service
 public class DealService {
 
     @Autowired
     private DealRepository dealRepository;
+
+    @Autowired
+    private EnterpriseRepository enterpriseRepository;
+
+    @Autowired
+    private IdeaRepository ideaRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(DealService.class);
 
@@ -32,4 +46,32 @@ public class DealService {
     }
 
 
+    public Deal create(Deal deal, Integer enterprise_id, Integer idea_id) throws Exception {
+
+        logger.info("service");
+        /*
+        Idea idea = new Idea();
+        Enterprise enterprise = new Enterprise();
+
+        idea.setId(idea_id);
+        enterprise.setId(enterprise_id);
+        */
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        Date created_date = new Date(now.getYear(), now.getMonth().getValue(), now.getDayOfMonth());
+
+        deal.setCreatedAt(created_date);
+
+        Idea idea = ideaRepository.findById(idea_id).orElseThrow(Exception::new);
+        Enterprise enterprise = enterpriseRepository.findById(enterprise_id).orElseThrow(Exception::new);
+
+        logger.info(idea.getId().toString());
+        logger.info(enterprise.getId().toString());
+
+        deal.setEnterprise(enterprise);
+        deal.setIdea(idea);
+
+        return dealRepository.save(deal);
+    }
 }

@@ -1,4 +1,14 @@
 $(document).ready(function() {
-        $('header').empty();
-        $('header').load('./header.html');
+    jQuery.loadCSS = function(url) {
+        if (!$('link[href="' + url + '"]').length)
+            $('head').append('<link rel="stylesheet" type="text/css" href="' + url + '">');
+    }
+    $(function () {
+        $("header").empty();
+        $("header").load('/header')
+
+        $.loadCSS('css/quienes-somos.css');
+
+    });
+
 });

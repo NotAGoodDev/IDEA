@@ -1,0 +1,45 @@
+#perfil-empresa{
+    margin: 30px 50px 40px;
+}
+#perfil-empresa .datos-empresa div{
+    display: flex;
+    flex-direction: column;
+}
+
+#pestanas-ideas {
+    float: top;
+    font-size: 3ex;
+    font-weight: bold;
+}
+
+#pestanas-ideas ul{
+    margin-left: -40px;
+}
+
+#pestanas-ideas li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+    margin: 0px 2px -2px -0px;
+    background: darkgrey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid bisque;
+    border-bottom: dimgray;
+    padding: 0px 20px 0px 20px;
+}
+
+#pestanas-ideas a:link{
+    text-decoration: none;
+    color: bisque;
+}
+
+#empresa-ideas{
+    clear: both;
+    background: dimgray;
+    padding: 20px 0px 20px 20px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border: 2px solid bisque;
+    width: 1025px;
+}

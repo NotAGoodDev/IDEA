@@ -24,6 +24,16 @@ public class ViewController {
         return "/views/who.html";
     }
 
+    @GetMapping(value="/header")
+    public String header(){
+        return "/views/header.html";
+    }
+
+    @GetMapping(value="/footer")
+    public String footer(){
+        return "/views/footer.html";
+    }
+
     // User
 
     @GetMapping(value="/register")
@@ -58,6 +68,11 @@ public class ViewController {
     @GetMapping(value="/enterprise")
     public String enterpriseIndex(){
         return "/views/enterprise/index.html";
+    }
+
+    @GetMapping(value="/enterprise/compraPacks")
+    public String comprarPack(){
+        return "/views/enterprise/packs.html";
     }
 
 

@@ -1,0 +1,97 @@
+#form-idea .btn-rechazar{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #bebebe;
+    color: black;
+    float: top;
+    background: #d7d7d7;
+    align-self: center;
+}
+
+#form-idea:hover  .btn-rechazar:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: #ff0f00;
+    float: top;
+    background: #bebebe;
+    align-self: center;
+}
+
+#form-idea .btn-aceptar{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: top;
+    background: #white;
+    align-self: self-end;
+    margin-left:  50px;
+}
+
+#form-idea:hover  .btn-aceptar:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: top;
+    background: #66bb6a;
+    align-self: self-end;
+    margin-left:  50px;
+}
+
+#form-idea input[type="text"]{
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-idea input[type="text"]:hover{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-idea{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    color:#22bb6a;
+    text-align: center;
+}
+
+#desc {
+    border-radius: 10px;
+    border: 2px solid;
+    color: black;
+}
+
+#dCorta {
+    border-radius: 10px;
+    border: 2px solid;
+    color: black;
+}
+
+#autor {
+    border-radius: 10px;
+    border: 2px solid;
+    color: black;
+}
+
+#titulo {
+    border-radius: 10px;
+    border: 2px solid;
+    color: black;
+}
+
+

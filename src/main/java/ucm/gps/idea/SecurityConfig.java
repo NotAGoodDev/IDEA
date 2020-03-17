@@ -42,23 +42,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers(  "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
                     .antMatchers( "/api/auth/register").permitAll()
+                    .antMatchers( "/api/deal/**").permitAll()
                     .antMatchers( "/", "/home").permitAll()
                     .antMatchers( "/who").permitAll()
                     .antMatchers( "/login").permitAll()
+                    .antMatchers( "/header").permitAll()
+                    .antMatchers( "/footer").permitAll()
                     .antMatchers( "/register").permitAll()
+                    .antMatchers( "/api/packages").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .httpBasic();
 
-        http.formLogin()
-                .loginProcessingUrl("/api/auth/login")
+        http.formLogin()    
                 .usernameParameter("username")
                 .passwordParameter("password");
 
         http.logout()
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
-                .logoutUrl("/api/auth/logout")
                 .deleteCookies("JSESSIONID");
     }
 
