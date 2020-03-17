@@ -3,13 +3,12 @@ package ucm.gps.idea.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import ucm.gps.idea.entities.PackIdea;
 import ucm.gps.idea.services.PackIdeaService;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,6 +23,22 @@ public class PackIdeaController {
         List<PackIdea> packages = packIdeaService.listAll();
         return new ResponseEntity<>(packages, HttpStatus.OK);
     }
+
+    @PostMapping("/buy")
+    public ResponseEntity<Boolean> create(@PathVariable Integer numTarjeta, @PathVariable Integer codigoValidacion,
+                                    @PathVariable String propietarioTarjeta, @PathVariable Date fechaExpiracion) {
+
+        Integer tarjeta = numTarjeta;
+        Integer ccv = codigoValidacion;
+        String titular = propietarioTarjeta;
+        Date fecha = fechaExpiracion;
+
+        // Falta de hacer la parte de VISA
+
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    }
+
+
 
     // En formato String JSON por si ayuda en front
     /*@GetMapping("")
