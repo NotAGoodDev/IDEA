@@ -20,6 +20,8 @@ import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ import java.util.List;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     private UserService userService;
@@ -44,11 +46,17 @@ public class AuthController {
     public ResponseEntity<User> create(@RequestBody RegisterUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
 
+        logger.info("Ppo de todo");
+
         User user = new User(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
-                            regUser.getEmail(), regUser.getName(), regUser.getAddress(), regUser.getTelephone());
+                regUser.getEmail(), regUser.getName(), regUser.getAddress(), regUser.getTelephone());
         String userRole = "";
 
+        logger.info("Voy a guardar en el user");
+
         user = userService.save(user);
+
+        logger.info("He guardado en el user");
 
         switch (user.getType()){
             case "Creador" :
@@ -70,9 +78,15 @@ public class AuthController {
            /*Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                     regUser.getType(), true, regUser.getEmail(), regUser.getName(),
                     regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());*/
-           Creator c = new Creator();
-           c.setLastName(regUser.getLastName());
-           c.setBirthDate(regUser.getBirtDate());
+            Creator c = new Creator();
+            c.setLastName(regUser.getLastName());
+            try {
+                logger.info(regUser.getBirthDate());
+                c.setBirthDate(new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate()));
+            }catch (Exception e){
+                logger.info("entro al catch");
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
 
             c = creatorService.create(c);
             return new ResponseEntity<>(c, HttpStatus.OK);
@@ -150,7 +164,7 @@ public class AuthController {
             principal = auth.getPrincipal();
             return principal instanceof UserDetails ? new ResponseEntity<>((UserDetails)principal,HttpStatus.OK) : null;
         }
-        
+
         return null;
     }
 

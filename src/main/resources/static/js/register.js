@@ -31,9 +31,10 @@ $(document).ready(function() {
             params.active = true;
         }
 
-
+        console.log("Voy a hacer post");
         ApiController.post("auth/register", params, function (response) {
         })
+        console.log("he hecho post");
     });
 
 

@@ -24,11 +24,11 @@ public class RegisterUser {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("last_name")
+    @JsonProperty("lastName")
     private String lastName;
 
-    @JsonProperty("birth_date")
-    private Date birtDate;
+    @JsonProperty("birthDate")
+    private String birthDate;
 
     @JsonProperty("telephone")
     private String telephone;
@@ -39,11 +39,11 @@ public class RegisterUser {
     @JsonProperty("cif")
     private String cif;
 
-    @JsonProperty("credit_card")
-    private Integer creditCard;
+    @JsonProperty("cardNumber")
+    private Integer cardNumber;
 
-    @JsonProperty("reamining_ideas")
-    private Integer remainingIdeas;
+    @JsonProperty("remaining_ideas")
+    private Integer remaining_ideas;
 
     public String getUsername() {
         return username;
@@ -101,12 +101,12 @@ public class RegisterUser {
         this.lastName = lastName;
     }
 
-    public Date getBirtDate() {
-        return birtDate;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirtDate(Date birtDate) {
-        this.birtDate = birtDate;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getTelephone() {
@@ -133,20 +133,20 @@ public class RegisterUser {
         this.cif = cif;
     }
 
-    public Integer getCreditCard() {
-        return creditCard;
+    public Integer getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCreditCard(Integer creditCard) {
-        this.creditCard = creditCard;
+    public void setCardNumber(Integer cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public Integer getRemainingIdeas() {
-        return remainingIdeas;
+    public Integer getRemaining_ideas() {
+        return remaining_ideas;
     }
 
-    public void setRemainingIdeas(Integer remainingIdeas) {
-        this.remainingIdeas = remainingIdeas;
+    public void setRemaining_ideas(Integer remaining_ideas) {
+        this.remaining_ideas = remaining_ideas;
     }
 
     @Override
@@ -159,12 +159,12 @@ public class RegisterUser {
                 ", active=" + active +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birtDate=" + birtDate +
+                ", birthDate='" + birthDate + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", address='" + address + '\'' +
                 ", cif='" + cif + '\'' +
-                ", creditCard=" + creditCard +
-                ", remainingIdeas=" + remainingIdeas +
+                ", cardNumber=" + cardNumber +
+                ", remaining_ideas=" + remaining_ideas +
                 '}';
     }
 }
