@@ -23,6 +23,7 @@ import ucm.gps.idea.services.UserService;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -46,68 +47,54 @@ public class AuthController {
     public ResponseEntity<User> create(@RequestBody RegisterUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
 
-        logger.info("Ppo de todo");
-
-        User user = new User(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
-                regUser.getEmail(), regUser.getName(), regUser.getAddress(), regUser.getTelephone());
-        String userRole = "";
-
-        logger.info("Voy a guardar en el user");
-
-        user = userService.save(user);
-
-        logger.info("He guardado en el user");
-
-        switch (user.getType()){
-            case "Creador" :
-            case "Empresa" :
-                userRole = "ROLE_USER"; break;
-            case "Admin" :  userRole = "ROLE_ADMIN"; break;
-        }
-
-        Role rol = new Role();
+        User user = null;
         List<Role> userRoles = new ArrayList<Role>();
+        Role elRol = null;
+        Date creatorDate = null;
 
-        rol.setName(userRole);
-        rol.setUser_id(user.getId());
-        roleService.save(rol);
-        userRoles.add(rol);
-        user.setRoles(userRoles);
+        switch (regUser.getType()){
+            case "Creador":
+                try{
+                    creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
+                }catch (Exception e){
+                    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                }
+                user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
+                        regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
+                        regUser.getTelephone(), regUser.getAddress());
 
-        if(user.getType().equalsIgnoreCase("Creador")){
-           /*Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
-                    regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());*/
-            Creator c = new Creator();
-            c.setLastName(regUser.getLastName());
-            try {
-                logger.info(regUser.getBirthDate());
-                c.setBirthDate(new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate()));
-            }catch (Exception e){
-                logger.info("entro al catch");
+                user = userService.save(user);
+
+                elRol = new Role();
+                elRol.setUser_id(user.getId());
+                elRol.setName("ROLE_USER");
+                elRol = roleService.save(elRol);
+                userRoles.add(elRol);
+                user.setRoles(userRoles);
+
+                break;
+            case "Empresa":
+                user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
+                        regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
+                        regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
+
+                user = userService.save(user);
+
+                elRol = new Role();
+                elRol.setUser_id(user.getId());
+                elRol.setName("ROLE_USER");
+                elRol = roleService.save(elRol);
+                userRoles.add(elRol);
+                user.setRoles(userRoles);
+
+                break;
+            default:
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            }
+        }
 
-            c = creatorService.create(c);
-            return new ResponseEntity<>(c, HttpStatus.OK);
-        }
-        else if(user.getType().equalsIgnoreCase("Empresa")){
-            /*Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
-                    regUser.getCif(), regUser.getAddress(), regUser.getTelephone(), regUser.getCreditCard(),
-                    regUser.getRemainingIdeas());*/
-            Enterprise e = new Enterprise();
-            e.setCIF(regUser.getCif());
-            e.setCreditCard(e.getCreditCard());
-            e.setRemainingIdeas(e.getRemainingIdeas());
-
-            e = enterpriseService.create(e);
-            return new ResponseEntity<>(e, HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @GetMapping("/profile")
     public ResponseEntity<User> getProfile(@RequestBody String username) {
         User user = userService.findByUsername(username);
