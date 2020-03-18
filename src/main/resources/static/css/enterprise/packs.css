@@ -1,22 +1,23 @@
 
-#uno{
+#uno {
     display: flex;
     justify-content: flex-end;
-    margin:10px;
-}
-#tres{
-    display: flex;
-    justify-content: center;
-    margin:10px;
+    margin: 10px;
 }
 
-#dos{
+#tres {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+#dos {
     display: flex;
     justify-content: space-around;
     margin: 40px;
 }
 
-.btn-default{
+.btn-default {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -31,16 +32,16 @@
 
 }
 
-h1, #elem{
-    color:#66bb6a;
+h1, #elem {
+    color: #66bb6a;
     font-size: 2em;
 }
 
-p{
+p {
     font-size: 2em;
 }
 
-#cuadroUno,#cuadroTres{
+#cuadroUno, #cuadroTres {
     border: black solid 2px;
     width: 200px;
     height: 400px;
@@ -49,7 +50,7 @@ p{
 }
 
 
-#cuadroDos{
+#cuadroDos {
     border: #66bb6a solid 10px;
     width: 200px;
     height: 400px;

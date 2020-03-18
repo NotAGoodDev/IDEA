@@ -1,4 +1,4 @@
-#profile-creator{
+#profile-creator {
 
     margin: 30px 50px 40px;
 
@@ -8,38 +8,41 @@ html {
     min-height: 100%;
     position: relative;
 }
+
 body {
     margin: 0;
     margin-bottom: 40px;
 }
-.container{
+
+.container {
     margin-top: 100px;
 }
-#uno, #tres{
+
+#uno, #tres {
     display: flex;
     justify-content: flex-end;
-    margin:10px;
+    margin: 10px;
 }
 
-i .fa-pencil-alt{
+i .fa-pencil-alt {
     font-size: 30px;
     color: black;
     width: 50px;
     height: 40px;
 }
 
-i{
+i {
     width: 50px;
     height: 40px;
 }
 
-#dos{
+#dos {
     display: flex;
     justify-content: space-around;
     margin: 40px;
 }
 
-.btn-default{
+.btn-default {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -48,16 +51,17 @@ i{
     color: black;
 }
 
-.main{
+.main {
     color: blue;
 }
 
-.btn-default:hover{
+.btn-default:hover {
     background: #66bb6a;
 
 }
-li{
-   list-style-type: none;
+
+li {
+    list-style-type: none;
 }
 
 
