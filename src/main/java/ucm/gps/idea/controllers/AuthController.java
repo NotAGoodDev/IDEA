@@ -14,15 +14,16 @@ import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Role;
 import ucm.gps.idea.entities.User;
-import ucm.gps.idea.models.RegisterUser;
+import ucm.gps.idea.models.ModelUser;
 import ucm.gps.idea.services.CreatorService;
 import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
-import java.text.DateFormat;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -43,73 +44,57 @@ public class AuthController {
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public ResponseEntity<?> create(@RequestBody RegisterUser regUser) {
+    public ResponseEntity<User> create(@RequestBody ModelUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
-        
-        User user = new User();
-        user.setUsername(regUser.getUsername());
-        user.setPassword(encoder.encode(regUser.getPassword()));
-        user.setType(regUser.getType());
-        user.setActive(true);
-        user.setEmail(regUser.getEmail());
-        user.setName(regUser.getName());
-        user.setAddress(regUser.getAddress());
-        user.setTelephone(regUser.getTelephone());
-        
-        user = userService.save(user);
 
-        switch(user.getType()){
+        User user = null;
+        List<Role> userRoles = new ArrayList<Role>();
+        Role elRol = null;
+        Date creatorDate = null;
+
+        switch (regUser.getType()){
             case "Creador":
-                Role role = new Role();
-                role.setUserId(user.getId());
-                role.setName("ROLE_CREATOR");
-                System.out.print(role.toString());
-                roleService.save(role);
+                try{
+                    creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
+                }catch (Exception e){
+                    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                }
+                user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
+                        regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
+                        regUser.getTelephone(), regUser.getAddress());
 
-                Creator creator = new Creator();
+                user = userService.save(user);
+
+                elRol = new Role();
+                elRol.setUserId(user.getId());
+                elRol.setName("ROLE_USER");
+                elRol = roleService.save(elRol);
+                userRoles.add(elRol);
+                user.setRoles(userRoles);
 
                 break;
             case "Empresa":
+                user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
+                        regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
+                        regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
+
+                user = userService.save(user);
+
+                elRol = new Role();
+                elRol.setUserId(user.getId());
+                elRol.setName("ROLE_USER");
+                elRol = roleService.save(elRol);
+                userRoles.add(elRol);
+                user.setRoles(userRoles);
+
                 break;
-        }
-
-        return new ResponseEntity<User>(user, HttpStatus.OK);
-    
-        /*
-        if(user.getType().equalsIgnoreCase("Creador")){
-           Creator c = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
-                    regUser.getLastName(), regUser.getBirtDate(), regUser.getTelephone(), regUser.getAddress());
-            Creator c = new Creator();
-            c.setLastName(regUser.getLastName());
-            try {
-                logger.info(regUser.getBirthDate());
-                c.setBirthDate(new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate()));
-            }catch (Exception e){
-                logger.info("entro al catch");
+            default:
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            }
-
-            c = creatorService.create(c);
-            return new ResponseEntity<>(c, HttpStatus.OK);
         }
-        else if(user.getType().equalsIgnoreCase("Empresa")){
-            Enterprise e = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                    regUser.getType(), true, regUser.getEmail(), regUser.getName(),
-                    regUser.getCif(), regUser.getAddress(), regUser.getTelephone(), regUser.getCreditCard(),
-                    regUser.getRemainingIdeas());
-            Enterprise e = new Enterprise();
-            e.setCIF(regUser.getCif());
-            e.setCreditCard(e.getCreditCard());
-            e.setRemainingIdeas(e.getRemainingIdeas());
 
-            e = enterpriseService.create(e);
-            return new ResponseEntity<>(e, HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }*/
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @GetMapping("/profile")
     public ResponseEntity<User> getProfile(@RequestBody String username) {
         User user = userService.findByUsername(username);
@@ -131,22 +116,38 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/profile/modify")
-    public ResponseEntity<User> modify(@RequestBody User user){
+    @PutMapping("/profile/modify")
+    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal){
 
-        //Utilizado create de creator/enterprise para guardar en la BBDD mediante el repositorio
+        User user = userService.findByUsername(principal.getName());
 
         if(user.getType().equalsIgnoreCase("Creador")){
             try{
+                user.setAddress(moduser.getAddress());
+                user.setEmail(moduser.getEmail());
+                user.setName(moduser.getName());
+                user.setTelephone(moduser.getTelephone());
+                userService.save(user);
+
                 Creator c = creatorService.index(user.getId());
+                c.setLastName(moduser.getLastName());
                 c = creatorService.create(c);
+
                 return new ResponseEntity<>(c, HttpStatus.OK);
             }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
         }
         else if(user.getType().equalsIgnoreCase("Empresa")){
             try{
+                user.setAddress(moduser.getAddress());
+                user.setEmail(moduser.getEmail());
+                user.setName(moduser.getName());
+                user.setTelephone(moduser.getTelephone());
+                userService.save(user);
+
                 Enterprise e = enterpriseService.index(user.getId());
+                e.setCreditCard(moduser.getCardNumber());
                 e = enterpriseService.create(e);
+
                 return new ResponseEntity<>(e, HttpStatus.OK);
             }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
         }

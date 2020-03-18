@@ -1,0 +1,112 @@
+
+#uno {
+    width: 68%;
+    display: flex;
+    margin: 30px auto 30px auto;
+    justify-content: space-around;
+}
+
+.row h1 {
+    margin-top: 100px;
+    text-align: center;
+    color: #66bb6a;
+}
+
+label {
+    margin-right: 5px;
+}
+
+.textE, .textEdit {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#lbl {
+    margin-left: 290px;
+}
+
+
+input {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#dos {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60%;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+#tres {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60%;
+    height: 300px;
+}
+
+.btn-descartar {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #bebebe;
+    color: black;
+    float: right;
+    background: #d7d7d7;
+    align-self: flex-end;
+    margin-left: 20px;
+}
+
+.btn-descartar:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: black;
+    float: right;
+    background: #bebebe;
+    align-self: flex-end;
+}
+
+.botones {
+    width: 96%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.btn-volver {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: top;
+    background: white;
+    align-self: center;
+    margin-left: 50px;
+}
+
+.btn-enviar:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: center;
+    margin-left: 50px;
+}
+

@@ -14,74 +14,86 @@ public class ViewController {
 
     // Global
 
-    @GetMapping(value={ "/", "", "/home" })
-    public String home(){
+    @GetMapping(value = {"/", "", "/home"})
+    public String home() {
         return "/views/index.html";
     }
 
-    @GetMapping(value="/who")
-    public String who(){
+    @GetMapping(value = "/who")
+    public String who() {
         return "/views/who.html";
     }
 
-    @GetMapping(value="/header")
-    public String header(){
+    @GetMapping(value = "/header")
+    public String header() {
         return "/views/header.html";
     }
 
-    @GetMapping(value="/footer")
-    public String footer(){
+    @GetMapping(value = "/footer")
+    public String footer() {
         return "/views/footer.html";
     }
 
     // User
 
-    @GetMapping(value="/register")
-    public String register(){
+    @GetMapping(value = "/register")
+    public String register() {
         return "/views/auth/register.html";
     }
 
     // Creator
-    @GetMapping(value="/creator")
-    public String creatorIndex(){
+    @GetMapping(value = "/creator")
+    public String creatorIndex() {
         return "/views/creator/index.html";
     }
 
-    @GetMapping(value="/creator/ideas")
-    public String creatorIdeas(){
+    @GetMapping(value = "/creator/ideas")
+    public String creatorIdeas() {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value="/creator/profile")
-    public String creatorProfile(){
+    @GetMapping(value = "/creator/viewIdea")
+    public String creatorViewIdea() {
+        return "/views/creator/verIdea.html";
+    }
+
+    @GetMapping(value = "/creator/removeIdea")
+    public String removeIdea() {
+        return "/views/creator/eliminarIdea.html";
+    }
+
+    @GetMapping(value = "/creator/acceptedIdeas")
+    public String creatorAcceptedtIdeas() {
+        return "/views/creator/accepted-ideas.html";
+    }
+
+    @GetMapping(value = "/creator/profile")
+    public String creatorProfile() {
         return "/views/creator/profile.html";
     }
 
-    @GetMapping(value="/creator/nuevaIdea")
-    public String creatorNewIdea(){
+
+    @GetMapping(value = "/creator/nuevaIdea")
+    public String creatorNewIdea() {
         return "/views/creator/newIdea.html";
     }
 
 
-
     // Enterprise
-    @GetMapping(value="/enterprise")
-    public String enterpriseIndex(){
+    @GetMapping(value = "/enterprise")
+    public String enterpriseIndex() {
         return "/views/enterprise/index.html";
     }
 
-    @GetMapping(value="/enterprise/compraPacks")
-    public String comprarPack(){
-        return "/views/enterprise/packs.html";
+    @GetMapping(value = "/enterprise/verIdea")
+    public String enterpriseIndexIdea() {
+        return "/views/enterprise/viewIdea-enterprise.html";
     }
 
-
-
-
-
-
-
-
+    @GetMapping(value = "/enterprise/compraPacks")
+    public String comprarPack() {
+        return "/views/enterprise/packs.html";
+    }
 
 
 }

@@ -1,4 +1,4 @@
-#form-idea .btn-rechazar{
+#form-idea .btn-rechazar {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -10,7 +10,7 @@
     align-self: center;
 }
 
-#form-idea:hover  .btn-rechazar:hover{
+#form-idea:hover .btn-rechazar:hover {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -21,7 +21,7 @@
     align-self: center;
 }
 
-#form-idea .btn-aceptar{
+#form-idea .btn-aceptar {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -31,10 +31,10 @@
     float: top;
     background: #white;
     align-self: self-end;
-    margin-left:  50px;
+    margin-left: 50px;
 }
 
-#form-idea:hover  .btn-aceptar:hover{
+#form-idea:hover .btn-aceptar:hover {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -43,30 +43,30 @@
     float: top;
     background: #66bb6a;
     align-self: self-end;
-    margin-left:  50px;
+    margin-left: 50px;
 }
 
-#form-idea input[type="text"]{
+#form-idea input[type="text"] {
     background-color: white;
     border: 2px solid black;
     padding: 10px;
     border-radius: 5px;
 }
 
-#form-idea input[type="text"]:hover{
+#form-idea input[type="text"]:hover {
     background-color: white;
     border: 2px solid #66bb6a;
     padding: 10px;
     border-radius: 5px;
 }
 
-#form-idea{
+#form-idea {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     justify-content: space-evenly;
     margin-top: 30px;
-    color:#22bb6a;
+    color: #22bb6a;
     text-align: center;
 }
 

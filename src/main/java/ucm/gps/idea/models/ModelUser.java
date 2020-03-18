@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class RegisterUser {
+public class ModelUser {
 
     @JsonProperty("username")
     private String username;

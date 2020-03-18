@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>iDea</title>
+    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/navbar.css" rel="stylesheet">
+    <link href="../../css/footer.css" rel="stylesheet">
+    <link href="../../css/deal.css" rel="stylesheet">
+    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="../../js/ApiController.js"></script>
+    <script src="../../js/deal.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+</head>
+<body>
+<header>
+</header>
+<div id="form" class="container">
+    <form>
+        <div class="row">
+            <h2>Contrato</h2>
+            <div class="col-12"></div>
+
+            <div class="col-sm-12 col-lg-6 data">
+                <label for="name">Nombre idea</label>
+                <input name="name" id="name" type="text" >
+                <label for="author">Autor</label>
+                <input type="text" name="author" id="author">
+                <label for="enterprise">Tu empresa</label>
+                <input name="enterprise" id="enterprise" type="text" >
+                <label for="percentaje">Porcentaje ganancias</label>
+                <input type="text" name="percentaje" id="percentaje">
+                <span class="subtitulo">El porcentaje tiene que ser > 0</span>
+            </div>
+
+            <div class="col-lg-1"></div>
+            <div class="col-sm-12 col-lg-5">
+                <div class="col-sm-12 col-6 separator"></div>
+
+                <h4>Contrato de 'idea'</h4>
+                <p name="showDeal" id="showDeal" type="text">
+                    Nosotros, 'empresa', junto a 'usuario', establecemos en un acuerdo
+                    formal a día 'fecha' con las siguientes condiciones:
+                    <div class="terms" contenteditable="true"></div>
+                    El cumplimiento de dichas condiciones por parte de 'usuario' le otorgará un pago
+                    del 'porcentaje'% sobre el beneficio que 'empresa' genere por la idea <b>'idea'</b> de forma mensual.
+                    La idea está protegida por nuestro apartado legal al firmar las Términos y condiciones de uso de la aplicación,
+                    cualquier plagio o reproducción de la misma sin un contrato de por medio puede ser reclamada y denunciada
+                    por el propietario.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-7"></div>
+            <div class="col-2">
+                <input type="submit" class="btn-cancel" value="Cancelar">
+            </div>
+
+            <div class="col-1"></div>
+
+            <div class="col-2">
+                <input type="submit" class="btn-deal" value="Hacer contrato">
+            </div>
+
+            <div class="col-12 separator"></div>
+            <div class="col-12 separator"></div>
+        </div>
+
+    </form>
+</div>
+<footer></footer>
+</body>
+</html>

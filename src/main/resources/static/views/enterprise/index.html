@@ -39,8 +39,9 @@
         </div>
     </div>
     <div class="row">
-        <p>Ideas restantes por recibir: <span id="empresa-ideasrestantes"></span></p><button>Comprar pack</button>
-    </div>
+        <p>Ideas restantes por recibir: <span id="empresa-ideasrestantes"></span></p><a href="/enterprise/compraPacks">
+        <button>Comprar pack</button>
+    </a></div>
 
     <body onload="javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);">
 
@@ -48,19 +49,42 @@
     <div>
         <div id="pestanas-ideas">
             <ul id=lista>
-                <li id="pestana-ideas-recibidas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);'>Ideas recibidas</a></li>
-                <li id="pestana-ideas-compradas"><a href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-compradas);'>Ideas compradas</a></li>
+                <li id="pestana-ideas-recibidas"><a
+                        href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);'>Ideas recibidas</a>
+                </li>
+                <li id="pestana-ideas-compradas"><a
+                        href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-compradas);'>Ideas compradas</a>
+                </li>
             </ul>
         </div>
         <div id="empresa-ideas">
             <div id="empresa-ideas-recibidas">
-                Contenido de la pestaña 1
+                <div class="list-group">
+                    <!-- <a href="#" class="list-group-item">-->
+                    <h5 class="list-group-item-heading"><strong>Idea 1</strong></h5>
+                    <div class="list-group-item-text">
+                        <div class="text">Lorem Ipsum es simplemente el texto de relleno
+                            de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
+                            Lorem Ipsum es simplemente el texto de relleno
+                            de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
+                        </div>
+                        <div class="bot">
+                            <p>Categoria1<br>Estado</p>
+                            <a href="/enterprise/verIdea">
+                                <button class="btn btn-default" id="tres" type="button">Ver</button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
             <div id="empresa-ideas-compradas">
                 Contenido de la pestaña 2
             </div>
         </div>
     </div>
+
 </main>
 
 <footer>

@@ -1,0 +1,43 @@
+/*#uno {
+    width: 90%;
+    display: flex;
+    margin: 30px auto 30px auto;
+    justify-content: space-around;
+
+
+}*/
+p {
+    text-align: center;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+}
+
+.btn-default {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: top;
+    background: white;
+    align-self: center;
+    margin-left: 50px;
+}
+
+.btn-default:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: center;
+    margin-left: 50px;
+}
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>iDea</title>
+    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/navbar.css" rel="stylesheet">
+    <link href="../../css/footer.css" rel="stylesheet">
+    <link href="../../css/creator/accepted-ideas.css" rel="stylesheet">
+    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="../../js/ApiController.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+</head>
+<body>
+<header>
+</header>
+
+<main>
+    <div id="home-creator" class="container">
+        <div class="row" id="uno">
+            <a href="/creator/nuevaIdea">
+                <button type="button" class="btn-añadir">Añadir idea</button>
+            </a>
+        </div>
+
+        <div class="row">
+            <!--  <div class="col-12"></div>-->
+            <div class="btn-group" role="group" aria-label="..." id="botones">
+                <button type="button" class="btn btn-default" id="dos">Mis ideas</button>
+                <button type="button" class="btn btn-default">Ideas aceptadas</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="dropdown input-group">
+                    <select class="form-control" id="dropdownMenu1">
+                        <option value="Creador" , selected="selected">Creador</option>
+                        <option value="Empresa">Empresa</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" id="tres" type="button">Buscar</button>
+                             </span>
+
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+
+
+        </div>
+
+        <div class="list-group">
+            <!-- <a href="#" class="list-group-item">-->
+            <h5 class="list-group-item-heading"><strong>Idea 1</strong></h5>
+            <p class="list-group-item-text"> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos
+                de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando
+                un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los
+                mezcló de tal manera que logró hacer un libro de textos especimen.
+            </p>
+            </a>
+        </div>
+    </div>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>

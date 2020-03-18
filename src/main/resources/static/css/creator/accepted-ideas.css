@@ -1,21 +1,20 @@
 
-#uno{
+#uno {
     display: flex;
     justify-content: flex-end;
 }
 
 #dos {
     background-color: black;
-    color:white;
-
+    color: white;
 }
 
-#tres{
+#tres {
     background-color: lightgrey;
 }
 
 
-#home-creator input[type="text"]{
+#home-creator input[type="text"] {
     background-color: white;
     border: 2px solid #66bb6a;
     padding: 10px;
@@ -24,7 +23,7 @@
 }
 
 
-#home-creator .btn-añadir{
+#home-creator .btn-añadir {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -33,31 +32,28 @@
     color: black;
 }
 
-#home-creator:hover  .btn-añadir:hover{
+#home-creator:hover .btn-añadir:hover {
     background: #66bb6a;
-
 }
 
 
-
-
-#botones{
+#botones {
     border: 2px solid #66bb6a;
-    color:white;
-    margin-top:80px;
-    margin-left:13px;
+    color: white;
+    margin-top: 80px;
+    margin-left: 13px;
     margin-bottom: 5px;
 }
 
 
-#dropdownMenu1{
+#dropdownMenu1 {
     border: #66bb6a solid 2px;
     width: 120%;
 }
 
 
-.list-group{
-    border:solid black 1px;
+.list-group {
+    border: solid black 1px;
     width: 100%;
     height: auto;
     border-radius: 5px;
