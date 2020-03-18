@@ -116,10 +116,16 @@ public class AuthController {
         }
     }
 
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
+    @ResponseBody
+    public String currentUserName(Principal principal) {
+        return principal.getName();
+    }
+
     @PutMapping("/profile/modify")
     public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal){
 
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByUsername(currentUserName(principal));
 
         if(user.getType().equalsIgnoreCase("Creador")){
             try{
