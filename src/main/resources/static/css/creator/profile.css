@@ -1,10 +1,37 @@
+#profile-creator{
 
+    margin: 30px 50px 40px;
+
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+body {
+    margin: 0;
+    margin-bottom: 40px;
+}
+.container{
+    margin-top: 100px;
+}
 #uno, #tres{
     display: flex;
     justify-content: flex-end;
     margin:10px;
 }
 
+i .fa-pencil-alt{
+    font-size: 30px;
+    color: black;
+    width: 50px;
+    height: 40px;
+}
+
+i{
+    width: 50px;
+    height: 40px;
+}
 
 #dos{
     display: flex;
@@ -21,6 +48,9 @@
     color: black;
 }
 
+.main{
+    color: blue;
+}
 
 .btn-default:hover{
     background: #66bb6a;

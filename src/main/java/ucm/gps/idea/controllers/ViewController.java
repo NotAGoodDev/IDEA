@@ -52,10 +52,15 @@ public class ViewController {
         return "/views/creator/ideas.html";
     }
 
+    @GetMapping(value="/creator/acceptedIdeas")
+    public String creatorAcceptedtIdeas(){
+        return "/views/creator/accepted-ideas.html";
+    }
     @GetMapping(value="/creator/profile")
     public String creatorProfile(){
         return "/views/creator/profile.html";
     }
+
 
     @GetMapping(value="/creator/nuevaIdea")
     public String creatorNewIdea(){
@@ -68,6 +73,11 @@ public class ViewController {
     @GetMapping(value="/enterprise")
     public String enterpriseIndex(){
         return "/views/enterprise/index.html";
+    }
+
+    @GetMapping(value="/enterprise/verIdea")
+    public String enterpriseIndexIdea(){
+        return "/views/enterprise/viewIdea-enterprise.html";
     }
 
     @GetMapping(value="/enterprise/compraPacks")
