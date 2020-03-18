@@ -11,7 +11,7 @@ import ucm.gps.idea.entities.DealDTO;
 import ucm.gps.idea.services.DealService;
 
 @RestController
-@RequestMapping("api/deal")
+@RequestMapping("/api/deal")
 public class DealController {
 
     @Autowired

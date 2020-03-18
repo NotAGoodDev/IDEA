@@ -26,11 +26,15 @@
 
             <div class="col-sm-12 col-lg-6 data">
                 <label for="name">Nombre idea</label>
-                <input name="name" id="name" type="text" >
+                <!-- Inserción automática -->
+                <input name="name" id="name" type="text" value="Nombre idea" readonly>
+                <!-- Inserción automática -->
                 <label for="author">Autor</label>
-                <input type="text" name="author" id="author">
+                <input contenteditable="false" type="text" name="author" id="author" value="Autor" readonly>
+                <!-- Inserción automática -->
                 <label for="enterprise">Tu empresa</label>
-                <input name="enterprise" id="enterprise" type="text" >
+                <input name="enterprise" id="enterprise" type="text" value="Empresa" readonly>
+                <!-- Inserción manual -->
                 <label for="percentaje">Porcentaje ganancias</label>
                 <input type="text" name="percentaje" id="percentaje">
                 <span class="subtitulo">El porcentaje tiene que ser > 0</span>
@@ -41,16 +45,22 @@
                 <div class="col-sm-12 col-6 separator"></div>
 
                 <h4>Contrato de 'idea'</h4>
-                <p name="showDeal" id="showDeal" type="text">
+                <p name="showDeal" id="showDealHeader" type="text">
                     Nosotros, 'empresa', junto a 'usuario', establecemos en un acuerdo
                     formal a día 'fecha' con las siguientes condiciones:
-                    <div class="terms" contenteditable="true"></div>
+                </p>
+
+                <!-- Inserción manual -->
+                <div class="terms" contenteditable="true" id="terms"></div>
+
+                <p name="showDeal" id="showDealFooter" type="text">
                     El cumplimiento de dichas condiciones por parte de 'usuario' le otorgará un pago
                     del 'porcentaje'% sobre el beneficio que 'empresa' genere por la idea <b>'idea'</b> de forma mensual.
                     La idea está protegida por nuestro apartado legal al firmar las Términos y condiciones de uso de la aplicación,
                     cualquier plagio o reproducción de la misma sin un contrato de por medio puede ser reclamada y denunciada
                     por el propietario.
                 </p>
+
             </div>
         </div>
 
