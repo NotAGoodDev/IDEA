@@ -1,68 +1,15 @@
-#profile-creator {
-
-    margin: 30px 50px 40px;
-
+#form input[type="readonly"] {
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-html {
-    min-height: 100%;
-    position: relative;
+#form input[type="readonly"]:hover {
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
 }
-
-body {
-    margin: 0;
-    margin-bottom: 40px;
-}
-
-.container {
-    margin-top: 100px;
-}
-
-#uno, #tres {
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px;
-}
-
-i .fa-pencil-alt {
-    font-size: 30px;
-    color: black;
-    width: 50px;
-    height: 40px;
-}
-
-i {
-    width: 50px;
-    height: 40px;
-}
-
-#dos {
-    display: flex;
-    justify-content: space-around;
-    margin: 40px;
-}
-
-.btn-default {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: 2px solid #66bb6a;
-    color: black;
-}
-
-.main {
-    color: blue;
-}
-
-.btn-default:hover {
-    background: #66bb6a;
-
-}
-
-li {
-    list-style-type: none;
-}
-
-
-

@@ -7,8 +7,6 @@ $(document).ready(function() {
         $("header").empty();
         $("header").load('/header')
 
-        $.loadCSS('css/quienes-somos.css');
-
+        $.loadCSS('/css/general.css');
     });
-
 });

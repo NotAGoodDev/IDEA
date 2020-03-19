@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>iDea</title>
-    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="../../css/navbar.css" rel="stylesheet">
     <link href="../../css/footer.css" rel="stylesheet">
     <link href="../../css/creator/profile.css" rel="stylesheet">
-    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
-    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
     <script src="../../js/header.js"></script>
     <script src="../../js/footer.js"></script>
@@ -19,9 +19,84 @@
 </header>
 
 <main>
+    <div class="col-12 separator"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Profile Image -->
+            <div class="col-5"></div>
+            <div class="col-2 text-center">
+                <img src="/images/logo-navbar.png" class="figure-img" alt="Responsive image">
+            </div>
+            <div class="col-5"></div>
+
+            <!-- Profile Message -->
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                <h2>Bienvenido, 'usuario'</h2>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-12 separator"></div>
+
+            <!-- Body -->
+
+            <div class="container">
+                <form id="form">
+                        <!-- Generic Data-->
+                    <div class="row">
+                        <div class="col-12 col-lg-6 data">
+                            <label for="username">Username</label>
+                            <input name="username" id="username" type="readonly" readonly>
+                            <label for="password">Contraseña</label>
+                            <input type="readonly" name="password" id="password" readonly>
+                            <span class="subtitulo">La contraseña tiene que tener 6 caracteres o más</span>
+                        </div>
+
+                        <div class="col-12 col-lg-6 data">
+                            <label for="email">Correo electrónico</label>
+                            <input name="email" id="email" type="readonly" readonly>
+                            <label for="imagen">Foto de perfil</label>
+                            <input name="imagen" id="imagen" type="file">
+                        </div>
+                    </div>
+
+                    <div class="col-12 separator"></div>
+
+                    <div class="row">
+                        <!-- Personal Data -->
+                        <h3>Datos personales</h3>
+                        <div class="col-12"></div>
+
+                        <div class="col-12 col-lg-6 data">
+                            <label for="nameCreator">Nombre</label>
+                            <input type="readonly" name="nameCreator" id="nameCreator" readonly>
+                            <label for="lastName">Apellidos</label>
+                            <input name="lastName" id="lastName" type="readonly" readonly>
+                            <label for="birthDate">Fecha de Nacimiento</label>
+                            <input type="readonly" name="birthDate" id="birthDate" readonly>
+                        </div>
+
+                        <div class="col-12 col-lg-6 data">
+                            <label for="telephone">Teléfono</label>
+                            <input type="readonly" name="telephone" id="telephone" readonly>
+                            <label for="address">Dirección</label>
+                            <input name="address" id="address" type="readonly" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="col-12 separator"></div>
+
+    </div>
+
+
+    <!--
     <div id="profile-creator" class="container">
         <div class="row" id="uno">
-            <!--   <input type="submit" class="btn-default" value="Añadir idea">-->
             <a href="/creator/nuevaIdea">
                 <button type="button" class="btn-default">Añadir idea</button>
             </a>
@@ -51,7 +126,6 @@
 
         </div>
         <div class="row" id="tres">
-            <!-- <input type="submit" class="btn-default" value="Añadir idea">-->
             <a href="/auth/register">
                 <button type="button" class="btn-default">
                     <div class="main"><i class="fas fa-pencil-alt"></i></div>
@@ -59,6 +133,7 @@
             </a>
         </div>
     </div>
+    -->
 
 </main>
 <footer>
