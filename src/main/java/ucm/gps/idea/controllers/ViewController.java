@@ -2,6 +2,7 @@ package ucm.gps.idea.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,11 @@ public class ViewController {
     }
 
     @GetMapping(value = "/header")
-    public String header() {
-        return "/views/header.html";
+    public String header(Authentication authentication) {
+        if(authentication == null)
+            return "/views/header.html";
+        else
+            return "/views/headerAuth.html";
     }
 
     @GetMapping(value = "/footer")

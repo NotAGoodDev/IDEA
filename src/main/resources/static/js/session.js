@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url:    "/api/auth/user",
+        url:    "/api/auth/session",
         type:   "GET",
         headers: {
             'Content-Type': 'application/json'

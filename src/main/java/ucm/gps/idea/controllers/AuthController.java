@@ -95,86 +95,14 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/profile")
-    public ResponseEntity<User> getProfile(@RequestBody String username) {
-        User user = userService.findByUsername(username);
+    @GetMapping("/session")
+    public ResponseEntity<?> userAuth(Principal principal){
 
-        if(user.getType().equalsIgnoreCase("Creador")){
-            try{
-                Creator c = creatorService.index(user.getId());
-                return new ResponseEntity<>(c, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
+        if (principal != null) {
+            User user = userService.findByUsername(principal.getName());
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
-        else if(user.getType().equalsIgnoreCase("Empresa")){
-            try{
-                Enterprise e = enterpriseService.index(user.getId());
-                return new ResponseEntity<>(e, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }
-    }
-
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserName(Principal principal) {
-        return principal.getName();
-    }
-
-    @PutMapping("/profile/modify")
-    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal){
-
-        User user = userService.findByUsername(currentUserName(principal));
-
-        if(user.getType().equalsIgnoreCase("Creador")){
-            try{
-                user.setAddress(moduser.getAddress());
-                user.setEmail(moduser.getEmail());
-                user.setName(moduser.getName());
-                user.setTelephone(moduser.getTelephone());
-                userService.save(user);
-
-                Creator c = creatorService.index(user.getId());
-                c.setLastName(moduser.getLastName());
-                c = creatorService.create(c);
-
-                return new ResponseEntity<>(c, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-        }
-        else if(user.getType().equalsIgnoreCase("Empresa")){
-            try{
-                user.setAddress(moduser.getAddress());
-                user.setEmail(moduser.getEmail());
-                user.setName(moduser.getName());
-                user.setTelephone(moduser.getTelephone());
-                userService.save(user);
-
-                Enterprise e = enterpriseService.index(user.getId());
-                e.setCreditCard(moduser.getCardNumber());
-                e = enterpriseService.create(e);
-
-                return new ResponseEntity<>(e, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }
-
-    }
-
-
-    @GetMapping("/user")
-    public ResponseEntity<UserDetails> userAuth(){
-        SecurityContext sc = SecurityContextHolder.getContext();
-        org.springframework.security.core.Authentication auth = sc.getAuthentication();
-        Object principal= null;
-        if (auth != null) {
-            principal = auth.getPrincipal();
-            return principal instanceof UserDetails ? new ResponseEntity<>((UserDetails)principal,HttpStatus.OK) : null;
-        }
-
-        return null;
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }

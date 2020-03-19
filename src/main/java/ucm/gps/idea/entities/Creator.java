@@ -9,7 +9,7 @@ import java.util.Set;
 @Table(name = "creator")
 public class Creator extends User implements Serializable {
 
-    private static final long serialVersionUID = 0;
+    private static final long serialVersionUID = 1L;
 
     public Creator() {}
 
