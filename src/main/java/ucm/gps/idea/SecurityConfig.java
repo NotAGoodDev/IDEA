@@ -50,13 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers( "/footer").permitAll()
                     .antMatchers( "/register").permitAll()
                     .antMatchers( "/api/packages").permitAll()
-                    .anyRequest().authenticated()
-                .and()
-                    .httpBasic();
+                    .anyRequest().authenticated();
+                    //.and()
+                    //.httpBasic();
 
-        http.formLogin()    
-                .usernameParameter("username")
-                .passwordParameter("password");
+        http.
+                formLogin()
+                .loginPage("/login").permitAll();
 
         http.logout()
                 .clearAuthentication(true)

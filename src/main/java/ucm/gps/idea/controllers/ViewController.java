@@ -41,6 +41,11 @@ public class ViewController {
         return "/views/auth/register.html";
     }
 
+    @GetMapping(value = "/login")
+    public String login() {
+        return "/views/auth/login.html";
+    }
+
     // Creator
     @GetMapping(value = "/creator")
     public String creatorIndex() {
