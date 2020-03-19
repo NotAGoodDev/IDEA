@@ -32,19 +32,19 @@ public class UserController {
     @Autowired
     private EnterpriseService enterpriseService;
 
-    @GetMapping("profile")
+    @GetMapping("profiles")
     public ResponseEntity<?> getProfile(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
         try{
             switch(user.getType().toLowerCase()){
-                case "Creador":
+                case "creador":
                     Creator creator = creatorService.index(user.getId());
-                    return new ResponseEntity<Creator>(creator, HttpStatus.OK);
-                case "Empresa":
+                    return new ResponseEntity<>(creator, HttpStatus.OK);
+                case "empresa":
                     Enterprise enterprise = enterpriseService.index(user.getId());
-                    return new ResponseEntity<Enterprise>(enterprise, HttpStatus.OK);
+                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
                 default:
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
             }
@@ -58,39 +58,35 @@ public class UserController {
 
         User user = userService.findByUsername(principal.getName());
 
-        if(user.getType().equalsIgnoreCase("Creador")){
-            try{
-                user.setAddress(moduser.getAddress());
-                user.setEmail(moduser.getEmail());
-                user.setName(moduser.getName());
-                user.setTelephone(moduser.getTelephone());
-                userService.save(user);
+        try{
+            switch(user.getType().toLowerCase()){
+                case "creador":
+                    user.setAddress(moduser.getAddress());
+                    user.setEmail(moduser.getEmail());
+                    user.setName(moduser.getName());
+                    user.setTelephone(moduser.getTelephone());
+                    userService.save(user);
+                    Creator creator = creatorService.index(user.getId());
+                    creator.setLastName(moduser.getLastName());
+                    creator = creatorService.create(creator);
+                    return new ResponseEntity<>(creator, HttpStatus.OK);
+                case "empresa":
+                    user.setAddress(moduser.getAddress());
+                    user.setEmail(moduser.getEmail());
+                    user.setName(moduser.getName());
+                    user.setTelephone(moduser.getTelephone());
+                    userService.save(user);
 
-                Creator c = creatorService.index(user.getId());
-                c.setLastName(moduser.getLastName());
-                c = creatorService.create(c);
+                    Enterprise enterprise = enterpriseService.index(user.getId());
+                    enterprise.setCreditCard(moduser.getCardNumber());
+                    enterprise = enterpriseService.create(enterprise);
 
-                return new ResponseEntity<>(c, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-        }
-        else if(user.getType().equalsIgnoreCase("Empresa")){
-            try{
-                user.setAddress(moduser.getAddress());
-                user.setEmail(moduser.getEmail());
-                user.setName(moduser.getName());
-                user.setTelephone(moduser.getTelephone());
-                userService.save(user);
+                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                default:
+                    return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+            }
+        }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
 
-                Enterprise e = enterpriseService.index(user.getId());
-                e.setCreditCard(moduser.getCardNumber());
-                e = enterpriseService.create(e);
-
-                return new ResponseEntity<>(e, HttpStatus.OK);
-            }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-        }
 
     }
 
