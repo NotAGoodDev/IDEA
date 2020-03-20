@@ -109,5 +109,10 @@ public class ViewController {
         return "/views/enterprise/packs.html";
     }
 
+    @GetMapping(value = "/enterprise/profile")
+    public String enterpriseProfile() {
+        return "/views/enterprise/profile.html";
+    }
+
 
 }
