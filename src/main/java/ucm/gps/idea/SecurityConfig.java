@@ -53,13 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 formLogin()
                 .loginPage("/login").permitAll()
-                .loginProcessingUrl("/api/auth/login")
+                //.loginProcessingUrl("/api/auth/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/home");
 
         http.logout()
-                .logoutUrl("/api/auth/logout")
+                //.logoutUrl("/api/auth/logout")
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
