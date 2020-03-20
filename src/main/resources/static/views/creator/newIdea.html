@@ -3,100 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>iDea</title>
-    <link href="../webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
-    <link href="../../../css/navbar.css" rel="stylesheet">
-    <link href="../../../css/footer.css" rel="stylesheet">
-    <link href="../../../css/creator/newIdea.css" rel="stylesheet">
-    <script src="../webjars/jquery/3.2.0/jquery.min.js"></script>
-    <script src="../webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/navbar.css" rel="stylesheet">
+    <link href="../../css/footer.css" rel="stylesheet">
+    <link href="../../css/creator/newIdea.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
     <script src="../../js/header.js"></script>
+    <script src="/js/creator/profile.js"></script>
     <script src="../../js/footer.js"></script>
-    <script src="../../js/creator/newIdea.js"></script>
-
 </head>
 <body>
 <header>
 </header>
 
-
-<!--inicioCreator el main  /miriam/
--->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var method = "GET";
         var url = '/api/enterprises/';
         $.ajax({
-            url         : url,
-            type        : method,
+            url: url,
+            type: method,
             headers: {
                 'Content-Type': 'application/json'
             },
-            contentType : "application/json; charset=utf-8",
+            contentType: "application/json; charset=utf-8",
             mimeType: "application/json",
-            dataType : 'json',
-            success: function(respuesta) {
-                for(var i in respuesta){
-                    $('.list-empresas-result').append('<li>'+respuesta[i].name+'</li>');
+            dataType: 'json',
+            success: function (respuesta) {
+                for (var i in respuesta) {
+                    $('.list-empresas-result').append('<li>' + respuesta[i].name + '</li>');
                 }
             },
-            error: function() {
+            error: function () {
                 console.log("No se ha podido obtener la información");
             }
         });
     })
 </script>
+<main>
 
-<div>
-    <div class="row">
-        <h1>Final Casa de Papel</h1>
-    </div>
-    <div class="row" id="uno">
-        <div class="titulo">
-            <label for="tit">Título:</label><input type="text" id="tit" name="tit">
-            <div id="container-buscar-empresa">
-                <form>
-                    <label for="search-empresa">Empresa:</label><input name="search-empresa" type="text" id="search-empresa" autocomplete="off" placeholder="Buscar...">
-                </form>
-                <div class="container-empresas-result">
-                    <ul class="list-empresas-result">
-                        <li>Lista 1</li>
-                        <li>Lista 2</li>
-                    </ul>
+    <div class="col-12 separator"></div>
+
+    <!-- Body -->
+    <form id="form">
+        <div class="container">
+            <div class="row" id="elementos">
+                <h3>Final casa de papel</h3>
+            </div>
+            <!-- Search option with categorie and title -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="title">Titulo</label>
+                    <input type="title" name="title" id="title"></div>
+                <div class="col-7 text-center ">
+                    <label for="search">Buscar</label>
+                    <input type="search" name="search" id="search">
+                </div>
+                <div class="col-2 text-right" id="editIcon">
+                    <select class="form-control" id="selectType">
+                        <option value="Categoria">Categoria</option>
+                        <option value="Categoria">Categoria1</option>
+                    </select>
                 </div>
             </div>
+            <div class="col-12 separator"></div>
+
+            <!--Description-->
+            <div class="container" id="desc">
+                <div class="row">
+                    <label for="description">Description corta</label></div>
+                <div class="row">
+                    <input class="text-areaC" type="description" name="description" id="description">
+                </div>
+
+                <div class="row">
+                    <label for="description">Descripcion</label></div>
+                <div class="row">
+                    <input class="text-area" type="description" name="description" id="description">
+                </div>
+            </div>
+
         </div>
-        <div class="Cat">
-            <label>Categoría:</label>
 
-            <select name="select" id="dropdownMenu1">
-                <option value="value1">Categoria 1</option>
-                <option value="value2" selected>Categoria 2</option>
-                <option value="value3">Categoria 3</option>
-            </select>
         </div>
-    </div>
-</div>
-<label id="lbl">Descripcion corta:</label><br>
-<div class="textE">
-    <textarea id="dos">jdsja</textarea><br>
-</div>
-
-<label id="lbl">Descripcion:</label><br>
-<div class="textEdit">
-    <textarea id="tres">jdsja</textarea><br>
-</div>
-</div>
-
-
-<div class="botones">
-    <a href="/creator">
-        <button type="bot" class="btn-cancelar">Cancelar</button>
-    </a>
-    <a href="/creator">
-        <button type="bot" class="btn-enviar">Enviar</button>
-    </a>
-</div>
+    </form>
 
 
 </main>
