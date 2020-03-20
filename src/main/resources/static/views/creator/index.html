@@ -3,103 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>iDea</title>
-    <link href="../webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="../../css/navbar.css" rel="stylesheet">
     <link href="../../css/footer.css" rel="stylesheet">
-    <link href="../../css/creator/home-creator.css" rel="stylesheet">
-    <script src="../webjars/jquery/3.2.0/jquery.min.js"></script>
-    <script src="../webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <link href="../../css/creator/index.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
     <script src="../../js/header.js"></script>
+    <script src="/js/creator/profile.js"></script>
     <script src="../../js/footer.js"></script>
 </head>
 <body>
 <header>
 </header>
 
-<!--inicioCreator el main  /miriam/
--->
-
 
 <main>
-    <div id="home-creator" class="container">
-        <div class="row" id="uno">
-            <!--<input type="submit" class="btn-añadir" value="Añadir idea">-->
-            <a href="/creator/nuevaIdea">
-                <button type="button" class="btn-añadir">Añadir idea</button>
-            </a>
-
-        </div>
-
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+    <!--Pencil icon-->
+    <div class="container">
         <div class="row">
-            <!-- <div class="col-12"></div>-->
-            <div class="btn-group" role="group" aria-label="..." id="botones">
-                <a href="/creator/ideas">
-                    <button type="button" class="btn btn-default" id="dos">Mis ideas</button>
-                </a>
-                <a href="/creator/acceptedIdeas">
-                    <button type="button" class="btn btn-default">Ideas aceptadas</button>
-                </a>
+            <div class="col-2"></div>
+            <div class="col-8"></div>
+            <div class="col-2 text-right" id="editIcon">
+                <button class="btn-edit" onclick="enableFields()">
+                    <a href="/creator/nuevaIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
+                </button>
             </div>
         </div>
+        <div class="col-12 separator"></div>
+
+        <!--Body-->
+        <div class="container">
+            <form id="form">
+                <!-- Mis ideas-->
+                <div class="row">
 
 
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="dropdown input-group">
-                    <select class="form-control" id="dropdownMenu1">
-                        <option value="Creador" , selected="selected">Creador</option>
-                        <option value="Empresa">Empresa</option>
-                    </select>
+                    <div class="col-12 col-lg-6 data id="editIcon">
+                        <h2>Mis ideas</h2>
+                        <div class="container" id="lista-idea">
+                            <div class="row">
+                                <div class="col-6 col-lg-6 data"><a href="/creator/viewIdea">Lorem ipsum dolor sit amet, sapien etiam, nunc amet
+                                    dolor ac odio mauris justo</a></div>
+                                <div class="col-6 col-lg-6 data text-right" id="editIcon">
+                                    <button class="btn-edit" onclick="enableFields()">
+                                        <a href="/creator/nuevaIdea"><i class="fa fa-pencil-alt"
+                                                                        style="font-size: 25px"></i></a>
+                                    </button>
+                                    <button class="btn-edit" onclick="enableFields()">
+                                        <a href="/creator/viewIdea"><i class="far fa-trash-alt"
+                                                                       style="font-size: 25px"></i></a>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 data id="editIcon">
+                        <h2>Ideas Aceptadas</h2>
+                        <div class="container" id="lista-idea">
+                <div class="row">
+                    <div class="col-6 col-lg-6 data"><a href="/creator/viewIdea">Lorem ipsum dolor sit amet, sapien etiam, nunc amet
+                        dolor ac odio mauris justo</a></div>
+                    <div class="col-6 col-lg-6 data text-right" id="editIcon">
+                        <button class="btn-edit" onclick="enableFields()">
+                            <a href="/creator/nuevaIdea"><i class="fa fa-pencil-alt"
+                                                            style="font-size: 25px"></i></a>
+                        </button>
+                        <button class="btn-edit" onclick="enableFields()">
+                            <a href="/creator/viewIdea"><i class="far fa-trash-alt"
+                                                           style="font-size: 25px"></i></a>
+                        </button>
+
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-10">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" id="tres" type="button">Buscar</button>
-                             </span>
-
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-
-
         </div>
-        <!--
-                <div class="list-group">
-                    <!-- <a href="#" class="list-group-item">
-                    <h5 class="list-group-item-heading"><strong>Idea 1</strong></h5>
-                    <p class="list-group-item-text"> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos
-                        de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando
-                        un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los
-                        mezcló de tal manera que logró hacer un libro de textos especimen.
-                    </p>
-                    </a>
+
+
                 </div>
-            </div>
-
-        -->
-
-        <div class="list-group-item-text">
-            <div class="text">Lorem Ipsum es simplemente el texto de relleno
-                de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
-                Lorem Ipsum es simplemente el texto de relleno
-                de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
-            </div>
-            <div class="bot">
-                <a href="/creator/viewIdea">
-                    <button class="btn btn-default" id="tres" type="button">edit</button>
-                </a>
-                <a href="/creator/removeIdea">
-                    <button class="btn btn-default" id="tres" type="button">borrar</button>
-                </a>
-                <p>Categoria1<br>Estado</p>
-
-            </div>
-
         </div>
+        <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
 
 </main>
 <footer>
