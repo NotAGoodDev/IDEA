@@ -20,6 +20,11 @@ public class ViewController {
         return "/views/index.html";
     }
 
+    @GetMapping(value = {"creator/home"})
+    public String homeCreator() {
+        return "/views/creator/index.html";
+    }
+
     @GetMapping(value = "/who")
     public String who() {
         return "/views/who.html";

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>iDea</title>
-    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
-    <link href="../../css/navbar.css" rel="stylesheet">
-    <link href="../../css/footer.css" rel="stylesheet">
-    <link href="../../css/creator/newIdea.css" rel="stylesheet">
-    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
-    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <link href="../webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="../../../css/navbar.css" rel="stylesheet">
+    <link href="../../../css/footer.css" rel="stylesheet">
+    <link href="../../../css/creator/newIdea.css" rel="stylesheet">
+    <script src="../webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="../webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
     <script src="../../js/header.js"></script>
     <script src="../../js/footer.js"></script>
+    <script src="../../js/creator/newIdea.js"></script>
+
 </head>
 <body>
 <header>
@@ -21,7 +22,30 @@
 
 <!--inicioCreator el main  /miriam/
 -->
-
+<script>
+    $(document).ready(function() {
+        var method = "GET";
+        var url = '/api/enterprises/';
+        $.ajax({
+            url         : url,
+            type        : method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            contentType : "application/json; charset=utf-8",
+            mimeType: "application/json",
+            dataType : 'json',
+            success: function(respuesta) {
+                for(var i in respuesta){
+                    $('.list-empresas-result').append('<li>'+respuesta[i].name+'</li>');
+                }
+            },
+            error: function() {
+                console.log("No se ha podido obtener la información");
+            }
+        });
+    })
+</script>
 
 <div>
     <div class="row">
@@ -29,7 +53,18 @@
     </div>
     <div class="row" id="uno">
         <div class="titulo">
-            <label>Título:</label><input type="text" id="tit" name="tit"><br>
+            <label for="tit">Título:</label><input type="text" id="tit" name="tit">
+            <div id="container-buscar-empresa">
+                <form>
+                    <label for="search-empresa">Empresa:</label><input name="search-empresa" type="text" id="search-empresa" autocomplete="off" placeholder="Buscar...">
+                </form>
+                <div class="container-empresas-result">
+                    <ul class="list-empresas-result">
+                        <li>Lista 1</li>
+                        <li>Lista 2</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="Cat">
             <label>Categoría:</label>

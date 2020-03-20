@@ -37,6 +37,44 @@ label {
     margin-right: 80px;
 }
 
+#uno .titulo{
+    display: flex;
+    flex-direction: row;
+}
+#container-buscar-empresa{
+    position: relative;
+}
+.container-empresas-result{
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    position: absolute;
+    left: -13px;
+    top: 110%;
+    width: 270px;
+    border-radius: 5px;
+    overflow: inherit;
+    border: 1px solid black;
+}
+
+.container-empresas-result::before{
+    content: '';
+    position: absolute;
+    left: auto;
+    right: 10px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+
+}
+
+.container-empresas-result ul{
+    list-style-type: none;
+}
+
+
 input {
     background-color: white;
     border: 2px solid black;
