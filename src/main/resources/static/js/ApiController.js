@@ -1,16 +1,17 @@
 
 class ApiController {
-
-    static basePath = "/api/";
+    
+     
+   static basePath(){return "/api/";}
 
     static get(endpoint, params) {
-        let url = this.basePath + endpoint;
+        let url = this.basePath() + endpoint;
 
         return this.request(url, "GET", '');
     }
 
     static post(endpoint, params) {
-        let url = this.basePath + endpoint;
+        let url = this.basePath() + endpoint;
         return this.request(url, "POST", params);
     }
 
