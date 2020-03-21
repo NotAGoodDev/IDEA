@@ -1,97 +1,55 @@
-#form-idea .btn-rechazar {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: 2px solid #bebebe;
-    color: black;
-    float: top;
-    background: #d7d7d7;
-    align-self: center;
+#elementos{
+    margin:10px;
 }
 
-#form-idea:hover .btn-rechazar:hover {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    color: #ff0f00;
-    float: top;
-    background: #bebebe;
-    align-self: center;
+#form input[type="title"], input[type="text"]{
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-#form-idea .btn-aceptar {
+#form input[type="title"]:hover, input[type="text"]:hover{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form .btn-back{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
     border: 2px solid #66bb6a;
     color: black;
-    float: top;
-    background: #white;
-    align-self: self-end;
-    margin-left: 50px;
+    float: right;
+    background: white;
+    align-self: flex-end;
 }
 
-#form-idea:hover .btn-aceptar:hover {
+#form:hover  .btn-back:hover{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
     color: white;
-    float: top;
+    float: right;
     background: #66bb6a;
-    align-self: self-end;
-    margin-left: 50px;
+    align-self: flex-end;
 }
 
-#form-idea input[type="text"] {
-    background-color: white;
-    border: 2px solid black;
-    padding: 10px;
-    border-radius: 5px;
+.text-areaC{
+    width:100%;
+    height:50px;
 }
 
-#form-idea input[type="text"]:hover {
-    background-color: white;
-    border: 2px solid #66bb6a;
-    padding: 10px;
-    border-radius: 5px;
+.text-area{
+    width:100%;
+    height:150px;
 }
 
-#form-idea {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-evenly;
-    margin-top: 30px;
-    color: #22bb6a;
-    text-align: center;
+#desc{
+    margin-bottom: 20px;
 }
-
-#desc {
-    border-radius: 10px;
-    border: 2px solid;
-    color: black;
-}
-
-#dCorta {
-    border-radius: 10px;
-    border: 2px solid;
-    color: black;
-}
-
-#autor {
-    border-radius: 10px;
-    border: 2px solid;
-    color: black;
-}
-
-#titulo {
-    border-radius: 10px;
-    border: 2px solid;
-    color: black;
-}
-
-
