@@ -51,56 +51,56 @@ public class ViewController {
     }
 
     // Creator
-    @GetMapping(value = {"/creador","/creador/home","/creador/"})
+    @GetMapping(value = {"/creator","/creator/home","/creator/"})
     public String creatorIndex() {
         return "/views/creator/index.html";
     }
 
-    @GetMapping(value = "/creador/ideas")
+    @GetMapping(value = "/creator/ideas")
     public String creatorIdeas() {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value = "/creador/verIdea")
+    @GetMapping(value = "/creator/verIdea")
     public String creatorViewIdea() {
         return "/views/creator/verIdea.html";
     }
 
 
-    @GetMapping(value = "/creador/acceptedIdeas")
+    @GetMapping(value = "/creator/acceptedIdeas")
     public String creatorAcceptedtIdeas() {
         return "/views/creator/accepted-ideas.html";
     }
 
-    @GetMapping(value = "/creador/profile")
+    @GetMapping(value = "/creator/profile")
     public String creatorProfile() {
         return "/views/creator/profile.html";
     }
 
 
-    @GetMapping(value = "/creador/nuevaIdea")
+    @GetMapping(value = "/creator/nuevaIdea")
     public String creatorNewIdea() {
         return "/views/creator/newIdea.html";
     }
 
 
     // Enterprise
-    @GetMapping(value = {"/empresa","/empresa/home","/empresa/"})
+    @GetMapping(value = {"/enterprise","/enterprise/home","/enterprise/"})
     public String enterpriseIndex() {
         return "/views/enterprise/index.html";
     }
 
-    @GetMapping(value = "/empresa/verIdea")
+    @GetMapping(value = "/enterprise/verIdea")
     public String enterpriseIndexIdea() {
         return "/views/enterprise/viewIdea-enterprise.html";
     }
 
-    @GetMapping(value = "/empresa/compraPacks")
+    @GetMapping(value = "/enterprise/compraPacks")
     public String comprarPack() {
         return "/views/enterprise/packs.html";
     }
 
-    @GetMapping(value = "/empresa/profile")
+    @GetMapping(value = "/enterprise/profile")
     public String enterpriseProfile() {
         return "/views/enterprise/profile.html";
     }

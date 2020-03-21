@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $.ajax({
         
         url:    "/api/auth/session",
@@ -10,7 +11,12 @@ $(document).ready(function(){
         mimeType: "application/json",
         success: function(data){
             console.log("Username: " + data.username +"\nUsuario activo:" + data.active);
-            var role = data.type.toLowerCase();
+            sesion = data;
+            var role;
+            if(data.type == "Creador")
+                role = "creator";
+            else
+                role = "enterprise";
 
             document.getElementById("navbardrop").innerHTML = data.username;
             document.getElementById("drop-header-item-profile").setAttribute("href","/"+role+"/profile");
