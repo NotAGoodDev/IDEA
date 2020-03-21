@@ -1,7 +1,5 @@
 
-
-.btn-edit
-{
+.btn-edit {
     width: fit-content;
     border-radius: 10px;
     border: 2px solid white;
@@ -11,8 +9,7 @@
     align-self: flex-end;
 }
 
-.btn-edit:hover
-{
+.btn-edit:hover {
     width: fit-content;
     border-radius: 10px;
     color: #66bb6a;
@@ -20,8 +17,8 @@
     align-self: flex-end;
 }
 
-#lista-idea{
-    border:solid black 2px;
-    padding:10px;
+#lista-idea {
+    border: solid black 2px;
+    padding: 10px;
 }
 

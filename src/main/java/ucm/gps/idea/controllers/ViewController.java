@@ -61,15 +61,11 @@ public class ViewController {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value = "/creador/viewIdea")
+    @GetMapping(value = "/creador/verIdea")
     public String creatorViewIdea() {
         return "/views/creator/verIdea.html";
     }
 
-    @GetMapping(value = "/creador/removeIdea")
-    public String removeIdea() {
-        return "/views/creator/eliminarIdea.html";
-    }
 
     @GetMapping(value = "/creador/acceptedIdeas")
     public String creatorAcceptedtIdeas() {
