@@ -32,10 +32,28 @@ $(document).ready(function() {
             params.active = true;
         }
 
-        ApiController.post("auth/register", params, function (response) {
-        })
+        $.ajax({
+            url         : "/api/auth/register",
+            type        : "POST",
+            data        : JSON.stringify(params),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            contentType : "application/json; charset=utf-8",
+            mimeType: "application/json",
+            dataType : 'json',
+            success:    function(){window.location.href = "/login";},
+            error:  function(){window.location.href = "/register";}
 
-        window.location.href = "/login";
+        }); //MOSTRAR MENSAJES DE ERROR O EXITO
+
+        /**
+         * "ApiController" funciona cuando no le sigue ninguna instruccion detras
+         *  o en el metodo request de la Clase se establece 'Async=false'
+         * 
+         *      ApiController.post("auth/register", params, function (response) {})
+         *      window.location.href = "/login";
+         */
     });
 
     $( "#selectType" ).on('change',function () {

@@ -20,11 +20,6 @@ public class ViewController {
         return "/views/index.html";
     }
 
-    @GetMapping(value = {"creator/home"})
-    public String homeCreator() {
-        return "/views/creator/index.html";
-    }
-
     @GetMapping(value = "/who")
     public String who() {
         return "/views/who.html";
@@ -56,60 +51,60 @@ public class ViewController {
     }
 
     // Creator
-    @GetMapping(value = "/creator")
+    @GetMapping(value = {"/creador","/creador/home","/creador/"})
     public String creatorIndex() {
         return "/views/creator/index.html";
     }
 
-    @GetMapping(value = "/creator/ideas")
+    @GetMapping(value = "/creador/ideas")
     public String creatorIdeas() {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value = "/creator/viewIdea")
+    @GetMapping(value = "/creador/viewIdea")
     public String creatorViewIdea() {
         return "/views/creator/verIdea.html";
     }
 
-    @GetMapping(value = "/creator/removeIdea")
+    @GetMapping(value = "/creador/removeIdea")
     public String removeIdea() {
         return "/views/creator/eliminarIdea.html";
     }
 
-    @GetMapping(value = "/creator/acceptedIdeas")
+    @GetMapping(value = "/creador/acceptedIdeas")
     public String creatorAcceptedtIdeas() {
         return "/views/creator/accepted-ideas.html";
     }
 
-    @GetMapping(value = "/creator/profile")
+    @GetMapping(value = "/creador/profile")
     public String creatorProfile() {
         return "/views/creator/profile.html";
     }
 
 
-    @GetMapping(value = "/creator/nuevaIdea")
+    @GetMapping(value = "/creador/nuevaIdea")
     public String creatorNewIdea() {
         return "/views/creator/newIdea.html";
     }
 
 
     // Enterprise
-    @GetMapping(value = "/enterprise")
+    @GetMapping(value = {"/empresa","/empresa/home","/empresa/"})
     public String enterpriseIndex() {
         return "/views/enterprise/index.html";
     }
 
-    @GetMapping(value = "/enterprise/verIdea")
+    @GetMapping(value = "/empresa/verIdea")
     public String enterpriseIndexIdea() {
         return "/views/enterprise/viewIdea-enterprise.html";
     }
 
-    @GetMapping(value = "/enterprise/compraPacks")
+    @GetMapping(value = "/empresa/compraPacks")
     public String comprarPack() {
         return "/views/enterprise/packs.html";
     }
 
-    @GetMapping(value = "/enterprise/profile")
+    @GetMapping(value = "/empresa/profile")
     public String enterpriseProfile() {
         return "/views/enterprise/profile.html";
     }
