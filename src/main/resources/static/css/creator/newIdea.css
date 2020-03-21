@@ -29,3 +29,51 @@
 #desc{
     margin-bottom: 20px;
 }
+
+.btn-cancel {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #bebebe;
+    color: black;
+    float: left;
+    background: #d7d7d7;
+    align-self: center;
+    margin-right: 20px;
+}
+
+.btn-cancel:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: red;
+    float: left;
+    background: #bebebe;
+    align-self: center;
+    margin-right: 20px;
+}
+
+.btn-success {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: center;
+}
+
+.btn-success:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: center;
+}

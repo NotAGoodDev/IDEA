@@ -72,7 +72,7 @@ input {
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
-    color: black;
+    color: red;
     float: right;
     background: #bebebe;
     align-self: flex-end;
@@ -98,7 +98,7 @@ input {
     margin-left: 50px;
 }
 
-.btn-enviar:hover {
+.btn-volver:hover {
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -106,7 +106,31 @@ input {
     color: white;
     float: right;
     background: #66bb6a;
+    align-self: flex-end;
+}
+
+.btn-contrato {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: top;
+    background: white;
     align-self: center;
     margin-left: 50px;
 }
+
+.btn-contrato:hover {
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
 
