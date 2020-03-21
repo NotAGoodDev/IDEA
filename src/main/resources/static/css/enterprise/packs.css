@@ -21,6 +21,16 @@
 }
 
 
+.btn-volver{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    background: white;
+}
+
 h2,h3,h5{
     text-align: center;
 }
