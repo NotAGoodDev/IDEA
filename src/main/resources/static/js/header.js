@@ -5,7 +5,7 @@ $(document).ready(function() {
     }
     $(function () {
         $("header").empty();
-        $("header").load('/header')
+        $("header").load('/header');
 
         $.loadCSS('/css/general.css');
     });

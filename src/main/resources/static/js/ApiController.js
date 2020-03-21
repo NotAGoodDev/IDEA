@@ -12,12 +12,12 @@ class ApiController {
 
     static post(endpoint, params) {
         let url = this.basePath() + endpoint;
-        return this.request(url, "POST", params);
+        return this.request(url, "POST", params,true);
     }
 
     static put(endpoint, params) {
         let url = this.basePath + endpoint;
-        return this.request(url, "PUT", params);
+        return this.request(url, "PUT", params,true);
     }
 
     //deberia ser private
@@ -30,7 +30,7 @@ class ApiController {
             contentType : 'application/json',
         });
 
-        $.ajax({
+        return $.ajax({
             async       : async,
             url         : url,
             type        : method,
@@ -40,9 +40,7 @@ class ApiController {
             },
             contentType : "application/json; charset=utf-8",
             mimeType: "application/json",
-            dataType : 'json',
-            success: function(data){return data; },
-            error: function(){return null;}
+            dataType : 'json'
         });
 
 
