@@ -12,27 +12,61 @@
     <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
     <script src="../../js/header.js"></script>
+    <script src="/js/creator/profile.js"></script>
     <script src="../../js/footer.js"></script>
 </head>
 <body>
 <header>
 </header>
+<main>
+    <div class="col-12 separator"></div>
+    <!-- Body -->
+    <form id="form">
+        <div class="container">
+            <div class="row" id="elementos">
+                <h3>Ver Idea</h3>
+            </div>
 
-<div id="form-idea" class="container">
-    <div class="row">
-        <h2>Ver Idea</h2>
-        <label for="titulo">Título:</label><br>
-        <textarea type="text" id="titulo" name="titulo" readonly="readonly" rows="2" cols="30"></textarea><br>
-        <label for="autor">Autor:</label><br>
-        <textarea type="text" id="autor" name="autor" readonly="readonly" rows="2" cols="30"></textarea><br>
-        <label for="dCorta">Descripción corta:</label><br>
-        <textarea name="dCorta" id="dCorta" type="text" readonly="readonly" rows="5" cols="100"></textarea><br>
-        <label for="desc">Descripción:</label><br>
-        <textarea type="text" name="desc" id="desc" readonly="readonly" rows="20" cols="100"></textarea><br>
-        <input type="submit" class="btn-rechazar" value="Rechazar">
-        <input type="submit" class="btn-aceptar" value="Aceptar">
-    </div>
+            <div class="row justify-content-around">
+              <div class="col-4">
+                    <label for="titulo">Título:</label><br>
+                    <input type="title" id="titulo" name="titulo" readonly="readonly" >
+                </div>
+                <div class="col-4">
+                    <label for="autor">Autor:</label><br>
+                    <input type="text" id="autor" name="autor" readonly="readonly" >
+                </div>
+            </div>
+            <div class="col-12 separator"></div>
+        <!-- Description -->
+            <div class="container" id="desc">
+                <div class="row">
+                    <label for="descriptionC">Descripcion corta:</label></div>
+                <div class="row">
+                    <input class="text-areaC" name="description" id="descriptionC" type="text" readonly="readonly">
+                </div>
 
-</div>
+                <div class="row">
+                    <label for="description">Description:</label>
+                </div>
+                <div class="row">
+                    <input class="text-area" type="text" name="description" id="description" readonly="readonly">
+                </div>
+            </div>
+
+        <!-- Botton -->
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-2">
+                    <button class="btn-back" type="submit" onclick="enableFields()"><a href="/creator">Volver</a></button>
+                </div>
+            </div>
+            <div class="col-12 separator"></div>
+        </div>
+    </form>
+
+</main>
+<footer>
+</footer>
 </body>
 </html>
