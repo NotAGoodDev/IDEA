@@ -14,7 +14,7 @@ import ucm.gps.idea.services.IdeaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/creators")
+@RequestMapping("api/creator")
 public class CreatorController {
 
     @Autowired

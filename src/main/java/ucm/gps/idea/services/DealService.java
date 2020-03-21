@@ -48,26 +48,23 @@ public class DealService {
 
     public Deal create(Deal deal, Integer enterprise_id, Integer idea_id) throws Exception {
 
-        logger.info("service");
-        /*
-        Idea idea = new Idea();
-        Enterprise enterprise = new Enterprise();
-
-        idea.setId(idea_id);
-        enterprise.setId(enterprise_id);
-        */
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         Date created_date = new Date(now.getYear(), now.getMonth().getValue(), now.getDayOfMonth());
 
+        logger.info(created_date.toString());
+
         deal.setCreatedAt(created_date);
 
         Idea idea = ideaRepository.findById(idea_id).orElseThrow(Exception::new);
-        Enterprise enterprise = enterpriseRepository.findById(enterprise_id).orElseThrow(Exception::new);
 
         logger.info(idea.getId().toString());
+
+        Enterprise enterprise = enterpriseRepository.findById(enterprise_id).orElseThrow(Exception::new);
+
         logger.info(enterprise.getId().toString());
+
+
 
         deal.setEnterprise(enterprise);
         deal.setIdea(idea);

@@ -1,59 +1,46 @@
+#elementos:hover{
 
-#uno {
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px;
-}
-
-#tres {
-    display: flex;
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: gray;
+    align-self: flex-end;
     justify-content: center;
-    margin: 10px;
 }
-
-#dos {
-    display: flex;
-    justify-content: space-around;
-    margin: 40px;
-}
-
-.btn-default {
+#elementos .btn-comprar{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
     border: 2px solid #66bb6a;
     color: black;
+    background: white;
 }
 
 
-.btn-default:hover {
-    background: #66bb6a;
-
-}
-
-h1, #elem {
-    color: #66bb6a;
-    font-size: 2em;
-}
-
-p {
-    font-size: 2em;
-}
-
-#cuadroUno, #cuadroTres {
-    border: black solid 2px;
-    width: 200px;
-    height: 400px;
-    padding-left: 60px;
+.btn-volver{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
     border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    background: white;
 }
 
+h2,h3,h5{
+    text-align: center;
+}
 
-#cuadroDos {
-    border: #66bb6a solid 10px;
-    width: 200px;
-    height: 400px;
-    padding-left: 60px;
+button#recomendado{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
     border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    background:#66bb6a;
 }

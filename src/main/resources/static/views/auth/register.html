@@ -38,7 +38,7 @@
                 <label for="email">Correo electrónico</label>
                 <input name="email" id="email" type="text">
                 <label for="imagen">Foto de perfil</label>
-                <input name="imagen" id="imagen" type="file">
+                <input name="imagen" id="imagen" type=" file">
             </div>
 
             <div class="col-12 separator"></div>
@@ -49,7 +49,7 @@
             <h3>¿Qué quieres ser?</h3>
             <div class="col-12 col-lg-2">
                 <select class="form-control" id="selectType">
-                    <option value="Creador", selected="selected">Creador</option>
+                    <option value="Creador">Creador</option>
                     <option value="Empresa">Empresa</option>
                 </select>
             </div>
@@ -59,7 +59,7 @@
 
         <div class="row" id="creator">
             <!-- CREATOR - GENERIC -->
-            <h3>Registrar creador</h3>
+            <h3>Datos del Creador</h3>
             <div class="col-12"></div>
 
             <div class="row">
@@ -68,20 +68,22 @@
                     <input type="text" name="nameCreator" id="nameCreator">
                     <label for="lastName">Apellidos</label>
                     <input name="lastName" id="lastName" type="text">
+                    <label for="birthDate">Fecha de Nacimiento</label>
+                    <input type="date" name="birthDate" id="birthDate">
                 </div>
 
                 <div class="col-12 col-lg-6 datos-generales">
-                    <label for="birthDate">Fecha de Nacimiento</label>
-                    <input type="date" name="birthDate" id="birthDate">
                     <label for="telephoneCreator">Teléfono</label>
                     <input type="tel" name="telephoneCreator" id="telephoneCreator">
+                    <label for="addressCreator">Dirección</label>
+                    <input name="addressCreator" id="addressCreator" type="text">
                 </div>
             </div>
         </div>
 
         <!-- ENTERPRISE - GENERIC -->
         <div class="row" id="enterprise">
-            <h3>Registrar empresa</h3>
+            <h3>Datos de la Empresa</h3>
             <div class="col-12"></div>
 
             <div class="row">
@@ -93,8 +95,8 @@
                 </div>
 
                 <div class="col-12 col-lg-6 datos-empresa">
-                    <label for="address">Dirección</label>
-                    <input name="address" id="address" type="text">
+                    <label for="addressEnterprise">Dirección</label>
+                    <input name="addressEnterprise" id="addressEnterprise" type="text">
                     <label for="telephoneEnterprise">Teléfono</label>
                     <input type="tel" name="telephoneEnterprise" id="telephoneEnterprise">
                 </div>
@@ -103,7 +105,7 @@
 
 
             <!-- ENTERPRISE - CARD -->
-            <h3>Datos de la tarjeta</h3>
+            <h3>Datos de la Tarjeta</h3>
             <div class="col-12"></div>
 
             <div class="row">

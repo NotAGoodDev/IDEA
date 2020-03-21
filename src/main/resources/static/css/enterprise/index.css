@@ -1,4 +1,86 @@
-#perfil-empresa {
+p{
+    margin-bottom:0px;
+}
+#parrafo p{
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+
+.btn-edit
+{
+    width: fit-content;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+.btn-edit:hover
+{
+    width: fit-content;
+    border-radius: 10px;
+    color: #66bb6a;
+    float: right;
+    align-self: flex-end;
+}
+
+#lista-idea{
+    border:solid black 2px;
+    padding:10px;
+}
+
+
+.btn-ver{
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+.btn-ver:hover{
+margin-top: 10px;
+width: fit-content;
+padding: 10px 20px;
+border-radius: 10px;
+color: white;
+float: right;
+background: #66bb6a;
+align-self: flex-end;
+}
+
+
+.btn-comprar{
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+.btn-ver:comprar{
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
+/*#perfil-empresa {
     margin: 30px 50px 40px;
 }
 
@@ -60,4 +142,4 @@
     border: solid #66bb6a 2px;
     border-radius: 5px;
     background: gray;
-}
+}*/

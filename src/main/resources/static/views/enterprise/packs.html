@@ -3,57 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>iDea</title>
-    <link href="webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="../../css/navbar.css" rel="stylesheet">
     <link href="../../css/footer.css" rel="stylesheet">
     <link href="../../css/enterprise/packs.css" rel="stylesheet">
-    <script src="webjars/jquery/3.2.0/jquery.min.js"></script>
-    <script src="webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="../../js/ApiController.js"></script>
-    <script src="../../js/register.js"></script>
     <script src="../../js/header.js"></script>
+    <script src="/js/creator/profile.js"></script>
     <script src="../../js/footer.js"></script>
 </head>
 <body>
 <header>
 </header>
 <main>
-    <div id="profile-creator" class="container">
 
-        <div id="dos">
-            <div class="row" id="cuadroUno">
-                <h1>Pack IDEA</h1>
-                <p>Pack de 100 ideas</p>
-                <p id="elem">70 euros</p>
-                <a href="/enterprise/index">
-                    <button type="button" class="btn-default">Comprar</button>
-                </a>
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+
+
+    <div class="container">
+        <form id="form">
+        <div class="row">
+            <!--1º paquete-->
+            <div class="col-4" id="elementos">
+                <h3>PACK IDEA</h3>
+                <h5>Pack de 100 ideas</h5>
+                <h2>70€</h2>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class=""col-8><button class="btn-comprar" type="submit" onclick="enableFields()"><a href="/enterprise">Comprar</a></button></div>
+                </div>
+            </div>
+            <!--2º paquete-->
+            <div class="col-4" id="elementos">
+                <h3>PACK IDEA</h3>
+                <h5>Pack de 100 ideas</h5>
+                <h2>70€</h2>
+                <div class="row">
+                    <div class="col-4"></div>
+                <div class="col-8"><button id="recomendado" type="submit" onclick="enableFields()"><a href="/enterprise">Comprar</a></button></div>
+                </div>
             </div>
 
-            <div class="row" id="cuadroDos">
-                <h1>Pack IDEA</h1>
-                <p>Pack de 100 ideas:</p>
-                <p id="elem">70 euros</p>
-                <a href="/enterprise/index">
-                    <button type="button" class="btn-default">Comprar</button>
-                </a>
-            </div>
-            <div class="row" id="cuadroTres">
-                <h1>Pack IDEA</h1>
-                <p>Pack de 100 ideas:</p>
-                <p id="elem">70euros</p>
-                <a href="/enterprise/index">
-                    <button type="button" class="btn-default">Comprar</button>
-                </a>
+            <!--3º paquete-->
+           <div class="col-4" id="elementos">
+                <h3>PACK IDEA</h3>
+                <h5>Pack de 100 ideas</h5>
+                <h2>70€</h2>
+               <div class="row">
+                   <div class="col-4"></div>
+                   <div class="col-8"><button class="btn-comprar" type="submit" onclick="enableFields()"><a href="/enterprise">Comprar</a></button></div>
+               </div>
             </div>
         </div>
-        <div class="row" id="tres">
-            <a href="/enterprise/index">
-                <button type="button" class="btn-default">Volver</button>
-            </a>
-        </div>
+        </form>
+
+        <div class="col-12 separator"></div>
+        <div class=row>
+            <div class="col-5"></div>
+            <div class="col-2 text-center">
+                <button class="btn-volver" type="submit" onclick="enableFields()"><a href="/enterprise">Volver</a></button>
+            </div>
+            <div class="col-5"></div>
+        <div class="col-12 separator"></div>
     </div>
+
 </main>
 <footer>
 </footer>
