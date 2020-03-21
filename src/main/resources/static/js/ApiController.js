@@ -4,24 +4,24 @@ class ApiController {
      
    static basePath(){return "/api/";}
 
-    static get(endpoint, params) {
+    static get(endpoint, params, async) {
         let url = this.basePath() + endpoint;
 
-        return this.request(url, "GET", '');
+        return this.request(url, "GET", '',async);
     }
 
     static post(endpoint, params) {
         let url = this.basePath() + endpoint;
-        return this.request(url, "POST", params);
+        return this.request(url, "POST", params,true);
     }
 
     static put(endpoint, params) {
         let url = this.basePath + endpoint;
-        return this.request(url, "PUT", params);
+        return this.request(url, "PUT", params,true);
     }
 
     //deberia ser private
-    static request(url, method, params){
+    static request(url, method, params, async){
 
         console.log({
             url         : url,
@@ -30,7 +30,8 @@ class ApiController {
             contentType : 'application/json',
         });
 
-        $.ajax({
+        return $.ajax({
+            async       : async,
             url         : url,
             type        : method,
             data        : JSON.stringify(params),
@@ -39,7 +40,7 @@ class ApiController {
             },
             contentType : "application/json; charset=utf-8",
             mimeType: "application/json",
-            dataType : 'json',
+            dataType : 'json'
         });
 
 

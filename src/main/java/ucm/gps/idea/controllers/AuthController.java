@@ -95,6 +95,16 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @GetMapping("/sessionid")
+    public ResponseEntity<?> userIdAuth(Principal principal){
+
+        if (principal != null) {
+            User user = userService.findByUsername(principal.getName());
+            return new ResponseEntity<>(user.getId(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
     @GetMapping("/session")
     public ResponseEntity<?> userAuth(Principal principal){
 
