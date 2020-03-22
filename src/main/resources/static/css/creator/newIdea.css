@@ -77,3 +77,12 @@
     background: #66bb6a;
     align-self: center;
 }
+
+#selectType{
+    width:150px;
+    height:45px;
+}
+
+#cat{
+    padding-top:5px;
+}

@@ -55,19 +55,22 @@
             </div>
             <!-- Search option with categorie and title -->
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <label for="title">Titulo</label>
                     <input type="title" name="title" id="title"></div>
-                <div class="col-7 text-center ">
+                <div class="col-4 text-center ">
                     <label for="search">Buscar</label>
                     <input type="search" name="search" id="search">
                 </div>
-                <div class="col-2 text-right" id="editIcon">
-                    <label for="title">Categoría</label>
-                    <select class="form-control" id="selectType">
+                <div class="col-4" id="editIcon">
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <label for="title">Categoría</label>
+                            </div>
+                    <div class="col-6" id="cat"><select class="form-control" id="selectType">
                         <option value="Categoria">Categoria</option>
                         <option value="Categoria">Categoria1</option>
-                    </select>
+                    </select></div>
                 </div>
             </div>
             <div class="col-12 separator"></div>

@@ -50,6 +50,14 @@ public class ViewController {
         return "/views/auth/login.html";
     }
 
+
+    //idea
+    @GetMapping(value = "/deal")
+    public String deal() {
+        return "/views/idea/deal.html";
+    }
+
+
     // Creator
     @GetMapping(value = {"/creator","/creator/home","/creator/"})
     public String creatorIndex() {
@@ -61,9 +69,9 @@ public class ViewController {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value = "/creator/verIdea")
+    @GetMapping(value = "/creator/viewIdea")
     public String creatorViewIdea() {
-        return "/views/creator/verIdea.html";
+        return "/views/creator/viewIdea.html";
     }
 
 
@@ -78,7 +86,7 @@ public class ViewController {
     }
 
 
-    @GetMapping(value = "/creator/nuevaIdea")
+    @GetMapping(value = "/creator/newIdea")
     public String creatorNewIdea() {
         return "/views/creator/newIdea.html";
     }
@@ -90,12 +98,12 @@ public class ViewController {
         return "/views/enterprise/index.html";
     }
 
-    @GetMapping(value = "/enterprise/verIdea")
+    @GetMapping(value = "/enterprise/viewIdea")
     public String enterpriseIndexIdea() {
         return "/views/enterprise/viewIdea-enterprise.html";
     }
 
-    @GetMapping(value = "/enterprise/compraPacks")
+    @GetMapping(value = "/enterprise/buyPack")
     public String comprarPack() {
         return "/views/enterprise/packs.html";
     }
@@ -104,6 +112,7 @@ public class ViewController {
     public String enterpriseProfile() {
         return "/views/enterprise/profile.html";
     }
+
 
 
 }
