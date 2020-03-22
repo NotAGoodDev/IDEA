@@ -1,7 +1,8 @@
 #sticky-footer{
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
+    
 }
 
 p.titulo {
