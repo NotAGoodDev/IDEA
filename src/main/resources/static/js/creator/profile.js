@@ -49,4 +49,24 @@ function enableFields()
         let button = document.getElementById(buttons[i]);
         button.style.display = "block";
     }
+
+}
+
+
+function confirmar(nomIdea,idIdea) {
+    $.confirm({
+        title: nomIdea,
+        content: '¿Desea eliminar '+  nomIdea + '?',
+        buttons: {
+            Aceptar: function () {
+                $.alert(nomIdea + ' borrada');
+            },
+            Cancelar: function () {
+               window.location.href = "/contractor";
+            },
+
+        }
+
+    });
+
 }

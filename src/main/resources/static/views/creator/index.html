@@ -20,28 +20,6 @@
 <body>
 <header>
 </header>
-<script>
-
-    $(document).ready(function () {
-
-    })
-
-    $.confirm({
-        title: "nombre de la idea",
-        content: '¿Desea eliminar "idea"?',
-        buttons: {
-            Aceptar: function () {
-                $.alert('Idea borrada');
-            },
-            cancelar: function () {
-                /*  $.alert('Cancelado');*/
-            },
-
-        }
-
-    });
-
-</script>
 
 <main>
     <div class="col-12 separator"></div>
@@ -75,16 +53,17 @@
                             <div class="col-6 col-lg-6 data text-right" id="editIcon">
                                 <div class="row">
                                     <div class="col-10 data text-right" id="editIcon">
-                                          <button class="btn-edit">
-                                              <a href="/creator/newIdea"> <i class="fa fa-pencil-alt"
+
+                                          <span class="btn-edit">
+                                              <a href="/creator/viewIdea"> <i class="fa fa-pencil-alt"
                                                                             style="font-size: 25px"></i></a>
-                                        </button>
+                                        </span>
                                     </div>
                                     <div class="col-2 data text-right" id="editIcon">
-                                        <button class="btn-edit" onclick="enableFields()">
-                                            <a href="/creator/viewIdea"><i class="far fa-trash-alt"
-                                                                           style="font-size: 25px"></i></a>
-                                        </button>
+                                        <span class="btn-edit" onclick="confirmar('Idea1', 10)">
+                                           <i class="far fa-trash-alt"
+                                                                           style="font-size: 25px"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <p>Categoria<br><strong>Estado</strong></p>
