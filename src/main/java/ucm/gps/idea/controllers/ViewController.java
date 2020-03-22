@@ -38,6 +38,13 @@ public class ViewController {
         return "/views/footer.html";
     }
 
+
+
+    @GetMapping(value = "/deal")
+    public String deal() {
+        return "/views/deal.html";
+    }
+
     // User
 
     @GetMapping(value = "/register")
@@ -48,13 +55,6 @@ public class ViewController {
     @GetMapping(value = "/login")
     public String login() {
         return "/views/auth/login.html";
-    }
-
-
-    //idea
-    @GetMapping(value = "/deal")
-    public String deal() {
-        return "/views/idea/deal.html";
     }
 
 
@@ -100,7 +100,7 @@ public class ViewController {
 
     @GetMapping(value = "/enterprise/viewIdea")
     public String enterpriseIndexIdea() {
-        return "/views/enterprise/viewIdea-enterprise.html";
+        return "/views/enterprise/viewIdea.html";
     }
 
     @GetMapping(value = "/enterprise/buyPack")
