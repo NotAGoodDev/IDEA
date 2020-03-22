@@ -11,7 +11,7 @@ $(document).ready(function(){
 
         document.getElementById("navbardrop").innerHTML = data.username;
         document.getElementById("drop-header-item-profile").setAttribute("href","/"+role+"/profile");
-        document.getElementById("header-home").setAttribute("href","/creator/");
+        document.getElementById("header-home").setAttribute("href","/"+role+"/home");
     });
     
 });
