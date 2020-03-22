@@ -7,11 +7,6 @@ $(document).ready(function() {
         $("header").empty();
         $("header").load('/header');
 
-        ApiController.get("api/ideas/","",true).then(function(data){
-            var x = data;
-            x = data;
-        })
-
         $.loadCSS('/css/general.css');
     });
 });
