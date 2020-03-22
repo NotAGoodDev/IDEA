@@ -1,3 +1,9 @@
+#sticky-footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
 p.titulo {
     color: #66bb6a;
     font-size: 18px;
@@ -28,7 +34,6 @@ a.legal
 .separator
 {
     height: 50px;
-    width: auto;
 }
 
 i.fa-facebook

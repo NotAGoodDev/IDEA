@@ -4,7 +4,7 @@ html
 }
 
 body {
-    height: 85%;
+    min-height: 100vh;
 }
 
 

@@ -13,7 +13,6 @@
     <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="/js/ApiController.js"></script>
     <script src="/js/header.js"></script>
-    <script src="/js/creator/profile.js"></script>
     <script src="/js/footer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
@@ -21,25 +20,23 @@
 <header>
 </header>
 <script>
-
-    $(document).ready(function () {
-
-    })
+function confirm(){
 
     $.confirm({
         title: "nombre de la idea",
         content: '¿Desea eliminar "idea"?',
         buttons: {
-            Aceptar: function () {
+            aceptar: function () {
+                //llamar a borrar idea
                 $.alert('Idea borrada');
+                //recargar la pagina
             },
             cancelar: function () {
                 /*  $.alert('Cancelado');*/
             },
-
         }
-
     });
+}
 
 </script>
 
@@ -52,7 +49,7 @@
             <div class="col-2"></div>
             <div class="col-8"></div>
             <div class="col-2 text-right" id="editIcon">
-                <button class="btn-edit" onclick="enableFields()">
+                <button class="btn-edit">
                     <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
                 </button>
             </div>
@@ -61,11 +58,10 @@
 
         <!--Body-->
         <div class="container">
-            <form id="form">
+
                 <!-- Mis ideas-->
                 <div class="row">
-                    <div class="col-12 col-lg-6 data id=" editIcon
-                    ">
+                    <div class="col-12 col-lg-6 data" >
                     <h2>Mis ideas</h2>
                     <div class="container" id="lista-idea">
                         <div class="row">
@@ -75,15 +71,13 @@
                             <div class="col-6 col-lg-6 data text-right" id="editIcon">
                                 <div class="row">
                                     <div class="col-10 data text-right" id="editIcon">
-                                          <button class="btn-edit">
-                                              <a href="/creator/newIdea"> <i class="fa fa-pencil-alt"
-                                                                            style="font-size: 25px"></i></a>
+                                          <button class="btn-edit" onclick="confirm">
+                                              <a> <i class="fa fa-pencil-alt" style="font-size: 25px"></i></a>
                                         </button>
                                     </div>
                                     <div class="col-2 data text-right" id="editIcon">
-                                        <button class="btn-edit" onclick="enableFields()">
-                                            <a href="/creator/viewIdea"><i class="far fa-trash-alt"
-                                                                           style="font-size: 25px"></i></a>
+                                        <button class="btn-edit"onclick=confirm() >
+                                            <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
                                         </button>
                                     </div>
                                 </div>
@@ -95,8 +89,7 @@
                 </div>
                 <!--Ideas Aceptadas-->
 
-                <div class="col-12 col-lg-6 data id=" editIcon
-                ">
+                <div class="col-12 col-lg-6 data">
                 <h2>Ideas aceptadas</h2>
                 <div class="container" id="lista-idea">
                     <div class="row">
@@ -108,16 +101,14 @@
                             <div class="row">
 
                                 <div class="col-10 data text-right" id="editIcon">
-                                    <button class="btn-edit" onclick="enableFields()">
-                                        <a href="/creator/newIdea"><i class="fa fa-pencil-alt"
-                                                                        style="font-size: 25px"></i></a>
+                                    <button class="btn-edit">
+                                        <a><i class="fa fa-pencil-alt" style="font-size: 25px"></i></a>
 
                                     </button>
                                 </div>
                                 <div class="col-2 data text-right" id="editIcon">
-                                    <button class="btn-edit" onclick="confirm()">
-                                        <a href="/creator/viewIdea"><i class="far fa-trash-alt"
-                                                                       style="font-size: 25px"></i></a>
+                                    <button class="btn-edit" onclick=confirm()>
+                                        <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -128,7 +119,6 @@
 
                 </div>
 
-            </form>
 
         </div>
 
