@@ -1,68 +1,23 @@
 
-#elementos {
+.elementos {
     border: solid black 4px;
     border-radius: 10px;
     height: 500px;
-    padding-bottom: 10px;
     align-items: center;
 }
 
+.col-4 {
+    padding: 0px 0px 0px 0px;
+}
 
-#elementos:hover {
-    border: 4px solid #66bb6a;
-    margin-top: 28px;
+.elementos:hover {
+    border: 6px solid #66bb6a;
+    margin-top: 5px;
     width: fit-content;
-    padding: 10px 30px;
     border-radius: 10px;
     float: right;
     align-self: flex-end;
     justify-content: center;
-}
-
-#elementos .btn-comprar {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: 2px solid #66bb6a;
-    color: black;
-    background: white;
-}
-
-.btn-comprar:hover {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    color: white;
-
-    background: #66bb6a;
-    align-self: center;
-}
-
-.btn-volver {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    color: black;
-    float: right;
-    background: white;
-    align-self: center;
-    border: solid #66bb6a;
-
-}
-
-
-.btn-volver:hover {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    color: white;
-    float: right;
-    background: #66bb6a;
-    align-self: center;
 }
 
 
@@ -73,10 +28,6 @@ h2, h3, h5 {
 
 
 .fa-star {
-    color: gold;
+    color: #66bb6a;
     padding-top: 35px;
-}
-
-#recomendado {
-    padding-left: 105px;
 }
