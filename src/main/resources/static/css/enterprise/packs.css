@@ -3,6 +3,7 @@
     border: solid black 4px;
     border-radius: 10px;
     height: 500px;
+    padding-bottom: 10px;
     align-items: center;
 }
 
@@ -13,7 +14,7 @@
 .elementos:hover {
     border: 6px solid #66bb6a;
     margin-top: 5px;
-    width: fit-content;
+    /*width: fit-content;*/
     border-radius: 10px;
     float: right;
     align-self: flex-end;
@@ -30,4 +31,8 @@ h2, h3, h5 {
 .fa-star {
     color: #66bb6a;
     padding-top: 35px;
+}
+
+.cont{
+   margin-left:5px;
 }
