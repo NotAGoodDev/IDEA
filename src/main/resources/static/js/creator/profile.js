@@ -1,11 +1,29 @@
 $(document).ready(function() {
     //Formulario de registro de creador
+    let form = $( this );
+    document.getElementsByName("imagen").forEach(function(item){
+        item.style.display ="none";
+    });
+    document.getElementsByName("password").forEach(function(item){
+        item.style.display ="none";
+    })
 
-    ApiController.get("0", "");                             //Falta poner el {id} que no le tenemos
+    ApiController.get("auth/sessionId","",true).then(function(id){
+        ApiController.get("creator/id/"+id,"",true).then(function(creator){
+            document.getElementById("nombre-usuario").innerHTML = "Bienvenido, "+ creator.username;
+            document.getElementById("username").setAttribute("value",creator.username);
+            document.getElementById("name").setAttribute("value",creator.name);
+            document.getElementById("email").setAttribute("value",creator.email);
+            document.getElementById("lastName").setAttribute("value",creator.lastName);
+            document.getElementById("telephone").setAttribute("value",creator.telephone);
+            document.getElementById("address").setAttribute("value",creator.address);
+            var date  = creator.birthDate.split("T");
+            document.getElementById("birthDate").setAttribute("value",date[0]);
+        });
+    });  
 
     $( ".btn-success" ).submit(function( event ) {
         let params = {};
-        let form = $( this );
 
         params.username = form.find( "input[name='username']" ).val();
         params.password = form.find( "input[name='password']" ).val();
@@ -20,13 +38,11 @@ $(document).ready(function() {
 
         ApiController.put("", params, function (response) {     //Falta poner el {id} que no le tenemos
         });
-    })
+    });
 
-
-    document.getElementById("btn-cancel").onclick = function()
-    {
-        window.location.href = "/";
-    };
+    $("#change-pass").click(function(){
+        changePass();
+    });
 })
 
 
@@ -34,11 +50,20 @@ function enableFields()
 {
     let fields = ["username", "password", "email", "name", "lastName", "birthDate", "telephone", "address"];
 
+    document.getElementsByName("imagen").forEach(function(item){
+        item.style.display ="block";
+    });
+    document.getElementsByName("password").forEach(function(item){
+        item.style.display ="block";
+    });
+
     for (let i in fields)
     {
         document.getElementById(fields[i]).readOnly = false;
         document.getElementById(fields[i]).type = "text";
     }
+
+    document.getElementById("birthDate").type = "date";
 
     let edit = document.getElementById("editIcon");
     edit.style.display = "none";
@@ -50,6 +75,21 @@ function enableFields()
         button.style.display = "block";
     }
 
+}
+
+function changePass(){
+    var pass = document.getElementById("password").value;
+    var newpass =  document.getElementById("new-password").value;
+
+    if(pass === newpass){
+        alert("Las nueva contraseña no puede ser igual a la anterior.");
+    }else{
+        //comprobar si la contrasena introducida es correcta 
+        //proceder a cambiarla
+        if(confirm("Esta seguro?")){
+            alert("Proceder a cambiarla");
+        }
+    }
 }
 
 
