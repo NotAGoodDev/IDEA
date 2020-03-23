@@ -14,6 +14,7 @@
     <script src="/js/header.js"></script>
     <script src="/js/creator/profile.js"></script>
     <script src="/js/footer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 <body>
 <header>
@@ -35,7 +36,7 @@
             <!-- Profile Message -->
             <div class="col-2"></div>
             <div class="col-8 text-center">
-                <h2>Bienvenido, 'usuario'</h2>
+                <h2 id="nombre-usuario"></h2>
             </div>
             <div class="col-2 text-right" id="editIcon">
                 <button class="btn-edit" onclick="enableFields()">
@@ -62,10 +63,14 @@
                             <label for="username">Username</label>
                             <input name="username" id="username" type="readonly" readonly>
 
-                            <label for="password">Contraseña</label>
-                            <input type="readonly" name="password" id="password" readonly>
-
-                            <span class="subtitulo">La contraseña tiene que tener 6 caracteres o más</span>
+                            <label name="password" for="password">Contraseña</label>
+                           
+                            <button style="border: 2px solid #66bb6a; background-color: white; color: black;"
+                              name="password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Cambiar     
+                            </button>
+                            <!--input type="readonly" name="password" id="password" readonly>
+                            <span class="subtitulo">La contraseña tiene que tener 6 caracteres o más</span-->
                         </div>
 
                         <div class="col-12 col-lg-6 data">
@@ -73,7 +78,7 @@
                             <label for="email">Correo electrónico</label>
                             <input name="email" id="email" type="readonly" readonly>
 
-                            <label for="imagen">Foto de perfil</label>
+                            <label name="imagen" for="imagen">Foto de perfil</label>
                             <input name="imagen" id="imagen" type="file">
                         </div>
                     </div>
@@ -105,8 +110,8 @@
                     <div class="row">
                         <div class="col-sm-3 col-lg-9"></div>
                         <div class="col-sm-1 col-lg-1">
-                            <button type="submit" class="btn-cancel" id="btn-cancel" style="display: none">          <!-- Activate with JS -->
-                                <a href="/"> Cancelar </a>
+                            <button class="btn-cancel" id="btn-cancel" style="display: none">          <!-- Activate with JS -->
+                                <a> Cancelar </a>
                             </button>
                         </div>
                         <div class="col-sm-6 col-lg-1"></div>
@@ -117,8 +122,37 @@
                         </div>
                     </div>
 
+                        <!-- Modal Password -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">Cambiar contraseña</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <label for="password">Contraseña</label>
+                                <input style="width: 100%;" type="text" name="password" id="password">
+
+                                <label for="password">Nueva Contraseña</label>
+                                <input style="width: 100%;" type="text" name="new-password" id="new-password">
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                            <button type="button" id="change-pass" class="btn btn-success" data-dismiss="modal">Cambiar</button>
+                            </div>
+                            
+                        </div>
+                        </div>
+                </div>
+
                 </form>
-            </div>
+              
         </div>
 
         <div class="col-12 separator"></div>

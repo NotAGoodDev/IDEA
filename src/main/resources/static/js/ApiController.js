@@ -7,7 +7,7 @@ class ApiController {
     static get(endpoint, params, async) {
         let url = this.basePath() + endpoint;
 
-        return this.request(url, "GET", '',async);
+        return this.request(url, "GET", params,async);
     }
 
     static post(endpoint, params) {

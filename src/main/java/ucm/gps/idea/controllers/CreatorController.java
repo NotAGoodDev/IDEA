@@ -31,7 +31,7 @@ public class CreatorController {
         return new ResponseEntity<>(listCreator, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path="/id/{id}")
     public ResponseEntity<Creator> index(@PathVariable Integer id){
         try{
             Creator creator = creatorService.index(id);

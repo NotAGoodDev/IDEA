@@ -95,7 +95,7 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/sessionid")
+    @GetMapping("/sessionId")
     public ResponseEntity<?> userIdAuth(Principal principal){
 
         if (principal != null) {

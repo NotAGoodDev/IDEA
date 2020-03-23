@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    ApiController.get("auth/session","",true).then(function(data){
+    ApiController.get("auth/session","",false).then(function(data){
         console.log("Username: " + data.username +"\nUsuario activo:" + data.active);
         sesion = data;
         var role;
