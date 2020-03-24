@@ -19,53 +19,60 @@
 </header>
 
 <main>
-    <div>
-        <div class="row">
-            <h1>Final Casa de Papel</h1>
-        </div>
-        <div class="row" id="uno">
-            <div class="titulo">
-                <label>Título:</label><input type="text" id="tit" name="tit" readonly="readonly"><br>
+    <div class="col-12 separator"></div>
+    <!-- Body -->
+    <form id="form">
+        <div class="container">
+            <div class="row" id="elementos">
+                <h3>Ver Idea</h3>
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <label for="titulo">Título</label><br>
+                    <input  name="titulo" id="titulo"  type="readonly" readonly >
+                </div>
+                <div class="col-4">
+                    <label for="autor">Autor</label><br>
+                    <input  name="autor" id="autor"  type="readonly" readonly >
+                </div>
+                <div class="col-4">
+                    <label for="fecha">Fecha</label><br>
+                    <input  name="fecha" id="fecha"  type="readonly" readonly >
+                </div>
+            </div>
+            <div class="col-12 separator"></div>
+            <!-- Description -->
+            <div class="container" id="desc">
+                <div class="row">
+                    <label for="descriptionC">Descripcion corta</label></div>
+                <div class="row">
+                    <input  name="descriptionC" id="descriptionC"  type="readonly" readonly >
+                </div>
+
+                <div class="row">
+                    <label for="description">Description</label>
+                </div>
+                <div class="row">
+                    <input  name="description" id="description"  type="readonly" readonly >
+                </div>
             </div>
 
-            <div class="autor">
-                <label>Autor:</label><input type="text" id="tit" name="tit" readonly="readonly"><br>
+            <!-- Bottons -->
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="botones">
+                    <a href="/enterprise">
+                        <button type="bot" class="btn-cancel">Volver</button>
+                    </a>
+                    <a href="/enterprise">
+                        <button type="bot" class="btn-contrato">Contratar</button>
+                    </a>
+                </div>
             </div>
-
-            <div class="fecha">
-                <label>Fecha:</label></label><input type="text" id="tit" name="tit" readonly="readonly"><br>
-
-            </div>
+            <div class="col-12 separator"></div>
+            <div class="col-12 separator"></div>
         </div>
-    </div>
-    <label id="lbl">Descripcion corta:</label><br>
-    <div class="textE">
-        <textarea id="dos" readonly="readonly">jdsja</textarea><br>
-    </div>
-
-    <label id="lbl">Descripcion:</label><br>
-    <div class="textEdit">
-        <textarea id="tres" readonly="readonly">jdsja</textarea><br>
-    </div>
-    </div>
-
-
-    <div class="botones">
-        <div class="elem">
-            <a href="/enterprise">
-                <button type="bot" class="btn-descartar">Descartar</button>
-            </a>
-            <a href="/enterprise">
-                <button type="bot" class="btn-volver">Volver</button>
-            </a>
-        </div>
-        <div class="elem">
-            <a href="/deal">
-                <button type="bot" class="btn-contrato">Contratar</button>
-            </a>
-        </div>
-    </div>
-
+    </form>
 
 </main>
 <footer>
