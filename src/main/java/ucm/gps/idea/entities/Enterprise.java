@@ -12,9 +12,9 @@ public class Enterprise extends User implements Serializable {
 
     public Enterprise(){}
 
-    public Enterprise(String username, String password, String type, Boolean active, String email, String name,
+    public Enterprise(String username, String password, /*String type,*/ Boolean active, String email, String name,
                       String cif, String address, String telephone, Integer creditCard, Integer remIdeas) {
-        super(username, password, type, active, email, name, address, telephone);
+        super(username, password, active, email, name, address, telephone);
         this.CIF = cif;
         this.creditCard = creditCard;
         this.remainingIdeas = remIdeas;

@@ -17,11 +17,10 @@ public class User implements Serializable {
 
     public User(){}
 
-    public User(String username, String password, String type, Boolean active, String email,
+    public User(String username, String password, Boolean active, String email,
                 String name, String address, String telephone) {
         this.username = username;
         this.password = password;
-        this.type = type;
         this.active = active;
         this.email = email;
         this.name = name;
@@ -44,10 +43,6 @@ public class User implements Serializable {
     @NotBlank
     @Column(name = "password", nullable = false, length = 60)
     private String password;
-
-    @NotBlank
-    @Column(name = "type", nullable = false)
-    private String type;
 
     @Column(name = "active")
     private Boolean active = true;
@@ -95,14 +90,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Boolean getActive() {

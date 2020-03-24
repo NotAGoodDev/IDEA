@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
+import ucm.gps.idea.entities.Role;
 import ucm.gps.idea.entities.User;
 import ucm.gps.idea.models.ModelUser;
 import ucm.gps.idea.services.CreatorService;
@@ -20,7 +21,10 @@ import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
+import java.lang.reflect.Array;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequestMapping("/api/users/")
 public class UserController {
@@ -37,57 +41,68 @@ public class UserController {
 
         User user = userService.findByUsername(principal.getName());
 
-        try{
-            switch(user.getType().toLowerCase()){
-                case "creador":
-                    Creator creator = creatorService.index(user.getId());
-                    return new ResponseEntity<>(creator, HttpStatus.OK);
-                case "empresa":
-                    Enterprise enterprise = enterpriseService.index(user.getId());
-                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
-                default:
-                    return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-            }
-        }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
+        List<Role> userRoles = user.getRoles();
 
+        if(!userRoles.isEmpty()) {
+            try {
+                switch (userRoles.get(0).getName()) {
+                    case "ROLE_CREATOR":
+                        Creator creator = creatorService.index(user.getId());
+                        return new ResponseEntity<>(creator, HttpStatus.OK);
+                    case "ROLE_ENTERPRISE":
+                        Enterprise enterprise = enterpriseService.index(user.getId());
+                        return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                    default:
+                        return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                }
+            } catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
 
     @PutMapping("/profiles/")
-    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal){
+    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
-        try{
-            switch(user.getType().toLowerCase()){
-                case "creador":
-                    user.setAddress(moduser.getAddress());
-                    user.setEmail(moduser.getEmail());
-                    user.setName(moduser.getName());
-                    user.setTelephone(moduser.getTelephone());
-                    userService.save(user);
-                    Creator creator = creatorService.index(user.getId());
-                    creator.setLastName(moduser.getLastName());
-                    creator = creatorService.create(creator);
-                    return new ResponseEntity<>(creator, HttpStatus.OK);
-                case "empresa":
-                    user.setAddress(moduser.getAddress());
-                    user.setEmail(moduser.getEmail());
-                    user.setName(moduser.getName());
-                    user.setTelephone(moduser.getTelephone());
-                    userService.save(user);
+        List<Role> userRoles = user.getRoles();
 
-                    Enterprise enterprise = enterpriseService.index(user.getId());
-                    enterprise.setCreditCard(moduser.getCardNumber());
-                    enterprise = enterpriseService.create(enterprise);
+        if(!userRoles.isEmpty()){
+            try {
+                switch (userRoles.get(0).getName()) {
+                    case "ROLE_CREATOR":
+                        user.setAddress(moduser.getAddress());
+                        user.setEmail(moduser.getEmail());
+                        user.setName(moduser.getName());
+                        user.setTelephone(moduser.getTelephone());
+                        userService.save(user);
+                        Creator creator = creatorService.index(user.getId());
+                        creator.setLastName(moduser.getLastName());
+                        creator = creatorService.create(creator);
+                        return new ResponseEntity<>(creator, HttpStatus.OK);
+                    case "ROLE_ENTERPRISE":
+                        user.setAddress(moduser.getAddress());
+                        user.setEmail(moduser.getEmail());
+                        user.setName(moduser.getName());
+                        user.setTelephone(moduser.getTelephone());
+                        userService.save(user);
 
-                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
-                default:
-                    return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                        Enterprise enterprise = enterpriseService.index(user.getId());
+                        enterprise.setCreditCard(moduser.getCardNumber());
+                        enterprise = enterpriseService.create(enterprise);
+
+                        return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                    default:
+                        return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                }
+            } catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
-        }catch (Exception e){ return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
-
-
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
 }

@@ -59,30 +59,30 @@ public class AuthController {
                 }catch (Exception e){
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                 }
-                user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
-                        regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
+                user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                        true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
                         regUser.getTelephone(), regUser.getAddress());
 
                 user = userService.save(user);
 
                 elRol = new Role();
                 elRol.setUserId(user.getId());
-                elRol.setName("ROLE_USER");
+                elRol.setName("ROLE_CREATOR");
                 elRol = roleService.save(elRol);
                 userRoles.add(elRol);
                 user.setRoles(userRoles);
 
                 break;
             case "Empresa":
-                user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()), regUser.getType(), true,
-                        regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
+                user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                        true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
                         regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
 
                 user = userService.save(user);
 
                 elRol = new Role();
                 elRol.setUserId(user.getId());
-                elRol.setName("ROLE_USER");
+                elRol.setName("ROLE_ENTERPRISE");
                 elRol = roleService.save(elRol);
                 userRoles.add(elRol);
                 user.setRoles(userRoles);
