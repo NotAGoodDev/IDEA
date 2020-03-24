@@ -22,7 +22,7 @@ $(document).ready(function() {
         });
     });  
 
-    $("#form").submit(function(event) {
+    $("#btn-success").click(function(event) {
         let params = {};
 
         params.username = form.find( "input[name='username']" ).val();
@@ -36,7 +36,13 @@ $(document).ready(function() {
         params.type = "Creador";
 
         
-        ApiController.put("users/profiles/", params, false);
+        ApiController.put("users/profiles/", params, false).then(function(done){
+            if(done){
+                alert("Cambios realizados con exito en el perfil.");            
+            }else{
+                alert("Error al realizar los cambios en el perfil.");
+            }window.location.href = "/creator/profile";
+        });
     });
 
     $("#change-pass").click(function(){
@@ -49,17 +55,19 @@ function enableFields()
 {
     let fields = ["username", "password", "email", "name", "lastName", "birthDate", "telephone", "address"];
 
-    document.getElementsByName("imagen").forEach(function(item){
+ /*   document.getElementsByName("imagen").forEach(function(item){
         item.style.display ="block";
-    });
+    });*/
     document.getElementsByName("password").forEach(function(item){
         item.style.display ="block";
     });
 
     for (let i in fields)
     {
-        document.getElementById(fields[i]).readOnly = false;
-        document.getElementById(fields[i]).type = "text";
+        if(fields[i] != "username" && fields[i] != "email"){
+            document.getElementById(fields[i]).readOnly = false;
+            document.getElementById(fields[i]).type = "text";
+        }
     }
 
     document.getElementById("birthDate").type = "date";

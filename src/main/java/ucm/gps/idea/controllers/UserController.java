@@ -3,12 +3,8 @@ package ucm.gps.idea.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +18,9 @@ import ucm.gps.idea.entities.User;
 import ucm.gps.idea.models.ModelUser;
 import ucm.gps.idea.services.CreatorService;
 import ucm.gps.idea.services.EnterpriseService;
-import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
-
-import java.lang.reflect.Array;
 import java.security.Principal;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -76,7 +68,7 @@ public class UserController {
 
 
     @PutMapping("/profiles/")
-    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal) {
+    public /*ResponseEntity<User>*/Boolean modify(@RequestBody ModelUser moduser, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
@@ -86,7 +78,6 @@ public class UserController {
             switch (userRoles.get(0).getName()) {
                 case "ROLE_CREATOR":
                     user.setAddress(moduser.getAddress());
-                    user.setEmail(moduser.getEmail());
                     user.setName(moduser.getName());
                     user.setTelephone(moduser.getTelephone());
                     userService.save(user);
@@ -96,10 +87,10 @@ public class UserController {
                     date.setHours(12);
                     creator.setBirthDate(date);
                     creator = creatorService.create(creator);
-                    return new ResponseEntity<>(creator, HttpStatus.OK);
+                   // return new ResponseEntity<>(creator, HttpStatus.OK);
+                   return true;
                 case "ROLE_ENTERPRISE":
-                    user.setAddress(moduser.getAddress());
-                    user.setEmail(moduser.getEmail());
+                    user.setAddress(moduser.getAddress());  
                     user.setName(moduser.getName());
                     user.setTelephone(moduser.getTelephone());
                     userService.save(user);
@@ -108,16 +99,20 @@ public class UserController {
                     enterprise.setCreditCard(moduser.getCardNumber());
                     enterprise = enterpriseService.create(enterprise);
 
-                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                    //return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                    return true;
                 default:
-                    return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                    //return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                    return false;
             }
         }catch (Exception e) {
-                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            }
+            //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return false;
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
+       // return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+       return false;
+}
 
     @PutMapping(value="changepass")
     public boolean putMethodName(@RequestParam String pass, @RequestParam String newPass, Principal principal) {

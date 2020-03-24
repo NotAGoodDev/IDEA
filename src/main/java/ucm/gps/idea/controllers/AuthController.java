@@ -5,9 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Creator;
@@ -44,56 +41,59 @@ public class AuthController {
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public ResponseEntity<User> create(@RequestBody ModelUser regUser) {
+    public /*ResponseEntity<User>*/Boolean create(@RequestBody ModelUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
 
         User user = null;
         List<Role> userRoles = new ArrayList<Role>();
         Role elRol = null;
         Date creatorDate = null;
-
-        switch (regUser.getType()){
-            case "Creador":
-                try{
+        try{
+            switch (regUser.getType()){
+                case "Creador":
+                    
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
                     creatorDate.setHours(12);
-                }catch (Exception e){
-                    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-                }
-                user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                        true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
-                        regUser.getTelephone(), regUser.getAddress());
+                
+                    user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                            true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
+                            regUser.getTelephone(), regUser.getAddress());
 
-                user = userService.save(user);
+                    user = userService.save(user);
 
-                elRol = new Role();
-                elRol.setUserId(user.getId());
-                elRol.setName("ROLE_CREATOR");
-                elRol = roleService.save(elRol);
-                userRoles.add(elRol);
-                user.setRoles(userRoles);
+                    elRol = new Role();
+                    elRol.setUserId(user.getId());
+                    elRol.setName("ROLE_CREATOR");
+                    elRol = roleService.save(elRol);
+                    userRoles.add(elRol);
+                    user.setRoles(userRoles);
 
-                break;
-            case "Empresa":
-                user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
-                        true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
-                        regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
+                    break;
+                case "Empresa":
+                    user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                            true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
+                            regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
 
-                user = userService.save(user);
+                    user = userService.save(user);
 
-                elRol = new Role();
-                elRol.setUserId(user.getId());
-                elRol.setName("ROLE_ENTERPRISE");
-                elRol = roleService.save(elRol);
-                userRoles.add(elRol);
-                user.setRoles(userRoles);
+                    elRol = new Role();
+                    elRol.setUserId(user.getId());
+                    elRol.setName("ROLE_ENTERPRISE");
+                    elRol = roleService.save(elRol);
+                    userRoles.add(elRol);
+                    user.setRoles(userRoles);
 
-                break;
-            default:
-                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                    break;
+                default:
+                    //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                    return false;
+            }
+        }catch (Exception e){
+            //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return false;
         }
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        //return new ResponseEntity<>(user, HttpStatus.OK);
+        return false;
     }
 
     @GetMapping("/sessionId")
