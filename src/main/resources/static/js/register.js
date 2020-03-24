@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         ApiController.post("auth/register",params).then(function(data){
             //data != null ? window.location.href = "/login" : window.location.href = "/register";
-            if(!data){
+            if(data){
                 alert("Registro realizado con exito.");
                 window.location.href = "/login"
             }else{
@@ -69,6 +69,10 @@ $(document).ready(function() {
 
     $( "#selectType" ).ready(function () {
         let x;
+
+        document.getElementsByName("imagen").forEach(function(item){
+           item.style.display = "none";
+        })
 
         x = document.getElementById("creator");
         x.style.display = "block";
