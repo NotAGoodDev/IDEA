@@ -17,8 +17,32 @@
     align-self: flex-end;
 }
 
-#lista-idea {
-    border: solid black 2px;
+.lista-idea {
+    background-color: white;
+    border: 2px solid black;
     padding: 10px;
+    border-radius: 5px;
+
+}
+
+.lista-idea:hover {
+
+
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#add {
+    margin-bottom: 14px;
+}
+
+#cont {
+    vertical-items: center;
+}
+
+.jconfirm-title-c{
+    color:#66bb6a;
 }
 

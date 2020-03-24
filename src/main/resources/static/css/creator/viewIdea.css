@@ -2,7 +2,8 @@
     margin:10px;
 }
 
-#form input[type="title"], input[type="text"]{
+
+#form input[type="readonly"] {
     background-color: #EEEEEE;
     color: grey;
     border: 2px solid grey;
@@ -10,46 +11,20 @@
     border-radius: 5px;
 }
 
-#form input[type="title"]:hover, input[type="text"]:hover{
-    background-color: white;
-    border: 2px solid #66bb6a;
+#form input[type="readonly"]:hover {
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
     padding: 10px;
     border-radius: 5px;
 }
 
-#form .btn-back{
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: 2px solid #66bb6a;
-    color: black;
-    float: right;
-    background: white;
-    align-self: flex-end;
-}
-
-#form:hover  .btn-back:hover{
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
-    color: white;
-    float: right;
-    background: #66bb6a;
-    align-self: flex-end;
-}
-
-.text-areaC{
+#descriptionC{
     width:100%;
-    height:50px;
+    height:80px;
 }
 
-.text-area{
+#description{
     width:100%;
-    height:150px;
-}
-
-#desc{
-    margin-bottom: 20px;
+   height: 150px !important;
 }

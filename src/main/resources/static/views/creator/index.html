@@ -8,6 +8,7 @@
     <link href="/css/navbar.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
     <link href="/css/creator/index.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
@@ -21,23 +22,23 @@
 </header>
 
 <script>
-function confirm(){
+    function confirm() {
 
-    $.confirm({
-        title: "nombre de la idea",
-        content: '¿Desea eliminar "idea"?',
-        buttons: {
-            aceptar: function () {
-                //llamar a borrar idea
-                $.alert('Idea borrada');
-                //recargar la pagina
-            },
-            cancelar: function () {
-                /*  $.alert('Cancelado');*/
-            },
-        }
-    });
-}
+        $.confirm({
+            title: "nombre de la idea",
+            content: '¿Desea eliminar "idea"?',
+            buttons: {
+                aceptar: function () {
+                    //llamar a borrar idea
+                    $.alert('Idea borrada');
+                    //recargar la pagina
+                },
+                cancelar: function () {
+                    /*  $.alert('Cancelado');*/
+                },
+            }
+        });
+    }
 
 </script>
 
@@ -46,90 +47,102 @@ function confirm(){
     <div class="col-12 separator"></div>
     <!--Pencil icon-->
     <div class="container">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8"></div>
-            <div class="col-2 text-right" id="editIcon">
+        <div class="row" id="add">
+            <div class="col-1 text-left">
                 <button class="btn-edit">
                     <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
                 </button>
             </div>
-        </div>
-        <div class="col-12 separator"></div>
+            <div class="col-5"></div>
+            <div class="col-6"></div>
+        </div> <!--cerrado row del añadir-->
 
         <!--Body-->
-        <div class="container">
+        <div id="form-register" class="container">
 
-                <!-- Mis ideas-->
-                <div class="row">
-                    <div class="col-12 col-lg-6 data" >
-                    <h2>Mis ideas</h2>
-                    <div class="container" id="lista-idea">
-                        <div class="row">
-                            <div class="col-6 col-lg-6 data"><a href="/creator/viewIdea"><strong>Idea1</strong><br>Lorem
-                                ipsum dolor sit amet, sapien etiam, nunc amet
-                                dolor ac odio mauris justo</a></div>
-                            <div class="col-6 col-lg-6 data text-right" id="editIcon">
-                                <div class="row">
-                                    <div class="col-10 data text-right" id="editIcon">
-                                          <button class="btn-edit" onclick="confirm">
-                                              <a> <i class="fa fa-pencil-alt" style="font-size: 25px"></i></a>
-                                        </button>
-                                    </div>
-                                    <div class="col-2 data text-right" id="editIcon">
-                                        <button class="btn-edit"onclick=confirm() >
+            <!-- Mis ideas-->
+            <form class="row">
+                <div class="col-12 col-lg-6 data">
+                    <h3>Mis ideas</h3>
+                    <div class="container lista-idea">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6 text-left"><h3>idea1</h3></div>
+                                <div class="col-6 col-lg-6 data text-right"><!--iconos-->
+                                    <div class="row">
+                                        <div class="col-10 data text-right">
+                                          <span class="btn-edit">
+                                              <a href="/creator/viewIdea"> <i class="fa fa-pencil-alt"
+                                                                              style="font-size: 25px"></i></a>
+                                        </span>
+                                        </div><!--cerrado d editar-->
+                                        <div class="col-2 data text-right">
+                                        <span class="btn-edit" onclick=confirm()>
                                             <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
-                                        </button>
-                                    </div>
+                                        </span>
+                                        </div><!--cerrado d borrar-->
+                                    </div> <!--cerrado row-->
                                 </div>
-                                <p>fecha</p>
-
+                            </div>
+                            <div class=" row">
+                                <div class="col-12 text-right">
+                                    <h5>dd/mm/aaaa</h5></div>
+                            </div>
+                            <div class="row">
+                                <a href="/creator/viewIdea">Lorem
+                                    ipsum dolor sit amet, sapien etiam, nunc amet
+                                    dolor ac odio mauris justo ipsum dolor sit amet, sapien etiam, nunc amet
+                                    dolor ac odio mauris j dolor ac odio mauris j </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--Ideas Aceptadas-->
-
+                <!--ideas aceptadas-->
                 <div class="col-12 col-lg-6 data">
-                <h2>Ideas aceptadas</h2>
-                <div class="container" id="lista-idea">
-                    <div class="row">
-                        <div class="col-6 col-lg-6 data"><a href="/creator/viewIdea"><strong>Idea1</strong><br>Lorem
-                            ipsum dolor sit amet, sapien etiam, nunc amet
-                            dolor ac odio mauris justo</a></div>
-                        <div class="col-6 col-lg-6 data text-right" id="editIcon">
+                    <h3>Ideas aceptadas</h3>
+                    <div class="container lista-idea">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6 text-left"><h3>idea1</h3></div>
+
+                                <div class="col-6 col-lg-6 data text-right"><!--iconos-->
+                                    <div class="row">
+                                        <div class="col-10 data text-right">
+                                          <span class="btn-edit">
+                                              <a href="/creator/viewIdea"> <i class="fa fa-pencil-alt"
+                                                                              style="font-size: 25px"></i></a>
+                                        </span>
+                                        </div><!--cerrado d editar-->
+                                        <div class="col-2 data text-right">
+                                        <span class="btn-edit" onclick=confirm()>
+                                            <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
+                                        </span>
+                                        </div><!--cerrado d borrar-->
+                                    </div> <!--cerrado row-->
+
+                                </div>
+
+                            </div>
+                            <div class=" row">
+                                <div class="col-12 text-right">
+                                    <h5>dd/mm/aaaa</h5></div>
+                            </div>
 
                             <div class="row">
-
-                                <div class="col-10 data text-right" id="editIcon">
-                                    <button class="btn-edit">
-                                        <a><i class="fa fa-pencil-alt" style="font-size: 25px"></i></a>
-
-                                    </button>
-                                </div>
-                                <div class="col-2 data text-right" id="editIcon">
-                                    <button class="btn-edit" onclick=confirm()>
-                                        <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
-                                    </button>
-                                </div>
+                                <a href="/creator/viewIdea">Lorem
+                                    ipsum dolor sit amet, sapien etiam, nunc amet
+                                    dolor ac odio mauris justo ipsum dolor sit amet, sapien etiam, nunc amet
+                                    dolor ac odio mauris j dolor ac odio mauris j </a>
                             </div>
-                            <p>fecha</p>
-
-
                         </div>
                     </div>
-
                 </div>
-
-
+            </form>
         </div>
-
-    </div>
-
+    </div><!--container principal-->
 
     <div class="col-12 separator"></div>
-
-
+    <div class="col-12 separator"></div>
 </main>
 <footer>
 </footer>

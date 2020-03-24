@@ -21,48 +21,46 @@
 <main>
     <div class="col-12 separator"></div>
     <!-- Body -->
-
     <form id="form">
         <div class="container">
             <div class="row" id="elementos">
                 <h3>Ver Idea</h3>
             </div>
-
             <div class="row justify-content-around">
               <div class="col-4">
-                    <label for="titulo">Título:</label><br>
-                    <input type="title" id="titulo" name="titulo" readonly="readonly" >
+                    <label for="titulo">Título</label><br>
+                    <input  name="titulo" id="titulo"  type="readonly" readonly >
                 </div>
                 <div class="col-4">
-                    <label for="autor">Autor:</label><br>
-                    <input type="text" id="autor" name="autor" readonly="readonly" >
+                    <label for="autor">Autor</label><br>
+                    <input  name="autor" id="autor"  type="readonly" readonly >
                 </div>
             </div>
             <div class="col-12 separator"></div>
         <!-- Description -->
             <div class="container" id="desc">
                 <div class="row">
-                    <label for="descriptionC">Descripcion corta:</label></div>
+                    <label for="descriptionC">Descripcion corta</label></div>
                 <div class="row">
-                    <input class="text-areaC" name="description" id="descriptionC" type="text" readonly="readonly">
+                    <input  name="descriptionC" id="descriptionC"  type="readonly" readonly >
                 </div>
 
                 <div class="row">
-                    <label for="description">Description:</label>
+                    <label for="description">Description</label>
                 </div>
                 <div class="row">
-                    <input class="text-area" type="text" name="description" id="description" readonly="readonly">
+                    <input  name="description" id="description"  type="readonly" readonly >
                 </div>
             </div>
-
 
         <!-- Botton -->
             <div class="row">
                 <div class="col-9"></div>
-                <div class="col-2">
-                    <button class="btn-back" type="submit" onclick="enableFields()"><a href="/creator">Volver</a></button>
+                <div class="col-3 text-right">
+                    <button class="btn-cancel" type="submit" onclick="enableFields()"><a href="/creator">Volver</a></button>
                 </div>
             </div>
+            <div class="col-12 separator"></div>
             <div class="col-12 separator"></div>
         </div>
     </form>
