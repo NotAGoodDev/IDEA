@@ -56,6 +56,7 @@ public class AuthController {
             case "Creador":
                 try{
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
+                    creatorDate.setHours(12);
                 }catch (Exception e){
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                 }

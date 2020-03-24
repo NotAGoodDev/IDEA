@@ -22,11 +22,10 @@ $(document).ready(function() {
         });
     });  
 
-    $( ".btn-success" ).submit(function( event ) {
+    $("#form").submit(function(event) {
         let params = {};
 
         params.username = form.find( "input[name='username']" ).val();
-        params.password = form.find( "input[name='password']" ).val();
         params.email = form.find( "input[name='email']" ).val();
         params.name = form.find( "input[name='name']" ).val();
         params.lastName = form.find( "input[name='lastName']" ).val();
@@ -36,8 +35,8 @@ $(document).ready(function() {
         params.active = true;
         params.type = "Creador";
 
-        ApiController.put("", params, function (response) {     //Falta poner el {id} que no le tenemos
-        });
+        
+        ApiController.put("users/profiles/", params, false);
     });
 
     $("#change-pass").click(function(){
@@ -87,7 +86,15 @@ function changePass(){
         //comprobar si la contrasena introducida es correcta 
         //proceder a cambiarla
         if(confirm("Esta seguro?")){
-            alert("Proceder a cambiarla");
+            var newPass = document.getElementById("new-password").value;
+            var pass = document.getElementById("password").value;
+            ApiController.put("users/changepass/?pass="+pass+"&newPass="+newPass,"",true).then(function(done){
+                if(done){
+                    alert("Contraseña cambiada con exito");
+                }else{
+                    alert("No se pudo cambiar la contraseña");
+                }
+            });
         }
     }
 }

@@ -15,9 +15,9 @@ class ApiController {
         return this.request(url, "POST", params,true);
     }
 
-    static put(endpoint, params) {
-        let url = this.basePath + endpoint;
-        return this.request(url, "PUT", params,true);
+    static put(endpoint, params,async) {
+        let url = this.basePath() + endpoint;
+        return this.request(url, "PUT", params,async);
     }
 
     //deberia ser private

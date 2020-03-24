@@ -8,9 +8,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Role;
@@ -23,9 +27,14 @@ import ucm.gps.idea.services.UserService;
 
 import java.lang.reflect.Array;
 import java.security.Principal;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+
+@RestController
 @RequestMapping("/api/users/")
 public class UserController {
 
@@ -35,6 +44,9 @@ public class UserController {
     private CreatorService creatorService;
     @Autowired
     private EnterpriseService enterpriseService;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
 
     @GetMapping("profiles")
     public ResponseEntity<?> getProfile(Principal principal) {
@@ -69,40 +81,54 @@ public class UserController {
         User user = userService.findByUsername(principal.getName());
 
         List<Role> userRoles = user.getRoles();
+    if(!userRoles.isEmpty()){
+        try{
+            switch (userRoles.get(0).getName()) {
+                case "ROLE_CREATOR":
+                    user.setAddress(moduser.getAddress());
+                    user.setEmail(moduser.getEmail());
+                    user.setName(moduser.getName());
+                    user.setTelephone(moduser.getTelephone());
+                    userService.save(user);
+                    Creator creator = creatorService.index(user.getId());
+                    creator.setLastName(moduser.getLastName());
+                    Date date = new SimpleDateFormat("yyyy-mm-dd").parse(moduser.getBirthDate());
+                    date.setHours(12);
+                    creator.setBirthDate(date);
+                    creator = creatorService.create(creator);
+                    return new ResponseEntity<>(creator, HttpStatus.OK);
+                case "ROLE_ENTERPRISE":
+                    user.setAddress(moduser.getAddress());
+                    user.setEmail(moduser.getEmail());
+                    user.setName(moduser.getName());
+                    user.setTelephone(moduser.getTelephone());
+                    userService.save(user);
 
-        if(!userRoles.isEmpty()){
-            try {
-                switch (userRoles.get(0).getName()) {
-                    case "ROLE_CREATOR":
-                        user.setAddress(moduser.getAddress());
-                        user.setEmail(moduser.getEmail());
-                        user.setName(moduser.getName());
-                        user.setTelephone(moduser.getTelephone());
-                        userService.save(user);
-                        Creator creator = creatorService.index(user.getId());
-                        creator.setLastName(moduser.getLastName());
-                        creator = creatorService.create(creator);
-                        return new ResponseEntity<>(creator, HttpStatus.OK);
-                    case "ROLE_ENTERPRISE":
-                        user.setAddress(moduser.getAddress());
-                        user.setEmail(moduser.getEmail());
-                        user.setName(moduser.getName());
-                        user.setTelephone(moduser.getTelephone());
-                        userService.save(user);
+                    Enterprise enterprise = enterpriseService.index(user.getId());
+                    enterprise.setCreditCard(moduser.getCardNumber());
+                    enterprise = enterpriseService.create(enterprise);
 
-                        Enterprise enterprise = enterpriseService.index(user.getId());
-                        enterprise.setCreditCard(moduser.getCardNumber());
-                        enterprise = enterpriseService.create(enterprise);
-
-                        return new ResponseEntity<>(enterprise, HttpStatus.OK);
-                    default:
-                        return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-                }
-            } catch (Exception e) {
+                    return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                default:
+                    return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+            }
+        }catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @PutMapping(value="changepass")
+    public boolean putMethodName(@RequestParam String pass, @RequestParam String newPass, Principal principal) {
+        Creator user = creatorService.findByUsername(principal.getName());
+        
+        if(encoder.matches(pass, user.getPassword())){
+            user.setPassword(encoder.encode(newPass));
+            userService.save(user);
+            return true;
+        }
+        return false;
     }
 
 }
