@@ -116,12 +116,15 @@ public class UserController {
 
     @PutMapping(value="changepass")
     public boolean putMethodName(@RequestParam String pass, @RequestParam String newPass, Principal principal) {
-        Creator user = creatorService.findByUsername(principal.getName());
-        
-        if(encoder.matches(pass, user.getPassword())){
-            user.setPassword(encoder.encode(newPass));
-            userService.save(user);
-            return true;
+        User user = userService.findByUsername(principal.getName());
+        try{
+            if(encoder.matches(pass, user.getPassword())){
+                user.setPassword(encoder.encode(newPass));
+                userService.save(user);
+                return true;
+            }
+        }catch(Exception e){
+            return false;
         }
         return false;
     }

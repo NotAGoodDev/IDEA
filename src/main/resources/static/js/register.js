@@ -39,7 +39,6 @@ $(document).ready(function() {
                 window.location.href = "/login"
             }else{
                 alert("Error al completar el registro.");
-                window.location.href = "/register";
             }
         });
     });

@@ -11,9 +11,11 @@ $(document).ready(function(){
                 break;
             }
         }
+        role = role.toLowerCase();
+        document.getElementById("logo-img").setAttribute("href","/"+role+"/home");
         document.getElementById("navbardrop").innerHTML = data.username;
-        document.getElementById("drop-header-item-profile").setAttribute("href","/"+role.toLowerCase()+"/profile");
-        document.getElementById("header-home").setAttribute("href","/"+role.toLowerCase()+"/home");
+        document.getElementById("drop-header-item-profile").setAttribute("href","/"+role+"/profile");
+        document.getElementById("header-home").setAttribute("href","/"+role+"/home");
     });
     
 });

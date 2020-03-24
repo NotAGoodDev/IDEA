@@ -67,8 +67,9 @@ public class AuthController {
                     elRol = roleService.save(elRol);
                     userRoles.add(elRol);
                     user.setRoles(userRoles);
-
-                    break;
+                
+                    return true;
+                    //break;
                 case "Empresa":
                     user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
@@ -83,7 +84,8 @@ public class AuthController {
                     userRoles.add(elRol);
                     user.setRoles(userRoles);
 
-                    break;
+                    return true;
+                    //break;
                 default:
                     //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                     return false;
@@ -93,7 +95,6 @@ public class AuthController {
             return false;
         }
         //return new ResponseEntity<>(user, HttpStatus.OK);
-        return false;
     }
 
     @GetMapping("/sessionId")

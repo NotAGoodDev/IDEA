@@ -55,9 +55,6 @@ function enableFields()
 {
     let fields = ["username", "password", "email", "name", "lastName", "birthDate", "telephone", "address"];
 
- /*   document.getElementsByName("imagen").forEach(function(item){
-        item.style.display ="block";
-    });*/
     document.getElementsByName("password").forEach(function(item){
         item.style.display ="block";
     });
@@ -91,8 +88,6 @@ function changePass(){
     if(pass === newpass){
         alert("Las nueva contraseña no puede ser igual a la anterior.");
     }else{
-        //comprobar si la contrasena introducida es correcta 
-        //proceder a cambiarla
         if(confirm("Esta seguro?")){
             var newPass = document.getElementById("new-password").value;
             var pass = document.getElementById("password").value;
