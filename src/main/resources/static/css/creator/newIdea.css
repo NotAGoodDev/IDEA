@@ -2,7 +2,7 @@
     margin:10px;
 }
 
-#form input[type="title"],input[type="search"], input[type="description"] {
+#form input[type="text"],input[type="search"], input[type="text-area"] {
     background-color: #EEEEEE;
     color: grey;
     border: 2px solid grey;
@@ -10,11 +10,9 @@
     border-radius: 5px;
 }
 
-#form input[type="title"]:hover, #form input[type="search"]:hover, #form input[type="description"]:hover {
+#form input[type="text"]:hover, #form input[type="search"]:hover, #form input[type="text-area"]:hover {
     background-color: white;
-    border: 2px solid #66bb6a;
-    padding: 10px;
-    border-radius: 5px;
+    border-color: #66bb6a;
 }
 .text-areaC{
     width:100%;
@@ -44,15 +42,8 @@
 }
 
 .btn-cancel:hover {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
     color: red;
-    float: left;
     background: #bebebe;
-    align-self: center;
-    margin-right: 20px;
 }
 
 .btn-success {
@@ -68,21 +59,60 @@
 }
 
 .btn-success:hover {
-    margin-top: 28px;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 10px;
     color: white;
-    float: right;
-    background: #66bb6a;
-    align-self: center;
-}
-
-#selectType{
-    width:150px;
-    height:45px;
 }
 
 #cat{
-    padding-top:5px;
+    display: flex;
+}
+
+#selectCategory{
+    max-width:150px;
+    flex-grow: 1;
+}
+
+
+
+
+#container-buscar-empresa{
+    position: relative;
+}
+.container-empresas-result{
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    position: absolute;
+    left: -25px;
+    top: 110%;
+    width: 270px;
+    border-radius: 5px;
+    overflow: inherit;
+    border: 1px solid black;
+    z-index: 10;
+}
+
+.container-empresas-result::before{
+    content: '';
+    position: absolute;
+    left: auto;
+    right: 10px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+
+}
+
+.container-empresas-result ul{
+    list-style-type: none;
+}
+
+.container-empresas-result ul li{
+    cursor: pointer;
+    text-align: left;
+}
+
+.btns{
+    margin-left:auto;
 }

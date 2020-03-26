@@ -14,6 +14,7 @@
     <script src="/js/header.js"></script>
     <script src="/js/creator/profile.js"></script>
     <script src="/js/footer.js"></script>
+    <script src="../../js/creator/newIdea.js"></script>
 </head>
 <body>
 <header>
@@ -51,55 +52,57 @@
     <form id="form">
         <div class="container">
             <div class="row" id="elementos">
-                <h3>Final casa de papel</h3>
+                <h3>Nueva idea</h3>
             </div>
             <!-- Search option with categorie and title -->
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4">
                     <label for="title">Titulo</label>
-                    <input type="title" name="title" id="title"></div>
-                <div class="col-4 text-center ">
-                    <label for="search">Buscar</label>
-                    <input type="search" name="search" id="search">
-                </div>
-                <div class="col-4" id="editIcon">
-                    <div class="row">
-                        <div class="col-6 text-right">
-                            <label for="title">Categoría</label>
+                    <input type="text" name="title" id="title"></div>
+                <div class="col-lg-4">
+                    <div id="container-buscar-empresa">
+                        <form>
+                            <label for="search-empresa">Buscar</label><input name="search-empresa" type="text" id="search-empresa" autocomplete="off" placeholder="Buscar...">
+                        </form>
+                        <div class="container-empresas-result">
+                            <ul class="list-empresas-result">
+                                <li>Lista 1</li>
+                                <li>Lista 2</li>
+                            </ul>
                         </div>
-                        <div class="col-6" id="cat"><select class="form-control" id="selectType">
-                            <option value="Categoria">Categoria</option>
-                            <option value="Categoria">Categoria1</option>
-                        </select></div>
                     </div>
+                </div>
+                <div class="col-lg-4" id="cat">
+                    <label for="title">Categoría</label>
+                    <select class="form-control" id="selectCategory">
+                        <option value="Categoria">Categoria</option>
+                        <option value="Categoria">Categoria1</option>
+                    </select>
                 </div>
                 <div class="col-12 separator"></div>
 
                 <!--Description-->
                 <div class="container" id="desc">
                     <div class="row">
-                        <label for="description">Descripcion corta</label></div>
+                        <label for="description-corta">Descripcion corta</label></div>
                     <div class="row">
-                        <input class="text-areaC" type="description" name="description" id="description">
+                        <input class="text-areaC" type="text-area" name="description" id="description-corta">
                     </div>
 
                     <div class="row">
                         <label for="description">Descripcion</label></div>
                     <div class="row">
-                        <input class="text-area" type="description" name="description" id="description">
+                        <input class="text-area" type="text-area" name="description" id="description">
                     </div>
                 </div>
 
                 <!--Botones cancel & success-->
-                <div class="row">
-                    <div class="col-5"></div>
-                    <div class="col-2 text-right">
-                        <button class="btn-cancel" type="submit"><a href="/creator">Cancelar</a></button>
-                    </div>
+                <div class="row btns">
 
-                    <div class="col-5 text-right">
-                        <button class="btn-success" type="submit" onclick="enableFields()"><a href="/creator">Enviar</a></button>
-                    </div>
+                    <a href="/creator/home" ><button class="btn-cancel">Cancelar</button></a>
+
+                    <button class="btn-success" type="submit" onclick="enableFields()">Enviar</button>
+
 
                 </div>
                 <div class="col-12 separator"></div>
