@@ -1,46 +1,43 @@
-
 class ApiController {
 
-     
-   static basePath(){return "/api/";}
+    static basePath = "/api/";
 
-    static get(endpoint, params, async) {
-        let url = this.basePath() + endpoint;
+    static get(endpoint, params) {
+        let url = this.basePath + endpoint;
 
-        return this.request(url, "GET", params,async);
+        return this.request(url, "GET", '');
     }
 
     static post(endpoint, params) {
-        let url = this.basePath() + endpoint;
-        return this.request(url, "POST", params,true);
+        let url = this.basePath + endpoint;
+        return this.request(url, "POST", params);
     }
 
-    static put(endpoint, params,async) {
-        let url = this.basePath() + endpoint;
-        return this.request(url, "PUT", params,async);
+    static put(endpoint, params) {
+        let url = this.basePath + endpoint;
+        return this.request(url, "PUT", params);
     }
 
     //deberia ser private
-    static request(url, method, params, async){
+    static request(url, method, params) {
 
         console.log({
-            url         : url,
-            method      : method,
-            data        : JSON.stringify(params),
-            contentType : 'application/json',
+            url: url,
+            method: method,
+            data: JSON.stringify(params),
+            contentType: 'application/json',
         });
 
-        return $.ajax({
-            async       : async,
-            url         : url,
-            type        : method,
-            data        : JSON.stringify(params),
+        $.ajax({
+            url: url,
+            type: method,
+            data: JSON.stringify(params),
             headers: {
                 'Content-Type': 'application/json'
             },
-            contentType : "application/json; charset=utf-8",
+            contentType: "application/json; charset=utf-8",
             mimeType: "application/json",
-            dataType : 'json'
+            dataType: 'json',
         });
 
 

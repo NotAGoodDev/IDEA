@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-content-center">
     <div class="navbar-title col-lg-1 col-md-1"></div>
     <a class="navbar-brand" href="/">
-        <img src="../../images/logo-navbar.png" width="50" height = "50">
+        <img src="../../images/logo-navbar.png" width="50" height="50">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -14,14 +15,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="/who"> Quienes somos </a>
             </li>
-            <li> <br> </li>
+            <li><br></li>
             <li class="nav-item" id="register-header">
                 <a class="nav-link" href="/register"> Regístrate </a>
             </li>
             <li class="nav-item" id="login-header">
                 <a class="nav-link" href="/login"> Login </a>
             </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" id="drop-header">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/#/" id="drop-header-item-profile">Profile</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+            </li>
         </ul>
         <div class="col-2"></div>
     </div>
 </nav>
+<script src="../js/session.js"></script>

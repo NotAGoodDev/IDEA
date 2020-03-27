@@ -10,7 +10,7 @@ p.titulo {
     font-size: 18px;
 }
 
-a:hover{
+a:hover {
     color: inherit;
     text-decoration: none;
 }
@@ -25,68 +25,58 @@ a.sub:hover {
     font-size: 14px;
 }
 
-a.legal
-{
+a.legal {
     color: slategrey;
     font-size: 14px;
     text-align: center;
 }
 
-.separator
-{
+.separator {
     height: 50px;
 }
 
-i.fa-facebook
-{
+i.fa-facebook {
     font-size: 30px;
     color: dodgerblue;
 }
 
-i.fa-facebook:hover
-{
+i.fa-facebook:hover {
     font-size: 28px;
     color: royalblue;
     margin-left: 1px;
 }
 
 
-i.fa-twitter
-{
+i.fa-twitter {
     font-size: 30px;
     color: deepskyblue;
 }
 
-i.fa-twitter:hover
-{
+i.fa-twitter:hover {
     font-size: 28px;
     color: royalblue;
     margin-left: 1px;
 }
 
 
-i.fa-linkedin
-{
+i.fa-linkedin {
     font-size: 30px;
     color: dodgerblue;
 }
 
-i.fa-linkedin:hover
-{
+i.fa-linkedin:hover {
     font-size: 28px;
     color: royalblue;
     margin-left: 1px;
 }
 
 
-i.fa-instagram
-{
+i.fa-instagram {
     font-size: 30px;
     color: white;
 }
 
-i.fa-instagram:hover
-{
+i.fa-instagram:hover {
     font-size: 28px;
     color: magenta;
     margin-left: 1px;

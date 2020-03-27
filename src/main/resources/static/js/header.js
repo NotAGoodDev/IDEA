@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    jQuery.loadCSS = function(url) {
+$(document).ready(function () {
+    jQuery.loadCSS = function (url) {
         if (!$('link[href="' + url + '"]').length)
             $('head').append('<link rel="stylesheet" type="text/css" href="' + url + '">');
     }

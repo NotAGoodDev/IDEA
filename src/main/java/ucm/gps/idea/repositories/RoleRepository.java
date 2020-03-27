@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ucm.gps.idea.entities.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role,Integer> {
+public interface RoleRepository extends JpaRepository<Role, Integer> {
 }

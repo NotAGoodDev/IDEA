@@ -14,7 +14,7 @@ public class Idea implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -49,9 +49,10 @@ public class Idea implements Serializable {
     private Boolean active;
 
     @PrePersist
-    public void prePersist(){
-        createdAt=new Date();
+    public void prePersist() {
+        createdAt = new Date();
     }
+
     public Integer getId() {
         return id;
     }
@@ -124,13 +125,11 @@ public class Idea implements Serializable {
         this.category = category;
     }
 
-    public Enterprise getEnterprise()
-    {
+    public Enterprise getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(Enterprise enterprise)
-    {
+    public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
     }
 }

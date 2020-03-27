@@ -26,7 +26,9 @@ public class IdeaService {
         return ideaRepository.findAll();
     }
 
-    public List<Idea> listByDate(){return ideaRepository.findByOrderByCreatedAtDesc();}
+    public List<Idea> listByDate() {
+        return ideaRepository.findByOrderByCreatedAtDesc();
+    }
 
     public Idea index(Integer id) throws Exception {
         return ideaRepository.findById(id).orElseThrow(Exception::new);
@@ -40,11 +42,11 @@ public class IdeaService {
         return ideaRepository.save(idea);
     }
 
-    public Idea send(Integer ideaID,Integer enterpriseID)throws Exception{
-       Idea idea= ideaRepository.findById(ideaID).orElseThrow(Exception::new);
-       Enterprise enterprise = enterpriseRepository.findById(enterpriseID).orElseThrow(Exception::new);
-       idea.setEnterprise(enterprise);
-       return ideaRepository.save(idea);
+    public Idea send(Integer ideaID, Integer enterpriseID) throws Exception {
+        Idea idea = ideaRepository.findById(ideaID).orElseThrow(Exception::new);
+        Enterprise enterprise = enterpriseRepository.findById(enterpriseID).orElseThrow(Exception::new);
+        idea.setEnterprise(enterprise);
+        return ideaRepository.save(idea);
 
     }
 }

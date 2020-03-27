@@ -10,7 +10,8 @@ public class Enterprise extends User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public Enterprise(){}
+    public Enterprise() {
+    }
 
     public Enterprise(String username, String password, /*String type,*/ Boolean active, String email, String name,
                       String cif, String address, String telephone, Integer creditCard, Integer remIdeas) {

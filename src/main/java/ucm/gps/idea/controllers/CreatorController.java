@@ -14,7 +14,7 @@ import ucm.gps.idea.services.IdeaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/creator")
+@RequestMapping("api/creators")
 public class CreatorController {
 
     @Autowired
@@ -25,17 +25,17 @@ public class CreatorController {
     private static final Logger logger = LoggerFactory.getLogger(CreatorController.class);
 
     @GetMapping("/")
-    public ResponseEntity<List<Creator>> list(){
+    public ResponseEntity<List<Creator>> list() {
         List<Creator> listCreator = creatorService.list();
         logger.info("se ha hecho una peticion de listar type creator");
         return new ResponseEntity<>(listCreator, HttpStatus.OK);
     }
 
-    @GetMapping(path="/id/{id}")
-    public ResponseEntity<Creator> index(@PathVariable Integer id){
-        try{
+    @GetMapping("/{id}")
+    public ResponseEntity<Creator> index(@PathVariable Integer id) {
+        try {
             Creator creator = creatorService.index(id);
-            return new ResponseEntity<>(creator,HttpStatus.OK);
+            return new ResponseEntity<>(creator, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed id: %i", id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -43,12 +43,12 @@ public class CreatorController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Creator> findByUsername(@PathVariable String name){
+    public ResponseEntity<Creator> findByUsername(@PathVariable String name) {
 
-        try{
+        try {
             Creator creator = creatorService.findByUsername(name);
-            return new ResponseEntity<>(creator,HttpStatus.OK);
-        }catch (Exception e) {
+            return new ResponseEntity<>(creator, HttpStatus.OK);
+        } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed name: %i", name));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

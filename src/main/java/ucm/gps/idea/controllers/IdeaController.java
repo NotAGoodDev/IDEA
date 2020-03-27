@@ -22,17 +22,17 @@ class IdeaController {
     private static final Logger logger = LoggerFactory.getLogger(IdeaController.class);
 
     @GetMapping("")
-    public ResponseEntity<List<Idea>> list(){
+    public ResponseEntity<List<Idea>> list() {
         List<Idea> listIdeas = ideaService.list();
         logger.info("se ha hecho una peticion de listar");
         return new ResponseEntity<>(listIdeas, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Idea> index(@PathVariable Integer id){
-        try{
+    public ResponseEntity<Idea> index(@PathVariable Integer id) {
+        try {
             Idea idea = ideaService.index(id);
-            return new ResponseEntity<>(idea,HttpStatus.OK);
+            return new ResponseEntity<>(idea, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed id: %i", id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -40,7 +40,7 @@ class IdeaController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Idea>> listByDate(){
+    public ResponseEntity<List<Idea>> listByDate() {
         List<Idea> listIdeas = ideaService.listByDate();
         logger.info("se ha hecho una peticion de listar por fecha de creacion");
         return new ResponseEntity<>(listIdeas, HttpStatus.OK);
@@ -58,10 +58,9 @@ class IdeaController {
     }
 
     @PostMapping("/ideas/{ideaID}/enterprises/{enterpriseID}")
-    public ResponseEntity<Idea> send(@PathVariable Integer ideaID, @PathVariable Integer enterpriseID)throws Exception{
-            return new ResponseEntity<Idea>(ideaService.send(ideaID, enterpriseID), HttpStatus.OK);
+    public ResponseEntity<Idea> send(@PathVariable Integer ideaID, @PathVariable Integer enterpriseID) throws Exception {
+        return new ResponseEntity<Idea>(ideaService.send(ideaID, enterpriseID), HttpStatus.OK);
     }
-    
 
 
 }

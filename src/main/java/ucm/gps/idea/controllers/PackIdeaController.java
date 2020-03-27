@@ -19,7 +19,7 @@ public class PackIdeaController {
     PackIdeaService packIdeaService;
 
     @GetMapping("")
-    public ResponseEntity<List<PackIdea>> list(){
+    public ResponseEntity<List<PackIdea>> list() {
         List<PackIdea> packages = packIdeaService.listAll();
         return new ResponseEntity<>(packages, HttpStatus.OK);
     }

@@ -7,10 +7,11 @@ import java.io.Serializable;
 @Table(name = "pack_idea")
 public class PackIdea implements Serializable {
 
-    public PackIdea(){}
+    public PackIdea() {
+    }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "pack_name")
@@ -80,12 +81,12 @@ public class PackIdea implements Serializable {
     @Override
     public String toString() {
         return "{" +
-                    "\"id\":" + this.id +
-                    "\"pack_name\":" + "\"" + this.name + "\"," +
-                    "\"price\":" + this.price + "," +
-                    "\"num_ideas\":" + this.numIdeas + "," +
-                    "\"discount\":" + this.discount + "," +
-                    "\"recommended\":" + this.recommended + "," +
+                "\"id\":" + this.id +
+                "\"pack_name\":" + "\"" + this.name + "\"," +
+                "\"price\":" + this.price + "," +
+                "\"num_ideas\":" + this.numIdeas + "," +
+                "\"discount\":" + this.discount + "," +
+                "\"recommended\":" + this.recommended + "," +
                 "}";
     }
 }

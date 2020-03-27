@@ -7,7 +7,7 @@ import ucm.gps.idea.entities.Idea;
 import java.util.List;
 
 @Repository
-public interface IdeaRepository extends JpaRepository<Idea,Integer> {
+public interface IdeaRepository extends JpaRepository<Idea, Integer> {
     public List<Idea> findByOrderByCreatedAtDesc();
 
 }

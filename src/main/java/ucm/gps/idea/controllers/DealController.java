@@ -29,8 +29,7 @@ public class DealController {
             deal.setTitle(dealDTO.getTitle());
             dealService.create(deal, dealDTO.getEnterprise_id(), dealDTO.getIdea_id());
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -15,7 +15,8 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String username, String password, Boolean active, String email,
                 String name, String address, String telephone) {
@@ -29,7 +30,7 @@ public class User implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Email

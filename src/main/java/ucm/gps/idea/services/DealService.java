@@ -39,7 +39,9 @@ public class DealService {
         return dealRepository.findById(id).orElseThrow(Exception::new);
     }
 
-    public Deal create(Deal deal) { return dealRepository.save(deal); }
+    public Deal create(Deal deal) {
+        return dealRepository.save(deal);
+    }
 
     public void delete(Integer id) {
         dealRepository.deleteById(id);

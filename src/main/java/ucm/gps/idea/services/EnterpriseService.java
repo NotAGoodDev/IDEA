@@ -33,9 +33,13 @@ public class EnterpriseService {
         return enterpriseRepository.save(enterprise);
     }
 
-    public Enterprise findByCif(String cif){
+    public Enterprise findByCif(String cif) {
         return enterpriseRepository.findByCIF(cif);
     }
 
-    public Enterprise findByName(String name){return enterpriseRepository.findByName(name);};
+    public Enterprise findByName(String name) {
+        return enterpriseRepository.findByName(name);
+    }
+
+    ;
 }
