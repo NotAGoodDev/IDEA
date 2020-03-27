@@ -39,6 +39,7 @@ public class Idea implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
     private Date createdAt;
 
@@ -50,7 +51,7 @@ public class Idea implements Serializable {
 
     @PrePersist
     public void prePersist(){
-        createdAt=new Date();
+        createdAt = new Date(System.currentTimeMillis()); // Idea creada el dia: [hora cogida del sistema]
     }
     public Integer getId() {
         return id;

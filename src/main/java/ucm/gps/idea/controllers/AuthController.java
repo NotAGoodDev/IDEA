@@ -41,19 +41,19 @@ public class AuthController {
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/register")
-    public /*ResponseEntity<User>*/Boolean create(@RequestBody ModelUser regUser) {
+    public ResponseEntity<User> create(@RequestBody ModelUser regUser) {
         // NOTA: De front nos llega "Creador" o "Empresa"
 
         User user = null;
         List<Role> userRoles = new ArrayList<Role>();
         Role elRol = null;
         Date creatorDate = null;
+
         try{
             switch (regUser.getType()){
                 case "Creador":
                     
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
-                    creatorDate.setHours(12);
                 
                     user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
@@ -68,8 +68,7 @@ public class AuthController {
                     userRoles.add(elRol);
                     user.setRoles(userRoles);
                 
-                    return true;
-                    //break;
+                    break;
                 case "Empresa":
                     user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
@@ -84,17 +83,14 @@ public class AuthController {
                     userRoles.add(elRol);
                     user.setRoles(userRoles);
 
-                    return true;
-                    //break;
+                    break;
                 default:
-                    //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-                    return false;
+                    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         }catch (Exception e){
-            //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            return false;
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        //return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/sessionId")
