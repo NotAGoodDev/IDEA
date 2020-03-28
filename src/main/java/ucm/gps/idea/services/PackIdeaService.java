@@ -31,4 +31,7 @@ public class PackIdeaService {
     public void delete(Integer id){
         packIdeaRepo.deleteById(id);
     }
+
+    public PackIdea findByName(String pack_name) {
+        return packIdeaRepo.findByName(pack_name);}
 }

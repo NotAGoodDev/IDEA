@@ -6,4 +6,5 @@ import ucm.gps.idea.entities.PackIdea;
 
 @Repository
 public interface PackIdeaRepository extends JpaRepository<PackIdea,Integer> {
+    public PackIdea findByName(String name);
 }

@@ -13,7 +13,7 @@ public class PackIdea implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "pack_name")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "price")
