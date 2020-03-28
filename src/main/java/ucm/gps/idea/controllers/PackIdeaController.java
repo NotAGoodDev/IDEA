@@ -39,16 +39,14 @@ public class PackIdeaController {
     }
 
     @GetMapping("/getPack")
-    public ResponseEntity<PackIdea> getPack(@PathVariable String packName ){
+    public ResponseEntity<PackIdea> getPack(@PathVariable String packName){
         PackIdea packIdea= packIdeaService.findByName(packName);
-        if(packIdea == null){
+
+        if(packIdea == null)
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
+
         return new ResponseEntity<>(packIdea,HttpStatus.OK);
-
     }
-
-
 
     // En formato String JSON por si ayuda en front
     /*@GetMapping("")

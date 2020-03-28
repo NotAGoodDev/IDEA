@@ -37,7 +37,7 @@ public class CreatorController {
             Creator creator = creatorService.index(id);
             return new ResponseEntity<>(creator,HttpStatus.OK);
         } catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed id: %i", id));
+            logger.error(String.format("Read an specific Idea failed id: " + id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -49,7 +49,7 @@ public class CreatorController {
             Creator creator = creatorService.findByUsername(name);
             return new ResponseEntity<>(creator,HttpStatus.OK);
         }catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed name: %i", name));
+            logger.error(String.format("Read an specific Idea failed name: " + name));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

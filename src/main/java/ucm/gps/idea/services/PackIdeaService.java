@@ -32,6 +32,7 @@ public class PackIdeaService {
         packIdeaRepo.deleteById(id);
     }
 
-    public PackIdea findByName(String pack_name) {
-        return packIdeaRepo.findByName(pack_name);}
+    public PackIdea findByName(String packName) {
+        return packIdeaRepo.findByName(packName);
+    }
 }
