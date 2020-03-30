@@ -1,19 +1,23 @@
 package ucm.gps.idea.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ucm.gps.idea.entities.PackIdea;
+import ucm.gps.idea.models.ModelPackToBuy;
 import ucm.gps.idea.services.PackIdeaService;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("api/packages")
 public class PackIdeaController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PackIdeaController.class);
 
     @Autowired
     PackIdeaService packIdeaService;
@@ -25,21 +29,14 @@ public class PackIdeaController {
     }
 
     @PostMapping("/buy")
-    public ResponseEntity<Boolean> create(@PathVariable Integer numTarjeta, @PathVariable Integer codigoValidacion,
-                                    @PathVariable String propietarioTarjeta, @PathVariable Date fechaExpiracion) {
-
-        Integer tarjeta = numTarjeta;
-        Integer ccv = codigoValidacion;
-        String titular = propietarioTarjeta;
-        Date fecha = fechaExpiracion;
-
-        // Falta de hacer la parte de VISA
-
-        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    public ResponseEntity<?> create(@RequestBody ModelPackToBuy modelPackToBuy) {
+        logger.info(modelPackToBuy.toString());
+        // DATOS RELATIVOS A LA COMPRA
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/getPack")
-    public ResponseEntity<PackIdea> getPack(@PathVariable String packName){
+    public ResponseEntity<PackIdea> getPack(@RequestBody String packName){
         PackIdea packIdea= packIdeaService.findByName(packName);
 
         if(packIdea == null)

@@ -2,7 +2,7 @@ package ucm.gps.idea.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ModelCard {
+public class ModelPackToBuy {
 
     @JsonProperty("cardNumber")
     private Integer cardNumber;
@@ -15,6 +15,17 @@ public class ModelCard {
 
     @JsonProperty("expirationDate")
     private String expirationDate;
+
+    @JsonProperty("numIdeasToBuy")
+    private String numIdeasToBuy;
+
+    public String getNumIdeasToBuy() {
+        return numIdeasToBuy;
+    }
+
+    public void setNumIdeasToBuy(String numIdeasToBuy) {
+        this.numIdeasToBuy = numIdeasToBuy;
+    }
 
     public Integer getCardNumber() {
         return cardNumber;
@@ -46,5 +57,16 @@ public class ModelCard {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "ModelPackToBuy{" +
+                "cardNumber=" + cardNumber +
+                ", ownerName='" + ownerName + '\'' +
+                ", validateNumber=" + validateNumber +
+                ", expirationDate='" + expirationDate + '\'' +
+                ", numIdeasToBuy='" + numIdeasToBuy + '\'' +
+                '}';
     }
 }
