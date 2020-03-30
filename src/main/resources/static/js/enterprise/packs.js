@@ -10,8 +10,13 @@ $(document).ready(function() {
         let purchaseData = {};
 
         $("#pack10ideas").click(function () {
-            purchaseData.numIdeasToBuy = 10;
-            //purchaseData.discount = 0;
+            let txt = document.getElementById("descuento-seleccion").value; // coger valor de la linea 73 del html
+            let numb = txt.match(/\d/g);
+            numb = numb.join("");
+            alert(numb);
+
+            /*purchaseData.numIdeasToBuy = 10;
+            purchaseData.discount = 0;
             purchaseData.cardNumber = 123;
             purchaseData.ownerName = "Pack10Ideas";
             purchaseData.validateNumber = 456;
@@ -24,13 +29,12 @@ $(document).ready(function() {
                 }else{
                     alert("Error al hacer el pago.");
                 }
-            });
+            });*/
         });
 
         $("#packXideas").click(function () {
             purchaseData.numIdeasToBuy = document.getElementById("numIdeas").value;
-            // Llamada para ver el descuento
-            //purchaseData.discount = 100;
+            purchaseData.discount = 100;
             purchaseData.cardNumber = 789;
             purchaseData.ownerName = "PackXIdeas";
             purchaseData.validateNumber = 1011;
@@ -48,7 +52,7 @@ $(document).ready(function() {
 
         $("#pack20ideas").click(function () {
             purchaseData.numIdeasToBuy = 20;
-            //purchaseData.discount = 0;
+            purchaseData.discount = 0;
             purchaseData.cardNumber = 1213;
             purchaseData.ownerName = "Pack20Ideas";
             purchaseData.validateNumber = 1415;
@@ -66,37 +70,34 @@ $(document).ready(function() {
     });
 });
 
-
-/////////// DE PRUEBA ///////////
-
+// SOLO PARA QE EL USUARIO VEA EL DESCUENTO Y EL PRECIO FINAL, EL PRECIO NO SE PASA A BACK SINO QUE SE CALCULA ALLI POR SEGURIDAD
 function getDiscount(){
-    // Para que se vea el descuento en pantalla
-    let ideasParaDto = {};
-    ideasParaDto.numIdeas = document.getElementById("numIdeas").value;
+    let dto, total, pricePerIdea = 7, numIdeasToBuy;
 
-    /*ApiController.get("packages/getDiscount", ideasParaDto, true).then(function (data) {
-        document.getElementById("descuento-seleccion").innerHTML = "Descuento: " + data.numIdeas + "%";
-        console.log("He entrado en getDisocunt" + data.numIdeas + ".");
-    });*/
-    if(ideasParaDto.numIdeas >= 1 && ideasParaDto.numIdeas < 50)
+    numIdeasToBuy = document.getElementById("numIdeas").value;
+
+    // PARA EL RANGO DE IDEAS MEJOR HACER UNA PETICION GET QUE NOS DEVUELVA LOS DESCUENTOS
+    if(numIdeasToBuy >= 40 && numIdeasToBuy < 250) {
+        dto = 0.05;
         document.getElementById("descuento-seleccion").innerHTML = "Descuento: 5%";
-    else if (ideasParaDto.numIdeas >= 50 && ideasParaDto.numIdeas < 250)
+    }
+    else if (numIdeasToBuy >= 250 && numIdeasToBuy < 2000) {
+        dto = 0.1;
+        document.getElementById("descuento-seleccion").innerHTML = "Descuento: 10%";
+    }
+    else if (numIdeasToBuy >= 2000 && numIdeasToBuy < 3500) {
+        dto = 0.15;
         document.getElementById("descuento-seleccion").innerHTML = "Descuento: 15%";
-    else
+    }
+    else{
+        dto = 0.2;
         document.getElementById("descuento-seleccion").innerHTML = "Descuento: 20%";
+    }
 
-    getPriceWithDiscount();
-}
+    total = pricePerIdea * numIdeasToBuy;
+    total -= total * dto;
 
-function getPriceWithDiscount() {
-    let precio, dto, total;
-    precio = document.getElementById("numIdeas").value;
+    document.getElementById("descuento-precio").innerHTML = total.toFixed(2) + " €";
 
-    // 5% de descuento teniendo en cuenta que 10 ideas cuestan 70€
-    if(precio >= 1 && precio < 50)
-        document.getElementById("descuento-precio").innerHTML = "266 €";
-    else if (precio >= 50 && precio < 250)
-        document.getElementById("descuento-precio").innerHTML = "297,5 €";
-    else
-        document.getElementById("descuento-precio").innerHTML = "410 €";
+    console.log(total + " " + numIdeasToBuy);
 }

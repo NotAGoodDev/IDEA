@@ -17,13 +17,24 @@ public class ModelPackToBuy {
     private String expirationDate;
 
     @JsonProperty("numIdeasToBuy")
-    private String numIdeasToBuy;
+    private Integer numIdeasToBuy;
 
-    public String getNumIdeasToBuy() {
+    @JsonProperty("discount")
+    private Integer discount;
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Integer getNumIdeasToBuy() {
         return numIdeasToBuy;
     }
 
-    public void setNumIdeasToBuy(String numIdeasToBuy) {
+    public void setNumIdeasToBuy(Integer numIdeasToBuy) {
         this.numIdeasToBuy = numIdeasToBuy;
     }
 
@@ -66,7 +77,8 @@ public class ModelPackToBuy {
                 ", ownerName='" + ownerName + '\'' +
                 ", validateNumber=" + validateNumber +
                 ", expirationDate='" + expirationDate + '\'' +
-                ", numIdeasToBuy='" + numIdeasToBuy + '\'' +
+                ", numIdeasToBuy=" + numIdeasToBuy +
+                ", discount=" + discount +
                 '}';
     }
 }

@@ -18,6 +18,7 @@ import java.util.List;
 public class PackIdeaController {
 
     private static final Logger logger = LoggerFactory.getLogger(PackIdeaController.class);
+    private  static final Double PRICE_PER_IDEA = 7.0;
 
     @Autowired
     PackIdeaService packIdeaService;
@@ -30,8 +31,11 @@ public class PackIdeaController {
 
     @PostMapping("/buy")
     public ResponseEntity<?> create(@RequestBody ModelPackToBuy modelPackToBuy) {
-        logger.info(modelPackToBuy.toString());
         // DATOS RELATIVOS A LA COMPRA
+        double total = modelPackToBuy.getNumIdeasToBuy() * PRICE_PER_IDEA;
+        total -= total * (modelPackToBuy.getDiscount() / 100.0);
+        logger.info(modelPackToBuy.toString() + " " + total);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
