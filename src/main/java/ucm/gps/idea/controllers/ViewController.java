@@ -164,4 +164,9 @@ public class ViewController {
     public String deal() {
         return "/views/enterprise/deal.html";
     }
+
+    @GetMapping(value = "/enterprise/payment")
+    public String payment() {
+        return "/views/enterprise/payment.html";
+    }
 }

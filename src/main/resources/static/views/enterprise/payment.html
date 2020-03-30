@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprar packs</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/enterprise/payment.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/enterprise/payment.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <form action="/charge" method="post" id="payment-form">
+        <div class="form-row">
+            <label for="card-element">
+                Credit or debit card
+            </label>
+            <div id="card-element">
+                <div id="StripeElement">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+            </div>
+
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+
+        <button id="submit">Submit Payment</button>
+    </form>
+<!-- <button id="prueba" style="border: 2px solid #66bb6a; background-color: white; color: black;"
+        name="prueba" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <a href="/enterprise/buyPack"> prueba </a>
+</button>-->
+</body>
+</html>
