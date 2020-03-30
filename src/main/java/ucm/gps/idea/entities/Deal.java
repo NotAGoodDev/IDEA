@@ -22,10 +22,6 @@ public class Deal implements Serializable {
     @OneToOne(mappedBy = "deal")
     private Idea idea;
 
-    @ManyToOne
-    @JoinColumn
-    private Enterprise enterprise;
-
     @Column(name = "title")
     private String title;
 
@@ -96,14 +92,6 @@ public class Deal implements Serializable {
 
     public void setIdea(Idea idea) {
         this.idea = idea;
-    }
-
-    public Enterprise getEnterprise() {
-        return enterprise;
-    }
-
-    public void setEnterprise(Enterprise enterprise) {
-        this.enterprise = enterprise;
     }
 
 }

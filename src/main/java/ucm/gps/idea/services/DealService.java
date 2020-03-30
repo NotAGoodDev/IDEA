@@ -66,7 +66,7 @@ public class DealService {
 
 
 
-        deal.setEnterprise(enterprise);
+      //  deal.setEnterprise(enterprise);
         deal.setIdea(idea);
 
         return dealRepository.save(deal);
