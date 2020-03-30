@@ -65,3 +65,38 @@ $(document).ready(function() {
         });
     });
 });
+
+
+/////////// DE PRUEBA ///////////
+
+function getDiscount(){
+    // Para que se vea el descuento en pantalla
+    let ideasParaDto = {};
+    ideasParaDto.numIdeas = document.getElementById("numIdeas").value;
+
+    /*ApiController.get("packages/getDiscount", ideasParaDto, true).then(function (data) {
+        document.getElementById("descuento-seleccion").innerHTML = "Descuento: " + data.numIdeas + "%";
+        console.log("He entrado en getDisocunt" + data.numIdeas + ".");
+    });*/
+    if(ideasParaDto.numIdeas >= 1 && ideasParaDto.numIdeas < 50)
+        document.getElementById("descuento-seleccion").innerHTML = "Descuento: 5%";
+    else if (ideasParaDto.numIdeas >= 50 && ideasParaDto.numIdeas < 250)
+        document.getElementById("descuento-seleccion").innerHTML = "Descuento: 15%";
+    else
+        document.getElementById("descuento-seleccion").innerHTML = "Descuento: 20%";
+
+    getPriceWithDiscount();
+}
+
+function getPriceWithDiscount() {
+    let precio, dto, total;
+    precio = document.getElementById("numIdeas").value;
+
+    // 5% de descuento teniendo en cuenta que 10 ideas cuestan 70€
+    if(precio >= 1 && precio < 50)
+        document.getElementById("descuento-precio").innerHTML = "266 €";
+    else if (precio >= 50 && precio < 250)
+        document.getElementById("descuento-precio").innerHTML = "297,5 €";
+    else
+        document.getElementById("descuento-precio").innerHTML = "410 €";
+}

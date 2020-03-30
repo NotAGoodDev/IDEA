@@ -67,17 +67,17 @@
                         <div class="col-12">
                             <label for="numIdeas">Especifica las ideas que quieres:</label>
                             <div class="col-4"></div> <!--Para que sirve???-->
-                            <input name="numIdeas" id="numIdeas" type="number" min="1" max="1000000">
+                            <input name="numIdeas" id="numIdeas" type="number" min="1" max="1000000" value="40" oninput="getDiscount()">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center"> <!--Ver si asi esta bien hecho para ponerlo centrado-->
-                        <h5>Descuento: 10%</h5>
+                        <h5 id="descuento-seleccion">Descuento: 5%</h5> <!--Para que se muestre el descuento-->
                     </div>
                 </div>
 
-                <h2>999€</h2>
+                <h2 id="descuento-precio">266 €</h2>
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4">

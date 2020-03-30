@@ -45,6 +45,21 @@ public class PackIdeaController {
         return new ResponseEntity<>(packIdea,HttpStatus.OK);
     }
 
+    @GetMapping("/getDiscount")
+    public ResponseEntity<?> getDiscount(@RequestBody Integer numIdeas){
+        // De prueba
+        Integer ret;
+
+        if(numIdeas >= 1 && numIdeas < 40)
+            ret = 10;
+        else if (numIdeas >= 40 && numIdeas < 250)
+            ret = 25;
+        else
+            ret = 30;
+
+        return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
+
     // En formato String JSON por si ayuda en front
     /*@GetMapping("")
     public ResponseEntity<List<String>> list(){
