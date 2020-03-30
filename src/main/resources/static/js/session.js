@@ -1,33 +1,21 @@
-$(document).ready(function () {
-    $.ajax({
-        url: "/api/auth/user",
-        type: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        contentType: "application/json; charset=utf-8",
-        mimeType: "application/json",
-        success: function (data) {
-            console.log("Username: " + data.username + "\nCredentials NON expired:" + data.credentialsNonExpired);
-            var role = "user";
-            for (var i = 0; i < data.authorities.length; i++) {
-                var auth = data.authorities[i].authority;
-                if (auth != "ROLE_USER") {
-                    var str = auth.split('_');
-                    role = str[1].toLowerCase();
-                }
-            }
-            document.getElementById("register-header").style.display = "none";
-            document.getElementById("login-header").style.display = "none";
-            document.getElementById("drop-header").style.display = "block";
-            document.getElementById("navbardrop").innerHTML = data.username;
-            document.getElementById("drop-header-item-profile").setAttribute("href", "/" + role + "/profile");
-        },
-        error: function () {
-            document.getElementById("register-header").style.display = "block";
-            document.getElementById("login-header").style.display = "block";
-            document.getElementById("drop-header").style.display = "none";
-        }
-    });
+$(document).ready(function(){
 
+    ApiController.get("auth/session","",false).then(function(data){
+        console.log("Username: " + data.username +"\nUsuario activo:" + data.active);
+        sesion = data;
+        var role = "USER";
+        for(i=0;i<data.roles.length;i++){
+            var str = data.roles[i].name.split("_");
+            role = str[1];
+            if(role != "USER"){
+                break;
+            }
+        }
+        role = role.toLowerCase();
+        document.getElementById("logo-img").setAttribute("href","/");//+role+"/home");
+        document.getElementById("navbardrop").innerHTML = data.username;
+        document.getElementById("drop-header-item-profile").setAttribute("href","/"+role+"/profile");
+        document.getElementById("header-home").setAttribute("href","/");//+role+"/home");
+    });
+    
 });

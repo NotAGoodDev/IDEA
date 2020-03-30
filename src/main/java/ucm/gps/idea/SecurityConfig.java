@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.loginProcessingUrl("/api/auth/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/home"); // TODO mejor redirigir a "creator/home" o "/enterprise/home" y no a "/home"
+                .defaultSuccessUrl("/home");
 
         http.logout()
                 //.logoutUrl("/api/auth/logout")

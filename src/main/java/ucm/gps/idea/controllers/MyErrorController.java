@@ -13,13 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MyErrorController implements ErrorController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyErrorController.class);
-
-    /* TODO: PROBLEMAS
-    *   - Solo funciona bien si estas logueado. Si no lo estas y pones "/yyyy" te redirige a LOGIN y cuando inicias
-    *       sesion te redirige a "/yyyy" con el aviso de que no existe la pagina
-    */
-
     @GetMapping(value = "/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);

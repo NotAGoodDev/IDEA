@@ -2,23 +2,50 @@ package ucm.gps.idea.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ucm.gps.idea.entities.Role;
+import ucm.gps.idea.entities.User;
+import ucm.gps.idea.services.UserService;
+
+import java.security.Principal;
 
 @Controller
 public class ViewController {
 
     private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 
+    @Autowired
+    UserService userService;
+
     // Global
 
-        /* Falta hacerlo entero */
+    /* Falta hacerlo entero
     @GetMapping(value = {"/", "", "/home"})
     public String home() {
         return "/views/index.html";
+    }*/
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CREATOR', 'ROLE_ENTERPRISE')")
+    @GetMapping(value = {"/", "", "/home"})
+    public String home(Principal principal) {
+        if(principal == null){
+            return "/views/index.html";
+        }
+        User user = userService.findByUsername(principal.getName());
+
+        switch (user.getRoles().get(0).getName()){
+            case "ROLE_CREATOR":
+                return "/views/creator/index.html";
+            case "ROLE_ENTERPRISE":
+                return "/views/enterprise/index.html";
+            default:
+                return "views/errors/error-401.html";
+        }
     }
 
         /*Falta hacerlo entero*/
@@ -62,10 +89,10 @@ public class ViewController {
     /*Evitar PopUp*/
         /*Hacerlo dinamico*/
         /*Poner espaciado*/
-    @GetMapping(value = {"/creator","/creator/home","/creator/"})
+    /*@GetMapping(value = {"/creator","/creator/home","/creator/"})
     public String creatorIndex() {
         return "/views/creator/index.html";
-    }
+    }*/
 
         /* Misma estrucutra que creator/home -> Borrar */
     @GetMapping(value = "/creator/ideas")
@@ -105,10 +132,10 @@ public class ViewController {
         /*Evitar PopUp*/
         /*Hacerlo dinamico*/
         /*Poner espaciado*/
-    @GetMapping(value = {"/enterprise", "/enterprise/home", "/enterprise/"})
+    /*@GetMapping(value = {"/enterprise", "/enterprise/home", "/enterprise/"})
     public String enterpriseIndex() {
         return "/views/enterprise/index.html";
-    }
+    }*/
 
     @GetMapping(value = "/enterprise/viewIdea")
     public String enterpriseIndexIdea() {

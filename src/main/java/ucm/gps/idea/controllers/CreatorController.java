@@ -14,7 +14,7 @@ import ucm.gps.idea.services.IdeaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/creators")
+@RequestMapping("api/creator")
 public class CreatorController {
 
     @Autowired
@@ -25,31 +25,31 @@ public class CreatorController {
     private static final Logger logger = LoggerFactory.getLogger(CreatorController.class);
 
     @GetMapping("/")
-    public ResponseEntity<List<Creator>> list() {
+    public ResponseEntity<List<Creator>> list(){
         List<Creator> listCreator = creatorService.list();
         logger.info("se ha hecho una peticion de listar type creator");
         return new ResponseEntity<>(listCreator, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Creator> index(@PathVariable Integer id) {
-        try {
+    @GetMapping(path="/id/{id}")
+    public ResponseEntity<Creator> index(@PathVariable Integer id){
+        try{
             Creator creator = creatorService.index(id);
-            return new ResponseEntity<>(creator, HttpStatus.OK);
+            return new ResponseEntity<>(creator,HttpStatus.OK);
         } catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed id: %i", id));
+            logger.error(String.format("Read an specific Idea failed id: " + id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Creator> findByUsername(@PathVariable String name) {
+    public ResponseEntity<Creator> findByUsername(@PathVariable String name){
 
-        try {
+        try{
             Creator creator = creatorService.findByUsername(name);
-            return new ResponseEntity<>(creator, HttpStatus.OK);
-        } catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed name: %i", name));
+            return new ResponseEntity<>(creator,HttpStatus.OK);
+        }catch (Exception e) {
+            logger.error(String.format("Read an specific Idea failed name: " + name));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

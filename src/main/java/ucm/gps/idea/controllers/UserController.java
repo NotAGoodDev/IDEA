@@ -41,7 +41,7 @@ public class UserController {
 
 
     @GetMapping("profiles")
-    public ResponseEntity<?> getProfile(Principal principal) {
+    public ResponseEntity<User> getProfile(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
@@ -68,51 +68,46 @@ public class UserController {
 
 
     @PutMapping("/profiles/")
-    public /*ResponseEntity<User>*/Boolean modify(@RequestBody ModelUser moduser, Principal principal) {
+    public ResponseEntity<User> modify(@RequestBody ModelUser moduser, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
         List<Role> userRoles = user.getRoles();
-    if(!userRoles.isEmpty()){
-        try{
-            switch (userRoles.get(0).getName()) {
-                case "ROLE_CREATOR":
-                    user.setAddress(moduser.getAddress());
-                    user.setName(moduser.getName());
-                    user.setTelephone(moduser.getTelephone());
-                    userService.save(user);
-                    Creator creator = creatorService.index(user.getId());
-                    creator.setLastName(moduser.getLastName());
-                    Date date = new SimpleDateFormat("yyyy-mm-dd").parse(moduser.getBirthDate());
-                    date.setHours(12);
-                    creator.setBirthDate(date);
-                    creator = creatorService.create(creator);
-                   // return new ResponseEntity<>(creator, HttpStatus.OK);
-                   return true;
-                case "ROLE_ENTERPRISE":
-                    user.setAddress(moduser.getAddress());  
-                    user.setName(moduser.getName());
-                    user.setTelephone(moduser.getTelephone());
-                    userService.save(user);
 
-                    Enterprise enterprise = enterpriseService.index(user.getId());
-                    enterprise.setCreditCard(moduser.getCardNumber());
-                    enterprise = enterpriseService.create(enterprise);
+        if(!userRoles.isEmpty()){
+            try{
+                switch (userRoles.get(0).getName()) {
+                    case "ROLE_CREATOR":
+                        user.setAddress(moduser.getAddress());
+                        user.setName(moduser.getName());
+                        user.setTelephone(moduser.getTelephone());
+                        userService.save(user);
 
-                    //return new ResponseEntity<>(enterprise, HttpStatus.OK);
-                    return true;
-                default:
-                    //return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
-                    return false;
+                        Creator creator = creatorService.index(user.getId());
+                        creator.setLastName(moduser.getLastName());
+                        creator = creatorService.create(creator);
+
+                        return new ResponseEntity<>(creator, HttpStatus.OK);
+                    case "ROLE_ENTERPRISE":
+                        user.setAddress(moduser.getAddress());
+                        user.setName(moduser.getName());
+                        user.setTelephone(moduser.getTelephone());
+                        userService.save(user);
+
+                        Enterprise enterprise = enterpriseService.index(user.getId());
+                        enterprise.setCreditCard(moduser.getCardNumber());
+                        enterprise = enterpriseService.create(enterprise);
+
+                        return new ResponseEntity<>(enterprise, HttpStatus.OK);
+                    default:
+                        return new ResponseEntity<>(HttpStatus.FORBIDDEN); //403
+                }
+            }catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
-        }catch (Exception e) {
-            //return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            return false;
         }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-       // return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-       return false;
-}
 
     @PutMapping(value="changepass")
     public boolean putMethodName(@RequestParam String pass, @RequestParam String newPass, Principal principal) {

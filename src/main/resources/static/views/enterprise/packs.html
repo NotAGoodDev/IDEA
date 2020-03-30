@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>iDea</title>
+    <title>Comprar packs</title>
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
@@ -26,7 +26,7 @@
 
 
     <div class="container">
-        <form id="form">
+        <form id="form" class="form">
         <div class="row">
             <!--1º paquete-->
             <div class="col-4 elementos">
@@ -36,13 +36,13 @@
                 <h2>70€</h2>
                 <div class="row">
                     <div class="col-4"></div>
-                    <div class="col-4"><button class="btn-success" type="submit"><a href="/enterprise/home">Comprar</a></button></div>
+                    <div class="col-4"><button class="btn-success" type="submit"><a href="/home">Comprar</a></button></div>
                     <div class="col-4"></div>
                 </div>
 
             </div>
 
-            <!--2º paquete-->
+            <!--2º paquete PERSONALIZABLE-->
             <div class="col-4 elementos">
                 <div class="row">
                     <div class="col-8"></div>
@@ -51,14 +51,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-center" id="recomendado"><h3>PACK IDEA</h3></div>
+                    <div class="col-12 text-center" id="recomendado">
+                        <h3>Pack Personalizable</h3>
+                    </div>
                 </div>
 
-                <h5>Pack de 100 ideas</h5>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="col-12">
+                            <label for="numIdeas">Especifica las ideas que quieres:</label>
+                            <div class="col-4"></div> <!--Para que sirve???-->
+                            <input name="numIdeas" id="numIdeas" type="number" min="1" max="1000000">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center"> <!--Ver si asi esta bien hecho para ponerlo centrado-->
+                        <h5>Descuento: 10%</h5>
+                    </div>
+                </div>
+
                 <h2>70€</h2>
                 <div class="row">
                     <div class="col-4"></div>
-                    <div class="col-4"><button class="btn-success" type="submit"><a href="/enterprise/home">Comprar</a></button></div>
+                    <div class="col-4"><button class="btn-success" type="submit"><a href="/home">Comprar</a></button></div>
                     <div class="col-4"></div>
                 </div>
             </div>
@@ -70,7 +86,7 @@
                 <h2>70€</h2>
                <div class="row">
                    <div class="col-4"></div>
-                   <div class="col-4"><button class="btn-success" type="submit"><a href="/enterprise/home">Comprar</a></button></div>
+                   <div class="col-4"><button class="btn-success" type="submit"><a href="/home">Comprar</a></button></div>
                    <div class="col-4"></div>
                </div>
             </div>
@@ -80,7 +96,7 @@
         <div class=row>
             <div class="col-4"></div>
             <div class="col-3">
-                <button class="btn-cancel" onclick="enableFields()"><a href="/enterprise">Volver</a></button>
+                <button class="btn-cancel" onclick="enableFields()"><a href="/">Volver</a></button>
             </div>
             <div class="col-5"></div>
         <div class="col-12 separator"></div>
