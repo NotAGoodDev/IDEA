@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ucm.gps.idea.entities.Category;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.services.CategoryService;
 import ucm.gps.idea.services.IdeaService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/ideas")
@@ -18,6 +21,8 @@ class IdeaController {
 
     @Autowired
     IdeaService ideaService;
+    @Autowired
+    CategoryService categoryService;
 
     private static final Logger logger = LoggerFactory.getLogger(IdeaController.class);
 
@@ -61,7 +66,24 @@ class IdeaController {
     public ResponseEntity<Idea> send(@PathVariable Integer ideaID, @PathVariable Integer enterpriseID)throws Exception{
             return new ResponseEntity<Idea>(ideaService.send(ideaID, enterpriseID), HttpStatus.OK);
     }
-    
+
+    @GetMapping("/category/{name}")
+    public ResponseEntity<Set<Idea>> findByCategory(@PathVariable String name){
+
+        try{
+            Category category = categoryService.findByName(name);
+            return new ResponseEntity<Set<Idea>>(category.getIdea(), HttpStatus.OK);
+
+        }catch(Exception e){
+            logger.error(String.format("Read an specific category failed category: %s", name));
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        }
+
+    }
+
+
+
 
 
 }
