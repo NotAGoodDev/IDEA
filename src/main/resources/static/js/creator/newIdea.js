@@ -26,4 +26,13 @@ $(document).ready(function() {
         console.log(val);
         $('#search-empresa').val(val);
     });
+
+    ApiController.get("categories/", "", true).then(function(data){
+    data.forEach(function(categoria){
+    var elemento = "<option> " + categoria.name + " </option> "
+    $('#select-type').append(elemento);
+    })
+
+    });
+
 })
