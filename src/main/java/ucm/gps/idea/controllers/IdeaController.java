@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Category;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.models.ModelIdea;
 import ucm.gps.idea.services.CategoryService;
 import ucm.gps.idea.services.IdeaService;
 
@@ -58,7 +59,9 @@ class IdeaController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Idea> create(@RequestBody Idea idea) {
+    public ResponseEntity<Idea> create(@RequestBody ModelIdea model) {
+        Idea idea = new Idea(model.getCreator(), model.getCategory(), model.getEnterprise(), model.getTitle(), model.getText());
+
         return new ResponseEntity<>(ideaService.save(idea), HttpStatus.OK);
     }
 
@@ -77,13 +80,6 @@ class IdeaController {
         }catch(Exception e){
             logger.error(String.format("Read an specific category failed category: %s", name));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
-
     }
-
-
-
-
-
 }

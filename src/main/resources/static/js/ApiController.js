@@ -20,7 +20,6 @@ class ApiController {
         return this.request(url, "PUT", params,async);
     }
 
-    //deberia ser private
     static request(url, method, params, async){
 
         console.log({
