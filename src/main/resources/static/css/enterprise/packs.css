@@ -2,9 +2,11 @@
 .elementos {
     border: solid black 4px;
     border-radius: 10px;
-    height: 500px;
+    height: 550px;
     padding-bottom: 10px;
     align-items: center;
+   position:relative;
+
 }
 
 .col-4 {
@@ -13,10 +15,8 @@
 
 .elementos:hover {
     border: 6px solid #66bb6a;
-    margin-top: 5px;
-    /*width: fit-content;*/
-    border-radius: 10px;
-    float: right;
+ margin-top: 5px;
+  border-radius: 10px;
     align-self: flex-end;
     justify-content: center;
 }
@@ -44,9 +44,8 @@
     border-radius: 10px;
     border: 2px solid #66bb6a;
     color: black;
-    float: right;
     background: white;
-    align-self: flex-end;
+
 }
 
 #form-packs:hover  .btn-comprar:hover{
@@ -55,9 +54,8 @@
     padding: 10px 30px;
     border-radius: 10px;
     color: white;
-    float: right;
     background: #66bb6a;
-    align-self: flex-end;
+
 }
 
 
@@ -75,3 +73,14 @@ h2, h3, h5 {
 .cont{
    margin-left:5px;
 }
+
+.bot{
+    display:flex;
+    justify-content: center;
+}
+
+#recomendado {
+    text-align: center;
+    color:#66bb6a;
+}
+

@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,7 +30,9 @@
     <div id="form-packs" class="container">
         <form id="form" class="form">
         <div class="row">
-            <!--1º paquete-->
+           -->
+<!--1º paquete-->
+<!--
             <div class="col-4 elementos">
 
                 <h3>PACK IDEA</h3>
@@ -44,38 +47,42 @@
                 </div>
 
             </div>
+-->
 
             <!--2º paquete PERSONALIZABLE-->
-            <div class="col-4 elementos">
-                <div class="row">
-                    <div class="col-8"></div>
-                    <div class="col-4 text-center" id="rec">
-                        <i class="fas fa-star fa-2x"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center" id="recomendado">
-                        <h3>Pack Personalizable</h3>
-                    </div>
-                </div>
+<!--
+    <div class="col-4 elementos">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4 text-center" id="rec">
+                <i class="fas fa-star fa-2x"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center" id="recomendado">
+                <h3>Pack Personalizable</h3>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="col-12">
-                            <label for="numIdeas">Especifica las ideas que quieres:</label>
-                            <div class="col-4"></div> <!--Para que sirve???-->
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="col-12">
+                    <label for="numIdeas">Especifica las ideas que quieres:</label>
+                    <div class="col-4"></div> <!--Para que sirve???-->
+-->
+<!--
                             <input name="numIdeas" id="numIdeas" type="number" min="40" max="5000" value="40">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-center"> <!--Ver si asi esta bien hecho para ponerlo centrado-->
-                        <h5 id="descuento-seleccion">Descuento: 5%</h5> <!--Para que se muestre el descuento-->
-                    </div>
+                    <div class="col-12 text-center"> <!--Ver si asi esta bien hecho para ponerlo centrado-->-->
+                  <!--      <h5 id="descuento-seleccion">Descuento: 5%</h5> <!--Para que se muestre el descuento-->
+                 <!--   </div>
                 </div>
 
                 <h2 id="descuento-precio">266 €</h2> <!--Para que se muestre el precio final-->
-                <div class="row">
+               <!-- <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4">
                         <input id="packXideas" type="submit" class="btn-comprar" value="Comprar">
@@ -83,9 +90,9 @@
                     <div class="col-4"></div>
                 </div>
             </div>
-
-            <!--3º paquete-->
-           <div class="col-4 elementos">
+-->
+            <!-- 3º paquete-->
+         <!--  <div class="col-4 elementos">
                 <h3>PACK IDEA</h3>
                 <h5>Pack de 20 ideas</h5>
                 <h2>140€</h2>
@@ -110,6 +117,154 @@
         </div>
         </form>
     </div>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>
+
+         -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprar packs</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/enterprise/packs.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/creator/profile.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/enterprise/packs.js"></script>
+</head>
+<body>
+<header>
+</header>
+<main>
+
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+
+
+    <div id="form-packs" class="container"> <!--contenedor general-->
+        <form id="form" class="form"> <!--formulario-->
+
+
+            <!--apertura de la primera fila para meter 3 paquetes de 4 cada uno-->
+            <div class="row">
+                <!--1º paquete-->
+                <div class="col-12 col-lg-4">
+                    <div class="elementos">
+                        <!--contenido del paquete-->
+                        <h3>PACK IDEA</h3>
+                        <h5>Pack de 10 ideas</h5>
+                        <h2>70€</h2>
+                        <div class="row">
+                            <div class="col-12 bot">
+                                <input id="pack10ideas" type="submit" class="btn-comprar" value="Comprar">
+                            </div>
+
+                        </div><!--cierre del contenido del paquete-->
+
+                    </div>
+                </div>
+
+
+                <!--2º paquete-->
+                <div class="col-12 col-lg-4">
+                    <div class="elementos">
+                        <!--contenido del 2º paquete-->
+                        <!--estrella-->
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4 text-center" id="rec">
+                                <i class="fas fa-star fa-2x"></i>
+                            </div>
+                        </div><!--cierre estrellaicon-->
+
+
+                        <div class="row">
+                            <!--row para el texto pack personalizado-->
+                            <div class="col-12 text-center" id="recomendado"><h6>PACK PERSONALIZABLE</h6></div>
+                            <!--label-->
+                            <div class="col-12 text-center">
+                                <label for="numIdeas"><strong>Especifica las ideas que quieres:</strong></label>
+                            </div>
+                            <!--input-->
+                            <div class="col-12 text-center">
+                                <input name="numIdeas" id="numIdeas" type="number" min="40" max="5000" value="40">
+                            </div>
+                            <!--texto de descuento-->
+                            <div class="col-12 text-center"> <!--Ver si asi esta bien hecho para ponerlo centrado-->
+                                <h5 id="descuento-seleccion">Descuento: 5%</h5> <!--Para que se muestre el descuento-->
+                            </div>
+                            <!--precio-->
+                            <div class="col-12 text-center">
+                                <h2 id="descuento-precio">266 €</h2> <!--Para que se muestre el precio final-->
+                            </div>
+
+                        </div> <!--cierre del contenedor q contiene  texto-->
+                        <!--boton comprar-->
+                        <div class="row">
+
+                            <div class="col-12 bot">
+                                <input id="packXideas" type="submit" class="btn-comprar" value="Comprar">
+                            </div>
+
+                        </div>
+
+                    </div> <!--cierre div elementos del pack 2-->
+                </div><!--cierre del col4 del paquete 2-->
+
+
+                <!--3º paquete-->
+                <div class="col-12 col-lg-4">
+                    <div class="elementos">
+                        <!--contenido del 3º paquete-->
+                        <h3>PACK IDEA</h3>
+                        <h5>Pack de 20 ideas</h5>
+                        <h2>140€</h2>
+                        <div class="row">
+
+                            <div class="col-12 bot">
+                                <input id="pack20ideas" type="submit" class="btn-comprar" value="Comprar">
+                            </div>
+
+                        </div><!--cierre del contenido del paquete-->
+
+                    </div>
+                </div>
+
+
+            </div> <!--cerrado del row q contiene los 3 paquetes-->
+
+
+            <!-- boton volver-->
+
+            <div class="col-12 separator"></div>
+            <!--boton volver para q este centrado justo despues del row, esta dentro del formulario y dentro del container-->
+
+            <div class=row>
+                <div class="col-4"></div>
+                <div class="col-3">
+                    <button class="btn-cancel" onclick="enableFields()"><a href="/">Volver</a></button>
+                </div>
+                <div class="col-5"></div>
+                <!--esto da una linea en blanco como el br-->
+                <div class="col-12 separator"></div>
+            </div> <!--cierre del row del boton volve-->
+
+
+        </form><!--cierre d formulario-->
+    </div><!--cierre del container-->
 
 </main>
 <footer>
