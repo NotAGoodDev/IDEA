@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-    let discounts; // Array donde se encuentran los descuentos segun el numero de ideas que se vayan a comprar
-    let purchaseData = {}; // Para coger los datos de los packs de ideas
-    let sesionData = {}; // Para coger los datos de la sesion
-    let payment = {}; // Para llamar a la pasarela de pago
+    let discounts;          // Array donde se encuentran los descuentos segun el numero de ideas que se vayan a comprar
+    let purchaseData = {};  // Para coger los datos de los packs de ideas
+    let sesionData = {};    // Para coger los datos de la sesion
+    let payment = {};       // Para llamar a la pasarela de pago
 
     // Hacemos esta llamada para coger los datos de la sesion para saber el nombre de la empresa, su tarjeta de credito...
     ApiController.get("auth/session", "", false).then(function (data) {
@@ -55,13 +55,15 @@ $(document).ready(function() {
         ApiController.put("packages/buy", purchaseData, false).then(function (data) {
             payment.description = "Compra de un pack de 10 ideas";
             payment.amount = data;
-            payment.currency = "EUR"; // En back es un enumerado, daria error (creo) si lo paso como string
+            payment.currency = "EUR"; // En back es un enumerado, daria error si lo paso como string
             ApiController.post("Stripe/paymentintent", payment).then(function (data) {
                 console.log(data);
             });
         });
     });
 
+
+    // Este y el de abajo hacerlo igual que el de 10 ideas cuando este finalizada la pasarela de pago
     $("#packXideas").click(function () {
         purchaseData.numIdeasToBuy = parseInt(document.getElementById("numIdeas").value, 10);
         //purchaseData.discount = 100; // ya elegido arriba cuando se mostraba
