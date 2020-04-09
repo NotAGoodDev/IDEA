@@ -1,148 +1,108 @@
-/**
-* The CSS shown here will not be introduced in the Quickstart guide, but
-* shows how you can use CSS to style your Element's container.
-*/
-* {
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 19px;
-    font-variant: normal;
-    padding: 0;
-    margin: 0;
+a{
+    color: inherit;
 }
 
-html {
-    height: 100%;
+a:hover{
+    color: inherit;
+    text-decoration: none;
 }
 
-body {
-    background: #424770;
+#form-register .datos-generales{
     display: flex;
-    align-items: center;
-    min-height: 100%;
+    flex-direction: column;
 }
 
-form {
-    width: 480px;
-    margin: 20px auto;
+#form-register .datos-creador{
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    height: 35px;
-    position: relative;
-    color: #8798AB;
-    display: block;
-    margin-top: 30px;
-    margin-bottom: 20px;
+#form-register .datos-empresa{
+    display: flex;
+    flex-direction: column;
 }
 
-label > span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-weight: 300;
-    line-height: 32px;
-    color: #8798AB;
-    border-bottom: 1px solid #586A82;
-    transition: border-bottom-color 200ms ease-in-out;
-    cursor: text;
-    pointer-events: none;
+#form-register .datos-tarjeta{
+    display: flex;
+    flex-direction: column;
 }
 
-label > span span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: 0% 50%;
-    transition: transform 200ms ease-in-out;
-    cursor: text;
+#form-register h2, h3{
+    color:#66bb6a;
 }
 
-label .field.is-focused + span span,
-label .field:not(.is-empty) + span span {
-    transform: scale(0.68) translateY(-36px);
-    cursor: default;
+#form-register form{
+    margin-top: 70px;
 }
 
-label .field.is-focused + span {
-    border-bottom-color: #34D08C;
+#form-register input[type="text"],#form-register input[type="date"],#form-register input[type="tel"]{
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.field {
-    background: transparent;
-    font-weight: 300;
-    border: 0;
+#form-register input[type="text"]:hover,#form-register input[type="date"]:hover,#form-register input[type="tel"]:hover{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-register:visited input[type="text"]:visited,#form-register input[type="date"]:visited,#form-register input[type="tel"]:visited{
+    background-color: white;
+    border: 2px solid #66bb6a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+#form-register .form-control {
+    border: 2px solid black;
+}
+
+#form-register .form-control:hover {
+    border: 2px solid #66bb6a;
+}
+
+#form-register .form-control:active {
+    border: 2px solid #66bb6a;
+}
+
+#form-register label{
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+#form-register .subtitulo{
+    font-size: 11px;
+    color: #66bb6a;
+}
+
+#form-register .btn-registro{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+#form-register:hover  .btn-registro:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
     color: white;
-    outline: none;
-    cursor: text;
-    display: block;
-    width: 100%;
-    line-height: 32px;
-    padding-bottom: 3px;
-    transition: opacity 200ms ease-in-out;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
 }
 
-.field::-webkit-input-placeholder { color: #8898AA; }
-.field::-moz-placeholder { color: #8898AA; }
-
-/* IE doesn't show placeholders when empty+focused */
-.field:-ms-input-placeholder { color: #424770; }
-
-.field.is-empty:not(.is-focused) {
-    opacity: 0;
-}
-
-button {
-    float: left;
-    display: block;
-    background: #34D08C;
-    color: white;
-    border-radius: 2px;
-    border: 0;
-    margin-top: 20px;
-    font-size: 19px;
-    font-weight: 400;
-    width: 100%;
-    height: 47px;
-    line-height: 45px;
-    outline: none;
-}
-
-button:focus {
-    background: #24B47E;
-}
-
-button:active {
-    background: #159570;
-}
-
-.outcome {
-    float: left;
-    width: 100%;
-    padding-top: 8px;
-    min-height: 20px;
-    text-align: center;
-}
-
-.success, .error {
-    display: none;
-    font-size: 15px;
-}
-
-.success.visible, .error.visible {
-    display: inline;
-}
-
-.error {
-    color: #E4584C;
-}
-
-.success {
-    color: #34D08C;
-}
-
-.success .token {
-    font-weight: 500;
-    font-size: 15px;
+#form-register .separator{
+    height: 50px;
+    width: auto;
 }

@@ -84,3 +84,50 @@ h2, h3, h5 {
     color:#66bb6a;
 }
 
+
+.btn-success{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+.btn-success:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
+.btn-cancel{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: grey;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
+}
+
+.btn-cancel:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
+}

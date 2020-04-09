@@ -4,6 +4,11 @@ $(document).ready(function() {
     let purchaseData = {};  // Para coger los datos de los packs de ideas
     let sesionData = {};    // Para coger los datos de la sesion
     let payment = {};       // Para llamar a la pasarela de pago
+    let card;
+
+    card = document.getElementById("payment");
+    card.style.display = "none";
+
 
     // Hacemos esta llamada para coger los datos de la sesion para saber el nombre de la empresa, su tarjeta de credito...
     ApiController.get("auth/session", "", false).then(function (data) {
@@ -45,7 +50,7 @@ $(document).ready(function() {
             }
         }
     });
-
+/*
     $("#pack10ideas").click(function () {
         purchaseData.numIdeasToBuy = 10;
         purchaseData.discount = 0;
@@ -95,4 +100,12 @@ $(document).ready(function() {
             }
         });
     });
+*/
+    $(".btn-success").click(function () {
+        let x;
+        x = document.getElementById("payment");
+        x.style.display = "block";
+    });
+
+
 });
