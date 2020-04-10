@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     $("#boton-pagar").click(function () {
         // Calculamos el precio final
-        ApiController.get("pckages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
+        ApiController.get("packages/calculateFinalPrice", purchaseData, true).then(function (finalPrice) {
             // Variable para mapear la clase "PaymentModel" de "Stripe/paymentintent" para procesar el pago
             let payment = {};
             payment.amount = finalPrice;
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 payment.currency + " en la pagina web de IDEA.";
 
             // Actualizamos el numero de ideas a esa empresa
-            ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false).then(function (enterprise) {
+            ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, true).then(function (enterprise) {
                 // Llamamos a la pasarela de pago y decidimos si aceptamos o rechazamos el pago
                 ApiController.post("Stripe/paymentintent", payment).then(function (result) {
 
