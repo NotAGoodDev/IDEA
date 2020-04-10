@@ -1,5 +1,8 @@
 package ucm.gps.idea.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -30,17 +33,21 @@ public class Idea implements Serializable {
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnore
     @OneToOne
     private Deal deal;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Creator creator;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Category category;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Enterprise enterprise;
@@ -77,18 +84,6 @@ public class Idea implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    /*
-    Equivalente a creator
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-     */
 
     public String getTitle() {
         return title;
