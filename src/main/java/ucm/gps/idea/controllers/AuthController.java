@@ -84,6 +84,8 @@ public class AuthController {
                     user.setRoles(userRoles);
 
                     break;
+                case "Admin":
+
                 default:
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }

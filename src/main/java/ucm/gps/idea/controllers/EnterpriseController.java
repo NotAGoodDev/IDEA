@@ -67,7 +67,7 @@ public class EnterpriseController {
 
 
     @PostMapping("/enterprises/{enterpriseID}/ideas/{ideaID}")
-    public ResponseEntity<Enterprise> create(@PathVariable Integer enterpriseID, @PathVariable Integer ideaID) throws Exception {
+    public ResponseEntity<Enterprise> send(@PathVariable Integer enterpriseID, @PathVariable Integer ideaID) throws Exception {
 
         Enterprise enterprise = enterpriseService.index(enterpriseID);
         Idea idea = ideaService.index(ideaID);
