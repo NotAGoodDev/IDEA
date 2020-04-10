@@ -36,9 +36,10 @@ public class ViewController {
                 return "/views/creator/index.html";
             case "ROLE_ENTERPRISE":
                 return "/views/enterprise/index.html";
-            default:
-                return "views/errors/error-401.html";
+            case "ROLE_ADMIN":
+                return "views/admin/index.html";
         }
+        return "views/error/501.html";
     }
 
         /*Falta hacerlo entero*/

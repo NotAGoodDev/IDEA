@@ -45,7 +45,9 @@ public class AuthController {
                 case "Creador":
                     
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
-                
+
+                    System.out.println(encoder.encode(regUser.getPassword()));
+
                     user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
                             regUser.getTelephone(), regUser.getAddress());

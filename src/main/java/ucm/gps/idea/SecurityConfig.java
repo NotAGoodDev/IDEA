@@ -48,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers( "/register").permitAll()
                     .antMatchers( "/ideas/**").permitAll()
                     .antMatchers( "/creator/**").hasRole("CREATOR")
-                    .antMatchers( "/enterprise/**").hasRole("ENTERPRISE");
+                    .antMatchers( "/enterprise/**").hasRole("ENTERPRISE")
+                    .antMatchers( "/admin/**").hasRole("ADMIN");
 
                     /*//.anyRequest().authenticated();
                     //.and()
@@ -57,13 +58,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 formLogin()
                 .loginPage("/login").permitAll()
-                //.loginProcessingUrl("/api/auth/login")
+                .loginProcessingUrl("/api/auth/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/home");
 
         http.logout()
-                //.logoutUrl("/api/auth/logout")
+                .logoutUrl("/api/auth/logout")
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
