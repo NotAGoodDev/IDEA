@@ -30,6 +30,8 @@ p{
 .lista-idea{
     border:solid black 2px;
     padding:10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 
@@ -68,15 +70,3 @@ align-self: flex-end;
     background: white;
     align-self: flex-end;
 }
-/*
-.btn-ver:comprar{
-    margin-top: 10px;
-    width: fit-content;
-    padding: 10px 10px;
-    border-radius: 10px;
-    color: white;
-    float: right;
-    background: #66bb6a;
-    align-self: flex-end;
-}
-*/

@@ -26,9 +26,6 @@ public class CategoryController {
     @GetMapping("/")
     public ResponseEntity<List<Category>> list(){
         List<Category> listCategories = categoryService.list();
-        logger.info("se ha hecho una peticion de listar");
         return new ResponseEntity<>(listCategories, HttpStatus.OK);
     }
-
-
 }

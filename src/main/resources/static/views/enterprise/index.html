@@ -26,10 +26,9 @@
     <!--selectMenu-->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4"><select class="form-control" id="selectType">
-                <option value="Categoria 1">Categoria</option>
-                <option value="Categoria 2">Categoria1</option>
-            </select></div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <select class="form-control" id="selectType"></select>  <!-- innerHTML @js -->
+            </div>
             <div class="col-8"></div>
             <div class="col-2 text-right" id="editIcon">
             </div>
@@ -37,7 +36,7 @@
 
         <!--comprar pack button-->
         <div class="row" id="parrafo">
-            <div class="col-5"><p>Ideas restantes por recibir: 9</p></div>
+            <div class="col-5" id="remainingIdeas"></div> <!-- innerHTML @js -->
             <div class="col-1"></div>
             <div class="col-6">
                 <button class="btn-ver" type="submit"><a href="/enterprise/buyPack">Comprar Pack</a>
@@ -49,76 +48,22 @@
         <!--Body-->
         <div class="container">
             <form id="form">
-                <!-- Mis ideas recibidas-->
                 <div class="row">
-                    <div class="col-12 col-lg-6 data">
+
+                    <!-- Mis ideas recibidas-->
+                    <div class="col-12 col-lg-6 data" id="ideasRecibidas">
                         <h2>Ideas recibidas</h2>
-                        <div class="container lista-idea">
-                            <div class="row">
-                                <div class="col-12 data">
-                                    <a href="/enterprise/viewIdea">
-                                        <div class="row">
-                                            <div class="col-8 col-lg-8 data">
-                                                <strong>Idea1</strong>
-                                            </div>
-                                            <div class="col-4 col-lg-4 data text-right editIcon">
-                                                <p>Categoria1
-                                                    <br>
-                                                    <strong>Estado</strong>
-                                                </p>
-                                                <div class="row">
-                                                    <div class="col-3 data"></div>
-                                                    <div class="col-3 data"></div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-
-                                        <div class="col-12 col-lg-12 data">
-                                            <p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet
-                                                dolor ac odio mauris justo</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
 
                     <!--Ideas compradas-->
-                    <div class="col-12 col-lg-6 data" id=" editIcon">
+                    <div class="col-12 col-lg-6 data" id="ideasCompradas">
                         <h2>Ideas compradas</h2>
-                        <div class="container lista-idea">
-                            <div class="row">
-                                <div class="col-12 data">
-                                    <a href="/enterprise/viewIdea">
-                                        <div class="row">
-                                            <div class="col-8 col-lg-8 data">
-                                                <strong>Idea1</strong>
-                                            </div>
-                                            <div class="col-4 col-lg-4 data text-right editIcon">
-                                                <p>Categoria1
-                                                    <br>
-                                                    <strong>Estado</strong>
-                                                </p>
-                                                <div class="row">
-                                                    <div class="col-3 data"></div>
-                                                    <div class="col-3 data"></div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-
-                                        <div class="col-12 col-lg-12 data">
-                                                <p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet
-                                                    dolor ac odio mauris justo</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+
+
             </form>
         </div>
     </div>
