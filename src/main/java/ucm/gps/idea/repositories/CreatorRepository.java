@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ucm.gps.idea.entities.Creator;
 
 @Repository
-public interface CreatorRepository extends JpaRepository<Creator,Integer> {
+public interface CreatorRepository extends JpaRepository<Creator, Integer> {
     public Creator findByUsername(String username);
 }

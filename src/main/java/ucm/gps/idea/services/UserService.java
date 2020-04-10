@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public User findByUsername(String username){
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
@@ -46,13 +46,13 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
-        if( user == null){
-            throw new UsernameNotFoundException( username + " no existe");
+        if (user == null) {
+            throw new UsernameNotFoundException(username + " no existe");
         }
 
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for ( Role role : user.getRoles() ){
+        for (Role role : user.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 

@@ -25,16 +25,16 @@ public class EnterpriseController {
     private static final Logger logger = LoggerFactory.getLogger(EnterpriseController.class);
 
     @GetMapping("/")
-    public ResponseEntity<List<Enterprise>> list(){
+    public ResponseEntity<List<Enterprise>> list() {
         List<Enterprise> listEnterprise = enterpriseService.list();
         return new ResponseEntity<>(listEnterprise, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<Enterprise> index(@PathVariable Integer id){
-        try{
+    @GetMapping("/{id}")
+    public ResponseEntity<Enterprise> index(@PathVariable Integer id) {
+        try {
             Enterprise enterprise = enterpriseService.index(id);
-            return new ResponseEntity<>(enterprise,HttpStatus.OK);
+            return new ResponseEntity<>(enterprise, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed id: %i", id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -42,12 +42,12 @@ public class EnterpriseController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Enterprise> findByName(@PathVariable String name){
+    public ResponseEntity<Enterprise> findByName(@PathVariable String name) {
 
-        try{
-            Enterprise enterprise =enterpriseService.findByName(name);
-            return new ResponseEntity<>(enterprise,HttpStatus.OK);
-        }catch (Exception e) {
+        try {
+            Enterprise enterprise = enterpriseService.findByName(name);
+            return new ResponseEntity<>(enterprise, HttpStatus.OK);
+        } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed name: %i", name));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -67,7 +67,7 @@ public class EnterpriseController {
 
 
     @PostMapping("/enterprises/{enterpriseID}/ideas/{ideaID}")
-    public ResponseEntity<Enterprise> create(@PathVariable Integer enterpriseID, @PathVariable Integer ideaID) throws Exception {
+    public ResponseEntity<Enterprise> send(@PathVariable Integer enterpriseID, @PathVariable Integer ideaID) throws Exception {
 
         Enterprise enterprise = enterpriseService.index(enterpriseID);
         Idea idea = ideaService.index(ideaID);

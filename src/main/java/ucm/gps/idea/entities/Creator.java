@@ -8,13 +8,14 @@ import java.util.Set;
 @Table(name = "creator")
 public class Creator extends User {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 0;
 
-    public Creator() {}
+    public Creator() {
+    }
 
-    public Creator(String username, String password, Boolean active, String email , String name,
-                   String lastName, Date birthDate, String telephone, String address){
-        super(username, password, /*type,*/ active, email, name, address, telephone);
+    public Creator(String username, String password, Boolean active, String email, String name,
+                   String lastName, Date birthDate, String telephone, String address) {
+        //super(username, password, type, active, email, name, address, telephone);
         this.lastName = lastName;
         this.birthDate = birthDate;
     }

@@ -13,7 +13,7 @@ public class PackIdeaService {
     @Autowired
     PackIdeaRepository packIdeaRepo;
 
-    public List<PackIdea> listAll(){
+    public List<PackIdea> listAll() {
         return packIdeaRepo.findAll();
     }
 
@@ -21,11 +21,11 @@ public class PackIdeaService {
         return packIdeaRepo.findById(id).orElseThrow(Exception::new);
     }
 
-    public PackIdea create(PackIdea newPack){
+    public PackIdea create(PackIdea newPack) {
         return packIdeaRepo.save(newPack);
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         packIdeaRepo.deleteById(id);
     }
 

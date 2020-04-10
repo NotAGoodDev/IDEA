@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Admin</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/enterprise/index.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+<header>
+</header>
+
+
+<main>
+    <div class="col-12 separator"></div>
+
+    <!--selectMenu-->
+    <div class="container">
+        <div class="row">
+            <div class="col-2"><select class="form-control" id="selectType">
+                <option value="Categoria">Categoria</option>
+                <option value="Categoria1">Categoria1</option>
+            </select></div>
+            <div class="col-8"></div>
+            <div class="col-2 text-right" id="editIcon">
+            </div>
+        </div>
+
+        <!--comprar pack button-->
+        <!--<div class="row" id="parrafo">
+            <div class="col-5"><p>Ideas restantes por recibir: 9</p></div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                <button class="btn-ver" type="submit" onclick="enableFields()"><a href="/enterprise/buyPack">Comprar Pack</a>
+                </button>
+            </div>
+
+        </div>
+        -->
+
+        <!--Body-->
+        <div class="container">
+            <form id="form">
+                <!-- Mis ideas recibidas-->
+                <div class="row">
+                    <div class="col-12 col-lg-6 data id=" editIcon
+                    ">
+                    <h2>Ideas recibidas</h2>
+                    <div class="container" id="lista-idea">
+                        <div class="row">
+                            <div class="col-6 col-lg-6 data"><a href="/enterprise/viewIdea"><strong>Idea1</strong><br>Lorem
+                                ipsum dolor sit amet, sapien etiam, nunc amet
+                                dolor ac odio mauris justo</a></div>
+                            <div class="col-6 col-lg-6 data text-right" id="editIcon">
+                                <p>Categoria1<br><strong>Estado</strong></p>
+                                <div class="row">
+
+                                    <div class="col-3 data"></div>
+                                    <div class="col-3 data"></div>
+                                    <div class="col-6">
+                                        <button class="btn-ver" type="submit" onclick="enableFields()"><a
+                                                href="/enterprise/viewIdea">Ver</a></button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Ideas compradas-->
+
+                <div class="col-12 col-lg-6 data id=" editIcon
+                ">
+                <h2>Ideas compradas</h2>
+                <div class="container" id="lista-idea">
+                    <div class="row">
+                        <div class="col-6 col-lg-6 data"><a href="/enterprise/viewIdea"><strong>Idea1</strong><br>Lorem
+                            ipsum dolor sit amet, sapien etiam, nunc amet
+                            dolor ac odio mauris justo</a></div>
+                        <div class="col-6 col-lg-6 data text-right" id="editIcon">
+                            <p>Categoria1<br><strong>Estado</strong></p>
+                            <div class="row">
+
+                                <div class="col-3 data"></div>
+                                <div class="col-3 data"></div>
+                                <div class="col-6">
+                                    <button class="btn-ver" type="submit" onclick="enableFields()"><a
+                                            href="/enterprise/viewIdea">Ver</a></button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+
+
+</main>
+<footer>
+</footer>
+</body>
+
+</html>

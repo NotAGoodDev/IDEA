@@ -13,7 +13,7 @@ public class PackIdea implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "name")
@@ -83,12 +83,12 @@ public class PackIdea implements Serializable {
     @Override
     public String toString() {
         return "{" +
-                    "\"id\":" + this.id +
-                    "\"pack_name\":" + "\"" + this.name + "\"," +
-                    "\"price\":" + this.price + "," +
-                    "\"num_ideas\":" + this.numIdeas + "," +
-                    "\"discount\":" + this.discount + "," +
-                    "\"recommended\":" + this.recommended + "," +
+                "\"id\":" + this.id +
+                "\"pack_name\":" + "\"" + this.name + "\"," +
+                "\"price\":" + this.price + "," +
+                "\"num_ideas\":" + this.numIdeas + "," +
+                "\"discount\":" + this.discount + "," +
+                "\"recommended\":" + this.recommended + "," +
                 "}";
     }
 }

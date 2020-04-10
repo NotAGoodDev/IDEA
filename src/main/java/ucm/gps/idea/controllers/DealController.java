@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ucm.gps.idea.entities.Deal;
 import ucm.gps.idea.entities.DealDTO;
 import ucm.gps.idea.services.DealService;
 
@@ -25,8 +24,7 @@ public class DealController {
         try {
             dealService.create(dealDTO);
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

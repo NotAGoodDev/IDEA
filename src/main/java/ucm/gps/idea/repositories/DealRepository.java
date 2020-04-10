@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ucm.gps.idea.entities.Deal;
 
 @Repository
-public interface DealRepository extends JpaRepository<Deal,Integer> {
+public interface DealRepository extends JpaRepository<Deal, Integer> {
 }
 

@@ -22,13 +22,15 @@ public class CreatorService {
         return creatorRepository.findById(id).orElseThrow(Exception::new);
     }
 
-    public Creator create(Creator creator) { return creatorRepository.save(creator); }
+    public Creator create(Creator creator) {
+        return creatorRepository.save(creator);
+    }
 
     public void delete(Integer id) {
         creatorRepository.deleteById(id);
     }
 
-    public Creator findByUsername(String username){
+    public Creator findByUsername(String username) {
         return creatorRepository.findByUsername(username);
     }
 

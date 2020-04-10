@@ -19,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class IdeaApplicationTests {
 
-	// Lo he comentado porque al estar vacio, TravisCI daba excepcion
-		// Logicamente cuando hagamos los test se tiene que usar
+    // Lo he comentado porque al estar vacio, TravisCI daba excepcion
+    // Logicamente cuando hagamos los test se tiene que usar
 
 	/*
 	@Test
@@ -28,18 +28,18 @@ public class IdeaApplicationTests {
 	}
 	*/
 
-	@Autowired
+    @Autowired
     private CreatorRepository repoCreator;
-	@Autowired
+    @Autowired
     private EnterpriseRepository repoEnterprise;
-	@Autowired
+    @Autowired
     private BCryptPasswordEncoder encoder;
 
-	@Test
-    public boolean registerCreatorTest(){
-	    Creator first = new Creator();
-	    first.setId(3);
-	    first.setName("Carlos");
+    @Test
+    public boolean registerCreatorTest() {
+        Creator first = new Creator();
+        first.setId(3);
+        first.setName("Carlos");
         first.setLastName("Garcia Rodriguez");
         first.setBirthDate(new Date(System.currentTimeMillis())); // Fecha actual
         first.setTelephone("655889401");
@@ -57,7 +57,7 @@ public class IdeaApplicationTests {
     }
 
     @Test
-    public boolean registerEnterpriseTest(){
+    public boolean registerEnterpriseTest() {
         Enterprise e = new Enterprise();
 
         e.setId(2);

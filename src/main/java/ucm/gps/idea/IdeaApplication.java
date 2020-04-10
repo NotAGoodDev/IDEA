@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories("ucm.gps.idea.repositories")
 public class IdeaApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(IdeaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(IdeaApplication.class, args);
+    }
 }

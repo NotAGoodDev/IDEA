@@ -37,7 +37,7 @@ public class AuthController {
 
         User user = null;
         List<Role> userRoles = new ArrayList<Role>();
-        Role elRol = null;
+        Role role = null;
         Date creatorDate = null;
 
         try{
@@ -52,11 +52,11 @@ public class AuthController {
 
                     user = userService.save(user);
 
-                    elRol = new Role();
-                    elRol.setUserId(user.getId());
-                    elRol.setName("ROLE_CREATOR");
-                    elRol = roleService.save(elRol);
-                    userRoles.add(elRol);
+                    role = new Role();
+                    role.setUserId(user.getId());
+                    role.setName("ROLE_CREATOR");
+                    role = roleService.save(role);
+                    userRoles.add(role);
                     user.setRoles(userRoles);
                 
                     break;
@@ -67,14 +67,34 @@ public class AuthController {
 
                     user = userService.save(user);
 
-                    elRol = new Role();
-                    elRol.setUserId(user.getId());
-                    elRol.setName("ROLE_ENTERPRISE");
-                    elRol = roleService.save(elRol);
-                    userRoles.add(elRol);
+                    role = new Role();
+                    role.setUserId(user.getId());
+                    role.setName("ROLE_ENTERPRISE");
+                    role = roleService.save(role);
+                    userRoles.add(role);
                     user.setRoles(userRoles);
 
                     break;
+                case "Admin":
+                    user = new User();
+                    
+                    user.setUsername(regUser.getUsername());
+                    user.setPassword(encoder.encode(regUser.getUsername()));
+                    user.setActive(true);
+                    user.setEmail(regUser.getEmail());
+                    user.setName(regUser.getName());
+                    user.setAddress(regUser.getAddress());
+                    user.setTelephone(regUser.getTelephone());
+
+                    user = userService.save(user);
+
+                    role = new Role();
+                    role.setUserId(user.getId());
+                    role.setName("ROLE_ADMIN");
+                    role = roleService.save(role);
+                    userRoles.add(role);
+                    user.setRoles(userRoles);
+
                 default:
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }

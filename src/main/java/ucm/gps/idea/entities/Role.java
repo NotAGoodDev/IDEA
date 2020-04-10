@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "roles", uniqueConstraints = { @UniqueConstraint( columnNames = {"user_id","name"} ) } )
+@Table(name = "roles", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "name"})})
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -14,7 +14,7 @@ public class Role implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "user_id", nullable = false)
