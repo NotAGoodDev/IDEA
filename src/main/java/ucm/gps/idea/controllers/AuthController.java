@@ -48,7 +48,8 @@ public class AuthController {
 
                     System.out.println(encoder.encode(regUser.getPassword()));
 
-                    user = new Creator(regUser.getUsername(), encoder.encode(regUser.getPassword()),
+                    String username = regUser.getUsername();
+                    user = new Creator(username, encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getLastName(), creatorDate,
                             regUser.getTelephone(), regUser.getAddress());
 
