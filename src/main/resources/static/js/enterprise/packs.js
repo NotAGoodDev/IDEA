@@ -1,9 +1,8 @@
 $(document).ready(function() {
 
     let discounts;          // Array donde se encuentran los descuentos segun el numero de ideas que se vayan a comprar
-    let purchaseData = {};  // Para coger los datos de los packs de ideas
+    let purchaseData = {};  // Para coger los datos que enviaremos a la pasarela de pago
     let sesionData = {};    // Para coger los datos de la sesion
-    let payment = {};       // Para llamar a la pasarela de pago
     let card;
 
     card = document.getElementById("payment");
@@ -13,12 +12,10 @@ $(document).ready(function() {
     // Hacemos esta llamada para coger los datos de la sesion para saber el nombre de la empresa, su tarjeta de credito...
     ApiController.get("auth/session", "", false).then(function (data) {
         sesionData = data;
-        purchaseData.cardNumber = data.creditCard;
-        purchaseData.ownerName = data.name;
     });
 
     // Hacemos esta llamada para no tener que hacer una peticion cada vez que se seleccione un numero de ideas
-    ApiController.get("packages/getDiscount", "", false).then(function (discountTable) {
+    ApiController.get("packages/getDiscounts", "", false).then(function (discountTable) {
         discounts = Object.entries(discountTable); // Array con cada posicion: [PAIR INTEGER], el PAIR en string.
     });
 
@@ -50,62 +47,52 @@ $(document).ready(function() {
             }
         }
     });
-/*
-    $("#pack10ideas").click(function () {
-        purchaseData.numIdeasToBuy = 10;
-        purchaseData.discount = 0;
-        purchaseData.validateNumber = 456;
-        purchaseData.expirationDate = "2024-04-05";
 
-        ApiController.put("packages/buy", purchaseData, false).then(function (data) {
-            payment.description = "Compra de un pack de 10 ideas";
-            payment.amount = data;
-            payment.currency = "EUR"; // En back es un enumerado, daria error si lo paso como string
-            ApiController.post("Stripe/paymentintent", payment).then(function (data) {
-                console.log(data);
-            });
-        });
-    });
-
-
-    // Este y el de abajo hacerlo igual que el de 10 ideas cuando este finalizada la pasarela de pago
-    $("#packXideas").click(function () {
-        purchaseData.numIdeasToBuy = parseInt(document.getElementById("numIdeas").value, 10);
-        //purchaseData.discount = 100; // ya elegido arriba cuando se mostraba
-        purchaseData.validateNumber = 1011;
-        purchaseData.expirationDate = "2024-04-05";
-
-        ApiController.post("packages/buy", purchaseData).then(function (data) {
-            if(data){
-                alert("Pago realizado con exito.");
-                window.location.href = "/home"
-            }else{
-                alert("Error al hacer el pago.");
-            }
-        });
-    });
-
-    $("#pack20ideas").click(function () {
-        purchaseData.numIdeasToBuy = 20;
-        purchaseData.discount = 0;
-        purchaseData.validateNumber = 1415;
-        purchaseData.expirationDate = "2024-04-05";
-
-        ApiController.post("packages/buy", purchaseData).then(function (data) {
-            if(data){
-                alert("Pago realizado con exito.");
-                window.location.href = "/home"
-            }else{
-                alert("Error al hacer el pago.");
-            }
-        });
-    });
-*/
     $(".btn-success").click(function () {
         let x;
         x = document.getElementById("payment");
         x.style.display = "block";
     });
 
+    $("#boton-pagar").click(function () {
+        // Calculamos el precio final
+        ApiController.get("pckages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
+            // Variable para mapear la clase "PaymentModel" de "Stripe/paymentintent" para procesar el pago
+            let payment = {};
+            payment.amount = finalPrice;
+            payment.currency = "EUR"; // Mas adelante posibilidad de elegir entre '€' y '$'
+            payment.ownerName = document.getElementById("namecard").value;
+            payment.cardNumber = parseInt(document.getElementById("cardNumber").value, 10);
+            payment.expirationDate = document.getElementById("dateExp").value;
+            payment.validateNumber = parseInt(document.getElementById("cvv").value, 10);
+            payment.description =
+                "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount +
+                payment.currency + " en la pagina web de IDEA.";
+
+            // Actualizamos el numero de ideas a esa empresa
+            ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false).then(function (enterprise) {
+                // Llamamos a la pasarela de pago y decidimos si aceptamos o rechazamos el pago
+                ApiController.post("Stripe/paymentintent", payment).then(function (result) {
+
+                });
+            });
+        });
+    });
+
+    // PARA ESTABLECER EN LAS VARIABLES EL NUMERO DE IDEAS Y EL DESCUENTO CORRESPONDIENTE
+    $("#pack10ideas").click(function () {
+        purchaseData.numIdeasToBuy = 10;
+        purchaseData.discount = 0;
+    });
+
+    $("#pack20ideas").click(function () {
+        purchaseData.numIdeasToBuy = 20;
+        purchaseData.discount = 0;
+    });
+
+    $("#packXideas").click(function () {
+        purchaseData.numIdeasToBuy = parseInt(document.getElementById("numIdeas").value, 10);
+        // El descuento ya lo hemos guardado la ultima vez que selecciono el numero de ideas
+    });
 
 });

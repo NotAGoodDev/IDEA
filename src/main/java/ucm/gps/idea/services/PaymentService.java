@@ -5,7 +5,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ucm.gps.idea.entities.PaymentintentDTO;
+import ucm.gps.idea.entities.PaymentIntentDTO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,13 +18,17 @@ public class PaymentService {
     @Value("${stripe.key.private}")
     String secretKey;
 
-    public PaymentIntent paymentIntent(PaymentintentDTO paymentintentDTO) throws StripeException {
+    public PaymentIntent paymentIntent(PaymentIntentDTO paymentintentDTO) throws StripeException {
         Stripe.apiKey = secretKey;
         Map<String, Object> params = new HashMap<>();
 
         params.put("amount", paymentintentDTO.getAmount());
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
+        params.put("ownerName", paymentintentDTO.getOwnerName());
+        params.put("cardNumber", paymentintentDTO.getCardNumber());
+        params.put("expirationDate", paymentintentDTO.getExpirationDate());
+        params.put("validateNumber", paymentintentDTO.getValidateNumber());
 
         List<String> paymentMethodTypes = new ArrayList<String>();
 
