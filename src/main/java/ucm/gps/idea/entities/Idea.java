@@ -14,9 +14,15 @@ public class Idea implements Serializable {
 
     }
 
-    public Idea(int idCreator, int category, int enterprise, String title, String description) {
-        this.deal = null;   //No se asigna de primeras
-        this.active = true;
+    public Idea(Deal deal, Creator creator, Enterprise enterprise, Category category, String title, String description, String summary, boolean active) {
+        this.deal = deal;   //No necesitamos asignar un deal de primeras
+        this.creator = creator;
+        this.category = category;
+        this.enterprise = enterprise;
+        this.title = title;
+        this.description = description;
+        this.summary = summary;
+        this.active = active;
     }
 
     @Id
@@ -51,8 +57,11 @@ public class Idea implements Serializable {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "summary")   //Small description
+    private String summary;
 
     @Column(name = "active")
     private Boolean active;
@@ -97,12 +106,20 @@ public class Idea implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public Boolean isActive() {

@@ -7,9 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Category;
+import ucm.gps.idea.entities.Creator;
+import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.models.ModelIdea;
 import ucm.gps.idea.services.CategoryService;
+import ucm.gps.idea.services.CreatorService;
+import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.IdeaService;
 
 import java.util.List;
@@ -21,6 +25,10 @@ class IdeaController {
 
     @Autowired
     IdeaService ideaService;
+    @Autowired
+    CreatorService creatorService;
+    @Autowired
+    EnterpriseService enterpriseService;
     @Autowired
     CategoryService categoryService;
 
@@ -59,7 +67,10 @@ class IdeaController {
 
     @PostMapping("/")
     public ResponseEntity<Idea> create(@RequestBody ModelIdea model) {
-        Idea idea = new Idea(model.getCreator(), model.getCategory(), model.getEnterprise(), model.getTitle(), model.getText());
+        Creator creator = creatorService.findByUsername(model.getCreatorUsername());
+        Enterprise enterprise = enterpriseService.findByName(model.getEnterpriseUsername());
+        Category category = categoryService.findByName(model.getCategoryName());
+        Idea idea = ideaService.modelToIdea(model, creator, enterprise, category);
 
         return new ResponseEntity<>(ideaService.save(idea), HttpStatus.OK);
     }

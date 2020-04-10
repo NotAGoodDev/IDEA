@@ -7,120 +7,130 @@ import java.util.Date;
 
 public class ModelIdea implements Serializable{
 
-        private static final long serialVersionUID = 0;
+    private static final long serialVersionUID = 1L;
 
-        @JsonProperty
-        private Integer id;
+    @JsonProperty
+    private Integer id;
 
-        @JsonProperty
-        private Integer deal;
+    @JsonProperty
+    private Integer deal;
 
-        @JsonProperty
-        private Integer creator;
+    @JsonProperty
+    private String creatorUsername;
 
-        @JsonProperty
-        private Integer category;
+    @JsonProperty
+    private String categoryName;
 
-        @JsonProperty
-        private Integer enterprise;
+    @JsonProperty
+    private String enterpriseUsername;
 
-        @JsonProperty
-        private String title;
+    @JsonProperty
+    private String title;
 
-        @JsonProperty
-        private Date createdAt;
+    @JsonProperty
+    private Date createdAt;
 
-        @JsonProperty
-        private String text;
+    @JsonProperty
+    private String description;
 
-        @JsonProperty
-        private Boolean active;
+    @JsonProperty
+    private String summary;
 
-        public Integer getId() {
-            return id;
-        }
+    @JsonProperty
+    private Boolean active;
 
-        public void setId(Integer id) {
-            this.id = id;
-        }
+    public Integer getId() {
+        return id;
+    }
 
-        public String getTitle() {
-            return title;
-        }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public Date getCreatedAt() {
-            return createdAt;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public void setCreatedAt(Date createdAt) {
-            this.createdAt = createdAt;
-        }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-        public String getText() {
-            return text;
-        }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-        public void setText(String text) {
-            this.text = text;
-        }
+    public String getDescription() {
+        return description;
+    }
 
-        public Boolean isActive() {
-            return active;
-        }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        public void setActive(Boolean active) {
-            this.active = active;
-        }
+    public String getSummary() {
+        return summary;
+    }
 
-        public Integer getDeal() {
-            return deal;
-        }
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
 
-        public void setDeal(Integer deal) {
-            this.deal = deal;
-        }
+    public Boolean isActive() {
+        return active;
+    }
 
-        public Integer getCreator() {
-            return creator;
-        }
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
-        public void setCreator(Integer creator) {
-            this.creator = creator;
-        }
+    public Integer getDeal() {
+        return deal;
+    }
 
-        public Integer getCategory() {
-            return category;
-        }
+    public void setDeal(Integer deal) {
+        this.deal = deal;
+    }
 
-        public void setCategory(Integer category) {
-            this.category = category;
-        }
+    public String getCreatorUsername() {
+        return creatorUsername;
+    }
 
-        public Integer getEnterprise()
-        {
-            return enterprise;
-        }
+    public void setCreatorUsername(String creatorUsername) {
+        this.creatorUsername = creatorUsername;
+    }
 
-        public void setEnterprise(Integer enterprise)
-        {
-            this.enterprise = enterprise;
-        }
+    public String getEnterpriseUsername() {
+        return enterpriseUsername;
+    }
+
+    public void setEnterpriseUsername(String enterpriseUsername) {
+        this.enterpriseUsername = enterpriseUsername;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     @Override
     public String toString() {
         return "RegisterIdea{" +
                 "id='" + id + '\'' +
                 ", deal='" + deal + '\'' +
-                ", creator='" + creator + '\'' +
-                ", category='" + category + '\'' +
-                ", enterprise=" + enterprise +
+                ", creator='" + creatorUsername + '\'' +
+                ", enterprise=" + enterpriseUsername +
+                ", category='" + categoryName + '\'' +
                 ", title='" + title + '\'' +
                 ", createdAt='" + createdAt + '\'' +
-                ", text='" + text + '\'' +
+                ", desciption='" + description + '\'' +
+                ", summary='" + summary + '\'' +
                 ", active='" + active + '\'' +
                 '}';
     }

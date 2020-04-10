@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>iDea</title>
+    <title>Ver idea</title>
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
@@ -27,35 +27,44 @@
                 <h3>Ver Idea</h3>
             </div>
             <div class="row">
-                <div class="col-4">
-                    <label for="titulo">Título</label><br>
+                <div class="col-sm-12 col-lg-4 data">
+                    <label for="titulo">Título</label>
                     <input name="titulo" id="titulo"  type="readonly" readonly >
                 </div>
-                <div class="col-4">
-                    <label for="autor">Autor</label><br>
+
+                <div class="col-sm-12 col-lg-4 data">
+                    <label for="autor">Autor</label>
                     <input name="autor" id="autor"  type="readonly" readonly >
                 </div>
-                <div class="col-4">
-                    <label for="fecha">Fecha</label><br>
+
+                <div class="col-sm-12 col-lg-4 data">
+                    <label for="fecha">Fecha</label>
                     <input name="fecha" id="fecha"  type="readonly" readonly >
                 </div>
             </div>
-            <div class="col-12 separator"></div>
-            <!-- Description -->
-            <div class="container" id="desc">
-                <div class="row">
-                    <label for="descriptionC">Descripcion corta</label></div>
-                <div class="row">
-                    <input name="descriptionC" id="descriptionC"  type="readonly" readonly >
-                </div>
 
-                <div class="row">
-                    <label for="description">Description</label>
-                </div>
-                <div class="row">
-                    <input name="description" id="description"  type="readonly" readonly >
+            <div class="col-12 separator"></div>
+
+            <!-- Description -->
+            <div class="row">
+                <div class="col-12 data">
+                    <label for="descriptionC">Descripcion corta</label>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12 data">
+                    <input name="descriptionC" id="descriptionC"  type="readonly" readonly >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 data">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"  type="readonly" readonly ></textarea>
+                </div>
+            </div>
+
 
             <!-- Bottons -->
             <div class="row">
