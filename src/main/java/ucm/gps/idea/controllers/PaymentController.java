@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ucm.gps.idea.entities.PaymentintentDTO;
+import ucm.gps.idea.entities.PaymentIntentDTO;
+import ucm.gps.idea.models.PaymentModel;
 import ucm.gps.idea.services.PaymentService;
 
 @RestController
@@ -18,9 +19,14 @@ public class PaymentController {
     PaymentService paymentService;
 
     @PostMapping("/paymentintent")
-    public ResponseEntity<String> payment(@RequestBody PaymentintentDTO paymentintentDTO){
+    public ResponseEntity<String> payment(@RequestBody PaymentModel paymentModel){
         try {
-            PaymentIntent paymentIntent = paymentService.paymentIntent(paymentintentDTO);
+            PaymentIntentDTO paymentIntentDTO =
+                    new PaymentIntentDTO(paymentModel.getDescription(), paymentModel.getAmount(), paymentModel.getCurrency(),
+                            paymentModel.getOwnerName(), paymentModel.getCardNumber(), paymentModel.getExpirationDate(),
+                            paymentModel.getValidateNumber());
+
+            PaymentIntent paymentIntent = paymentService.paymentIntent(paymentIntentDTO);
             String paymentStr = paymentIntent.toJson();
             return new ResponseEntity<String>(paymentStr, HttpStatus.OK);
 

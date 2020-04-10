@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.PackIdea;
-import ucm.gps.idea.entities.User;
 import ucm.gps.idea.models.ModelPackToBuy;
+import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.PackIdeaService;
-import ucm.gps.idea.services.UserService;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -28,7 +27,7 @@ public class PackIdeaController {
     private  static final Double PRICE_PER_IDEA = 7.0;
 
     @Autowired
-    UserService userService;
+    EnterpriseService enterpriseService;
 
     @Autowired
     PackIdeaService packIdeaService;
@@ -39,17 +38,25 @@ public class PackIdeaController {
         return new ResponseEntity<>(packages, HttpStatus.OK);
     }
 
-    @PutMapping("/buy")
-    public ResponseEntity<Double> create(@RequestBody ModelPackToBuy modelPackToBuy, Principal principal) {
-        // Calculamos el total de la compra, añadimos las ideas a la empresa y devolvemos el total para q pague
+    // Para calcular el precio final dado el numero de ideas y el descuento que se le tiene que aplicar
+    @GetMapping("/calculateFinalPrice")
+    public ResponseEntity<Double> finalPrice(@RequestBody ModelPackToBuy modelPackToBuy) {
+        // Calculamos el total de la compra y lo devolvemos para que pague
         double total = modelPackToBuy.getNumIdeasToBuy() * PRICE_PER_IDEA;
         total -= total * (modelPackToBuy.getDiscount() / 100.0);
         logger.info(modelPackToBuy.toString() + " " + total);
 
-        User user = userService.findByUsername(principal.getName());
-        ((Enterprise)user).setRemainingIdeas(((Enterprise)user).getRemainingIdeas() + modelPackToBuy.getNumIdeasToBuy());
-
         return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+    // Para actualizar el numero de ideas cuando una empresa compre un pack de ideas
+    @PutMapping("/updateNumIdeas")
+    public ResponseEntity<Enterprise> updateNumIdeas(@RequestBody Integer numIdeasToBuy, Principal principal){
+        Enterprise enterprise = enterpriseService.findByName(principal.getName());
+        enterprise.setRemainingIdeas(enterprise.getRemainingIdeas() + numIdeasToBuy);
+        Enterprise ret = enterpriseService.create(enterprise);
+
+        return new ResponseEntity<>(ret, ret != null ? HttpStatus.OK : HttpStatus.FORBIDDEN);
     }
 
     @GetMapping("/getPack")
@@ -62,7 +69,8 @@ public class PackIdeaController {
         return new ResponseEntity<>(packIdea,HttpStatus.OK);
     }
 
-    @GetMapping("/getDiscount")
+    // Para en front mostrar el descuento que obtendria si compra X ideas.
+    @GetMapping("/getDiscounts")
     public ResponseEntity<Map<Pair<Integer, Integer>, Integer>> getDiscount(){ //@RequestBody Integer numIdeas){
         Map<Pair<Integer, Integer>, Integer> discountTable = new HashMap<>();
 
