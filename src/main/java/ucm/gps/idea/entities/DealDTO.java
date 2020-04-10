@@ -1,18 +1,12 @@
 package ucm.gps.idea.entities;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import java.util.Date;
-
 public class DealDTO {
 
     private Integer id;
 
-    private Integer idea_id;
+    private Integer ideaId;
 
-    private Integer enterprise_id;
+    private Integer enterpriseId;
 
     private String title;
 
@@ -28,20 +22,20 @@ public class DealDTO {
         this.id = id;
     }
 
-    public Integer getIdea_id() {
-        return idea_id;
+    public Integer getIdeaId() {
+        return ideaId;
     }
 
-    public void setIdea_id(Integer idea_id) {
-        this.idea_id = idea_id;
+    public void setIdeaId(Integer ideaId) {
+        this.ideaId = ideaId;
     }
 
-    public Integer getEnterprise_id() {
-        return enterprise_id;
+    public Integer getEnterpriseId() {
+        return enterpriseId;
     }
 
-    public void setEnterprise_id(Integer enterprise_id) {
-        this.enterprise_id = enterprise_id;
+    public void setEnterpriseId(Integer enterpriseId) {
+        this.enterpriseId = enterpriseId;
     }
 
     public String getTitle() {

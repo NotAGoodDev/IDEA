@@ -26,10 +26,11 @@ public class PaymentService {
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
 
-        List<String> paymentMethodTypes = new ArrayList<String>();
+        List paymentMethodTypes = new ArrayList<>();
 
         paymentMethodTypes.add("card");
 
+        //Se queda sin camelCase por cosas del stripe
         params.put("payment_method_types", paymentMethodTypes);
 
         return PaymentIntent.create(params);
@@ -39,6 +40,7 @@ public class PaymentService {
         Stripe.apiKey = secretKey;
         PaymentIntent paymentIntent = PaymentIntent.retrieve(id);
 
+        //Se queda sin camelCase por cosas del stripe
         Map<String, Object> params = new HashMap<>();
         params.put("payment_method", "pm_card_visa");
 

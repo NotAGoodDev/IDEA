@@ -23,11 +23,7 @@ public class DealController {
     public ResponseEntity<DealDTO> create(@RequestBody DealDTO dealDTO) throws Exception {
 
         try {
-            Deal deal = new Deal();
-            deal.setPercentage(dealDTO.getPercentage());
-            deal.setText(dealDTO.getText());
-            deal.setTitle(dealDTO.getTitle());
-            dealService.create(deal, dealDTO.getEnterprise_id(), dealDTO.getIdea_id());
+            dealService.create(dealDTO);
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
         }
         catch (Exception e){

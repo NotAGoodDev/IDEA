@@ -5,14 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucm.gps.idea.entities.Deal;
+import ucm.gps.idea.entities.DealDTO;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.repositories.DealRepository;
 import ucm.gps.idea.repositories.EnterpriseRepository;
 import ucm.gps.idea.repositories.IdeaRepository;
 
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.List;
 
@@ -46,15 +46,24 @@ public class DealService {
     }
 
 
-    public Deal create(Deal deal, Integer enterpriseId, Integer ideaId) throws Exception {
+    public Deal create(DealDTO dealDTO) throws Exception {
+
+        Deal deal = new Deal();
+        deal.setPercentage(dealDTO.getPercentage());
+        deal.setText(dealDTO.getText());
+        deal.setTitle(dealDTO.getTitle());
 
         Date createdDate = new Date();
 
+        logger.info(createdDate.toString());
+
         deal.setCreatedAt(createdDate);
 
-        Idea idea = ideaRepository.findById(ideaId).orElseThrow(Exception::new);
+        Idea idea = ideaRepository.findById(dealDTO.getIdeaId()).orElseThrow(Exception::new);
 
-        Enterprise enterprise = enterpriseRepository.findById(enterpriseId).orElseThrow(Exception::new);
+        logger.info(idea.getId().toString());
+
+        Enterprise enterprise = enterpriseRepository.findById(dealDTO.getEnterpriseId()).orElseThrow(Exception::new);
 
         logger.info(enterprise.getId().toString());
 
