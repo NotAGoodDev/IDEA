@@ -12,7 +12,6 @@ import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.PackIdea;
 import ucm.gps.idea.entities.User;
 import ucm.gps.idea.models.ModelPackToBuy;
-import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.PackIdeaService;
 import ucm.gps.idea.services.UserService;
 

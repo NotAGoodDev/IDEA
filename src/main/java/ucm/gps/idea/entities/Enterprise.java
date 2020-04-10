@@ -1,12 +1,11 @@
 package ucm.gps.idea.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "enterprise")
-public class Enterprise extends User implements Serializable {
+public class Enterprise extends User {
 
     private static final long serialVersionUID = 0;
 

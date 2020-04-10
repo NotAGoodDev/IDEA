@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Category;
-import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
 import ucm.gps.idea.models.ModelIdea;
 import ucm.gps.idea.services.CategoryService;

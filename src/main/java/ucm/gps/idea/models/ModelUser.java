@@ -2,8 +2,6 @@ package ucm.gps.idea.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
-
 public class ModelUser {
 
     @JsonProperty("username")

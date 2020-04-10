@@ -1,13 +1,12 @@
 package ucm.gps.idea.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "creator")
-public class Creator extends User implements Serializable {
+public class Creator extends User {
 
     private static final long serialVersionUID = 1L;
 

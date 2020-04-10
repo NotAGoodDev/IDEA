@@ -1,6 +1,5 @@
 package ucm.gps.idea.services;
 
-
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
@@ -10,6 +9,7 @@ import ucm.gps.idea.entities.PaymentintentDTO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -26,11 +26,11 @@ public class PaymentService {
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
 
-        ArrayList payment_method_types = new ArrayList<>();
+        List<String> paymentMethodTypes = new ArrayList<String>();
 
-        payment_method_types.add("card");
+        paymentMethodTypes.add("card");
 
-        params.put("payment_method_types", payment_method_types);
+        params.put("payment_method_types", paymentMethodTypes);
 
         return PaymentIntent.create(params);
     }

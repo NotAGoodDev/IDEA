@@ -7,7 +7,10 @@ import java.io.Serializable;
 @Table(name = "pack_idea")
 public class PackIdea implements Serializable {
 
-    public PackIdea(){}
+    static final long serialVersionUID = -532803013226291609L;
+
+    public PackIdea() {
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

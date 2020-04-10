@@ -1,7 +1,5 @@
 package ucm.gps.idea.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,8 +20,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
-
-    private static final Logger logger = LoggerFactory.getLogger(IdeaService.class);
 
     public List<User> list() {
         return userRepository.findAll();

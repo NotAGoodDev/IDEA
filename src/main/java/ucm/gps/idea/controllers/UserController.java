@@ -22,9 +22,6 @@ import ucm.gps.idea.services.UserService;
 import java.security.Principal;
 
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 
 @RestController
 @RequestMapping("/api/users/")
