@@ -26,7 +26,7 @@ public class PaymentService {
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
 
-        List paymentMethodTypes = new ArrayList<>();
+        List<String> paymentMethodTypes = new ArrayList<String>();
 
         paymentMethodTypes.add("card");
 
