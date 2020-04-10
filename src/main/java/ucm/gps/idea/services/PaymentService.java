@@ -10,6 +10,7 @@ import ucm.gps.idea.entities.PaymentintentDTO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -26,11 +27,12 @@ public class PaymentService {
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
 
-        ArrayList payment_method_types = new ArrayList<>();
+        List paymentMethodTypes = new ArrayList<>();
 
-        payment_method_types.add("card");
+        paymentMethodTypes.add("card");
 
-        params.put("payment_method_types", payment_method_types);
+        //Se queda sin camelCase por cosas del stripe
+        params.put("payment_method_types", paymentMethodTypes);
 
         return PaymentIntent.create(params);
     }
@@ -39,6 +41,7 @@ public class PaymentService {
         Stripe.apiKey = secretKey;
         PaymentIntent paymentIntent = PaymentIntent.retrieve(id);
 
+        //Se queda sin camelCase por cosas del stripe
         Map<String, Object> params = new HashMap<>();
         params.put("payment_method", "pm_card_visa");
 
