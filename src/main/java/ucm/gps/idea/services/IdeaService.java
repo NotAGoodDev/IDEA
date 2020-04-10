@@ -2,11 +2,8 @@ package ucm.gps.idea.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ucm.gps.idea.entities.Category;
-import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Idea;
-import ucm.gps.idea.models.ModelIdea;
 import ucm.gps.idea.repositories.EnterpriseRepository;
 import ucm.gps.idea.repositories.IdeaRepository;
 
@@ -47,21 +44,5 @@ public class IdeaService {
         idea.setEnterprise(enterprise);
         return ideaRepository.save(idea);
 
-    }
-
-    public Idea modelToIdea(ModelIdea model, Creator creator, Enterprise enterprise, Category category)
-    {
-        Idea idea = new Idea(
-                null,   //deal, no se asigna de primeras
-                creator,
-                enterprise,
-                category,
-                model.getTitle(),
-                model.getDescription(),
-                model.getSummary(),
-                true
-        );
-
-        return idea;
     }
 }
