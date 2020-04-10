@@ -27,7 +27,6 @@ public class EnterpriseController {
     @GetMapping("/")
     public ResponseEntity<List<Enterprise>> list() {
         List<Enterprise> listEnterprise = enterpriseService.list();
-        logger.info("se ha hecho una peticion de listar");
         return new ResponseEntity<>(listEnterprise, HttpStatus.OK);
     }
 

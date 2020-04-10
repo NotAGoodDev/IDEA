@@ -10,9 +10,10 @@
     <link href="/css/enterprise/index.css" rel="stylesheet">
     <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/enterprise/index.js"></script>
     <script src="/js/ApiController.js"></script>
     <script src="/js/header.js"></script>
-    <script src="js/footer.js"></script>
+    <script src="/js/footer.js"></script>
 </head>
 <body>
 <header>
@@ -25,9 +26,9 @@
     <!--selectMenu-->
     <div class="container">
         <div class="row">
-            <div class="col-2"><select class="form-control" id="selectType">
-                <option value="Categoria">Categoria</option>
-                <option value="Categoria1">Categoria1</option>
+            <div class="col-sm-12 col-md-4 col-lg-4"><select class="form-control" id="selectType">
+                <option value="Categoria 1">Categoria</option>
+                <option value="Categoria 2">Categoria1</option>
             </select></div>
             <div class="col-8"></div>
             <div class="col-2 text-right" id="editIcon">
@@ -39,7 +40,7 @@
             <div class="col-5"><p>Ideas restantes por recibir: 9</p></div>
             <div class="col-1"></div>
             <div class="col-6">
-                <button class="btn-ver" type="submit" onclick="enableFields()"><a href="/enterprise/buyPack">Comprar Pack</a>
+                <button class="btn-ver" type="submit"><a href="/enterprise/buyPack">Comprar Pack</a>
                 </button>
             </div>
 
@@ -50,69 +51,81 @@
             <form id="form">
                 <!-- Mis ideas recibidas-->
                 <div class="row">
-                    <div class="col-12 col-lg-6 data id=" editIcon
-                    ">
-                    <h2>Ideas recibidas</h2>
-                    <div class="container" id="lista-idea">
-                        <div class="row">
-                            <div class="col-6 col-lg-6 data"><a href="/enterprise/viewIdea"><strong>Idea1</strong><br>Lorem
-                                ipsum dolor sit amet, sapien etiam, nunc amet
-                                dolor ac odio mauris justo</a></div>
-                            <div class="col-6 col-lg-6 data text-right" id="editIcon">
-                                <p>Categoria1<br><strong>Estado</strong></p>
-                                <div class="row">
-
-                                    <div class="col-3 data"></div>
-                                    <div class="col-3 data"></div>
-                                    <div class="col-6">
-                                        <button class="btn-ver" type="submit" onclick="enableFields()"><a
-                                                href="/enterprise/viewIdea">Ver</a></button>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Ideas compradas-->
-
-                <div class="col-12 col-lg-6 data id=" editIcon
-                ">
-                <h2>Ideas compradas</h2>
-                <div class="container" id="lista-idea">
-                    <div class="row">
-                        <div class="col-6 col-lg-6 data"><a href="/enterprise/viewIdea"><strong>Idea1</strong><br>Lorem
-                            ipsum dolor sit amet, sapien etiam, nunc amet
-                            dolor ac odio mauris justo</a></div>
-                        <div class="col-6 col-lg-6 data text-right" id="editIcon">
-                            <p>Categoria1<br><strong>Estado</strong></p>
+                    <div class="col-12 col-lg-6 data">
+                        <h2>Ideas recibidas</h2>
+                        <div class="container lista-idea">
                             <div class="row">
+                                <div class="col-12 data">
+                                    <a href="/enterprise/viewIdea">
+                                        <div class="row">
+                                            <div class="col-8 col-lg-8 data">
+                                                <strong>Idea1</strong>
+                                            </div>
+                                            <div class="col-4 col-lg-4 data text-right editIcon">
+                                                <p>Categoria1
+                                                    <br>
+                                                    <strong>Estado</strong>
+                                                </p>
+                                                <div class="row">
+                                                    <div class="col-3 data"></div>
+                                                    <div class="col-3 data"></div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <div class="col-3 data"></div>
-                                <div class="col-3 data"></div>
-                                <div class="col-6">
-                                    <button class="btn-ver" type="submit" onclick="enableFields()"><a
-                                            href="/enterprise/viewIdea">Ver</a></button>
+
+                                        <div class="col-12 col-lg-12 data">
+                                            <p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet
+                                                dolor ac odio mauris justo</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
 
+                    <!--Ideas compradas-->
+                    <div class="col-12 col-lg-6 data" id=" editIcon">
+                        <h2>Ideas compradas</h2>
+                        <div class="container lista-idea">
+                            <div class="row">
+                                <div class="col-12 data">
+                                    <a href="/enterprise/viewIdea">
+                                        <div class="row">
+                                            <div class="col-8 col-lg-8 data">
+                                                <strong>Idea1</strong>
+                                            </div>
+                                            <div class="col-4 col-lg-4 data text-right editIcon">
+                                                <p>Categoria1
+                                                    <br>
+                                                    <strong>Estado</strong>
+                                                </p>
+                                                <div class="row">
+                                                    <div class="col-3 data"></div>
+                                                    <div class="col-3 data"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-12 col-lg-12 data">
+                                                <p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet
+                                                    dolor ac odio mauris justo</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </form>
-
         </div>
-
     </div>
 
-
     <div class="col-12 separator"></div>
     <div class="col-12 separator"></div>
     <div class="col-12 separator"></div>
-
 
 </main>
 <footer>
@@ -120,81 +133,3 @@
 </body>
 
 </html>
-
-<!--
-<main id="perfil-empresa" class="container-fluid">
-    <div class="row datos-empresa">
-        <div>
-            <img src="">
-            <select id="category">
-                <option value="category-1">Categoria 1</option>
-                <option value="category-2">Categoria 2</option>
-                <option value="category-3">Categoria 3</option>
-            </select>
-        </div>
-        <div>
-            <span>Username:<span id="empresa-username"></span></span>
-            <span>Nombre:<span id="empresa-name"></span></span>
-            <span>CIF:<span id="empresa-cif"></span></span>
-        </div>
-        <div>
-            <span>Teléfono:<span id="empresa-tlf"></span></span>
-            <span>E-mail:<span id="empresa-email"></span></span>
-            <span>Dirección:<span id="empresa-address"></span></span>
-        </div>
-    </div>
-    <div class="row">
-        <p>Ideas restantes por recibir: <span id="empresa-ideasrestantes"></span></p><a href="/enterprise/compraPacks">
-        <button>Comprar pack</button>
-    </a></div>
-
-    <body onload="javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);">
-
-
-    <div>
-        <div id="pestanas-ideas">
-            <ul id=lista>
-                <li id="pestana-ideas-recibidas"><a
-                        href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-recibidas);'>Ideas recibidas</a>
-                </li>
-                <li id="pestana-ideas-compradas"><a
-                        href='javascript:cambiarPestanna(pestanas-ideas,pestana-ideas-compradas);'>Ideas compradas</a>
-                </li>
-            </ul>
-        </div>
-        <div id="empresa-ideas">
-            <div id="empresa-ideas-recibidas">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                    <h5 class="list-group-item-heading"><strong>Idea 1</strong></h5>
-                    <div class="list-group-item-text">
-                        <div class="text">Lorem Ipsum es simplemente el texto de relleno
-                            de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
-                            Lorem Ipsum es simplemente el texto de relleno
-                            de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar.
-                        </div>
-                        <div class="bot">
-                            <p>Categoria1<br>Estado</p>
-                            <a href="/enterprise/verIdea">
-                                <button class="btn btn-default" id="tres" type="button">Ver</button>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div id="empresa-ideas-compradas">
-                Contenido de la pestaña 2
-            </div>
-        </div>
-    </div>
-
-</main>
-<footer>
-</footer>
-</body>
-
-</html>
-
--->

@@ -2,9 +2,11 @@
 .elementos {
     border: solid black 4px;
     border-radius: 10px;
-    height: 500px;
+    height: 550px;
     padding-bottom: 10px;
     align-items: center;
+   position:relative;
+
 }
 
 .col-4 {
@@ -13,15 +15,13 @@
 
 .elementos:hover {
     border: 6px solid #66bb6a;
-    margin-top: 5px;
-    /*width: fit-content;*/
-    border-radius: 10px;
-    float: right;
+ margin-top: 5px;
+  border-radius: 10px;
     align-self: flex-end;
     justify-content: center;
 }
 
-input[type="number"]{
+#form-packs input[type="number"]{
     background-color: white;
     border: 2px solid black;
     padding: 5px;
@@ -29,12 +29,33 @@ input[type="number"]{
     width: 2.5cm;
 }
 
-input[type="number"]:hover{
+#form-packs input[type="number"]:hover{
     background-color: white;
     border: 2px solid #66bb6a;
     padding: 5px;
     border-radius: 5px;
     width: 2.5cm;
+}
+
+#form-packs .btn-comprar{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    background: white;
+
+}
+
+#form-packs:hover  .btn-comprar:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    background: #66bb6a;
+
 }
 
 
@@ -51,4 +72,62 @@ h2, h3, h5 {
 
 .cont{
    margin-left:5px;
+}
+
+.bot{
+    display:flex;
+    justify-content: center;
+}
+
+#recomendado {
+    text-align: center;
+    color:#66bb6a;
+}
+
+
+.btn-success{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    color: black;
+    float: right;
+    background: white;
+    align-self: flex-end;
+}
+
+.btn-success:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    background: #66bb6a;
+    align-self: flex-end;
+}
+
+.btn-cancel{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: grey;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
+}
+
+.btn-cancel:hover{
+    margin-top: 28px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    float: right;
+    background: lightgrey;
+    align-self: flex-end;
 }

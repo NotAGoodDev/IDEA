@@ -10,7 +10,13 @@ public class Idea implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    public Idea() {
+    public Idea(){
+
+    }
+
+    public Idea(int idCreator, int category, int enterprise, String title, String description) {
+        this.deal = null;   //No se asigna de primeras
+        this.active = true;
     }
 
     @Id
@@ -33,9 +39,11 @@ public class Idea implements Serializable {
     @JoinColumn
     private Enterprise enterprise;
 
+    /*
+    Equivalente a creator
     @Column(name = "user_id")
     private Integer userId;
-
+    */
     @Column(name = "title")
     private String title;
 
@@ -61,6 +69,8 @@ public class Idea implements Serializable {
         this.id = id;
     }
 
+    /*
+    Equivalente a creator
     public Integer getUserId() {
         return userId;
     }
@@ -68,6 +78,8 @@ public class Idea implements Serializable {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+     */
 
     public String getTitle() {
         return title;

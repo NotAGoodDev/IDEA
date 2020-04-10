@@ -22,9 +22,6 @@ public class Enterprise extends User implements Serializable {
     }
 
     @OneToMany(mappedBy = "enterprise")
-    private Set<Deal> deal;
-
-    @OneToMany(mappedBy = "enterprise")
     private Set<Idea> idea;
 
     @Column(name = "cif")
@@ -36,13 +33,6 @@ public class Enterprise extends User implements Serializable {
     @Column(name = "remaining_ideas")
     private Integer remainingIdeas;
 
-    public Set<Deal> getDeal() {
-        return deal;
-    }
-
-    public void setDeal(Set<Deal> deal) {
-        this.deal = deal;
-    }
 
     public Set<Idea> getIdea() {
         return idea;

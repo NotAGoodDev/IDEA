@@ -27,7 +27,7 @@ p{
     align-self: flex-end;
 }
 
-#lista-idea{
+.lista-idea{
     border:solid black 2px;
     padding:10px;
 }
@@ -68,7 +68,7 @@ align-self: flex-end;
     background: white;
     align-self: flex-end;
 }
-
+/*
 .btn-ver:comprar{
     margin-top: 10px;
     width: fit-content;
@@ -79,67 +79,4 @@ align-self: flex-end;
     background: #66bb6a;
     align-self: flex-end;
 }
-
-/*#perfil-empresa {
-    margin: 30px 50px 40px;
-}
-
-#perfil-empresa .datos-empresa div {
-    display: flex;
-    flex-direction: column;
-}
-
-#pestanas-ideas {
-    float: top;
-    font-size: 3ex;
-    font-weight: bold;
-}
-
-#pestanas-ideas ul {
-    margin-left: -40px;
-}
-
-#pestanas-ideas li {
-    list-style-type: none;
-    float: left;
-    text-align: center;
-    margin: 0px 2px -2px -0px;
-    background: darkgrey;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: 2px solid bisque;
-    border-bottom: dimgray;
-    padding: 0px 20px 0px 20px;
-}
-
-#pestanas-ideas a:link {
-    text-decoration: none;
-    color: bisque;
-}
-
-#empresa-ideas {
-    clear: both;
-    background: white;
-    padding: 20px 20px 20px 20px;
-    border-radius: 5px;
-    border-top-left-radius: 0px;
-    border: 2px solid bisque;
-    width: 90%;
-}
-
-
-.list-group-item-text {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.bot {
-    margin-left: 10px;
-}
-
-.btn-default {
-    border: solid #66bb6a 2px;
-    border-radius: 5px;
-    background: gray;
-}*/
+*/

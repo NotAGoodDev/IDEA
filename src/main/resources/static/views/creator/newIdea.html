@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>iDea</title>
+    <title>Crear nueva idea</title>
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
@@ -12,38 +12,14 @@
     <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="/js/ApiController.js"></script>
     <script src="/js/header.js"></script>
-    <script src="/js/creator/profile.js"></script>
+    <!--script src="/js/creator/profile.js"></script-->
     <script src="/js/footer.js"></script>
-    <script src="../../js/creator/newIdea.js"></script>
+    <script src="/js/creator/newIdea.js"></script>
 </head>
 <body>
 <header>
 </header>
 
-<script>
-    $(document).ready(function () {
-        var method = "GET";
-        var url = '/api/enterprises/';
-        $.ajax({
-            url: url,
-            type: method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            contentType: "application/json; charset=utf-8",
-            mimeType: "application/json",
-            dataType: 'json',
-            success: function (respuesta) {
-                for (var i in respuesta) {
-                    $('.list-empresas-result').append('<li>' + respuesta[i].name + '</li>');
-                }
-            },
-            error: function () {
-                console.log("No se ha podido obtener la información");
-            }
-        });
-    })
-</script>
 <main>
 
     <div class="col-12 separator"></div>
@@ -56,13 +32,19 @@
             </div>
             <!-- Search option with categorie and title -->
             <div class="row">
+
+                <!-- TITULO -->
                 <div class="col-lg-4">
                     <label for="title">Titulo</label>
-                    <input type="text" name="title" id="title"></div>
-                <div class="col-lg-4">
+                    <input type="text" name="title" id="title">
+                </div>
+
+                <!-- BUSCAR EMPRESA -->
+                <!--div class="col-lg-4">
                     <div id="container-buscar-empresa">
                         <form>
-                            <label for="search-empresa">Buscar</label><input name="search-empresa" type="text" id="search-empresa" autocomplete="off" placeholder="Buscar...">
+                            <label for="search-empresa">Buscar</label>
+                            <input name="search-empresa" type="text" id="search-empresa" autocomplete="off" placeholder="Buscar...">
                         </form>
                         <div class="container-empresas-result">
                             <ul class="list-empresas-result">
@@ -71,37 +53,61 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4" id="cat">
-                    <label for="title">Categoría</label>
-                    <select class="form-control" id="selectCategory">
-                        <option value="Categoria">Categoria</option>
-                        <option value="Categoria">Categoria1</option>
-                    </select>
-                </div>
-                <div class="col-12 separator"></div>
+                </div-->
 
-                <!--Description-->
+                <!-- ver como guia: https://codepen.io/kris_kodira/pen/rJKgLw -->
+                <div class="col-lg-4">
+                    <div id="container-buscar-empresa">
+                        <form>
+                            <label for="search-empresa" class="active">Buscar</label>
+                            <input id="search-empresa" class="autocomplete" type="text" placeholder="Buscar..." autocomplete="off">
+                        </form>
+                        <div class="container-empresas-result">
+                            <ul id="enterprises-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- SELECCIONAR CATEGORIA -->
+                <div class="col-lg-4">
+                        <label for="search-category">Categoria:</label>
+                        <select id="search-category" class="categories">
+                            <!--options ==> en el js-->
+                        </select>
+                </div>
+                <div class="col-12 separator">
+                </div>
+
+
+
+                <!--DESCRIPCIONES-->
                 <div class="container" id="desc">
+
+                    <!-- DESCRIPCION BREVE -->
                     <div class="row">
-                        <label for="description-corta">Descripcion corta</label></div>
+                        <label for="short-description">Descripcion corta</label>
+                    </div>
                     <div class="row">
-                        <input class="text-areaC" type="text-area" name="description" id="description-corta">
+                        <input id="short-description" class="short-textarea" type="text-area" name="descripcion-corta">
                     </div>
 
+                    <!-- DESCRIPCION DETALLADA -->
                     <div class="row">
-                        <label for="description">Descripcion</label></div>
+                        <label for="large-description">Descripcion detallada</label>
+                    </div>
                     <div class="row">
-                        <input class="text-area" type="text-area" name="description" id="description">
+                        <textarea id="large-description" class="large-textarea" name="descripcion-larga" rows="6"></textarea>
                     </div>
                 </div>
+
 
                 <!--Botones cancel & success-->
                 <div class="row btns">
 
-                    <a href="/creator/home" ><button class="btn-cancel">Cancelar</button></a>
-
-                    <button class="btn-success" type="submit" onclick="enableFields()">Enviar</button>
+                    <a href="/home" ><button class="btn-cancel">Cancelar</button></a>
+                    <button class="btn-success" type="submit">Crear idea</button>
 
 
                 </div>

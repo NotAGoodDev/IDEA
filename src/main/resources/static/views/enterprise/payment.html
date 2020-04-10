@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprar packs</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/enterprise/payment.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/enterprise/payment.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<header>
+</header>
+<body>
+<div id="form-register" class="container">
+    <form >
+        <div class="row">
+            <div class="row" id="enterprise">
+            <h3>Datos de la Tarjeta</h3>
+            <div class="col-12"></div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 datos-tarjeta">
+                    <label for="namecard">Nombre del Titular</label>
+                    <input type="text" name="namecard" id="namecard">
+                    <label for="cardNumber">Número de Tarjeta</label>
+                    <input type="text" name="cardNumber" id="cardNumber">
+                </div>
+
+                <div class="col-12 col-lg-6 datos-tarjeta">
+                    <label for="dateExp">Fecha de vencimiento</label>
+                    <input type="date" name="dateExp" id="dateExp">
+                    <label for="cvv">CVV</label>
+                    <input type="text" name="cvv" id="cvv">
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-12 separator"></div>
+
+
+    </form>
+</div>
+</body>
+<footer></footer>
+</html>
