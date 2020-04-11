@@ -70,3 +70,19 @@ align-self: flex-end;
     background: white;
     align-self: flex-end;
 }
+
+.categories{
+    background-color: #EEEEEE;
+    color: black;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    max-width:250px;
+    flex-grow: 1;
+}
+.categories:hover{
+    background-color: white;
+    border-color: #66bb6a;
+    max-width:250px;
+    flex-grow: 1;
+}

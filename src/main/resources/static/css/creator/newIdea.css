@@ -1,18 +1,18 @@
 .large-textarea{
-    background-color: #EEEEEE;
-    color: grey;
+    background-color: white;
+    /*color: grey;*/
     border: 2px solid black;
     padding: 10px;
     border-radius: 5px;
     width: 100%;
-    resize: both;
+    resize: vertical;
     overflow: auto;
 }
 .large-textarea:hover{
     background-color: white;
     border-color: #66bb6a;
     width: 100%;
-    resize: both;
+    resize: vertical;
     overflow: auto;
 }
 .short-textarea{
@@ -24,7 +24,7 @@
     height:50px;
 }
 .categories{
-    background-color: #EEEEEE;
+    background-color: white;
     color: black;
     border: 2px solid black;
     padding: 10px;
@@ -38,6 +38,26 @@
     max-width:250px;
     flex-grow: 1;
 }
+
+.ui-autocomplete{
+    background-color: #ffffff !important;
+    display: block;
+    width: 200px;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.ui-menu-item-wrapper{
+    padding: 10px;
+    font-family: 'Anton', sans-serif;
+    border-radius: 5px;
+}
+
+.ui-menu-item-wrapper:hover{
+    background-color: #66bb6a;
+    border-radius: 5px;
+}
 /* LO DE ARRIBA SON MODIFICACIONES MIAS */
 
 
@@ -46,8 +66,8 @@
 }
 
 #form input[type="text"],input[type="search"], input[type="text-area"] {
-    background-color: #EEEEEE;
-    color: grey;
+    background-color: white;
+    color: black;
     border: 2px solid black;
     padding: 10px;
     border-radius: 5px;

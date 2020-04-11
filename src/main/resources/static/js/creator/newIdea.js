@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    /*
     $('#search-empresa').keyup(function(){
         var value = $(this).val().toLowerCase();
         $('.list-empresas-result li').each(function(){
@@ -26,7 +26,15 @@ $(document).ready(function() {
         console.log(val);
         $('#search-empresa').val(val);
     });
+    */
 
+    // Para coger el ID del creador para poder pasarlo a la base de datos
+    let currentUsername;
+    ApiController.get("auth/session", "", false).then(function (user) {
+        currentUsername = user.username;
+    });
+
+    // Para mostrar las categorias dispinibles
     ApiController.get("categories/", "", true).then(function(data){
         data.forEach(function(categoria){
             let elemento = "<option> " + categoria.name + " </option> ";
@@ -38,13 +46,28 @@ $(document).ready(function() {
     // Para mostrar dinamicamente las empresas
     let empresas = [];
     ApiController.get("enterprises/", "", false).then(function (data) {
-        let ul = document.getElementById('enterprises-list');
-
         data.forEach(function (enterprise) {
             empresas.push(enterprise.name);
-            let li = document.createElement('li');
-            li.appendChild(document.createTextNode(enterprise.name));
-            ul.appendChild(li);
+        });
+    });
+
+    $("#search-empresa").autocomplete({
+        source: empresas
+    });
+
+    // Creamos la idea y luego hay que enviarsela al administrador para que la acepte o la rechace
+    $("#crear-idea").click(function () {
+        let idea = {};
+        idea.title = document.getElementById("title").value;
+        idea.description = document.getElementById("large-description").value; // large description
+        idea.summary = document.getElementById("short-description").value; // short description
+        idea.active = true;
+        idea.enterprise = document.getElementById("search-empresa").value;
+        idea.creator = currentUsername;
+        idea.category = document.getElementById("search-category").value;
+
+        ApiController.post("ideas/", idea).then(function (createdIdea) {
+
         });
     });
 
