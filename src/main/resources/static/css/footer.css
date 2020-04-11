@@ -1,5 +1,6 @@
 #footer{
-    position: absolute;
+    position: relative;
+    /*position: absolute;   */
     height: auto;
     bottom: 0;
     width: 100%;

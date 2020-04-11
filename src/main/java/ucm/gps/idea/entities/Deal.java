@@ -26,7 +26,7 @@ public class Deal implements Serializable {
     private String title;
 
     @Column(name = "text")
-    private String text;
+    private String terms;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -37,6 +37,11 @@ public class Deal implements Serializable {
     @Column(name = "percentage")
     private float percentage;
 
+    @Column(name = "c_agree")
+    private boolean cAgree;
+
+    @Column(name = "e_agree")
+    private boolean eAgree;
 
     public Integer getId() {
         return id;
@@ -54,12 +59,12 @@ public class Deal implements Serializable {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getTerms() {
+        return terms;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTerms(String terms) {
+        this.terms = terms;
     }
 
     public Date getCreatedAt() {
@@ -94,4 +99,19 @@ public class Deal implements Serializable {
         this.idea = idea;
     }
 
+    public boolean isCAgree() {
+        return cAgree;
+    }
+
+    public void setCAgree(boolean cAgree) {
+        this.cAgree = cAgree;
+    }
+
+    public boolean isEAgree() {
+        return eAgree;
+    }
+
+    public void setEAgree(boolean eAgree) {
+        this.eAgree = eAgree;
+    }
 }

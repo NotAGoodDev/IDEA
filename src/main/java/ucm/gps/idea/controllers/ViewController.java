@@ -110,7 +110,7 @@ public class ViewController {
         return "/views/enterprise/profile.html";
     }
 
-    @GetMapping(value = "/enterprise/deal")
+    @GetMapping(value = "/enterprise/deal/{idIdea}")
     public String deal() {
         return "/views/enterprise/deal.html";
     }

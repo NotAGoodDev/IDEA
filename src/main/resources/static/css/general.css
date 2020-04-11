@@ -28,9 +28,6 @@ a:hover{
     color:#66bb6a;
 }
 
-
-
-
 #form form{
     margin-top: 70px;
 }
@@ -70,7 +67,7 @@ a:hover{
 
 
 
-#form .btn-success{
+.btn-success{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -82,7 +79,7 @@ a:hover{
     align-self: flex-end;
 }
 
-#form:hover .btn-success:hover{
+.btn-success:hover{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -93,7 +90,7 @@ a:hover{
     align-self: flex-end;
 }
 
-#form .btn-cancel{
+.btn-cancel{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;
@@ -105,7 +102,7 @@ a:hover{
     align-self: flex-end;
 }
 
-#form:hover .btn-cancel:hover{
+.btn-cancel:hover{
     margin-top: 28px;
     width: fit-content;
     padding: 10px 30px;

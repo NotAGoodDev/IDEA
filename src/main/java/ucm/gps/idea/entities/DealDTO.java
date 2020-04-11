@@ -2,17 +2,41 @@ package ucm.gps.idea.entities;
 
 public class DealDTO {
 
+    DealDTO()
+    {
+
+    }
+
+    DealDTO(Integer id, Integer ideaId, String creator, String enterprise, String title, String terms, float percentage, boolean cAgree, boolean eAgree)
+    {
+        this.id = id;
+        this.ideaId = id;
+        this.creator = creator;
+        this.enterprise = enterprise;
+        this.title = title;
+        this.terms = terms;
+        this.percentage = percentage;
+        this.cAgree = cAgree;
+        this.eAgree = eAgree;
+    }
+
     private Integer id;
 
     private Integer ideaId;
 
-    private Integer enterpriseId;
+    private String creator;
+
+    private String enterprise;
 
     private String title;
 
-    private String text;
+    private String terms;
 
     private float percentage;
+
+    private boolean cAgree;
+
+    private boolean eAgree;
 
     public Integer getId() {
         return id;
@@ -30,12 +54,20 @@ public class DealDTO {
         this.ideaId = ideaId;
     }
 
-    public Integer getEnterpriseId() {
-        return enterpriseId;
+    public String getEnterprise() {
+        return enterprise;
     }
 
-    public void setEnterpriseId(Integer enterpriseId) {
-        this.enterpriseId = enterpriseId;
+    public void setEnterprise(String enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public String getTitle() {
@@ -46,12 +78,12 @@ public class DealDTO {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getTerms() {
+        return terms;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTerms(String terms) {
+        this.terms = terms;
     }
 
     public float getPercentage() {
@@ -60,5 +92,21 @@ public class DealDTO {
 
     public void setPercentage(float percentage) {
         this.percentage = percentage;
+    }
+
+    public boolean isCAgree() {
+        return cAgree;
+    }
+
+    public void setCAgree(boolean cAgree) {
+        this.cAgree = cAgree;
+    }
+
+    public boolean isEAgree() {
+        return eAgree;
+    }
+
+    public void setEAgree(boolean eAgree) {
+        this.eAgree = eAgree;
     }
 }

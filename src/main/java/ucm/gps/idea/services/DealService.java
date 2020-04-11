@@ -52,7 +52,7 @@ public class DealService {
 
         Deal deal = new Deal();
         deal.setPercentage(dealDTO.getPercentage());
-        deal.setText(dealDTO.getText());
+        deal.setTerms(dealDTO.getTerms());
         deal.setTitle(dealDTO.getTitle());
 
         Date createdDate = new Date();
@@ -65,7 +65,9 @@ public class DealService {
 
         logger.info(idea.getId().toString());
 
-        Enterprise enterprise = enterpriseRepository.findById(dealDTO.getEnterpriseId()).orElseThrow(Exception::new);
+        Enterprise enterprise = enterpriseRepository.findById(
+                enterpriseRepository.findByName(
+                        dealDTO.getEnterprise()).getId()).orElseThrow(Exception::new);
 
         logger.info(enterprise.getId().toString());
 

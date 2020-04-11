@@ -16,5 +16,10 @@ $(document).ready(function () {
 
         document.getElementById("textArea").innerHTML =
             '                    <textarea name="description" id="description" type="readonly" readonly >' + idea.description + '</textarea>\n';
+
+        document.getElementById("dealIdea").innerHTML =
+            '                <a href="/enterprise/deal/' + url[4] + '">\n' +
+            '                    <button type="button" class="btn-success">Contratar</button>\n' +
+            '                </a>'
     });
 });
