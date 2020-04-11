@@ -2,14 +2,15 @@ package ucm.gps.idea.entities;
 
 public class DealDTO {
 
-    DealDTO()
+    public DealDTO()
     {
 
     }
 
-    DealDTO(Integer id, Integer ideaId, String creator, String enterprise, String title, String terms, float percentage, boolean cAgree, boolean eAgree)
+    //public DealDTO(Integer id, Integer ideaId, String creator, String enterprise, String title, String terms, float percentage, boolean cAgree, boolean eAgree)
+    public DealDTO(Integer ideaId, String creator, String enterprise, String title, String terms, float percentage, boolean cAgree, boolean eAgree)
     {
-        this.id = id;
+        //this.id = id;
         this.ideaId = id;
         this.creator = creator;
         this.enterprise = enterprise;

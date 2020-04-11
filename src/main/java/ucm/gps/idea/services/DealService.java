@@ -29,6 +29,9 @@ public class DealService {
     @Autowired
     private IdeaRepository ideaRepository;
 
+    @Autowired
+    private IdeaService ideaService;
+
     private static final Logger logger = LoggerFactory.getLogger(DealService.class);
 
     public List<Deal> list() {
@@ -39,6 +42,17 @@ public class DealService {
         return dealRepository.findById(id).orElseThrow(Exception::new);
     }
 
+    public Deal dealByIdeaId(Integer idIdea) throws Exception {
+        try {
+            Idea idea = ideaRepository.findById(idIdea).orElseThrow(Exception::new);
+            return dealRepository.findById(idea.getDeal().getId()).orElseThrow(Exception::new);
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
     public Deal create(Deal deal) {
         return dealRepository.save(deal);
     }
@@ -46,7 +60,6 @@ public class DealService {
     public void delete(Integer id) {
         dealRepository.deleteById(id);
     }
-
 
     public Deal create(DealDTO dealDTO) throws Exception {
 

@@ -1,30 +1,38 @@
 $(document).ready(function() {
-    document.getElementById("name").value = "Best AI you ever thought";
+    let url = window.location.pathname.split('/');
+                                                        //[0]   none
+                                                        //[1]   enterprise
+                                                        //[2]   deal
+                                                        //[3]   {idIdea}
 
-    document.getElementById("author").value = "Hermenegildo";
+    ApiController.get("deal/" + url[3], url[3], false).then(function (deal) {
+        console.log(deal);
 
-    document.getElementById("enterprise").value = "Gulugulu";
+        document.getElementById("name").value = deal.title;
 
-    let dealHeader = document.getElementById("showDealHeader").textContent;
-    document.getElementById("showDealHeader").textContent = replaceElements(dealHeader);
+        document.getElementById("author").value = deal.creator;
 
-    let dealFooter = document.getElementById("showDealFooter").textContent;
-    document.getElementById("showDealFooter").textContent = replaceElements(dealFooter);
+        document.getElementById("enterprise").value = deal.enterprise;
 
-    $()
+        let dealHeader = document.getElementById("showDealHeader").textContent;
+        document.getElementById("showDealHeader").textContent = replaceElements(dealHeader);
 
-    $( "#form" ).submit(function( event ) {
-        event.preventDefault();
-        let params = {};
-        let form = $(this);
-        params.idea_id = 0;             //Tengo que usar cookies?
-        params.enterprise_id = 0;       //Tengo que usar cookies?
-        params.percentage = form.find("input[name='percentaje']").val();
-        params.text = document.getElementById("terms").textContent;
+        let dealFooter = document.getElementById("showDealFooter").textContent;
+        document.getElementById("showDealFooter").textContent = replaceElements(dealFooter);
 
-        ApiController.post("deal/", params, function (response) {
+        $( "#form" ).submit(function( event ) {
+            event.preventDefault();
+            let params = {};
+            let form = $(this);
+            params.idea_id = 0;
+            params.enterprise_id = 0;
+            params.percentage = form.find("input[name='percentaje']").val();
+            params.text = document.getElementById("terms").textContent;
+
+            ApiController.post("deal/", params, function (response) {
+            });
         });
-    });
+    })
 });
 
 function replaceElements(element)
