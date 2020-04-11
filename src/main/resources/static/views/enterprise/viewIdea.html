@@ -6,12 +6,14 @@
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
     <link href="/css/enterprise/viewIdea.css" rel="stylesheet">
     <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
     <script src="/js/ApiController.js"></script>
     <script src="/js/header.js"></script>
+    <script src="/js/enterprise/viewIdea.js"></script>
     <script src="/js/footer.js"></script>
 </head>
 <body>
@@ -43,25 +45,23 @@
                 </div>
             </div>
 
-            <div class="col-12 separator"></div>
-
             <!-- Description -->
             <div class="row">
                 <div class="col-12 data">
-                    <label for="descriptionC">Descripcion corta</label>
+                    <label for="descriptionS">Descripción corta</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12 data">
-                    <input name="descriptionC" id="descriptionC"  type="readonly" readonly >
+                    <input name="descriptionS" id="descriptionS"  type="readonly" readonly >
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12 data">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description"  type="readonly" readonly ></textarea>
+                    <label for="textArea">Descripción</label>
+                    <div id="textArea"></div>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
                         <button type="bot" class="btn-cancel">Volver</button>
                     </a>
                     <a href="/enterprise">
-                        <button type="bot" class="btn-contrato">Contratar</button>
+                        <button type="bot" class="btn-success">Contratar</button>
                     </a>
                 </div>
             </div>

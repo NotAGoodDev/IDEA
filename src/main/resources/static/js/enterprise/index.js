@@ -5,7 +5,7 @@ $( document ).ready(function() {
         let listaIdeas = [];
         let id = data.id;
         let tamIdeas = data.idea.length;
-        //console.log(data);
+        console.log(data);
 
         //Ideas restantes
         document.getElementById("remainingIdeas").innerHTML +=
@@ -17,7 +17,7 @@ $( document ).ready(function() {
                 '<div class="container lista-idea">\n' +
                 '\t<div class="row">\n' +
                 '\t\t<div class="col-12 data">\n' +
-                '\t\t\t<a href="/enterprise/viewIdea">\n' +
+                '\t\t\t<a href="/enterprise/' + data.id + '/viewIdea/' + data.idea[i].id + '">\n' +         /* /enterprise/idEnterprise/idea/idIdea */
                 '\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t<div class="col-8 col-lg-8 data">\n' +
                 '\t\t\t\t\t\t<strong>' + data.idea[i].title + '</strong>\n' +
@@ -49,7 +49,7 @@ $( document ).ready(function() {
                 '<div class="container lista-idea">\n' +
                 '\t<div class="row">\n' +
                 '\t\t<div class="col-12 data">\n' +
-                '\t\t\t<a href="/enterprise/viewIdea">\n' +
+                '\t\t\t<a href="/enterprise/viewIdea/' + data.idea[i].id + '">\n' +
                 '\t\t\t\t<div class="row">\n' +
                 '\t\t\t\t\t<div class="col-8 col-lg-8 data">\n' +
                 '\t\t\t\t\t\t<strong>' + data.idea[i].title + '</strong>\n' +

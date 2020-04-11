@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Category;
+import ucm.gps.idea.entities.Creator;
 import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.models.IdeaModel;
 import ucm.gps.idea.services.CategoryService;
 import ucm.gps.idea.services.CreatorService;
 import ucm.gps.idea.services.EnterpriseService;
@@ -42,11 +44,40 @@ class IdeaController {
         return new ResponseEntity<>(listIdeas, HttpStatus.OK);
     }
 
+    /*
     @GetMapping("/{id}")
     public ResponseEntity<Idea> index(@PathVariable Integer id) {
         try {
             Idea idea = ideaService.index(id);
             return new ResponseEntity<>(idea, HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error(String.format("Read an specific Idea failed id: %i", id));
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    */
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<IdeaModel> ideaToFront(@PathVariable Integer id) {
+        try {
+            Idea idea = ideaService.index(id);
+
+
+            IdeaModel ideaModel = new IdeaModel(
+                    idea.getDeal() == null ? -1 : idea.getDeal().getId(),
+                    idea.getCreator().getName() + " " + idea.getCreator().getLastName(),
+                    idea.getCreator().getUsername(),
+                    idea.getCategory().getName(),
+                    idea.getEnterprise().getName(),
+                    idea.getTitle(),
+                    idea.getDescription(),
+                    idea.getSummary(),
+                    idea.getCreatedAt(),
+                    idea.isActive()
+            );
+
+            return new ResponseEntity<>(ideaModel, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(String.format("Read an specific Idea failed id: %i", id));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
