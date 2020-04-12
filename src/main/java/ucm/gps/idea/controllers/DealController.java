@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Deal;
 import ucm.gps.idea.entities.DealDTO;
 import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.repositories.DealRepository;
 import ucm.gps.idea.services.DealService;
 import ucm.gps.idea.services.IdeaService;
+
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/deal")
@@ -23,6 +26,9 @@ public class DealController {
 
     @Autowired
     private IdeaService ideaService;
+
+    @Autowired
+    private DealRepository dealRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity<DealDTO> dealToFront(@PathVariable Integer id) {  //idIdea
@@ -37,7 +43,7 @@ public class DealController {
                         id,
                         idea.getCreator().getName() + " " + idea.getCreator().getLastName(),
                         idea.getEnterprise().getName(),
-                        idea.getTitle(),
+                         idea.getTitle(),
                         "", //terms = null
                         0,    //percentage = 0
                         false,  //Creator agree?
@@ -50,7 +56,7 @@ public class DealController {
                         id,
                         deal.getIdea().getCreator().getName() + " " + deal.getIdea().getCreator().getLastName(),
                         deal.getIdea().getEnterprise().getName(),
-                        deal.getTitle(),
+                        deal.getIdea().getTitle(),
                         deal.getTerms(),
                         deal.getPercentage(),
                         deal.isCAgree(),
@@ -65,21 +71,16 @@ public class DealController {
         }
     }
     //Crear idea y gestionarla  ENTERPRISE
-    @PostMapping("/enterprise/{id}")   //id de la idea
+    @PostMapping("/enterprise")   //id de la idea
     public ResponseEntity<DealDTO> manageDealEnterprise(@RequestBody DealDTO dealDTO) throws Exception {
         try {
-            if(dealDTO.getId() == null)     //Si no existe el contrato
+
+            Deal deal = dealService.dealByIdeaId(dealDTO.getIdeaId());
+
+            if(deal == null)     //Si no existe el contrato
                 dealService.create(dealDTO);    //Lo creamos
-
-            else if(!dealService.index(dealDTO.getId()).isCAgree()
-                    || !dealService.index(dealDTO.getId()).isEAgree())  //Si estan o no de acuerdo las dos partes
-            {
-                if (!equals(dealDTO, dealService.index(dealDTO.getId())))  //Si se han cambiado las condiciones (contraoferta)
-                    dealService.index(dealDTO.getId()).setCAgree(false);    //El creador no la ha aceptado
-
-                //la empresa esta de acuerdo porque ha hecho la oferta
-                dealService.index(dealDTO.getId()).setEAgree(true);
-            }
+            else
+                dealService.manageDealEnterprise(dealDTO, deal);
 
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
 
@@ -91,19 +92,15 @@ public class DealController {
 
 
     //Crear idea y gestionarla  CREATOR
-    @PostMapping("/creator/{id}")
+    @PostMapping("/creator")
     public ResponseEntity<DealDTO> manageDealCreator(@RequestBody DealDTO dealDTO) throws Exception {
         try {
+            Deal deal = dealService.dealByIdeaId(dealDTO.getIdeaId());
 
-            if(!dealService.index(dealDTO.getId()).isCAgree()
-                    || !dealService.index(dealDTO.getId()).isEAgree())  //Si estan o no de acuerdo las dos partes
-            {
-                if (!equals(dealDTO, dealService.index(dealDTO.getId())))  //Si se han cambiado las condiciones (contraoferta)
-                    dealService.index(dealDTO.getId()).setEAgree(false);    //La empresa no la ha aceptado
-
-                //el creador esta de acuerdo porque ha hecho la oferta
-                dealService.index(dealDTO.getId()).setCAgree(true);
-            }
+            if(deal == null)     //Si no existe el contrato
+                dealService.create(dealDTO);    //Lo creamos
+            else
+                dealService.manageDealCreator(dealDTO, deal);
 
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
 
@@ -111,11 +108,5 @@ public class DealController {
             logger.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
-
-    boolean equals(DealDTO front, Deal database)  //equals mete subclases etc... Prefiero manual
-    {
-        return front.getPercentage() == database.getPercentage()
-            && front.getTerms() == database.getTerms();
     }
 }

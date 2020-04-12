@@ -66,7 +66,6 @@ public class DealService {
         Deal deal = new Deal();
         deal.setPercentage(dealDTO.getPercentage());
         deal.setTerms(dealDTO.getTerms());
-        deal.setTitle(dealDTO.getTitle());
 
         Date createdDate = new Date();
 
@@ -78,15 +77,64 @@ public class DealService {
 
         logger.info(idea.getId().toString());
 
-        Enterprise enterprise = enterpriseRepository.findById(
-                enterpriseRepository.findByName(
-                        dealDTO.getEnterprise()).getId()).orElseThrow(Exception::new);
+        Enterprise enterprise = idea.getEnterprise();
 
         logger.info(enterprise.getId().toString());
 
         //  deal.setEnterprise(enterprise);
         deal.setIdea(idea);
-
+        idea.setDeal(deal);
         return dealRepository.save(deal);
+    }
+
+
+    public void manageDealEnterprise(DealDTO dealDTO, Deal deal)
+    {
+        if(!deal.isCAgree()
+                || !deal.isEAgree())  //Si estan o no de acuerdo las dos partes
+        {
+            if (!equals(dealDTO, deal))  //Si se han cambiado las condiciones (contraoferta)
+                update(dealDTO, deal);
+
+            //la empresa esta de acuerdo porque ha hecho la oferta
+            deal.setEAgree(true);
+        }
+        else    //Los dos han firmado
+            deal.setDateSigned(new Date());
+
+        dealRepository.save(deal);
+    }
+
+
+    public void manageDealCreator(DealDTO dealDTO, Deal deal)
+    {
+        if(!deal.isCAgree()
+                || !deal.isEAgree())  //Si estan o no de acuerdo las dos partes
+        {
+            if (!equals(dealDTO, deal))  //Si se han cambiado las condiciones (contraoferta)
+                update(dealDTO, deal);
+
+            //El creador esta de acuerdo porque ha hecho la oferta
+            deal.setCAgree(true);
+        }
+        else    //Los dos han firmado
+            deal.setDateSigned(new Date());
+
+        dealRepository.save(deal);
+    }
+
+
+    public void update(DealDTO dealDTO, Deal deal)
+    {
+        deal.setCAgree(false);    //El creador no la ha aceptado
+        deal.setTerms(dealDTO.getTerms());
+        deal.setPercentage(dealDTO.getPercentage());
+    }
+
+
+    public boolean equals(DealDTO front, Deal database)  //equals mete subclases etc... Prefiero manual
+    {
+        return front.getPercentage() == database.getPercentage()
+                && front.getTerms().equals(database.getTerms());
     }
 }

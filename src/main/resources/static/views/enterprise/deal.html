@@ -36,32 +36,31 @@
                 <label for="enterprise">Tu empresa</label>
                 <input name="enterprise" id="enterprise" type="text" value="Empresa" readonly>
                 <!-- Inserción manual -->
-                <label for="percentaje">Porcentaje ganancias</label>
-                <input type="text" name="percentaje" id="percentaje">
+                <label for="percentage">Porcentaje beneficios</label>
+                <input type="text" name="percentage" id="percentage" placeholder="%">
                 <span class="subtitulo">El porcentaje tiene que ser > 0</span>
             </div>
 
             <div class="col-lg-1"></div>
             <div class="col-sm-12 col-lg-5">
-                <div class="col-sm-12 col-6 separator"></div>
+                <div class="col-sm-12 d-lg-none separator"></div>
 
-                <h4>Contrato de 'idea'</h4>
+                <h4 id="ideaName">Contrato de 'idea'</h4>
                 <p name="showDeal" id="showDealHeader" type="text">
                     Nosotros, 'empresa', junto a 'usuario', establecemos en un acuerdo
                     formal a día 'fecha' con las siguientes condiciones:
                 </p>
 
                 <!-- Inserción manual -->
-                <div class="terms" contenteditable="true" id="terms"></div>
+                <textarea id="terms" name="terms" placeholder="Condiciones..."></textarea>
 
                 <p name="showDeal" id="showDealFooter" type="text">
                     El cumplimiento de dichas condiciones por parte de 'usuario' le otorgará un pago
-                    del 'porcentaje'% sobre el beneficio que 'empresa' genere por la idea <b>'idea'</b> de forma mensual.
+                    del porcentaje establecido sobre el beneficio que 'empresa' genere por la idea <b>'idea'</b> de forma mensual.
                     La idea está protegida por nuestro apartado legal al firmar las Términos y condiciones de uso de la aplicación,
                     cualquier plagio o reproducción de la misma sin un contrato de por medio puede ser reclamada y denunciada
                     por el propietario.
                 </p>
-
             </div>
         </div>
     </form>
@@ -70,11 +69,11 @@
         <div class="row">
             <div class="col-6"></div>
             <div class="col-3">
-                <button class="btn-cancel">Cancelar</button>
+                <button class="btn-cancel" id="cancel">Cancelar</button>
             </div>
 
             <div class="col-3">
-                <button class="btn-success">Firmar Contrato</button>
+                <button class="btn-success" id="sign">Firmar</button>
             </div>
         </div>
     </div>

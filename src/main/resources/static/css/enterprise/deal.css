@@ -15,6 +15,20 @@ a:hover {
     text-decoration: none;
 }
 
+p{
+    display:inline;
+}
+
+textarea{
+    min-height: 50px;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 #form .data {
     display: flex;
     flex-direction: column;
@@ -33,16 +47,18 @@ a:hover {
     margin-top: 70px;
 }
 
-#form input[type="text"], #form input[type="date"], #form input[type="tel"] {
-    background-color: white;
-    border: 2px solid black;
+#form input[name="name"], #form input[name="author"], #form input[name="enterprise"] {
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
     padding: 10px;
     border-radius: 5px;
 }
 
-#form input[type="text"]:hover, #form input[type="date"]:hover, #form input[type="tel"]:hover {
-    background-color: white;
-    border: 2px solid #66bb6a;
+#form input[name="name"]:hover, #form input[name="author"]:hover, #form input[name="enterprise"]:hover {
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
     padding: 10px;
     border-radius: 5px;
 }

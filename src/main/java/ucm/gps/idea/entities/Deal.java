@@ -22,9 +22,6 @@ public class Deal implements Serializable {
     @OneToOne(mappedBy = "deal")
     private Idea idea;
 
-    @Column(name = "title")
-    private String title;
-
     @Column(name = "text")
     private String terms;
 
@@ -49,14 +46,6 @@ public class Deal implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getTerms() {
