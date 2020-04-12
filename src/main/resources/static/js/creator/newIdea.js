@@ -69,6 +69,12 @@ $(document).ready(function() {
         ApiController.post("ideas/", idea).then(function (createdIdea) {
 
         });
+
+        window.location.href = "/home";
+    });
+
+    $( "#cancel" ).on('click', function( event ) {
+        window.location.href = "/home";
     });
 
 });

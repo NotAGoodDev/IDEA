@@ -92,6 +92,11 @@ public class ViewController {
         return "/views/creator/newIdea.html";
     }
 
+    @GetMapping(value = "/creator/deal/{idIdea}")
+    public String dealC() {
+        return "/views/creator/deal.html";
+    }
+
 
     // Enterprise
 
@@ -111,7 +116,7 @@ public class ViewController {
     }
 
     @GetMapping(value = "/enterprise/deal/{idIdea}")
-    public String deal() {
+    public String dealE() {
         return "/views/enterprise/deal.html";
     }
 

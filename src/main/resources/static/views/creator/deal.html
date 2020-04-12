@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iDea</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/creator/deal.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/creator/deal.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+</head>
+<body>
+<header></header>
+<div id="form" class="container">
+    <form>
+        <div class="row">
+            <h2>Contrato</h2>
+            <div class="col-12"></div>
+
+            <div class="col-sm-12 col-lg-6 data">
+                <label for="name">Nombre idea</label>
+                <!-- Inserción automática -->
+                <input name="name" id="name" type="text" value="Nombre idea" readonly>
+                <!-- Inserción automática -->
+                <label for="author">Autor</label>
+                <input contenteditable="false" type="text" name="author" id="author" value="Autor" readonly>
+                <!-- Inserción automática -->
+                <label for="enterprise">Tu empresa</label>
+                <input name="enterprise" id="enterprise" type="text" value="Empresa" readonly>
+                <!-- Inserción manual -->
+                <label for="percentage">Porcentaje beneficios</label>
+                <input type="text" name="percentage" id="percentage" placeholder="%">
+                <span class="subtitulo">El porcentaje tiene que ser > 0</span>
+            </div>
+
+            <div class="col-lg-1"></div>
+            <div class="col-sm-12 col-lg-5">
+                <div class="col-sm-12 d-lg-none separator"></div>
+
+                <h4 id="ideaName">Contrato de <a class="idea_sub"></a></h4>
+                <p name="showDeal" id="showDealHeader" type="text">
+                    Nosotros, <a class="ent_sub"></a>, junto a <a class="user_sub"></a>, establecemos en un acuerdo
+                    formal a día  <a class="date_sub"></a> con las siguientes condiciones:
+                </p>
+
+                <!-- Inserción manual -->
+                <textarea id="terms" name="terms" placeholder="Condiciones..."></textarea>
+
+                <p name="showDeal" id="showDealFooter" type="text">
+                    El cumplimiento de dichas condiciones por parte de <a class="user_sub"></a> le otorgará un pago
+                    del porcentaje establecido sobre el beneficio que <a class="ent_sub"></a> genere por la idea <b><a class="idea_sub"></a></b> de forma mensual.
+                    La idea está protegida por nuestro apartado legal al firmar las Términos y condiciones de uso de la aplicación,
+                    cualquier plagio o reproducción de la misma sin un contrato de por medio puede ser reclamada y denunciada
+                    por el propietario.
+                </p>
+            </div>
+        </div>
+    </form>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-3">
+                <button class="btn-cancel" id="cancel">Cancelar</button>
+            </div>
+
+            <div class="col-3">
+                <button class="btn-success" id="sign">Firmar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+
+
+
+</div>
+
+
+
+<footer></footer>
+</body>
+</html>
