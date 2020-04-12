@@ -15,6 +15,7 @@
     <script src="/js/ApiController.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/footer.js"></script>
+    <script src="/js/creator/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 <body>
@@ -62,40 +63,9 @@
 
             <!-- Mis ideas-->
             <form class="row">
-                <div class="col-12 col-lg-6 data">
+                <div class="col-12 col-lg-6 data" id="myIdeas">
                     <h3>Mis ideas</h3>
-                    <div class="container lista-idea">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6 text-left"><h3>idea1</h3></div>
-                                <div class="col-6 col-lg-6 data text-right"><!--iconos-->
-                                    <div class="row">
-                                        <div class="col-10 data text-right">
-                                          <span class="btn-edit">
-                                              <a href="/creator/viewIdea"> <i class="fa fa-pencil-alt"
-                                                                              style="font-size: 25px"></i></a>
-                                        </span>
-                                        </div><!--cerrado d editar-->
-                                        <div class="col-2 data text-right">
-                                        <span class="btn-edit" onclick=confirm()>
-                                            <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
-                                        </span>
-                                        </div><!--cerrado d borrar-->
-                                    </div> <!--cerrado row-->
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="col-12 text-right">
-                                    <h5>dd/mm/aaaa</h5></div>
-                            </div>
-                            <div class="row">
-                                <a href="/creator/viewIdea">Lorem
-                                    ipsum dolor sit amet, sapien etiam, nunc amet
-                                    dolor ac odio mauris justo ipsum dolor sit amet, sapien etiam, nunc amet
-                                    dolor ac odio mauris j dolor ac odio mauris j </a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <!--ideas aceptadas-->
                 <div class="col-12 col-lg-6 data">
