@@ -164,3 +164,14 @@
 .btns{
     margin-left:auto;
 }
+
+#title{
+    width:400px;
+}
+
+#search-category{
+    width:300px;
+}
+#search-empresa{
+    width:250px;
+}
