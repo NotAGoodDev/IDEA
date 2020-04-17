@@ -46,6 +46,9 @@ public class User implements Serializable {
     @Column(name = "active")
     private Boolean active = true;
 
+    @Column(name = "token", length = 60)
+    private String token;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
@@ -130,4 +133,9 @@ public class User implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public String getToken() { return token;}
+
+    public void setToken(String token) { this.token = token; }
+
 }

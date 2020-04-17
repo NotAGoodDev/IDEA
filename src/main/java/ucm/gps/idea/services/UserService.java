@@ -41,6 +41,15 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
+    public User findByToken(String token) {
+        return userRepository.findByToken(token);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -60,4 +69,6 @@ public class UserService implements UserDetailsService {
                 user.getActive(), true, true, true, authorities);
 
     }
+
+
 }

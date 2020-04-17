@@ -10,14 +10,17 @@ import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.Role;
 import ucm.gps.idea.entities.User;
 import ucm.gps.idea.models.ModelUser;
+import ucm.gps.idea.services.EmailService;
 import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
+
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -30,6 +33,9 @@ public class AuthController {
     private RoleService roleService;
     @Autowired
     private BCryptPasswordEncoder encoder;
+    @Autowired
+    private EmailService emailService;
+
 
     @PostMapping("/register")
     public ResponseEntity<User> create(@RequestBody ModelUser regUser) {
@@ -43,7 +49,7 @@ public class AuthController {
         try{
             switch (regUser.getType()){
                 case "Creador":
-                    
+
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
 
                     System.out.println(encoder.encode(regUser.getPassword()));
@@ -61,7 +67,7 @@ public class AuthController {
                     role = roleService.save(role);
                     userRoles.add(role);
                     user.setRoles(userRoles);
-                
+
                     break;
                 case "Empresa":
                     user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
@@ -76,11 +82,10 @@ public class AuthController {
                     role = roleService.save(role);
                     userRoles.add(role);
                     user.setRoles(userRoles);
-
                     break;
                 case "Admin":
                     user = new User();
-                    
+
                     user.setUsername(regUser.getUsername());
                     user.setPassword(encoder.encode(regUser.getUsername()));
                     user.setActive(true);
@@ -124,6 +129,40 @@ public class AuthController {
             User user = userService.findByUsername(principal.getName());
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+
+
+    @PostMapping ("/sendEmailResetPassword")
+    public ResponseEntity<?> sendEmailResetPassword(@RequestParam String email){
+
+        User existingUser = userService.findByEmail(email);
+        if (existingUser != null) {
+            // Create token
+            final String token = UUID.randomUUID().toString();
+
+            existingUser.setToken(token);
+            userService.save(existingUser);
+            emailService.sendMail(email, token);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+
+
+    @PostMapping ("/updatePassword")
+    public ResponseEntity<?> updatePassword(@RequestParam String newPassword, @RequestParam String token ){
+
+        User existingUser =  userService.findByToken(token);
+        if (existingUser != null) {
+            existingUser.setPassword(encoder.encode(newPassword));
+            existingUser.setToken(null);
+            userService.save(existingUser);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
