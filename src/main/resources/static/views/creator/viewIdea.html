@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iDea</title>
+    <title id="titleHTML">Ver idea: </title>
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
@@ -14,6 +14,7 @@
     <script src="/js/header.js"></script>
     <script src="/js/creator/profile.js"></script>
     <script src="/js/footer.js"></script>
+    <script src="/js/creator/viewIdea.js"></script>
 </head>
 <body>
 <header>
@@ -26,37 +27,57 @@
             <div class="row" id="elementos">
                 <h3>Ver Idea</h3>
             </div>
-            <div class="row justify-content-around">
-              <div class="col-4">
+            <div class="row">
+                <!-- TITULO -->
+                <div class="col-sm-12 col-lg-5 data">
                     <label for="titulo">Título</label><br>
-                    <input  name="titulo" id="titulo"  type="readonly" readonly >
-                </div>
-            </div>
-            <div class="col-12 separator"></div>
-        <!-- Description -->
-            <div class="container" id="desc">
-                <div class="row">
-                    <label for="descriptionC">Descripcion corta</label></div>
-                <div class="row">
-                    <input  name="descriptionC" id="descriptionC"  type="readonly" readonly >
+                    <input name="titulo" id="titulo" type="readonly" readonly>
                 </div>
 
+                <!-- EMPRESA -->
+                <div class="col-sm-12 col-lg-4 data">
+                    <form>
+                        <label for="empresa" class="active">Empresa</label><br>
+                        <input id="empresa" type="readonly" autocomplete="off" readonly>
+                    </form>
+                </div>
+
+                <!-- CATEGORIA -->
+                <div class="col-sm-12 col-lg-3 data">
+                    <label for="categoria">Categoria</label><br>
+                    <input id="categoria" type="readonly" class="categories" readonly>
+                </div>
+
+                <div class="col-12 separator"></div>
+            </div>
+
+            <!-- DESCRIPCIONES -->
+            <div class="container" id="descripciones">
+                <!-- DESCRIPCION BREVE -->
                 <div class="row">
-                    <label for="description">Description</label>
+                    <label for="descripcion-corta">Descripcion corta</label>
                 </div>
                 <div class="row">
-                    <input  name="description" id="description"  type="readonly" readonly >
+                    <input id="descripcion-corta" class="descriptionC" type="readonly" name="descripcion-corta" readonly>
+                </div>
+
+                <!-- DESCRIPCION DETALLADA -->
+                <div class="row">
+                    <label for="descripcion-larga">Descripcion detallada</label>
+                </div>
+                <div class="row">
+                    <textarea id="descripcion-larga" class="description" name="descripcion-larga" rows="6" readonly>
+                    </textarea>
                 </div>
             </div>
 
-        <!-- Botton -->
+        <!-- BOTON VOLVER -->
             <div class="row">
                 <div class="col-9"></div>
                 <div class="col-3 text-right">
-                    <button class="btn-cancel" type="submit" onclick="enableFields()"><a href="/creator">Volver</a></button>
+                    <button class="btn-cancel" type="submit" onclick="enableFields()"><a href="/">Volver</a></button>
                 </div>
             </div>
-            <div class="col-12 separator"></div>
             <div class="col-12 separator"></div>
         </div>
     </form>

@@ -52,7 +52,12 @@ $(document).ready(function() {
     });
 
     $("#search-empresa").autocomplete({
-        source: empresas
+        source: empresas,
+        // focus: necesario para ocultar un div que lo pone JQuery
+        focus: function (event, ui) {
+            $(".ui-helper-hidden-accessible").hide();
+            event.preventDefault();
+        }
     });
 
     // Creamos la idea y luego hay que enviarsela al administrador para que la acepte o la rechace

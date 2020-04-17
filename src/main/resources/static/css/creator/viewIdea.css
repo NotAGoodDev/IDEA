@@ -19,12 +19,18 @@
     border-radius: 5px;
 }
 
-#descriptionC{
-    width:100%;
-    height:80px;
+.descriptionC{
+    width: 100%;
+    height: 50px;
 }
 
-#description{
+.description{
     width:100%;
-   height: 150px !important;
+    resize: vertical;
+    overflow: auto;
+    background-color: #EEEEEE;
+    color: grey;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
 }

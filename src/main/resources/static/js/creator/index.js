@@ -19,7 +19,7 @@ $( document ).ready(function() {
             '\t\t\t\t<div class="row">\n'+
             '\t\t\t\t\t<div class="col-10 data text-right">\n'+
             '\t\t\t\t\t\t<span class="btn-edit">\n'+
-            '\t\t\t\t\t\t\t<a href="/creator/viewIdea"> <i class="fa fa-pencil-alt"style="font-size: 25px"></i></a>\n'+
+            '\t\t\t\t\t\t\t<a href="/creator/viewIdea/' + data.idea[i].id + '"> <i class="fa fa-pencil-alt"style="font-size: 25px"></i></a>\n'+
             '\t\t\t\t\t\t</span>\n'+
             '\t\t\t\t\t</div>\n'+
             '\t\t\t\t\t<div class="col-2 data text-right">\n'+
@@ -36,7 +36,7 @@ $( document ).ready(function() {
             '\t\t\t</div>\n'+
             '\t\t</div>\n'+
             '\t\t<div class="row">\n'+
-            '\t\t\t<a href="/creator/viewIdea">' + data.idea[i].summary + '</a>' + '\n'+
+            '\t\t\t<a href="/creator/viewIdea/' + data.idea[i].id + '">' + data.idea[i].summary + '</a>' + '\n'+
             '\t\t</div>\n'+
             '\t</div>\n'+
             '</div>\n ' +

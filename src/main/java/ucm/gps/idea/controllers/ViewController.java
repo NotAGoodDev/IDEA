@@ -77,7 +77,7 @@ public class ViewController {
         return "/views/creator/ideas.html";
     }
 
-    @GetMapping(value = "/creator/viewIdea")
+    @GetMapping(value = "/creator/viewIdea/{id}")
     public String creatorViewIdea() {
         return "/views/creator/viewIdea.html";
     }
