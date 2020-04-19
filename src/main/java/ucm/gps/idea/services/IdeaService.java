@@ -26,6 +26,10 @@ public class IdeaService {
         return ideaRepository.findByOrderByCreatedAtDesc();
     }
 
+    public List<Idea> listByState(String state) {
+        return ideaRepository.findByState(state);
+    }
+
     public Idea index(Integer id) throws Exception {
         return ideaRepository.findById(id).orElseThrow(Exception::new);
     }

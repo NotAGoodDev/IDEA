@@ -74,6 +74,7 @@ class IdeaController {
                     idea.getDescription(),
                     idea.getSummary(),
                     idea.getCreatedAt(),
+                    idea.getState(),
                     idea.isActive()
             );
 
@@ -147,4 +148,14 @@ class IdeaController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    @GetMapping("/state/{state}")
+    public ResponseEntity<List<Idea>> findByState(@PathVariable String state){
+
+        List<Idea> listIdeas = ideaService.listByState(state);
+        logger.info("se ha hecho una peticion de listar por fecha de creacion");
+        return new ResponseEntity<>(listIdeas, HttpStatus.OK);
+    }
+
 }

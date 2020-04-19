@@ -39,4 +39,30 @@ public class AdminController {
 
         return new ResponseEntity<>(enterpriseService.create(enterprise), HttpStatus.OK);
     }
+
+    @PostMapping("api/admin/ideas/{ideaID}/confirmar")
+    public ResponseEntity<Idea> confirmar(@PathVariable Integer ideaID) throws Exception {
+
+        Idea idea = ideaService.index(ideaID);
+
+        idea.setState("Confirmado");
+
+        ideaService.save(idea);
+
+        return new ResponseEntity<>(idea, HttpStatus.OK);
+    }
+
+    @PostMapping("api/admin/ideas/{ideaID}/borrar")
+    public ResponseEntity<Idea> borrar(@PathVariable Integer ideaID) throws Exception {
+
+        Idea idea = ideaService.index(ideaID);
+
+        idea.setState("Borrado");
+        idea.setActive(false);
+
+        ideaService.save(idea);
+
+        return new ResponseEntity<>(idea, HttpStatus.OK);
+    }
+
 }

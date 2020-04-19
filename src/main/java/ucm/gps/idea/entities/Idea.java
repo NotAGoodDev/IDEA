@@ -17,7 +17,7 @@ public class Idea implements Serializable {
 
     }
 
-    public Idea(Deal deal, Creator creator, Enterprise enterprise, Category category, String title, String description, String summary, boolean active) {
+    public Idea(Deal deal, Creator creator, Enterprise enterprise, Category category, String title, String description, String summary,String state, boolean active) {
         this.deal = deal;   //No necesitamos asignar un deal de primeras
         this.creator = creator;
         this.category = category;
@@ -25,6 +25,7 @@ public class Idea implements Serializable {
         this.title = title;
         this.description = description;
         this.summary = summary;
+        this.state = state;
         this.active = active;
     }
 
@@ -69,6 +70,9 @@ public class Idea implements Serializable {
 
     @Column(name = "summary")   //Small description
     private String summary;
+
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "active")
     private Boolean active;
@@ -115,6 +119,14 @@ public class Idea implements Serializable {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Boolean isActive() {

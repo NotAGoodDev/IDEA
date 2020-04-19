@@ -15,7 +15,7 @@ public class IdeaModel {
 
     }
 
-    public IdeaModel(Integer deal, String creator, String creatorUser, String enterprise, String category, String title, String description, String summary, Date createdAt, boolean active) {
+    public IdeaModel(Integer deal, String creator, String creatorUser, String enterprise, String category, String title, String description, String summary, Date createdAt, String state, boolean active) {
         this.deal = deal;   //No necesitamos asignar un deal de primeras
         this.creator = creator;
         this.creatorUser = creatorUser;
@@ -25,6 +25,7 @@ public class IdeaModel {
         this.description = description;
         this.summary = summary;
         this.createdAt = createdAt;
+        this.state = state;
         this.active = active;
     }
 
@@ -47,6 +48,8 @@ public class IdeaModel {
     private String description;
 
     private String summary;
+
+    private String state;
 
     private Boolean active;
 
@@ -130,7 +133,13 @@ public class IdeaModel {
         this.summary = summary;
     }
 
+    public String getState() {
+        return state;
+    }
 
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public Boolean getActive() {
         return active;
