@@ -48,7 +48,7 @@
     <div class="col-12 separator"></div>
     <!--Pencil icon-->
     <div class="container">
-        <div class="row" id="add">
+      <!--  <div class="row" id="add">
             <div class="col-1 text-left">
                 <button class="btn-edit">
                     <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
@@ -58,20 +58,35 @@
             <div class="col-6"></div>
         </div> <!--cerrado row del añadir-->
 
+
+        <!--<div class="row">
+            <div class="col-lg-6" ><h3>Mis ideas</h3></div>
+
+
+            <div class="col-lg-6" ><h3>Ideas aceptadas</h3></div>
+
+        </div>-->
         <!--Body-->
         <div id="form-register" class="container">
 
             <!-- Mis ideas-->
             <form class="row">
-                <div class="col-12 col-lg-6 data" id="myIdeas">
-                    <h3>Mis ideas</h3>
+                <div class="col-12 col-lg-6 data mb-4" id="myIdeas">
+                 <h3>Mis ideas</h3><div class="row mt-3">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-4"></div>
+                <div class="col-lg-3 text-right">
+                    <span class="btn-edit">
+                        <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
+                    </span>
+                </div></div>
                     <!-- innerHTML @js -->
                 </div>
 
                 <!--ideas aceptadas-->
                 <div class="col-12 col-lg-6 data">
-                    <h3>Ideas aceptadas</h3> <!-- Lineas 74-110 tienen que estar en el JS -->
-                    <div class="container lista-idea">
+                    <h3>Ideas aceptadas</h3><!-- Lineas 74-110 tienen que estar en el JS -->
+                    <div class="container lista-idea mt-5">
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6 text-left"><h3>idea1</h3></div>
