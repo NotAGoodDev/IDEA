@@ -124,4 +124,11 @@ public class ViewController {
     public String payment() {
         return "/views/enterprise/payment.html";
     }
+
+    //Admin
+
+    @GetMapping(value = "/admin/viewIdea/{id}")
+    public String adminIndexIdea() {
+        return "/views/admin/viewIdea.html";
+    }
 }

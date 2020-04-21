@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="titleHTML">Ver idea: </title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/creator/viewIdea.css" rel="stylesheet">
+    <link href="/css/admin/viewIdea.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/admin/viewIdea.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+
+</head>
+<body>
+<header>
+</header>
+<main>
+    <div class="col-12 separator"></div>
+    <!-- Body -->
+    <form id="form">
+        <div class="container">
+            <div class="row" id="elementos">
+                <h3>Ver Idea</h3>
+            </div>
+            <div class="row">
+                <!-- TITULO -->
+                <div class="col-sm-12 col-lg-5 data">
+                    <label for="titulo">Título</label><br>
+                    <input name="titulo" id="titulo" type="readonly" readonly>
+                </div>
+
+                <!-- EMPRESA -->
+                <div class="col-sm-12 col-lg-4 data">
+                    <form>
+                        <label for="empresa" class="active">Empresa</label><br>
+                        <input id="empresa" type="readonly" autocomplete="off" readonly>
+                    </form>
+                </div>
+
+                <!-- CATEGORIA -->
+                <div class="col-sm-12 col-lg-3 data">
+                    <label for="categoria">Categoria</label><br>
+                    <input id="categoria" type="readonly" class="categories" readonly>
+                </div>
+
+                <div class="col-12 separator"></div>
+            </div>
+
+            <!-- DESCRIPCIONES -->
+            <div class="container" id="descripciones">
+                <!-- DESCRIPCION BREVE -->
+                <div class="row">
+                    <label for="descripcion-corta">Descripcion corta</label>
+                </div>
+                <div class="row">
+                    <input id="descripcion-corta" class="descriptionC" type="readonly" name="descripcion-corta" readonly>
+                </div>
+
+                <!-- DESCRIPCION DETALLADA -->
+                <div class="row">
+                    <label for="descripcion-larga">Descripcion detallada</label>
+                </div>
+                <div class="row">
+                    <textarea id="descripcion-larga" class="description" name="descripcion-larga" rows="6" readonly>
+                    </textarea>
+                </div>
+            </div>
+
+            <!-- BOTON VOLVER -->
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3 text-right">
+                    <button class="btn-cancel" type="submit" onclick="enableFields()"><a href="/">Volver</a></button>
+                    <button class="btn-ver" id="btn-revision">Revision</button>
+
+                </div>
+            </div>
+            <div class="col-12 separator"></div>
+        </div>
+    </form>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>

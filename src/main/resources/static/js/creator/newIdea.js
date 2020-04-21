@@ -70,6 +70,7 @@ $(document).ready(function() {
         idea.enterprise = document.getElementById("search-empresa").value;
         idea.creator = currentUsername;
         idea.category = document.getElementById("search-category").value;
+        idea.state = "Revision";
 
         ApiController.post("ideas/", idea).then(function (createdIdea) {
 
