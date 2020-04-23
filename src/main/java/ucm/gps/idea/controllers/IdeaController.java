@@ -75,7 +75,7 @@ class IdeaController {
                     idea.getSummary(),
                     idea.getCreatedAt(),
                     idea.getState(),
-                    idea.isActive()
+                    idea.isActive() 
             );
 
             return new ResponseEntity<>(ideaModel, HttpStatus.OK);
@@ -123,6 +123,7 @@ class IdeaController {
         //Leemos los campos para asignar las relaciones
         JsonNode root = objectMapper.readTree(json);
 
+        idea.setActive(true);
         idea.setEnterprise(enterpriseService.findByName(root.get("enterprise").asText()));
         idea.setCreator(creatorService.findByUsername(root.get("creator").asText()));
         idea.setCategory(categoryService.findByName(root.get("category").asText()));
