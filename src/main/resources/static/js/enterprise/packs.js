@@ -4,7 +4,7 @@ $(document).ready(function() {
     let purchaseData = {};  // Para coger los datos que enviaremos a la pasarela de pago
     let sesionData = {};    // Para coger los datos de la sesion
     let card;
-
+    let paymentIntentObj; //Para almacenar el pago
     card = document.getElementById("payment");
     card.style.display = "none";
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
             payment.amount = finalPrice;
             payment.currency = "EUR"; // Mas adelante posibilidad de elegir entre '€' y '$'
             payment.ownerName = document.getElementById("namecard").value;
-            payment.cardNumber = parseInt(document.getElementById("cardNumber").value, 10);
+            payment.cardNumber = parseInt(document.getElementById("cardNumber").value, 16);
             payment.expirationDate = document.getElementById("dateExp").value;
             payment.validateNumber = parseInt(document.getElementById("cvv").value, 10);
             payment.description =
@@ -72,11 +72,26 @@ $(document).ready(function() {
             // Actualizamos el numero de ideas a esa empresa
             ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false).then(function (enterprise) {
                 // Llamamos a la pasarela de pago y decidimos si aceptamos o rechazamos el pago
-                ApiController.post("Stripe/paymentintent", payment).then(function (result) {
-
+                paymentIntentObj = ApiController.post("Stripe/paymentintent", payment).then(function (result) {
+                    return result.json();
                 });
+                //Modal que enseña los datos del pago para modificarlo
+                $('#modalBuy').on('show.bs.modal', function (e) {
+                    //Cambio dinamicamente para mostrar la informacion del
+                    $('#modal-body').text('id: ' +  paymentIntentObj.id + '\n' +
+                    'Price:' +  finalPrice + '\n');
+                })
+                $('#modalBuy').modal('show');
             });
         });
+    });
+
+    $("#buttonSavePayment").click(function () {
+        ApiController.post("Stripe/confirm" +  paymentIntentObj.id, paymentIntentObj.id, false)
+    });
+
+    $("#buttonCancelPayment").click(function () {
+        ApiController.post("Stripe/cancel" +  paymentIntentObj.id, paymentIntentObj.id, false)
     });
 
     // PARA ESTABLECER EN LAS VARIABLES EL NUMERO DE IDEAS Y EL DESCUENTO CORRESPONDIENTE
