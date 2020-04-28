@@ -3,6 +3,7 @@ package ucm.gps.idea.entities;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class User implements Serializable {
     private String username;
 
     @NotBlank
+    @Size(min=6)
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
