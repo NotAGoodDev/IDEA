@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         document.getElementById("dealIdea").innerHTML =
             '                <a href="/enterprise/deal/' + url[4] + '">\n' +
-            '                    <button type="button" class="btn-success">Contratar</button>\n' +
+            '                    <button type="button" class="btn-success" disabled>Contratar</button>\n' +
             '                </a>'
     });
 });

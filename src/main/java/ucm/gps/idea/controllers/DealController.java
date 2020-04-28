@@ -66,7 +66,7 @@ public class DealController {
 
             return new ResponseEntity<>(dealDTO, HttpStatus.OK);
         } catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed id: %i", id));
+            logger.error("Read an specific Idea failed id: " + id);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

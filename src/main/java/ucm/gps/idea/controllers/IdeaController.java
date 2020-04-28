@@ -75,12 +75,13 @@ class IdeaController {
                     idea.getSummary(),
                     idea.getCreatedAt(),
                     idea.getState(),
+                    idea.getDeal() != null && idea.getDeal().isCAgree() && idea.getDeal().isEAgree(),
                     idea.isActive() 
             );
 
             return new ResponseEntity<>(ideaModel, HttpStatus.OK);
         } catch (Exception e) {
-            logger.error(String.format("Read an specific Idea failed id: %i", id));
+            logger.error("Read an specific Idea failed id:" + id);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
