@@ -54,45 +54,44 @@
             <!-- Mis ideas-->
             <form class="row">
                 <div class="col-12 col-lg-6 data mb-4" id="myIdeas">
-                 <h3>Mis ideas</h3><div class="row mt-3">
-                    <div class="col-lg-5"></div>
-                    <div class="col-lg-4"></div>
-                <div class="col-lg-3 text-right">
-                    <span class="btn-edit">
-                        <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
-                    </span>
-                </div></div>
+                 <h3>Mis ideas</h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-3 text-right"> <!-- Para el boton (+) de crear idea -->
+                            <span class="btn-edit">
+                                <a href="/creator/newIdea"><i class="fas fa-plus" style="font-size: 25px"></i></a>
+                            </span>
+                        </div>
+                    </div>
                     <!-- innerHTML @js -->
                 </div>
 
                 <!--ideas aceptadas-->
-                <div class="col-12 col-lg-6 data">
-                    <h3>Ideas aceptadas</h3><!-- Lineas 74-110 tienen que estar en el JS -->
-                    <div class="container lista-idea mt-5">
+                <div class="col-12 col-lg-6 data" id="ideas-aceptadas-html">
+                    <h3>Ideas aceptadas</h3>
+                    <!-- innerHTML @js -->
+                    <!--div class="container lista-idea mt-5">
                         <div class="col-12">
-                            <div class="row">
-                                <div class="col-6 text-left"><h3>idea1</h3></div>
-
-                                <div class="col-6 col-lg-6 data text-right"><!--iconos-->
-                                    <div class="row">
-                                        <div class="col-10 data text-right">
-                                          <span class="btn-edit">
-                                              <a href="/creator/viewIdea" disabled> <i class="fa fa-pencil-alt"
-                                                                              style="font-size: 25px"></i></a>
-                                        </span>
-                                        </div><!--cerrado d editar-->
-                                        <div class="col-2 data text-right">
-                                        <span class="btn-edit" onclick=confirm()>
-                                            <a><i class="far fa-trash-alt" style="font-size: 25px"></i></a>
-                                        </span>
-                                        </div><!--cerrado d borrar-->
-                                    </div> <!--cerrado row-->
-
+                            <div class=" row">
+                                <div class="col-12 text-left">
+                                    <h3>titulo</h3>
                                 </div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-12 text-right">
+                                    <h5>dd/mm/aaaa</h5>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <a href="/creator/viewIdea" disabled>
+                                    aqui va el summary de la idea en cuestion
+                                </a>
                             </div>
                         </div>
-                    </div>
+                    </div-->
+
                 </div>
             </form>
         </div>

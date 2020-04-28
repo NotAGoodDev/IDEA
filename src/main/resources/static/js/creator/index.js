@@ -45,6 +45,29 @@ $( document ).ready(function() {
 
         // Ideas aceptadas: FALTA POR HACER
         for (let i = 0; i < tamIdeas; i++) {
+            ApiController.get("ideas/" + data.idea[i].id, null, false).then(function (idea) {
+                //console.log(idea);
+                if(idea.dealDone){
+                    document.getElementById("ideas-aceptadas-html").innerHTML +=
+                    '<div class="container lista-idea mt-5">\n'+
+                    '\t<div class="col-12">\n' +
+                    '\t\t<div class=" row">\n' +
+                    '\t\t\t<div class="col-12 text-left">\n'+
+                    '\t\t\t\t<h3>'+ data.idea[i].title + '</h3>\n'+
+                    '\t\t\t</div>\n'+
+                    '\t\t</div>\n'+
+                    '\t\t<div class=" row">\n'+
+                    '\t\t\t<div class="col-12 text-right">\n'+
+                    '\t\t\t\t<h5>' + data.idea[i].createdAt + '</h5>\n'+
+                    '\t\t\t</div>\n'+
+                    '\t\t</div>\n'+
+                    '\t\t<div class="row">\n'+
+                    '\t\t\t\t<a href="/enterprise/deal/' + idea.deal + '">'+ data.idea[i].summary + '</a>\n'+
+                    '\t\t</div>\n'+
+                    '\t</div>\n'+
+                    '</div>\n';
+                }
+            });
         }
     });
 });
