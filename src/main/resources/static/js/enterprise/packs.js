@@ -62,9 +62,9 @@ $(document).ready(function() {
             payment.amount = finalPrice;
             payment.currency = "EUR"; // Mas adelante posibilidad de elegir entre '€' y '$'
             payment.ownerName = document.getElementById("namecard").value;
-            payment.cardNumber = parseInt(document.getElementById("cardNumber").value, 16);
+            payment.cardNumber =document.getElementById("cardNumber").value;
             payment.expirationDate = document.getElementById("dateExp").value;
-            payment.validateNumber = parseInt(document.getElementById("cvv").value, 10);
+            payment.validateNumber = document.getElementById("cvv").value;
             payment.description =
                 "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount +
                 payment.currency + " en la pagina web de IDEA.";

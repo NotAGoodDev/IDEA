@@ -1,6 +1,9 @@
 package ucm.gps.idea.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Size;
 
 public class ModelUser {
 
@@ -38,7 +41,7 @@ public class ModelUser {
     private String cif;
 
     @JsonProperty("cardNumber")
-    private Integer cardNumber;
+    private String cardNumber;
 
     @JsonProperty("remaining_ideas")
     private Integer remaining_ideas;
@@ -131,11 +134,11 @@ public class ModelUser {
         this.cif = cif;
     }
 
-    public Integer getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 

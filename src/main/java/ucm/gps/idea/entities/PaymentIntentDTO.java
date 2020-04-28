@@ -15,11 +15,11 @@ public class PaymentIntentDTO {
     private Double amount;
     private Currency currency;
     private String ownerName;
-    private Integer cardNumber;
+    private String cardNumber;
     private Date expirationDate;
-    private Integer validateNumber;
+    private String validateNumber;
 
-    public PaymentIntentDTO(String desc, Double amt, String curr, String owner, Integer card, String exDate, Integer cvv){
+    public PaymentIntentDTO(String desc, Double amt, String curr, String owner, String card, String exDate, String cvv){
         description = desc;
         amount = amt;
         currency = curr.equalsIgnoreCase("EUR") ? Currency.EUR : Currency.USD;
@@ -62,11 +62,11 @@ public class PaymentIntentDTO {
         this.ownerName = ownerName;
     }
 
-    public Integer getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -78,11 +78,11 @@ public class PaymentIntentDTO {
         this.expirationDate = expirationDate;
     }
 
-    public Integer getValidateNumber() {
+    public String getValidateNumber() {
         return validateNumber;
     }
 
-    public void setValidateNumber(Integer validateNumber) {
+    public void setValidateNumber(String validateNumber) {
         this.validateNumber = validateNumber;
     }
 

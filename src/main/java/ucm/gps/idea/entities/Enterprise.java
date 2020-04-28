@@ -1,6 +1,7 @@
 package ucm.gps.idea.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -13,7 +14,7 @@ public class Enterprise extends User {
     }
 
     public Enterprise(String username, String password, /*String type,*/ Boolean active, String email, String name,
-                      String cif, String address, String telephone, Integer creditCard, Integer remIdeas) {
+                      String cif, String address, String telephone, String creditCard, Integer remIdeas) {
         super(username, password, active, email, name, address, telephone);
         this.CIF = cif;
         this.creditCard = creditCard;
@@ -27,7 +28,8 @@ public class Enterprise extends User {
     private String CIF;
 
     @Column(name = "credit_card")
-    private Integer creditCard;
+    @Size(min=16,max=16)
+    private String creditCard;
 
     @Column(name = "remaining_ideas")
     private Integer remainingIdeas;
@@ -49,11 +51,11 @@ public class Enterprise extends User {
         this.CIF = CIF;
     }
 
-    public Integer getCreditCard() {
+    public String getCreditCard() {
         return creditCard;
     }
 
-    public void setCreditCard(Integer creditCard) {
+    public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
     }
 

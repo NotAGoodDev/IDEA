@@ -1,5 +1,7 @@
 package ucm.gps.idea.entities;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -41,7 +43,7 @@ public class User implements Serializable {
     private String username;
 
     @NotBlank
-    @Size(min=6)
+    @Size(min = 6)
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
@@ -62,6 +64,7 @@ public class User implements Serializable {
     private String address;
 
     @Column(name = "telephone")
+    @Size(min=9,max=9)
     private String telephone;
 
     public Integer getId() {

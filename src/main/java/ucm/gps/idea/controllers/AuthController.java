@@ -15,6 +15,7 @@ import ucm.gps.idea.services.RoleService;
 import ucm.gps.idea.services.UserService;
 
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class AuthController {
 
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
 
+                    if(regUser.getPassword().length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                     System.out.println(encoder.encode(regUser.getPassword()));
 
                     String username = regUser.getUsername();
@@ -70,6 +72,7 @@ public class AuthController {
 
                     break;
                 case "Empresa":
+                    if(regUser.getPassword().length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                     user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
                             regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
@@ -84,6 +87,7 @@ public class AuthController {
                     user.setRoles(userRoles);
                     break;
                 case "Admin":
+                    if(regUser.getPassword().length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                     user = new User();
 
                     user.setUsername(regUser.getUsername());

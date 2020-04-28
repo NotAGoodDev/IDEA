@@ -17,13 +17,13 @@ public class PaymentModel {
     private String ownerName;
 
     @JsonProperty("cardNumber")
-    private Integer cardNumber;
+    private String cardNumber;
 
     @JsonProperty("expirationDate")
     private String expirationDate;
 
     @JsonProperty("validateNumber")
-    private Integer validateNumber;
+    private String validateNumber;
 
     public String getDescription() {
         return description;
@@ -57,11 +57,11 @@ public class PaymentModel {
         this.ownerName = ownerName;
     }
 
-    public Integer getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -73,11 +73,11 @@ public class PaymentModel {
         this.expirationDate = expirationDate;
     }
 
-    public Integer getValidateNumber() {
+    public String getValidateNumber() {
         return validateNumber;
     }
 
-    public void setValidateNumber(Integer validateNumber) {
+    public void setValidateNumber(String validateNumber) {
         this.validateNumber = validateNumber;
     }
 }

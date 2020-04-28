@@ -66,7 +66,7 @@ public class IdeaApplicationTests {
         e.setAddress("Calle California");
         e.setEmail("mcfst@md.cf");
         e.setTelephone("912344435");
-        e.setCreditCard(123456789);
+        e.setCreditCard("123456789");
         e.setUsername("MicrosoftMadrid");
         e.setPassword(encoder.encode("micro123"));
         e.setRemainingIdeas(10);
