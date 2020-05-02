@@ -24,7 +24,6 @@ import java.util.Map;
 public class PackIdeaController {
 
     private static final Logger logger = LoggerFactory.getLogger(PackIdeaController.class);
-    private  static final Double PRICE_PER_IDEA = 7.0;
 
     @Autowired
     EnterpriseService enterpriseService;
@@ -42,8 +41,8 @@ public class PackIdeaController {
     @GetMapping("/calculateFinalPrice")
     public ResponseEntity<Double> finalPrice(@RequestBody ModelPackToBuy modelPackToBuy) {
         // Calculamos el total de la compra y lo devolvemos para que pague
-        double total = modelPackToBuy.getNumIdeasToBuy() * PRICE_PER_IDEA;
-        total -= total * (modelPackToBuy.getDiscount() / 100.0);
+        logger.info("antes de calcular");
+        double total = packIdeaService.calculatePrice(modelPackToBuy);
         logger.info(modelPackToBuy.toString() + " " + total);
 
         return new ResponseEntity<>(total, HttpStatus.OK);

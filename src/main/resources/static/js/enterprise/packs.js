@@ -56,19 +56,29 @@ $(document).ready(function() {
 
     $("#boton-pagar").click(function () {
         // Calculamos el precio final
+        console.log("antes de calcular")
+        console.log(purchaseData)
         ApiController.get("packages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
             // Variable para mapear la clase "PaymentModel" de "Stripe/paymentintent" para procesar el pago
             let payment = {};
+            console.log("antes de parsear")
+            console.log("antes de precio")
             payment.amount = finalPrice;
+            console.log("antes de moneda")
             payment.currency = "EUR"; // Mas adelante posibilidad de elegir entre '€' y '$'
+            console.log("antes de nombre")
             payment.ownerName = document.getElementById("namecard").value;
+            console.log("antes de numeroCard")
             payment.cardNumber =document.getElementById("cardNumber").value;
+            console.log("antes de fecha")
             payment.expirationDate = document.getElementById("dateExp").value;
+            console.log("antes de cvv")
             payment.validateNumber = document.getElementById("cvv").value;
+            console.log("antes de descripcion")
             payment.description =
                 "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount +
                 payment.currency + " en la pagina web de IDEA.";
-
+            console.log("despues de parsear")
             // Actualizamos el numero de ideas a esa empresa
             ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false).then(function (enterprise) {
                 // Llamamos a la pasarela de pago y decidimos si aceptamos o rechazamos el pago
