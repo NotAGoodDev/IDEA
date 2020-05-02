@@ -51,10 +51,11 @@ public class PackIdeaController {
     // Para actualizar el numero de ideas cuando una empresa compre un pack de ideas
     @PutMapping("/updateNumIdeas")
     public ResponseEntity<Enterprise> updateNumIdeas(@RequestBody Integer numIdeasToBuy, Principal principal){
+        logger.info("antes de empresa");
         Enterprise enterprise = enterpriseService.findByName(principal.getName());
         enterprise.setRemainingIdeas(enterprise.getRemainingIdeas() + numIdeasToBuy);
         Enterprise ret = enterpriseService.create(enterprise);
-
+        logger.info("actualizada empresa");
         return new ResponseEntity<>(ret, ret != null ? HttpStatus.OK : HttpStatus.FORBIDDEN);
     }
 

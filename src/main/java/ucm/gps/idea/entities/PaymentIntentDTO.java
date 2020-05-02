@@ -1,7 +1,5 @@
 package ucm.gps.idea.entities;
 
-import ucm.gps.idea.models.PaymentModel;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,14 +10,14 @@ public class PaymentIntentDTO {
     }
 
     private String description;
-    private Double amount;
+    private Integer amount;
     private Currency currency;
     private String ownerName;
     private String cardNumber;
     private Date expirationDate;
     private String validateNumber;
 
-    public PaymentIntentDTO(String desc, Double amt, String curr, String owner, String card, String exDate, String cvv){
+    public PaymentIntentDTO(String desc, Integer amt, String curr, String owner, String card, String exDate, String cvv){
         description = desc;
         amount = amt;
         currency = curr.equalsIgnoreCase("EUR") ? Currency.EUR : Currency.USD;
@@ -38,11 +36,11 @@ public class PaymentIntentDTO {
         this.description = description;
     }
 
-    public Double getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

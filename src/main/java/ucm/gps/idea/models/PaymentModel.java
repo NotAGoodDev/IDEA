@@ -8,7 +8,7 @@ public class PaymentModel {
     private String description;
 
     @JsonProperty("amount")
-    private Double amount;
+    private Integer amount;
 
     @JsonProperty("currency")
     private String currency;
@@ -33,11 +33,11 @@ public class PaymentModel {
         this.description = description;
     }
 
-    public Double getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

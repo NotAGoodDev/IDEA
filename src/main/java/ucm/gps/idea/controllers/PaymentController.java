@@ -32,9 +32,8 @@ public class PaymentController {
                             paymentModel.getValidateNumber());
 
             PaymentIntent paymentIntent = paymentService.paymentIntent(paymentIntentDTO);
-            String paymentStr = paymentIntent.toJson();
             logger.info("Payment controller. Intend of payment success");
-            return new ResponseEntity<String>(paymentStr, HttpStatus.OK);
+            return new ResponseEntity<String>(paymentIntent.toJson(), HttpStatus.OK);
 
         } catch (StripeException e) {
             e.printStackTrace();

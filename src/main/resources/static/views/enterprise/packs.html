@@ -147,14 +147,17 @@
                             <div class="col-lg-5"></div>
                             <div class="col-lg-4"></div>
                             <div class="col-lg-3 text-right">
+
                                 <input id="boton-pagar" class="btn-comprar" type="submit" value="Proceder al pago">
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-
-            <!-- boton volver-->
+        <!--  <button id="boton-pagar" type="submit" form="form" class="btn-comprar" > Proceder al pago </button>-->
+        <!-- -->
+        <!-- <input id="boton-pagar" form="form" class="btn-comprar" type="submit" value="Proceder al pago"> -->
+    <!-- boton volver-->
 
             <div class="col-12 separator"></div>
             <!--boton volver para q este centrado justo despues del row, esta dentro del formulario y dentro del container-->
@@ -179,17 +182,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Datos de la compra</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    ...
+                <div id="modal_body" class="modal-body">
+                    Mi modal
                 </div>
                 <div class="modal-footer">
-                    <button id="buttonSavePayment" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="buttonCancelPayment" type="button" class="btn btn-primary">Save changes</button>
+                    <button id="buttonCancelPayment" type="button" class="btn-cancel" data-dismiss="modal">Cancelar compra</button>
+                    <button id="buttonSavePayment" type="button" class="btn-success">Comprar</button>
                 </div>
             </div>
         </div>

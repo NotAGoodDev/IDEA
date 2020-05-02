@@ -25,10 +25,10 @@ public class PaymentService {
         params.put("amount", paymentintentDTO.getAmount());
         params.put("currency", paymentintentDTO.getCurrency());
         params.put("description", paymentintentDTO.getDescription());
-        params.put("ownerName", paymentintentDTO.getOwnerName());
-        params.put("cardNumber", paymentintentDTO.getCardNumber());
-        params.put("expirationDate", paymentintentDTO.getExpirationDate());
-        params.put("validateNumber", paymentintentDTO.getValidateNumber());
+        //params.put("ownerName", paymentintentDTO.getOwnerName());
+        //params.put("cardNumber", paymentintentDTO.getCardNumber());
+        //params.put("expirationDate", paymentintentDTO.getExpirationDate());
+        //params.put("validateNumber", paymentintentDTO.getValidateNumber());
 
         List<String> paymentMethodTypes = new ArrayList<String>();
 
@@ -47,7 +47,6 @@ public class PaymentService {
         //Se queda sin camelCase por cosas del stripe
         Map<String, Object> params = new HashMap<>();
         params.put("payment_method", "pm_card_visa");
-
         paymentIntent.confirm(params);
         return paymentIntent;
     }

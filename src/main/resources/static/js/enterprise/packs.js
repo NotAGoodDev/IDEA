@@ -5,6 +5,7 @@ $(document).ready(function() {
     let sesionData = {};    // Para coger los datos de la sesion
     let card;
     let paymentIntentObj; //Para almacenar el pago
+    var paymentSubmited = false;
     card = document.getElementById("payment");
     card.style.display = "none";
 
@@ -58,7 +59,8 @@ $(document).ready(function() {
         // Calculamos el precio final
         console.log("antes de calcular")
         console.log(purchaseData)
-        ApiController.get("packages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
+        let finalPrice  = 10000
+        //ApiController.get("packages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
             // Variable para mapear la clase "PaymentModel" de "Stripe/paymentintent" para procesar el pago
             let payment = {};
             console.log("antes de parsear")
@@ -76,32 +78,52 @@ $(document).ready(function() {
             payment.validateNumber = document.getElementById("cvv").value;
             console.log("antes de descripcion")
             payment.description =
-                "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount +
+                "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount / 100 +
                 payment.currency + " en la pagina web de IDEA.";
             console.log("despues de parsear")
-            // Actualizamos el numero de ideas a esa empresa
-            ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false).then(function (enterprise) {
-                // Llamamos a la pasarela de pago y decidimos si aceptamos o rechazamos el pago
-                paymentIntentObj = ApiController.post("Stripe/paymentintent", payment).then(function (result) {
-                    return result.json();
-                });
+
+            ApiController.post("Stripe/paymentintent", payment).then(function (result) {
+                paymentIntentObj = result;
+                console.log(result)
                 //Modal que enseña los datos del pago para modificarlo
-                $('#modalBuy').on('show.bs.modal', function (e) {
-                    //Cambio dinamicamente para mostrar la informacion del
-                    $('#modal-body').text('id: ' +  paymentIntentObj.id + '\n' +
-                    'Price:' +  finalPrice + '\n');
-                })
+                document.getElementById('modal_body').innerHTML =
+                    '<p>Id: ' +  result.id + '</p>\n' +
+                    '<p>Price:' +  finalPrice / 100 + '</p>\n';
                 $('#modalBuy').modal('show');
             });
-        });
+
+
+        //});
+        return false;
     });
 
+
+    //Accion al ocultarse el modal
+    $('#modalBuy').on('hidden.bs.modal', function (e) {
+        if(!paymentSubmited){
+            ApiController.post("Stripe/cancel/" + paymentIntentObj.id, paymentIntentObj.id, false);
+        }
+        window.location.href = "/";
+    });
+
+
+    //Confirmamos el pago y cerramos el modal
     $("#buttonSavePayment").click(function () {
-        ApiController.post("Stripe/confirm" +  paymentIntentObj.id, paymentIntentObj.id, false)
+        console.log("confirm payment");
+        console.log(purchaseData);
+        ApiController.post("Stripe/confirm/" + paymentIntentObj.id, paymentIntentObj.id, false);
+        ApiController.put("packages/updateNumIdeas", purchaseData.numIdeasToBuy, false);
+        paymentSubmited = true;
+        $('#modalBuy').modal('hide');
     });
 
+
+    //Cancelamos el pago y cerramos el modal
     $("#buttonCancelPayment").click(function () {
-        ApiController.post("Stripe/cancel" +  paymentIntentObj.id, paymentIntentObj.id, false)
+        console.log("cancel payment")
+        ApiController.post("Stripe/cancel/" + paymentIntentObj.id, paymentIntentObj.id, false);
+        paymentSubmited = true;
+        $('#modalBuy').modal('hide');
     });
 
     // PARA ESTABLECER EN LAS VARIABLES EL NUMERO DE IDEAS Y EL DESCUENTO CORRESPONDIENTE
