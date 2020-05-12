@@ -28,7 +28,7 @@ public class Enterprise extends User {
     private String CIF;
 
     @Column(name = "credit_card")
-    @Size(min=16,max=16)
+    //@Size(min=16,max=16)
     private String creditCard;
 
     @Column(name = "remaining_ideas")

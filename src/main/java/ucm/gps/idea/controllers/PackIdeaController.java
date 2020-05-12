@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import ucm.gps.idea.entities.Enterprise;
 import ucm.gps.idea.entities.PackIdea;
 import ucm.gps.idea.models.ModelPackToBuy;
+import ucm.gps.idea.models.PriceModel;
 import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.PackIdeaService;
 
@@ -38,14 +39,14 @@ public class PackIdeaController {
     }
 
     // Para calcular el precio final dado el numero de ideas y el descuento que se le tiene que aplicar
-    @GetMapping("/calculateFinalPrice")
-    public ResponseEntity<Double> finalPrice(@RequestBody ModelPackToBuy modelPackToBuy) {
+    @PostMapping("/calculateFinalPrice")
+    public ResponseEntity<PriceModel> finalPrice(@RequestBody ModelPackToBuy modelPackToBuy) {
         // Calculamos el total de la compra y lo devolvemos para que pague
         logger.info("antes de calcular");
         double total = packIdeaService.calculatePrice(modelPackToBuy);
         logger.info(modelPackToBuy.toString() + " " + total);
 
-        return new ResponseEntity<>(total, HttpStatus.OK);
+        return new ResponseEntity<>(new PriceModel(total), HttpStatus.OK);
     }
 
     // Para actualizar el numero de ideas cuando una empresa compre un pack de ideas
@@ -54,6 +55,7 @@ public class PackIdeaController {
         logger.info("antes de empresa");
         Enterprise enterprise = enterpriseService.findByName(principal.getName());
         enterprise.setRemainingIdeas(enterprise.getRemainingIdeas() + numIdeasToBuy);
+        logger.info("actualizando empresa");
         Enterprise ret = enterpriseService.create(enterprise);
         logger.info("actualizada empresa");
         return new ResponseEntity<>(ret, ret != null ? HttpStatus.OK : HttpStatus.FORBIDDEN);

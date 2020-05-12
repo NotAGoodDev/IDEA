@@ -59,13 +59,14 @@ $(document).ready(function() {
         // Calculamos el precio final
         console.log("antes de calcular")
         console.log(purchaseData)
-        let finalPrice  = 10000
-        //ApiController.get("packages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
+        //let finalPrice  = 10000
+        ApiController.post("packages/calculateFinalPrice", purchaseData, false).then(function (finalPrice) {
             // Variable para mapear la clase "PaymentModel" de "Stripe/paymentintent" para procesar el pago
             let payment = {};
             console.log("antes de parsear")
             console.log("antes de precio")
-            payment.amount = finalPrice;
+            console.log(finalPrice)
+            payment.amount = finalPrice.finalPrice * 100;
             console.log("antes de moneda")
             payment.currency = "EUR"; // Mas adelante posibilidad de elegir entre '€' y '$'
             console.log("antes de nombre")
@@ -81,6 +82,7 @@ $(document).ready(function() {
                 "Compra de un pack de " + purchaseData.numIdeasToBuy + " ideas con un valor total de " + payment.amount / 100 +
                 payment.currency + " en la pagina web de IDEA.";
             console.log("despues de parsear")
+            console.log(payment)
 
             ApiController.post("Stripe/paymentintent", payment).then(function (result) {
                 paymentIntentObj = result;
@@ -88,12 +90,12 @@ $(document).ready(function() {
                 //Modal que enseña los datos del pago para modificarlo
                 document.getElementById('modal_body').innerHTML =
                     '<p>Id: ' +  result.id + '</p>\n' +
-                    '<p>Price:' +  finalPrice / 100 + '</p>\n';
+                    '<p>Price:' +  result.amount / 100 + '</p>\n';
                 $('#modalBuy').modal('show');
             });
 
 
-        //});
+        });
         return false;
     });
 
