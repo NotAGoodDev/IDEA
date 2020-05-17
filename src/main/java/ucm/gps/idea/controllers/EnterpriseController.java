@@ -30,7 +30,7 @@ public class EnterpriseController {
         return new ResponseEntity<>(listEnterprise, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Enterprise> index(@PathVariable Integer id) {
         try {
             Enterprise enterprise = enterpriseService.index(id);
