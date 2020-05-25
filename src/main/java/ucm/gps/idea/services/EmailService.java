@@ -16,14 +16,14 @@ public  class EmailService {
         // Create the email
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(to);
-        mailMessage.setSubject("Complete Password Reset!");
-        mailMessage.setFrom("daniatm1903@gmail.com");
+        mailMessage.setSubject("Solicitud para Restablecer Contraseña.");
+        mailMessage.setFrom("idea.sopporte@gmail.com");
 
         String text = "";
         text = "¿Ha olvidado su contraseña? \n" +
                 "Para recuperar la contraseña haga click en el siguente enlace: \n\n" +
                  //"http://localhost:8080/changePassword?token=" + token + "<br/>" +
-                "http://localhost:8080?t=" + token  +
+                "http://localhost:8080/changePassword?t=" + token  +
                 "\n\nSi no desea cambiar su contraseña o no ha solicitado este cambio," +
                 "obvie y elimine este mensaje. \n" +
                 "Gracias, \n" +
