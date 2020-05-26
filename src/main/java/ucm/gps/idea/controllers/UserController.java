@@ -111,6 +111,7 @@ public class UserController {
         User user = userService.findByUsername(principal.getName());
         try{
             if(encoder.matches(pass, user.getPassword())){
+                if(newPass.length()<6)return false;
                 user.setPassword(encoder.encode(newPass));
                 userService.save(user);
                 return true;

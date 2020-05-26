@@ -53,7 +53,7 @@ public class AuthController {
 
                     creatorDate = new SimpleDateFormat("yy-mm-dd").parse(regUser.getBirthDate());
 
-                    if(regUser.getPassword().length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                    if(regUser.getPassword().length()<=6)return new ResponseEntity<>(null,HttpStatus.FORBIDDEN);
                     System.out.println(encoder.encode(regUser.getPassword()));
 
                     String username = regUser.getUsername();
@@ -72,7 +72,7 @@ public class AuthController {
 
                     break;
                 case "Empresa":
-                    if(regUser.getPassword().length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+                    if(regUser.getPassword().length()<=6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
                     user = new Enterprise(regUser.getUsername(), encoder.encode(regUser.getPassword()),
                             true, regUser.getEmail(), regUser.getName(), regUser.getCif(), regUser.getAddress(),
                             regUser.getTelephone(), regUser.getCardNumber(), regUser.getRemaining_ideas());
@@ -161,6 +161,7 @@ public class AuthController {
 
         User existingUser =  userService.findByToken(token);
         if (existingUser != null) {
+            if(newPassword.length()<6)return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             existingUser.setPassword(encoder.encode(newPassword));
             existingUser.setToken(null);
             userService.save(existingUser);
