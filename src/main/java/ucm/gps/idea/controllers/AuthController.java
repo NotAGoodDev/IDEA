@@ -157,7 +157,7 @@ public class AuthController {
 
 
     @PostMapping ("/updatePassword")
-    public ResponseEntity<?> updatePassword(@RequestParam String newPassword, @RequestParam String token ){
+    public ResponseEntity<?> updatePassword(@RequestParam String newPassword, @RequestParam String token){
 
         User existingUser =  userService.findByToken(token);
         if (existingUser != null) {
