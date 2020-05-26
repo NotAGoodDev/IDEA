@@ -1,13 +1,11 @@
 function changePassword() {
-    let params= {};
-    let form = $( this );
-
-    params.password = form.find( "input[name='password']" ).val();
-    params.repassword = form.find( "input[name='confirmPassword']" ).val();
-    params.active = true;
+    let params = {};
+    var repeatNewPassword;
+    params.newPassword = document.getElementById("newPassword").value;
+    repeatNewPassword = document.getElementById("confirmPassword").value;
     params.token = location.search;
-
-    if(params.password == params.repassword){
+    params.active = true;
+    if(params.newPassword == repeatNewPassword){
             ApiController.post("auth/updatePassword",params).then(function(data){
                 if(done){
                     alert("Contraseña cambiada con exito");
