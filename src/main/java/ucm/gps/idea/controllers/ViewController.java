@@ -43,6 +43,10 @@ public class ViewController {
         return "/views/who.html";
     }
 
+    @GetMapping(value = "/forgottenpass")
+    public String forgottenpass() { return "/views/auth/forgottenPasswordMail.html";
+    }
+
     @GetMapping(value = "/header")
     public String header(Authentication authentication) {
         if(authentication == null)
