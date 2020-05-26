@@ -13,6 +13,9 @@ public class ModelUser {
     @JsonProperty("password")
     private String password;
 
+    @JsonProperty("newPassword")
+    private String newPassword;
+
     @JsonProperty("email")
     private String email;
 
@@ -46,6 +49,9 @@ public class ModelUser {
     @JsonProperty("remaining_ideas")
     private Integer remaining_ideas;
 
+    @JsonProperty("token")
+    private String token;
+
     public String getUsername() {
         return username;
     }
@@ -56,6 +62,10 @@ public class ModelUser {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
     }
 
     public void setPassword(String password) {
@@ -72,6 +82,10 @@ public class ModelUser {
 
     public String getType() {
         return type;
+    }
+
+    public String getToken() {
+        return token;
     }
 
     public void setType(String type) {

@@ -1,19 +1,19 @@
 function changePassword() {
-    let params= {};
-    let form = $( this );
-
-    params.password = form.find( "input[name='password']" ).val();
-    params.repassword = form.find( "input[name='confirmPassword']" ).val();
+    let params = {};
+    var repeatNewPassword;
+    params.newPassword = document.getElementById("newPassword").value;
+    repeatNewPassword = document.getElementById("confirmPassword").value;
+    params.token =  location.search.substr(3);
     params.active = true;
-    params.token = location.search;
-
-    if(params.password == params.repassword){
-            ApiController.post("auth/updatePassword",params).then(function(data){
+    if(params.newPassword == repeatNewPassword){
+            ApiController.put("auth/updatePassword",params, true).then(function(done){
                 if(done){
                     alert("Contraseña cambiada con exito");
                 }else{
                     alert("No se pudo cambiar la contraseña");
                 }
+
+                window.location.href = "/home";
             });
     }
 }
