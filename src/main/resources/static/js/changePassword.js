@@ -1,10 +1,14 @@
-var token = location.search;
-
 function changePassword() {
-    var pass = document.getElementById("password").value;
-    var confirmPass = document.getElementById("confirmPassword").value;
-    if(pass == confirmPass){
-            ApiController.put("users/changepass/?pass="+pass+"&token="+token,"",true).then(function(done){
+    let params= {};
+    let form = $( this );
+
+    params.password = form.find( "input[name='password']" ).val();
+    params.repassword = form.find( "input[name='confirmPassword']" ).val();
+    params.active = true;
+    params.token = location.search;
+
+    if(params.password == params.repassword){
+            ApiController.post("auth/updatePassword",params).then(function(data){
                 if(done){
                     alert("Contraseña cambiada con exito");
                 }else{
