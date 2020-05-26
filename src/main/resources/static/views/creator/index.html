@@ -23,22 +23,29 @@
 </header>
 
 <script>
-    function confirm() {
+    function confirm(id) {
+        ApiController.get("ideas/" + id, null, false).then(function (idea) {
+            let text= '¿Desea borrar ' + idea.title + '?';
+            $.confirm({
+                title: Borrar idea,
+                content: text,
+                buttons: {
+                    aceptar: function () {
+                        //llamar a borrar idea
+                        ApiController.del("ideas/"+id, ).then(function (data) {
+                            console.log(data);
+                        });
+                        window.location.href = "/home";
 
-        $.confirm({
-            title: "nombre de la idea",
-            content: '¿Desea eliminar "idea"?',
-            buttons: {
-                aceptar: function () {
-                    //llamar a borrar idea
-                    $.alert('Idea borrada');
-                    //recargar la pagina
-                },
-                cancelar: function () {
-                    /*  $.alert('Cancelado');*/
-                },
-            }
+                    },
+                    cancelar: function () {
+                        /*  $.alert('Cancelado');*/
+                    },
+                }
+            });
         });
+
+
     }
 
 </script>

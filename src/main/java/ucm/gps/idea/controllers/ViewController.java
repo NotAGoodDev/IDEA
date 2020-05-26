@@ -90,6 +90,11 @@ public class ViewController {
         return "/views/creator/viewIdea.html";
     }
 
+    @GetMapping(value = "/creator/setIdea/{id}")
+    public String creatorSetIdea() {
+        return "/views/creator/setIdea.html";
+    }
+
     @GetMapping(value = "/creator/profile")
     public String creatorProfile() {
         return "/views/creator/profile.html";

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear nueva idea</title>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/creator/newIdea.css" rel="stylesheet">
+    <script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+    <!-- Necesario para el autocompletar: https://jqueryui.com/autocomplete/ -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/ApiController.js"></script>
+    <script src="/js/header.js"></script>
+    <!--script src="/js/creator/profile.js"></script-->
+    <script src="/js/footer.js"></script>
+    <script src="/js/creator/setIdea.js"></script>
+</head>
+<body>
+<header>
+</header>
+
+<main>
+
+    <div class="col-12 separator"></div>
+
+    <!-- Body -->
+    <form id="form">
+        <div class="container">
+            <div class="row" id="elementos">
+                <h3>Modificar idea</h3>
+            </div>
+            <!-- Search option with categorie and title -->
+            <div class="row">
+
+                <!-- TITULO -->
+                <div class="col-sm-12 col-lg-5">
+                    <label for="title">Titulo</label><br>
+                    <input type="text" name="title" id="title">
+                </div>
+
+                <!-- BUSCAR EMPRESA -->
+                <div class="col-sm-12 col-lg-4">
+                    <div id="container-buscar-empresa">
+                        <form>
+                            <label for="search-empresa" class="active">Buscar</label><br>
+                            <input id="search-empresa" name="search-empresa" class="autocomplete" type="text" placeholder="Buscar..." autocomplete="off">
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- SELECCIONAR CATEGORIA -->
+                <div class="col-lg-3">
+
+                    <label for="search-category">Categoria</label><br>
+                    <select id="search-category" class="categories" name="search-category">
+                        <!--options ==> en el js-->
+                    </select>
+                </div>
+                <div class="col-12 separator">
+                </div>
+
+            </div>
+
+            <!--DESCRIPCIONES-->
+            <div class="container" id="desc">
+
+                <!-- DESCRIPCION BREVE -->
+                <div class="row">
+                    <label for="short-description">Descripcion corta</label>
+                </div>
+                <div class="row">
+                    <input id="short-description" class="short-textarea" type="text" name="descripcion-corta">
+                </div>
+
+                <!-- DESCRIPCION DETALLADA -->
+                <div class="row">
+                    <label for="large-description">Descripcion detallada</label>
+                </div>
+                <div class="row">
+                    <textarea id="large-description" class="large-textarea" name="descripcion-larga" rows="6"></textarea>
+                </div>
+            </div>
+
+
+            <!--Botones cancel & success-->
+
+            <div class="col-12 separator"></div>
+        </div>
+
+        </div>
+
+    </form>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8"></div>
+            <!--  <div class="col-lg-3 text-right">-->
+            <div class="col-2">
+                <a href="/home">
+                    <button type="bot" class="btn-cancel">Cancelar</button>
+                </a>
+            </div>
+
+            <div class="col-2">
+                <button id="set-idea" class="btn-success" type="submit">Modificar</button>
+            </div>
+        </div>
+    </div>
+    <!-- </div>-->
+
+
+    <div class="col-12 separator"></div>
+    <div class="col-12 separator"></div>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>

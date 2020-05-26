@@ -20,6 +20,11 @@ class ApiController {
         return this.request(url, "PUT", params,async);
     }
 
+    static del(endpoint, params,async) {
+            let url = this.basePath() + endpoint;
+            return this.request(url, "DELETE", params,async);
+        }
+
     static request(url, method, params, async){
 
         console.log({

@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ucm.gps.idea.entities.Category;
-import ucm.gps.idea.entities.Creator;
-import ucm.gps.idea.entities.Idea;
+import ucm.gps.idea.entities.*;
 import ucm.gps.idea.models.IdeaModel;
+import ucm.gps.idea.models.ModelUser;
 import ucm.gps.idea.services.CategoryService;
 import ucm.gps.idea.services.CreatorService;
 import ucm.gps.idea.services.EnterpriseService;
 import ucm.gps.idea.services.IdeaService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
 
@@ -130,6 +130,24 @@ class IdeaController {
         idea.setCategory(categoryService.findByName(root.get("category").asText()));
 
         return new ResponseEntity<>(ideaService.save(idea), HttpStatus.OK);
+    }
+
+    @PutMapping("/")
+    public ResponseEntity<Idea> modify(@RequestBody String json) throws JsonProcessingException{
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Idea idea = objectMapper.readValue(json, Idea.class);
+        logger.info(json);
+        //Leemos los campos para asignar las relaciones
+        JsonNode root = objectMapper.readTree(json);
+
+        idea.setActive(true);
+        idea.setEnterprise(enterpriseService.findByName(root.get("enterprise").asText()));
+        idea.setCreator(creatorService.findByUsername(root.get("creator").asText()));
+        idea.setCategory(categoryService.findByName(root.get("category").asText()));
+        Idea i = ideaService.save(idea);
+
+        return new ResponseEntity<>(i, HttpStatus.OK);
     }
 
 

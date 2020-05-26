@@ -37,7 +37,7 @@ $(document).ready(function() {
     // Para mostrar las categorias dispinibles
     ApiController.get("categories/", "", true).then(function(data){
         data.forEach(function(categoria){
-            let elemento = "<option> " + categoria.name + " </option> ";
+            let elemento = "<option value=" + categoria.name + "> " + categoria.name + " </option> ";
             $('#search-category').append(elemento);
         })
     });
